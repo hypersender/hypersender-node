@@ -10,7 +10,7 @@
     "whatsapp-api",
     "sdk"
   ],
-  "homepage": "https://docs.hypersender.com",
+  "homepage": "https://docs.hypersender.com/v2/packages-and-sdks/node/installation",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/hypersender/hypersender-node.git"
