@@ -39,11 +39,11 @@ export type SendLinkCustomPreview = {
   /**
    * URL of the image to be used in the link preview - (only if preview_image_file is not provided)
    */
-  previewImageUrl: string;
+  previewImageUrl?: string | undefined;
   /**
    * file of the image to be used in the link preview - (only if preview_image_url is not provided)
    */
-  previewImageFile: string;
+  previewImageFile?: string | undefined;
 };
 
 /** @internal */
@@ -55,8 +55,8 @@ export type SendLinkCustomPreview$Outbound = {
   preview_title: string;
   preview_description: string;
   preview_url: string;
-  preview_image_url: string;
-  preview_image_file: string;
+  preview_image_url?: string | undefined;
+  preview_image_file?: string | undefined;
 };
 
 /** @internal */
@@ -73,8 +73,8 @@ export const SendLinkCustomPreview$outboundSchema: z.ZodMiniType<
       previewTitle: z.string(),
       previewDescription: z.string(),
       previewUrl: z.string(),
-      previewImageUrl: z.string(),
-      previewImageFile: z.string(),
+      previewImageUrl: z.optional(z.string()),
+      previewImageFile: z.optional(z.string()),
     }),
     z.transform((v) => {
       return remap$(v, {

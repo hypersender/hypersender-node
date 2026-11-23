@@ -1,6 +1,6 @@
 {
   "name": "hypersender-node",
-  "version": "0.3.6",
+  "version": "0.3.7",
   "author": "Hypersender",
   "type": "module",
   "main": "./esm/index.js",
