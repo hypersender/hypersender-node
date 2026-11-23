@@ -4,7 +4,7 @@ targets:
     hypersender:
         source: Hypersender WhatsApp API Docs
         codeSamplesNamespace: hypersender-whats-app-api-docs-typescript-code-samples
-        codeSamplesRevisionDigest: sha256:67d6fbcccdf0601eb643942dc9b037e952c4c5c8fe318002372b918e6fe80201
+        codeSamplesRevisionDigest: sha256:0221e87790c5d0afebe84dfad364edf755ac73ae39eaffa1b79fc8076f590356
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest

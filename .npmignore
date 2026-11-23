@@ -17,3 +17,9 @@
 /.tshy
 /.tshy-*
 /__tests__
+
+# Repo-only files
+/scripts
+/temp
+/examples
+/openapi
