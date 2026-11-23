@@ -5,7 +5,12 @@
 
 import * as z from "zod/v4-mini";
 import { HypersenderClientCore } from "../core.js";
-import { encodeJSON, encodeSimple } from "../lib/encodings.js";
+import { appendForm, encodeSimple, normalizeBlob } from "../lib/encodings.js";
+import {
+  bytesToBlob,
+  getContentTypeFromFileName,
+  readableStreamToArrayBuffer,
+} from "../lib/files.js";
 import { matchStatusCode } from "../lib/http.js";
 import * as M from "../lib/matchers.js";
 import { compactMap } from "../lib/primitives.js";
@@ -26,14 +31,16 @@ import { SDKValidationError } from "../models/errors/sdk-validation-error.js";
 import * as models from "../models/index.js";
 import * as operations from "../models/operations/index.js";
 import { APICall, APIPromise } from "../types/async.js";
+import { isBlobLike } from "../types/blobs.js";
 import { Result } from "../types/fp.js";
+import { isReadableStream } from "../types/streams.js";
 
 /**
  * If set, this operation will use {@link Security.whatsappApiKey} from the global security.
  */
 export function whatsappSendImage(
   client: HypersenderClientCore,
-  request: models.SendImageRequest,
+  request: models.SendImageRequestMultipart,
   options?: RequestOptions,
 ): APIPromise<
   Result<
@@ -59,7 +66,7 @@ export function whatsappSendImage(
 
 async function $do(
   client: HypersenderClientCore,
-  request: models.SendImageRequest,
+  request: models.SendImageRequestMultipart,
   options?: RequestOptions,
 ): Promise<
   [
@@ -81,14 +88,58 @@ async function $do(
 > {
   const parsed = safeParse(
     request,
-    (value) => z.parse(models.SendImageRequest$outboundSchema, value),
+    (value) => z.parse(models.SendImageRequestMultipart$outboundSchema, value),
     "Input validation failed",
   );
   if (!parsed.ok) {
     return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
-  const body = encodeJSON("body", payload, { explode: true });
+  const body = new FormData();
+
+  appendForm(body, "chatId", payload.chatId);
+  if (payload.caption !== undefined) {
+    appendForm(body, "caption", payload.caption);
+  }
+  if (payload.file !== undefined) {
+    if (isBlobLike(payload.file)) {
+      const file = payload.file;
+      const blob = await normalizeBlob(file);
+      const name = "name" in file ? (file.name as string) : undefined;
+      appendForm(body, "file", blob, name);
+    } else if (isReadableStream(payload.file.content)) {
+      const buffer = await readableStreamToArrayBuffer(payload.file.content);
+      const contentType = getContentTypeFromFileName(payload.file.fileName)
+        || "application/octet-stream";
+      appendForm(
+        body,
+        "file",
+        bytesToBlob(buffer, contentType),
+        payload.file.fileName,
+      );
+    } else {
+      const contentType = getContentTypeFromFileName(payload.file.fileName)
+        || "application/octet-stream";
+      appendForm(
+        body,
+        "file",
+        bytesToBlob(payload.file.content, contentType),
+        payload.file.fileName,
+      );
+    }
+  }
+  if (payload.filename !== undefined) {
+    appendForm(body, "filename", payload.filename);
+  }
+  if (payload.mimetype !== undefined) {
+    appendForm(body, "mimetype", payload.mimetype);
+  }
+  if (payload.reply_to !== undefined) {
+    appendForm(body, "reply_to", payload.reply_to);
+  }
+  if (payload.url !== undefined) {
+    appendForm(body, "url", payload.url);
+  }
 
   const pathParams = {
     whatsappInstanceId: encodeSimple(
@@ -107,7 +158,6 @@ async function $do(
   const path = pathResult.value;
 
   const headers = new Headers(compactMap({
-    "Content-Type": "application/json",
     Accept: "application/json",
   }));
 

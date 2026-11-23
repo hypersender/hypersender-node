@@ -1,11 +1,11 @@
-# WhatsappSendFileMultipartDocumentMessage
+# DocumentMessage
 
 ## Example Usage
 
 ```typescript
-import { WhatsappSendFileMultipartDocumentMessage } from "hypersender-node/models/operations";
+import { DocumentMessage } from "hypersender-node/models/operations";
 
-let value: WhatsappSendFileMultipartDocumentMessage = {};
+let value: DocumentMessage = {};
 ```
 
 ## Fields

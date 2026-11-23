@@ -19,7 +19,7 @@ export type WhatsappSendVoiceKey = {
   id?: string | undefined;
 };
 
-export type WhatsappSendVoiceAudioMessage = {
+export type AudioMessage = {
   url?: string | undefined;
   mimetype?: string | undefined;
   fileSha256?: string | undefined;
@@ -34,7 +34,7 @@ export type WhatsappSendVoiceAudioMessage = {
 };
 
 export type WhatsappSendVoiceMessage = {
-  audioMessage?: WhatsappSendVoiceAudioMessage | undefined;
+  audioMessage?: AudioMessage | undefined;
 };
 
 /**
@@ -70,32 +70,30 @@ export function whatsappSendVoiceKeyFromJSON(
 }
 
 /** @internal */
-export const WhatsappSendVoiceAudioMessage$inboundSchema: z.ZodMiniType<
-  WhatsappSendVoiceAudioMessage,
-  unknown
-> = /* @__PURE__ */ lazySchema$(() =>
-  z.object({
-    url: types.optional(types.string()),
-    mimetype: types.optional(types.string()),
-    fileSha256: types.optional(types.string()),
-    fileLength: types.optional(types.string()),
-    seconds: types.optional(types.number()),
-    ptt: types.optional(types.boolean()),
-    mediaKey: types.optional(types.string()),
-    fileEncSha256: types.optional(types.string()),
-    directPath: types.optional(types.string()),
-    mediaKeyTimestamp: types.optional(types.string()),
-    waveform: types.optional(types.string()),
-  })
-);
+export const AudioMessage$inboundSchema: z.ZodMiniType<AudioMessage, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      url: types.optional(types.string()),
+      mimetype: types.optional(types.string()),
+      fileSha256: types.optional(types.string()),
+      fileLength: types.optional(types.string()),
+      seconds: types.optional(types.number()),
+      ptt: types.optional(types.boolean()),
+      mediaKey: types.optional(types.string()),
+      fileEncSha256: types.optional(types.string()),
+      directPath: types.optional(types.string()),
+      mediaKeyTimestamp: types.optional(types.string()),
+      waveform: types.optional(types.string()),
+    })
+  );
 
-export function whatsappSendVoiceAudioMessageFromJSON(
+export function audioMessageFromJSON(
   jsonString: string,
-): SafeParseResult<WhatsappSendVoiceAudioMessage, SDKValidationError> {
+): SafeParseResult<AudioMessage, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => WhatsappSendVoiceAudioMessage$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'WhatsappSendVoiceAudioMessage' from JSON`,
+    (x) => AudioMessage$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AudioMessage' from JSON`,
   );
 }
 
@@ -105,9 +103,7 @@ export const WhatsappSendVoiceMessage$inboundSchema: z.ZodMiniType<
   unknown
 > = /* @__PURE__ */ lazySchema$(() =>
   z.object({
-    audioMessage: types.optional(
-      z.lazy(() => WhatsappSendVoiceAudioMessage$inboundSchema),
-    ),
+    audioMessage: types.optional(z.lazy(() => AudioMessage$inboundSchema)),
   })
 );
 

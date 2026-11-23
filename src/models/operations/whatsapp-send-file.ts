@@ -19,7 +19,7 @@ export type WhatsappSendFileKey = {
   id?: string | undefined;
 };
 
-export type WhatsappSendFileDocumentMessage = {
+export type DocumentMessage = {
   url?: string | undefined;
   mimetype?: string | undefined;
   fileSha256?: string | undefined;
@@ -33,7 +33,7 @@ export type WhatsappSendFileDocumentMessage = {
 };
 
 export type WhatsappSendFileMessage = {
-  documentMessage?: WhatsappSendFileDocumentMessage | undefined;
+  documentMessage?: DocumentMessage | undefined;
 };
 
 /**
@@ -69,8 +69,8 @@ export function whatsappSendFileKeyFromJSON(
 }
 
 /** @internal */
-export const WhatsappSendFileDocumentMessage$inboundSchema: z.ZodMiniType<
-  WhatsappSendFileDocumentMessage,
+export const DocumentMessage$inboundSchema: z.ZodMiniType<
+  DocumentMessage,
   unknown
 > = /* @__PURE__ */ lazySchema$(() =>
   z.object({
@@ -87,13 +87,13 @@ export const WhatsappSendFileDocumentMessage$inboundSchema: z.ZodMiniType<
   })
 );
 
-export function whatsappSendFileDocumentMessageFromJSON(
+export function documentMessageFromJSON(
   jsonString: string,
-): SafeParseResult<WhatsappSendFileDocumentMessage, SDKValidationError> {
+): SafeParseResult<DocumentMessage, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => WhatsappSendFileDocumentMessage$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'WhatsappSendFileDocumentMessage' from JSON`,
+    (x) => DocumentMessage$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DocumentMessage' from JSON`,
   );
 }
 
@@ -104,7 +104,7 @@ export const WhatsappSendFileMessage$inboundSchema: z.ZodMiniType<
 > = /* @__PURE__ */ lazySchema$(() =>
   z.object({
     documentMessage: types.optional(
-      z.lazy(() => WhatsappSendFileDocumentMessage$inboundSchema),
+      z.lazy(() => DocumentMessage$inboundSchema),
     ),
   })
 );
