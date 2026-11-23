@@ -1,0 +1,22 @@
+# SendMessageRequest
+
+## Example Usage
+
+```typescript
+import { SendMessageRequest } from "hypersender/models";
+
+let value: SendMessageRequest = {
+  chatId: "111111111111@c.us",
+  text: "<value>",
+};
+```
+
+## Fields
+
+| Field                                                                                                                | Type                                                                                                                 | Required                                                                                                             | Description                                                                                                          | Example                                                                                                              |
+| -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| `chatId`                                                                                                             | *string*                                                                                                             | :heavy_check_mark:                                                                                                   | Contact number - **learn what is [`chatId`](https://docs.hypersender.com/v2/api-reference/whatsapp/what-is-chatid)** | 111111111111@c.us                                                                                                    |
+| `text`                                                                                                               | *string*                                                                                                             | :heavy_check_mark:                                                                                                   | Text Message<br/>                                                                                                   |                                                                                                                      |
+| `replyTo`                                                                                                            | *string*                                                                                                             | :heavy_minus_sign:                                                                                                   | Reply to message id<br/>                                                                                            |                                                                                                                      |
+| `linkPreview`                                                                                                        | *boolean*                                                                                                            | :heavy_minus_sign:                                                                                                   | Link Preview<br/>                                                                                                   |                                                                                                                      |
+| `linkPreviewHighQuality`                                                                                             | *boolean*                                                                                                            | :heavy_minus_sign:                                                                                                   | Link Preview High Quality<br/>                                                                                      |                                                                                                                      |

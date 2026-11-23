@@ -1,0 +1,31 @@
+# QueuedRequestResponse
+
+Response when checking the status of a queued request
+
+## Example Usage
+
+```typescript
+import { QueuedRequestResponse } from "hypersender/models";
+
+let value: QueuedRequestResponse = {
+  uuid: "a0816120-7e37-4e8b-8cf3-92deb2cdc133",
+  request: {
+    chatId: "111111111111@c.us",
+    text: "Hello world!",
+  },
+  responseStatus: 200,
+  responseBody: {
+    messageId: "AAAAAA0000BBBBB00CCCCCC",
+  },
+};
+```
+
+## Fields
+
+| Field                                                                                                                                                         | Type                                                                                                                                                          | Required                                                                                                                                                      | Description                                                                                                                                                   | Example                                                                                                                                                       |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `uuid`                                                                                                                                                        | *string*                                                                                                                                                      | :heavy_check_mark:                                                                                                                                            | UUID of the queued request                                                                                                                                    | a0816120-7e37-4e8b-8cf3-92deb2cdc133                                                                                                                          |
+| `request`                                                                                                                                                     | [models.RequestT](../models/request-t.md)                                                                                                                     | :heavy_check_mark:                                                                                                                                            | The original request details                                                                                                                                  |                                                                                                                                                               |
+| `responseStatus`                                                                                                                                              | *number*                                                                                                                                                      | :heavy_minus_sign:                                                                                                                                            | HTTP status code of the processed request. Null while the request is still being processed.                                                                   | 200                                                                                                                                                           |
+| `responseBody`                                                                                                                                                | [models.ResponseBody](../models/response-body.md)                                                                                                             | :heavy_minus_sign:                                                                                                                                            | The actual API response body once the request is processed. Contains the message details when completed, or error details when failed. Null while processing. |                                                                                                                                                               |
+| `responseHeader`                                                                                                                                              | [models.ResponseHeader](../models/response-header.md)                                                                                                         | :heavy_minus_sign:                                                                                                                                            | The response headers from the processed request. Null while processing.                                                                                       |                                                                                                                                                               |

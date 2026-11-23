@@ -1,0 +1,3189 @@
+lockVersion: 2.0.0
+id: 85484c9c-2bde-4fca-b1bf-2bfcacf1f91b
+management:
+  docChecksum: 6af9984988991297bcbe9318f81763f7
+  docVersion: 2.0.0
+  speakeasyVersion: 1.811.0
+  generationVersion: 2.968.1
+  releaseVersion: 0.3.0
+  configChecksum: 42039a15780a1a3d93cbbfc93213a25d
+features:
+  typescript:
+    additionalDependencies: 0.1.0
+    constsAndDefaults: 0.1.14
+    core: 3.31.15
+    defaultEnabledRetries: 0.1.0
+    devContainers: 2.90.1
+    enumUnions: 0.1.0
+    envVarSecurityUsage: 0.1.2
+    flattening: 2.82.1
+    globalSecurity: 2.82.16
+    globalSecurityCallbacks: 0.1.0
+    globalServerURLs: 2.83.1
+    globals: 2.82.2
+    groups: 2.81.3
+    hiddenGlobals: 0.1.0
+    methodArguments: 0.1.2
+    nameOverrides: 2.81.4
+    nullables: 0.1.1
+    responseFormat: 0.3.0
+    retries: 2.83.2
+    sdkHooks: 0.4.0
+trackedFiles:
+  .devcontainer/README.md:
+    last_write_checksum: sha1:b6564d2a7c8ae764fff6d1b4666dcd787210a000
+  .devcontainer/devcontainer.json:
+    last_write_checksum: sha1:d0b15193202c961e7d1875864ddb15f9d17c84dd
+  .devcontainer/setup.sh:
+    last_write_checksum: sha1:056648f4d9d8bc1671cea8e814896e68e12db810
+  .gitattributes:
+    last_write_checksum: sha1:26d16d8297b104945139da8c25bd38feeaad3e25
+  .npmignore:
+    last_write_checksum: sha1:6572da81f2e7a978ec29c22c2210bf461c5897b2
+  .oxlintrc.json:
+    last_write_checksum: sha1:f14bd09c455fa2de0d94641369b7888d23ee62f2
+  FUNCTIONS.md:
+    last_write_checksum: sha1:dccefceef2d3ace4c0bb88de324f5c595cfc9db5
+  RUNTIMES.md:
+    last_write_checksum: sha1:e45b854f02c357cbcfdb8c3663000e8339e16505
+  USAGE.md:
+    last_write_checksum: sha1:f58e263fc52c8203bee7010eea7ee2fecd314207
+  docs/lib/utils/retryconfig.md:
+    last_write_checksum: sha1:bc4454e196fcd219f5a78da690375a884f5ed07b
+  docs/models/app-update-reason.md:
+    last_write_checksum: sha1:71a7ca94455cb0cf6e175008971d8e48a815e0c0
+  docs/models/app-version.md:
+    last_write_checksum: sha1:91824c9c39281bd76aa63c011d4bfc84c969b4eb
+  docs/models/callback.md:
+    last_write_checksum: sha1:2717c3f1cef8c39f896fc961c94d66aa3ac35696
+  docs/models/channel.md:
+    last_write_checksum: sha1:9a8a7fae6d2e6b383ccb88b7d9e8ff92c86245b7
+  docs/models/check-contact-exists-request.md:
+    last_write_checksum: sha1:be82fdf43c890bad45d6b3fb5244da6208db40e0
+  docs/models/contact.md:
+    last_write_checksum: sha1:749ce0c84d96cdccf7846744874fc55d79b3cab0
+  docs/models/create-instance-request.md:
+    last_write_checksum: sha1:ef3bc4fb3beb92543b42aadbd01af84db56b77c3
+  docs/models/edit-message-thread.md:
+    last_write_checksum: sha1:8bc6c8fda298d598c320f6287af90ba09b7ed7e8
+  docs/models/enterprise-validation-error-errors.md:
+    last_write_checksum: sha1:19669da455aa15914edd56665f46bf4e539535cb
+  docs/models/error-code.md:
+    last_write_checksum: sha1:2644b98a8a2e26159e2bb8bcc7a2aa93f00cb827
+  docs/models/error-data.md:
+    last_write_checksum: sha1:b3e20f260997e396836ef886f9934017e18c5a02
+  docs/models/error-errors.md:
+    last_write_checksum: sha1:f6c3dfa72c8da455db858ec244c74bb49e0fda7c
+  docs/models/errors/enterprise-create-instance-too-many-requests-error.md:
+    last_write_checksum: sha1:7d3a95d24773f7a7e43b47045d1b9c1d38b8e373
+  docs/models/errors/enterprise-get-instance-health-too-many-requests-error.md:
+    last_write_checksum: sha1:3b9088e999a8d2f5a6df7ecbbd4825b7c23173fb
+  docs/models/errors/enterprise-not-found-error.md:
+    last_write_checksum: sha1:c0dee50cd20896c6f861074cd13dff0595e70781
+  docs/models/errors/enterprise-request-new-qr-code-too-many-requests-error.md:
+    last_write_checksum: sha1:848158e13dc959e57aee61e9195897d8853ddfba
+  docs/models/errors/enterprise-restart-instance-too-many-requests-error.md:
+    last_write_checksum: sha1:67d620aac62a6fa48692c24aa110eeb15a688345
+  docs/models/errors/enterprise-validation-error.md:
+    last_write_checksum: sha1:a65cc26de95753605d99a1aab7adb6a552a9c2ed
+  docs/models/errors/error-t.md:
+    last_write_checksum: sha1:8242265e343f3ddb968d687c0ea3a638dda5acf7
+  docs/models/errors/internal-server-error.md:
+    last_write_checksum: sha1:8b7593fb3a85b00c15c2d57cb4a0604ec0bc4a3e
+  docs/models/errors/not-found-error.md:
+    last_write_checksum: sha1:1c8da1305be6d9d1add52970a8c06cf37bf9141e
+  docs/models/errors/server-error.md:
+    last_write_checksum: sha1:929a90be6a4221010f4bc03e6042c644fea8a439
+  docs/models/errors/validation-error.md:
+    last_write_checksum: sha1:a67256a3cfa659879bba23b3609e5c0ab2497ce5
+  docs/models/forward-message-request.md:
+    last_write_checksum: sha1:e31bbc283c1bfae6345df932baf0881f72327f2a
+  docs/models/generate-link-request-message.md:
+    last_write_checksum: sha1:b29a58f465d2e9844558eb8ab03f3514ec75fbab
+  docs/models/generate-link-request.md:
+    last_write_checksum: sha1:7ecc5014b7cb05f8fb6ee0ab18c436de50bd312f
+  docs/models/generate-link-response-data.md:
+    last_write_checksum: sha1:2a6098cad467bd47e1c3c1b3e3973334caaeb953
+  docs/models/generate-link-response.md:
+    last_write_checksum: sha1:6dfa0707543f2cedf7b63e272c97474f2e2a94d2
+  docs/models/heartbeat.md:
+    last_write_checksum: sha1:6364a36eb0f57cf45f23d7c0b28134c6d938165e
+  docs/models/instance-response-status.md:
+    last_write_checksum: sha1:320fe099190bb8c3a56003fdbcbdba46b29ec858
+  docs/models/instance-response.md:
+    last_write_checksum: sha1:26ba02d5116ccb3ab007544b4fe25e63e900f271
+  docs/models/instance-with-qr-response-status.md:
+    last_write_checksum: sha1:052d0aa767e4d40f05c153ed3cc99287332d33fa
+  docs/models/instance-with-qr-response.md:
+    last_write_checksum: sha1:36eea36954586d766fef21300359350b40d9e365
+  docs/models/lid-count-response.md:
+    last_write_checksum: sha1:ab25b25748db42c6c8a1b8df42e00e13d2e7770e
+  docs/models/lid-mapping.md:
+    last_write_checksum: sha1:4c9f068402babdeb3d01a7185a7a205521a199c5
+  docs/models/link.md:
+    last_write_checksum: sha1:a3106ebcbc33a10207209accd38b118aea843d24
+  docs/models/message-sim.md:
+    last_write_checksum: sha1:acf6930fe6dd22d2636760e9dc9f7f182763c3b3
+  docs/models/message-status.md:
+    last_write_checksum: sha1:37f5a6765e70bf29620baf09cca1d3436765aa49
+  docs/models/message-thread.md:
+    last_write_checksum: sha1:8624fa3d152dba21212764060156743bf43cad42
+  docs/models/message.md:
+    last_write_checksum: sha1:1d115faa8d099624600548e6e215f84700c00436
+  docs/models/operations/audio-message.md:
+    last_write_checksum: sha1:c2cc399d12e4ea56d2429bfc904243c78d8edee3
+  docs/models/operations/context-info.md:
+    last_write_checksum: sha1:b023fd4680dfcdf5c718fba26521da61d53c4104
+  docs/models/operations/document-message.md:
+    last_write_checksum: sha1:447b832893692a2f5d8558606c93a36562c99c16
+  docs/models/operations/enterprise-get-instance-health-request.md:
+    last_write_checksum: sha1:e6d0722e82fc4b1358b3c6ed944c0eb519c43a58
+  docs/models/operations/enterprise-get-instance-health-response.md:
+    last_write_checksum: sha1:23d92c5376ae66eab9a8229fc25d507fc66c45de
+  docs/models/operations/enterprise-list-instances-filter-status.md:
+    last_write_checksum: sha1:8b508528ae8fef6c1374d66558bae9f02e8a2e98
+  docs/models/operations/enterprise-list-instances-request.md:
+    last_write_checksum: sha1:eb40fac4086666cfcd3d22f90635798d1fdfb113
+  docs/models/operations/enterprise-request-new-qr-code-request.md:
+    last_write_checksum: sha1:7e8f4fb4586071a85f01708ceeb3640c216efa64
+  docs/models/operations/enterprise-restart-instance-request.md:
+    last_write_checksum: sha1:b1bb1671afe2f7ddac4172ac814d72181baef696
+  docs/models/operations/enterprise-restart-instance-response.md:
+    last_write_checksum: sha1:854166118b397c70bb64cb4851c6be0252f149a0
+  docs/models/operations/filter-type.md:
+    last_write_checksum: sha1:097f118ef430f07fe7f13bde0f5043ef093d78dc
+  docs/models/operations/location-message.md:
+    last_write_checksum: sha1:bca242d8ec213bc6950f9e1945c04d781864ca4d
+  docs/models/operations/message-context-info.md:
+    last_write_checksum: sha1:382d0ece38811a0608f11d216a430713077775c5
+  docs/models/operations/option.md:
+    last_write_checksum: sha1:941292475a08a59e855ba127f538f7213dc6d89c
+  docs/models/operations/otp-generate-link-globals.md:
+    last_write_checksum: sha1:0da6a4e131fa75ea4208a9e50468fd7a75347816
+  docs/models/operations/otp-request-code-globals.md:
+    last_write_checksum: sha1:e7547ef30a2db3c17ed416383b7e6b07589c03a3
+  docs/models/operations/otp-validate-code-globals.md:
+    last_write_checksum: sha1:d3bec44ab26d479a73fee35524c716b6bd4f99db
+  docs/models/operations/poll-creation-message-v3.md:
+    last_write_checksum: sha1:51efe64099e941f828f9947a6a5d8108eb87ab7d
+  docs/models/operations/protocol-message-key.md:
+    last_write_checksum: sha1:85dab18b5133512443e6527bc4fbaf4770dfa41b
+  docs/models/operations/protocol-message.md:
+    last_write_checksum: sha1:a4c675381b38bb20c9f23122157c322045dc68bb
+  docs/models/operations/reaction-message-key.md:
+    last_write_checksum: sha1:048d84881b6f1219b55f14a3b7ce9819bc989f2d
+  docs/models/operations/reaction-message.md:
+    last_write_checksum: sha1:4a341ee7b2b9ce44d75403f7a63f4ff7488d0068
+  docs/models/operations/sms-delete-message-globals.md:
+    last_write_checksum: sha1:a366f87cecd56b413442f9f7035ce66ccba69ee4
+  docs/models/operations/sms-delete-message-request.md:
+    last_write_checksum: sha1:9f51fe6d1b66e0824aba8481212699dda84dcd33
+  docs/models/operations/sms-delete-message-thread-globals.md:
+    last_write_checksum: sha1:24ad5e89ce01109323ddb0e3437badcd40b999e4
+  docs/models/operations/sms-delete-message-thread-request.md:
+    last_write_checksum: sha1:86726f0f532134fc4cfe57c69c582a10ecf44928
+  docs/models/operations/sms-edit-message-thread-globals.md:
+    last_write_checksum: sha1:18fabcd29dca4231870d4cd1ccf5d6550ff1c181
+  docs/models/operations/sms-edit-message-thread-request.md:
+    last_write_checksum: sha1:57abd9770654c9d774b0621ac76f50b47fa9d723
+  docs/models/operations/sms-heartbeats-globals.md:
+    last_write_checksum: sha1:51205c51d262a99d5a21df44b3bef3282f35a939
+  docs/models/operations/sms-heartbeats-request.md:
+    last_write_checksum: sha1:dd0490cdd29227e82d14ab06bcf24554a422e0a6
+  docs/models/operations/sms-heartbeats-response.md:
+    last_write_checksum: sha1:b29b4814b9779b0369df6a12369137b200ac35b8
+  docs/models/operations/sms-index-messages-filter-status.md:
+    last_write_checksum: sha1:db4b2075461ad10eaba3fb3eab280ae88958cc38
+  docs/models/operations/sms-index-messages-globals.md:
+    last_write_checksum: sha1:a54d25f82e601034a83c0ab9cbff64aa81522b7e
+  docs/models/operations/sms-index-messages-request.md:
+    last_write_checksum: sha1:e970d58482eb57f1c4a642ac2c5bd7a8a0d558b5
+  docs/models/operations/sms-index-messages-response.md:
+    last_write_checksum: sha1:62f4916d51222c1a1a3a27beb0d5863724d2406e
+  docs/models/operations/sms-message-threads-globals.md:
+    last_write_checksum: sha1:35be1622b2d41288c3dfd887185b8fa0f881ac07
+  docs/models/operations/sms-message-threads-request.md:
+    last_write_checksum: sha1:46635248999c4f95bd0a355215e76c9927540c89
+  docs/models/operations/sms-message-threads-response.md:
+    last_write_checksum: sha1:836248e9795856de6c6b3a8fd4894e183e226917
+  docs/models/operations/sms-send-message-globals.md:
+    last_write_checksum: sha1:bde268707a0f36da51997c0eda94195397592459
+  docs/models/operations/sms-send-message-request.md:
+    last_write_checksum: sha1:86078f1de7fa0cb12729c45de3bb52e4e608e0ef
+  docs/models/operations/sort-by.md:
+    last_write_checksum: sha1:f2d5b24b10a73a6504bc442c1bcdaeba769382db
+  docs/models/operations/sort-order.md:
+    last_write_checksum: sha1:f0d20fcf2c8b0d16d1caf8beb8b354fa123853b3
+  docs/models/operations/status.md:
+    last_write_checksum: sha1:3f2fc0b4f4764b35b6ff04fbc6141c8abf5b60cb
+  docs/models/operations/whatsapp-check-contact-exists-globals.md:
+    last_write_checksum: sha1:ef4d879f3a166fdae13b3776ce6d2e0697bf791f
+  docs/models/operations/whatsapp-check-contact-exists-response.md:
+    last_write_checksum: sha1:57c0c1be4b6702e5128c99c8f98cf1c03c52b741
+  docs/models/operations/whatsapp-delete-message-globals.md:
+    last_write_checksum: sha1:1db5a5e209a9f4f2c4d5cd2ce5f93608b0043fe4
+  docs/models/operations/whatsapp-delete-message-key.md:
+    last_write_checksum: sha1:13d1d3630591d343b7ab1da437f66ea6ec99e64c
+  docs/models/operations/whatsapp-delete-message-message.md:
+    last_write_checksum: sha1:36a4862cc43ca5e1e60d1fd8e58140ff44d68ce3
+  docs/models/operations/whatsapp-delete-message-request.md:
+    last_write_checksum: sha1:5186cc150dfef82aa3110a83b4001dc04e6cf998
+  docs/models/operations/whatsapp-delete-message-response.md:
+    last_write_checksum: sha1:e9624933451136ef4a9dd1ce84d76dbba9f0c5af
+  docs/models/operations/whatsapp-forward-message-data.md:
+    last_write_checksum: sha1:062aa085ed6dc5a96e2bf6227e8f85cc9d701ba8
+  docs/models/operations/whatsapp-forward-message-extended-text-message.md:
+    last_write_checksum: sha1:bcfa572d1a4269984a581e2cdeeae637b7d9b425
+  docs/models/operations/whatsapp-forward-message-globals.md:
+    last_write_checksum: sha1:c237087e3183a17f7c391a9e23fceb5b692bf98b
+  docs/models/operations/whatsapp-forward-message-key.md:
+    last_write_checksum: sha1:d452aa3daf19960871458ca414d1ca862fe1d7c3
+  docs/models/operations/whatsapp-forward-message-media.md:
+    last_write_checksum: sha1:2481d05bfc60ee13af03cc3011fd35d3f3d798f1
+  docs/models/operations/whatsapp-forward-message-message.md:
+    last_write_checksum: sha1:90d81897e74ae8de1a0b16a7e37b7fd439f801cf
+  docs/models/operations/whatsapp-forward-message-response.md:
+    last_write_checksum: sha1:d8e8b16c6e913d8e5740e5bfb6eabbc622fa4a5e
+  docs/models/operations/whatsapp-get-all-contacts-data.md:
+    last_write_checksum: sha1:5da3e89641323eef2ebd037b18d79fbb330cb1c8
+  docs/models/operations/whatsapp-get-all-contacts-globals.md:
+    last_write_checksum: sha1:a422f8faa29e01d195cb48433110f267ec732f57
+  docs/models/operations/whatsapp-get-all-contacts-request.md:
+    last_write_checksum: sha1:75b1dc10bb62a73cf8c427181bc98cd19940a1c3
+  docs/models/operations/whatsapp-get-all-contacts-response.md:
+    last_write_checksum: sha1:52ad967b6fb4b59a0aed9e7926039e261e418278
+  docs/models/operations/whatsapp-get-all-known-lids-globals.md:
+    last_write_checksum: sha1:5e115db07e47eb9a9e1fce0bb3d7907e39fa8402
+  docs/models/operations/whatsapp-get-all-known-lids-request.md:
+    last_write_checksum: sha1:085a82914e7072e9d41d553b5316850e51f5268b
+  docs/models/operations/whatsapp-get-contact-data.md:
+    last_write_checksum: sha1:1faa6851b55d49d84f8e65485c228da266a024a2
+  docs/models/operations/whatsapp-get-contact-globals.md:
+    last_write_checksum: sha1:f30958f41035d6348471219a8bbd1d01ec91141b
+  docs/models/operations/whatsapp-get-contact-request.md:
+    last_write_checksum: sha1:01703dcd804f6df07a2d7dee251142286ada6624
+  docs/models/operations/whatsapp-get-contact-response.md:
+    last_write_checksum: sha1:c44ad942c331a6f373f0d2a49185e6e520876a58
+  docs/models/operations/whatsapp-get-lid-by-phone-number-globals.md:
+    last_write_checksum: sha1:17d04327c873241d7a798d61039c0f61d7c4081e
+  docs/models/operations/whatsapp-get-lid-by-phone-number-request.md:
+    last_write_checksum: sha1:023b8d300de4427b4cdff14085ef00c72a2ce3bf
+  docs/models/operations/whatsapp-get-lids-count-globals.md:
+    last_write_checksum: sha1:e8c7a301ae002c7a83a572514631d2130fcf90ab
+  docs/models/operations/whatsapp-get-lids-count-request.md:
+    last_write_checksum: sha1:8f81254316dc1623ea1adab3a0e66fba8f5a208d
+  docs/models/operations/whatsapp-get-phone-number-by-lid-globals.md:
+    last_write_checksum: sha1:8a0d563129d3ec8354c7369dac9a347a164a1058
+  docs/models/operations/whatsapp-get-phone-number-by-lid-request.md:
+    last_write_checksum: sha1:3ed5961e98cb71f90708b1585165e19a19e2ab97
+  docs/models/operations/whatsapp-get-profile-picture-data.md:
+    last_write_checksum: sha1:c89d38af5f304bbf6bab73b067f4d695d5128be2
+  docs/models/operations/whatsapp-get-profile-picture-globals.md:
+    last_write_checksum: sha1:8f1c5ef9af552d38f69c7c26dabb1339358a23fc
+  docs/models/operations/whatsapp-get-profile-picture-request.md:
+    last_write_checksum: sha1:113addd51f7906ce5128630f05703f206f03cf84
+  docs/models/operations/whatsapp-get-profile-picture-response.md:
+    last_write_checksum: sha1:5c506db716aebfef847d68529ada1c60257188ad
+  docs/models/operations/whatsapp-get-queued-request-globals.md:
+    last_write_checksum: sha1:d6483488ce94f409010f2be38c01878a68250314
+  docs/models/operations/whatsapp-get-queued-request-request.md:
+    last_write_checksum: sha1:c2a7e84e1338b55fbf4a1a5050b08e426f70b3b7
+  docs/models/operations/whatsapp-react-to-message-globals.md:
+    last_write_checksum: sha1:71a0dfed68665218428747cc81086ee8e45b4a18
+  docs/models/operations/whatsapp-react-to-message-key.md:
+    last_write_checksum: sha1:c2ea7c5a55638897c0db9177c8115a81bea82527
+  docs/models/operations/whatsapp-react-to-message-message.md:
+    last_write_checksum: sha1:5a02cc44c77140f38e3fefab428fb5cc545fc37b
+  docs/models/operations/whatsapp-react-to-message-response.md:
+    last_write_checksum: sha1:d1f4047f1ed8abd5121976828ca6ed25ea100cb1
+  docs/models/operations/whatsapp-read-chat-globals.md:
+    last_write_checksum: sha1:23f1b4b0b269bcf88ab22c3954df7fd4ad4ee616
+  docs/models/operations/whatsapp-read-chat-request.md:
+    last_write_checksum: sha1:80fc8698fdbe789d4733cddb40ae485674b91c87
+  docs/models/operations/whatsapp-read-chat-response.md:
+    last_write_checksum: sha1:58e1975c20eb7348c7b48e5068084a726f461362
+  docs/models/operations/whatsapp-send-contact-card-globals.md:
+    last_write_checksum: sha1:045fb8beb4673fe94ea68b25d38dac8cfa02b604
+  docs/models/operations/whatsapp-send-contact-card-response.md:
+    last_write_checksum: sha1:ef3272bec0d1fa116ca6bf7af55d6d643ced9a1c
+  docs/models/operations/whatsapp-send-file-globals.md:
+    last_write_checksum: sha1:dbe3cd73fb85b7fdd8b5405ff93917e665889e8a
+  docs/models/operations/whatsapp-send-file-key.md:
+    last_write_checksum: sha1:5ded73a09b40e51c165b94f8e0f5d7c543310b0e
+  docs/models/operations/whatsapp-send-file-message.md:
+    last_write_checksum: sha1:e5278fbb55ffe50622c00a08600f1347ed8bcfaa
+  docs/models/operations/whatsapp-send-file-response.md:
+    last_write_checksum: sha1:4805ce806c5e5e9ba040e6eff2dfc769a7f41cf3
+  docs/models/operations/whatsapp-send-image-globals.md:
+    last_write_checksum: sha1:8da47961dc808ec7cafe45371c3b485dc7086f7f
+  docs/models/operations/whatsapp-send-image-image-message.md:
+    last_write_checksum: sha1:a62b691d2315ab1d02b23e773c40225beef7a826
+  docs/models/operations/whatsapp-send-image-key.md:
+    last_write_checksum: sha1:4642b53714b4b4c52b10c9342d22070de915b74c
+  docs/models/operations/whatsapp-send-image-message.md:
+    last_write_checksum: sha1:fec8bebe72c0b62e71089c93c3d78f53775a3081
+  docs/models/operations/whatsapp-send-image-response.md:
+    last_write_checksum: sha1:aac7d70d5daec983705e424031afce03ec189058
+  docs/models/operations/whatsapp-send-link-custom-preview-extended-text-message.md:
+    last_write_checksum: sha1:86adaaed7d19cbf7f997444f691329bd2a2473ea
+  docs/models/operations/whatsapp-send-link-custom-preview-globals.md:
+    last_write_checksum: sha1:da7d951c4f19199ad1a1ed22a48cf4a8f31bf63c
+  docs/models/operations/whatsapp-send-link-custom-preview-key.md:
+    last_write_checksum: sha1:e9bbbaa84efca35d0df877b51157f4704814aa3e
+  docs/models/operations/whatsapp-send-link-custom-preview-message.md:
+    last_write_checksum: sha1:40b4ad7034fdc7ca021ac733803d5d5c0370e4e6
+  docs/models/operations/whatsapp-send-link-custom-preview-response.md:
+    last_write_checksum: sha1:c0081d2f93f50877973c62cc9844841cfe4f7996
+  docs/models/operations/whatsapp-send-location-globals.md:
+    last_write_checksum: sha1:9605235c8a07e0f012d2571bc4b44dd8f864e4a8
+  docs/models/operations/whatsapp-send-location-key.md:
+    last_write_checksum: sha1:c375fcb0eff262f5f3e63ad97645adfdb4c151dc
+  docs/models/operations/whatsapp-send-location-message.md:
+    last_write_checksum: sha1:a8f59e43f1bdce81892d9ff0f16dec5174efa806
+  docs/models/operations/whatsapp-send-location-response.md:
+    last_write_checksum: sha1:3e66d4f0dec3f6f61e8fc7cdfb8fe1d1c59462bb
+  docs/models/operations/whatsapp-send-poll-data.md:
+    last_write_checksum: sha1:e9c7bafde0fb2ff6a70f0559938097b768558d4b
+  docs/models/operations/whatsapp-send-poll-globals.md:
+    last_write_checksum: sha1:54de098f04fc4ae4e93f27a75562e89d5fcff4a1
+  docs/models/operations/whatsapp-send-poll-key.md:
+    last_write_checksum: sha1:578e97c2d4b5b3f968bb775b304f5bb54d5a073f
+  docs/models/operations/whatsapp-send-poll-media.md:
+    last_write_checksum: sha1:b562b795bf000cb3e8ac5930a42529372d082553
+  docs/models/operations/whatsapp-send-poll-message.md:
+    last_write_checksum: sha1:6d725007fa50821d9fa2045a34f89c4511d18b6d
+  docs/models/operations/whatsapp-send-poll-response.md:
+    last_write_checksum: sha1:a32717740ac04cdce13709b091f8ccc59f0cc767
+  docs/models/operations/whatsapp-send-seen-globals.md:
+    last_write_checksum: sha1:6316f8612d6720d6abd61baaa30e6aad629953ce
+  docs/models/operations/whatsapp-send-seen-response.md:
+    last_write_checksum: sha1:11754dac1df765fd5982a0f69eff320cc123a672
+  docs/models/operations/whatsapp-send-text-globals.md:
+    last_write_checksum: sha1:35e8afc74dea7b8f08802c3b62c27ca07a98668c
+  docs/models/operations/whatsapp-send-text-safe-globals.md:
+    last_write_checksum: sha1:12b4ce59625a7ec4cd0a8e72d006d1ead54361f8
+  docs/models/operations/whatsapp-send-video-globals.md:
+    last_write_checksum: sha1:1770959f1178caabc75a4d0ff0cba881e06eca64
+  docs/models/operations/whatsapp-send-video-image-message.md:
+    last_write_checksum: sha1:6d8e000b189324f72277e8ffb049705ea63cb11e
+  docs/models/operations/whatsapp-send-video-key.md:
+    last_write_checksum: sha1:d3045991ba4753437564492094ad07b1efa53cf4
+  docs/models/operations/whatsapp-send-video-message.md:
+    last_write_checksum: sha1:7e8b97336a701d9fb5e2dbc41e38c5f5523d4263
+  docs/models/operations/whatsapp-send-video-response.md:
+    last_write_checksum: sha1:5da6b1e3ed17ee833237797802700665b05e53be
+  docs/models/operations/whatsapp-send-voice-globals.md:
+    last_write_checksum: sha1:1935f8e10fdd2ae98bbe6616c8745db4918f67b8
+  docs/models/operations/whatsapp-send-voice-key.md:
+    last_write_checksum: sha1:f2e81c7cfb295d4a2e74f48aa5728b57d8532746
+  docs/models/operations/whatsapp-send-voice-message.md:
+    last_write_checksum: sha1:4ffa54740f1f04d47919e294fa692739fa98997a
+  docs/models/operations/whatsapp-send-voice-response.md:
+    last_write_checksum: sha1:05984b0965e589b9fa7dcfdb06a5d3bc4066f4c1
+  docs/models/operations/whatsapp-star-message-globals.md:
+    last_write_checksum: sha1:2d0c52b5c7f3655a3dd95f48a3189919aa25e038
+  docs/models/operations/whatsapp-star-message-response.md:
+    last_write_checksum: sha1:280ae63708ff429decbac029df8eb69207fcbe11
+  docs/models/operations/whatsapp-start-typing-globals.md:
+    last_write_checksum: sha1:6624613844ed02a7b191f4b6648902d9992d6e11
+  docs/models/operations/whatsapp-start-typing-response.md:
+    last_write_checksum: sha1:b6d24e2292a8f980ce26a4a8dab5e537934587f2
+  docs/models/operations/whatsapp-stop-typing-globals.md:
+    last_write_checksum: sha1:0d7bc1582207cb82cf84be6d7797c5e850fd6e8d
+  docs/models/operations/whatsapp-stop-typing-response.md:
+    last_write_checksum: sha1:2a2f386568eb775268d6cf70127f7558a83a7b11
+  docs/models/operations/whatsapp-upsert-contact-data.md:
+    last_write_checksum: sha1:7b340ac79304253da1ca8894024adc7292e73773
+  docs/models/operations/whatsapp-upsert-contact-globals.md:
+    last_write_checksum: sha1:16735d95b56e685845d38855d7bc70e8e75975ac
+  docs/models/operations/whatsapp-upsert-contact-response.md:
+    last_write_checksum: sha1:5ab67c317300825306504da77aa1b442a40611df
+  docs/models/pagination-links.md:
+    last_write_checksum: sha1:8523a6f870035aff399e32407473e5bb49e1cb44
+  docs/models/pagination-meta.md:
+    last_write_checksum: sha1:6d2bc6924da35f3fb2c0411f32a1b51688318711
+  docs/models/phone-sim.md:
+    last_write_checksum: sha1:dcf52bbb86d7f5f39d409757cda6a459b561f8ea
+  docs/models/phone-status.md:
+    last_write_checksum: sha1:8ac87b7ab062491c7f4f75122efcf96d0254bb50
+  docs/models/phone.md:
+    last_write_checksum: sha1:389f74ae2e14defff3851b59f793d2cb5058661c
+  docs/models/poll.md:
+    last_write_checksum: sha1:4e7d3b7f07f1b66039672de0a7b4345fb97515bc
+  docs/models/push-registration.md:
+    last_write_checksum: sha1:3123789dc59687783201cb2c272dfc4a7adb6444
+  docs/models/queued-request-response.md:
+    last_write_checksum: sha1:b8f18bdf9114e09e74526fade1425dec3642a88c
+  docs/models/queued-response.md:
+    last_write_checksum: sha1:ee00fb15647cf6af8c2b0143a686f45457a5f10c
+  docs/models/react-to-message-request.md:
+    last_write_checksum: sha1:b787872ec90e4da4d64c30141af866d475475f99
+  docs/models/read-chat-request.md:
+    last_write_checksum: sha1:4a2f31125bf070f48fc70e994d07f7596a4cf432
+  docs/models/request-code-request.md:
+    last_write_checksum: sha1:c7a6906e8f7b11317e85b2aa3f3ee046c5e3a749
+  docs/models/request-code-response-data.md:
+    last_write_checksum: sha1:b4128bbb51bf1efa810203ec3183672b7a89d2db
+  docs/models/request-code-response.md:
+    last_write_checksum: sha1:ee42c8a79d1db19aa312a23c0998c5039043d0bb
+  docs/models/request-t.md:
+    last_write_checksum: sha1:6704d51089122067ca04a9a3a9a34ee48fc05a2f
+  docs/models/response-body.md:
+    last_write_checksum: sha1:84594a18b2c61dc1f4027bb6ef1da400d78940b4
+  docs/models/response-header.md:
+    last_write_checksum: sha1:585ec5c87edebf243496646fbacd2b0e38bcd924
+  docs/models/security.md:
+    last_write_checksum: sha1:e4dc09080fc1c2da6de266ff2ee29c3c277a1dd9
+  docs/models/send-contact-card-request.md:
+    last_write_checksum: sha1:11234387158be7c35278c0823c679749d3c195f9
+  docs/models/send-file-request.md:
+    last_write_checksum: sha1:0140128ff898aea3397e10136a0f291bcd39ea3a
+  docs/models/send-image-request.md:
+    last_write_checksum: sha1:067bc679134b6c53665aa187b3ee05b53d777569
+  docs/models/send-link-custom-preview.md:
+    last_write_checksum: sha1:c71eaad042ac7af16b213f63e262f323f642ce8c
+  docs/models/send-location-request.md:
+    last_write_checksum: sha1:c69fa46c2ec62f6d870e992d4936ea99f2435da4
+  docs/models/send-message-request.md:
+    last_write_checksum: sha1:b68d1877a248e2ffd008cdbb876eab468cc506f4
+  docs/models/send-message-response.md:
+    last_write_checksum: sha1:fde01471bc3c29a7cf731169fbec3699cb9cf593
+  docs/models/send-poll-request.md:
+    last_write_checksum: sha1:fb2aa84ef38ffefd568542805ada7f65be6cb757
+  docs/models/send-seen-request.md:
+    last_write_checksum: sha1:f66dc236118770ae8cd0266c435cbe9a82bb3fae
+  docs/models/send-video-request.md:
+    last_write_checksum: sha1:47a76d3e6a55e9dedef154097073e2cf1f73c499
+  docs/models/send-voice-request.md:
+    last_write_checksum: sha1:2ffbfeb47ca3eb9bc74badedb66e906bb5f59f94
+  docs/models/star-message-request.md:
+    last_write_checksum: sha1:d3ee95f2602a6ca581b525584ab5ccffba149857
+  docs/models/start-typing-request.md:
+    last_write_checksum: sha1:3063aa30944191edb4e3af1c69ef8755d2058d30
+  docs/models/stop-typing-request.md:
+    last_write_checksum: sha1:1f65e87d235d60bb32a117a716817769b19e8e1c
+  docs/models/type.md:
+    last_write_checksum: sha1:5e459f3273df14f8cd2816fc41d3e6cd07b9c199
+  docs/models/upsert-contact-request.md:
+    last_write_checksum: sha1:ffff3bb9b9ddafaf6255d750f0c324b2679ddfa9
+  docs/models/validate-code-request.md:
+    last_write_checksum: sha1:654ac4b7de50d7e8b4127b8c35464990c8334132
+  docs/models/validate-code-response-data.md:
+    last_write_checksum: sha1:e03db8a75a8127fc2e88bc4100361d28b28bd8a9
+  docs/models/validate-code-response.md:
+    last_write_checksum: sha1:58982139b86d2df665cce83681181bc079805211
+  docs/models/validation-error-errors.md:
+    last_write_checksum: sha1:eefcc82cc23d0f1a3b966bfa5de8e0856f8a3e76
+  docs/sdks/contacts/README.md:
+    last_write_checksum: sha1:8993b479f72520729cee110d70c1f95913d12a99
+  docs/sdks/enterprise/README.md:
+    last_write_checksum: sha1:86afb7ab8c13de2ca13949b328f594a92d9abba6
+  docs/sdks/otp/README.md:
+    last_write_checksum: sha1:18b4c68819c37cdbee03afe275aa5be71f8e7905
+  docs/sdks/sms/README.md:
+    last_write_checksum: sha1:fd0f5e977f0a61d5fcebab1e79f135d2ddf57602
+  docs/sdks/whatsapp/README.md:
+    last_write_checksum: sha1:e1aa834e0b83db962e5f7ed2de06f76c5a05fc26
+  examples/.env.template:
+    last_write_checksum: sha1:e75c55af3901d1e3144b765399ea5d05b1d8e838
+  examples/README.md:
+    last_write_checksum: sha1:0fb81d5c49acdefea20ef3d0b3a23b970ad70fda
+  examples/package.json:
+    last_write_checksum: sha1:dec998f23f63eae6ad078c498c620f1732d63f62
+  examples/whatsappGetQueuedRequest.example.ts:
+    last_write_checksum: sha1:a84a275131cfe2b36d03591c8b3043106800a412
+  jsr.json:
+    last_write_checksum: sha1:1e67c0888c2e5e3ca18d6dcd47bd280d6e58f41a
+  package.json:
+    last_write_checksum: sha1:c7cac6d860d2a64ffb2e26dda6d5057724257740
+  src/core.ts:
+    last_write_checksum: sha1:c114caa33e373a69aefa08e44c843c95c2c0bdb4
+  src/funcs/enterprise-create-instance.ts:
+    last_write_checksum: sha1:de86fb4b0bc5a4f9852f8704febe19ffd61af130
+  src/funcs/enterprise-get-instance-health.ts:
+    last_write_checksum: sha1:0818c5b6633c15a41458b9ada9f785ab91bb25c8
+  src/funcs/enterprise-list-instances.ts:
+    last_write_checksum: sha1:ea2c9f3f0931bd19872a9ce0e0313af28a70a72f
+  src/funcs/enterprise-request-new-qr-code.ts:
+    last_write_checksum: sha1:de45b8a65b76d49d9ce5ea65a001892c6acb9895
+  src/funcs/enterprise-restart-instance.ts:
+    last_write_checksum: sha1:618c851de20110b7781a3e620e78fed09465b2e6
+  src/funcs/otp-generate-link.ts:
+    last_write_checksum: sha1:4a94534c5404bad94665b7c48f71a491164d8a18
+  src/funcs/otp-request-code.ts:
+    last_write_checksum: sha1:dc10a42acc9a995686572ce80a2f68ff9a88ef18
+  src/funcs/otp-validate-code.ts:
+    last_write_checksum: sha1:893a7ac4eb3b0498f59011a02a1d761c1a236ed8
+  src/funcs/sms-delete-message-thread.ts:
+    last_write_checksum: sha1:553a0b12443049f1f54fee6ab6c775fae1b84ba8
+  src/funcs/sms-delete-message.ts:
+    last_write_checksum: sha1:910e1bfe74e617b001d7b455151133725214bf2a
+  src/funcs/sms-edit-message-thread.ts:
+    last_write_checksum: sha1:a66b828d51909268a1699ca962cc1c10bdad7c84
+  src/funcs/sms-get-heartbeats.ts:
+    last_write_checksum: sha1:de31a3ee9a3a2a7846e4c17ec1e78da2cfcd3235
+  src/funcs/sms-list-message-threads.ts:
+    last_write_checksum: sha1:7d2a24272166989e1882168dff8cdb9c8837444f
+  src/funcs/sms-list-messages.ts:
+    last_write_checksum: sha1:8e29a54994cccb8a5882bdf9e3c052f356db8fdc
+  src/funcs/sms-send-message.ts:
+    last_write_checksum: sha1:243f90388fb148ff05f41995c94f1aff60c07330
+  src/funcs/whatsapp-contacts-check-contact-exists.ts:
+    last_write_checksum: sha1:af22dc1e6e7f581b0f79c3446a51de535685ad51
+  src/funcs/whatsapp-contacts-get-all-contacts.ts:
+    last_write_checksum: sha1:acd1f209d3bf1edfe6fb0271e406ae3e35c4535d
+  src/funcs/whatsapp-contacts-get-all-known-lids.ts:
+    last_write_checksum: sha1:a96b681580a2dfd5b20ecd46ec0cff09b775adc7
+  src/funcs/whatsapp-contacts-get-contact.ts:
+    last_write_checksum: sha1:77d74e80b6a3f29c455846ecf411dbf37f37f391
+  src/funcs/whatsapp-contacts-get-lid-by-phone-number.ts:
+    last_write_checksum: sha1:cec886f02fc0c5c80288c931e733513c08a33d31
+  src/funcs/whatsapp-contacts-get-lids-count.ts:
+    last_write_checksum: sha1:efd129f9d3bb22c30faf316d2381c3addc26224a
+  src/funcs/whatsapp-contacts-get-phone-number-by-lid.ts:
+    last_write_checksum: sha1:56778bd9912b19d7dc099d8872b54f1d602e9f96
+  src/funcs/whatsapp-contacts-get-profile-picture.ts:
+    last_write_checksum: sha1:0ffc385818a59946c98eda5c1ec744edb14df6b6
+  src/funcs/whatsapp-contacts-upsert-contact.ts:
+    last_write_checksum: sha1:f75d4778e0071e27b123f00653b6524b75d0c2fb
+  src/funcs/whatsapp-delete-message.ts:
+    last_write_checksum: sha1:03d221e07aeeaed51a13a10b2650d923d74d10cc
+  src/funcs/whatsapp-forward-message.ts:
+    last_write_checksum: sha1:68e9c41bf329803f3e2cd65a1cd6e08107a5c24b
+  src/funcs/whatsapp-get-queued-request.ts:
+    last_write_checksum: sha1:043960b51e9461a16727863b04fa04893e51fca3
+  src/funcs/whatsapp-react-to-message.ts:
+    last_write_checksum: sha1:d0b88c4bd8f1f72b007bd319d8685ea9e832ef4b
+  src/funcs/whatsapp-read-chat.ts:
+    last_write_checksum: sha1:2a4d3143270f45ddb5cfaf952d3ff159eb0ebc1e
+  src/funcs/whatsapp-send-contact-card.ts:
+    last_write_checksum: sha1:ade80e2bb1bb2c25c06532d33c9841bb0e97a867
+  src/funcs/whatsapp-send-file.ts:
+    last_write_checksum: sha1:6086941c4406c2feb2a6f7fdd09305cb393f8130
+  src/funcs/whatsapp-send-image.ts:
+    last_write_checksum: sha1:0ab13857d166485b43924b0ce8520994240c9bb9
+  src/funcs/whatsapp-send-link-custom-preview.ts:
+    last_write_checksum: sha1:a398132045ba76553196dffef79627f6cc3cfb62
+  src/funcs/whatsapp-send-location.ts:
+    last_write_checksum: sha1:5b7548bfbb15b91e49414881209455b0c5aa95c8
+  src/funcs/whatsapp-send-poll.ts:
+    last_write_checksum: sha1:fa26052164bce80b32648fa551207253e17a996a
+  src/funcs/whatsapp-send-seen.ts:
+    last_write_checksum: sha1:5a1f06c2fad1fca209f5a41b27226540c9d1b7cd
+  src/funcs/whatsapp-send-text-safe.ts:
+    last_write_checksum: sha1:235dcd79a1db2aa6ca0c3a773295ca647b1f38f5
+  src/funcs/whatsapp-send-text.ts:
+    last_write_checksum: sha1:8f8fcbc25c33545e775590e1af0b1260cb58bee8
+  src/funcs/whatsapp-send-video.ts:
+    last_write_checksum: sha1:4e43a1c6d96c82f330d0c3a17b162508f9e9bdbc
+  src/funcs/whatsapp-send-voice.ts:
+    last_write_checksum: sha1:8e186c12c9a69ee380ba4342f0eee741bea2cb37
+  src/funcs/whatsapp-star-message.ts:
+    last_write_checksum: sha1:e76b8170f84e516d242154b7cba1c2ef633ef141
+  src/funcs/whatsapp-start-typing.ts:
+    last_write_checksum: sha1:c39aed5c8284f89c1651ba4e6dc7ad910ecd2865
+  src/funcs/whatsapp-stop-typing.ts:
+    last_write_checksum: sha1:16321a47bb0b6fd35b8851768c6daa9aed2f0e16
+  src/hooks/hooks.ts:
+    last_write_checksum: sha1:3a90d88b4c6c07247db8e5f6441a79538232394e
+  src/hooks/index.ts:
+    last_write_checksum: sha1:1a11c073a6cd792932218e1d4ed36b8567bad8ef
+  src/hooks/types.ts:
+    last_write_checksum: sha1:8e6a1813e04a0a32009cb07e9772e4166658be1b
+  src/index.ts:
+    last_write_checksum: sha1:35c9cde3ae14b18b3f893a1afe8b6c44f8760f24
+  src/lib/base64.ts:
+    last_write_checksum: sha1:8c94164f2f78e6041c853186fa01f659591f5913
+  src/lib/config.ts:
+    last_write_checksum: sha1:b34f3aaae8a2ee855db5a622b24baace8ca13b5d
+  src/lib/encodings.ts:
+    last_write_checksum: sha1:d49408b88c0328b6ff59dc02466fc956dfd3c706
+  src/lib/env.ts:
+    last_write_checksum: sha1:d02033ad8c89a141bbf0b2a1da6582646b58d502
+  src/lib/files.ts:
+    last_write_checksum: sha1:795c14026405d547bfc47012f7ad9666e530fa7f
+  src/lib/http.ts:
+    last_write_checksum: sha1:a56435907625a816051aa2131d60909c59f1da27
+  src/lib/logger.ts:
+    last_write_checksum: sha1:0ec9d3a2a34c362746b767e4f9a746c055d57a7b
+  src/lib/matchers.ts:
+    last_write_checksum: sha1:a33c42527791d3e5c37ac07ed27147886795e0b4
+  src/lib/primitives.ts:
+    last_write_checksum: sha1:20a7b0c3258527ae6fbda31c647fb71f22cecf70
+  src/lib/retries.ts:
+    last_write_checksum: sha1:42c8f6cc4c875be236230a8c760f4f32d8c1ab68
+  src/lib/schemas.ts:
+    last_write_checksum: sha1:8016dfcb1627547e966e53e1bf28a34ccb13c957
+  src/lib/sdks.ts:
+    last_write_checksum: sha1:4788907de28d5d3d9712bdf8f383748fd6e093ec
+  src/lib/security.ts:
+    last_write_checksum: sha1:a3d4727716fe63979b586d63b99e5af47516b310
+  src/lib/url.ts:
+    last_write_checksum: sha1:2e7a5fb3985938a4234ad6a4468ea256e9849529
+  src/models/app-version.ts:
+    last_write_checksum: sha1:ef0ea6047cf879a9f7eff714e4b5b70007885187
+  src/models/check-contact-exists-request.ts:
+    last_write_checksum: sha1:9cacd878c24f2d1d35f11fb202360a5cae911fc0
+  src/models/create-instance-request.ts:
+    last_write_checksum: sha1:9d03162b0fa81e3e48e9eb9f8aff507fdf045b09
+  src/models/edit-message-thread.ts:
+    last_write_checksum: sha1:c3b6eab3520a578cdf1a88ac00a773c770bc2d07
+  src/models/enterprise-validation-error.ts:
+    last_write_checksum: sha1:d0263b5312878462a469de62c46fa6afb367da3d
+  src/models/error.ts:
+    last_write_checksum: sha1:31db0ca79ebe8011c2fa5ccf7df69a53b32cde7b
+  src/models/errors/enterprise-create-instance.ts:
+    last_write_checksum: sha1:1bbffd69a92a2268a17e73f6eed1be424534dd37
+  src/models/errors/enterprise-get-instance-health.ts:
+    last_write_checksum: sha1:012c5212c1312433d5feffde50159da63f0fe8e5
+  src/models/errors/enterprise-not-found-error.ts:
+    last_write_checksum: sha1:43df6a60c5a6669156c809a96e6fd0dbdf766211
+  src/models/errors/enterprise-request-new-qr-code.ts:
+    last_write_checksum: sha1:6b0dc961ed66a2be265df4ad82f6b16a204de38d
+  src/models/errors/enterprise-restart-instance.ts:
+    last_write_checksum: sha1:5515dbe13c38ee7b2a6625a9196e5e26dfce0316
+  src/models/errors/enterprise-validation-error.ts:
+    last_write_checksum: sha1:61964718df03bda9e5c5d13e6246bbcfffcce631
+  src/models/errors/error.ts:
+    last_write_checksum: sha1:560b682c886937982140897ee5821f71453fcc19
+  src/models/errors/http-client-errors.ts:
+    last_write_checksum: sha1:994ced121c54fecd0af038ccfb7855fbfd3868ec
+  src/models/errors/hypersender-default-error.ts:
+    last_write_checksum: sha1:ac3405ec714968483f2b16a7d19c1cf2d65426f4
+  src/models/errors/hypersender-error.ts:
+    last_write_checksum: sha1:8375d05b77e541775a2f55e13e60f4c8f2245e98
+  src/models/errors/index.ts:
+    last_write_checksum: sha1:a4dc4d0b2accb2b414d36787de0256229fc86a51
+  src/models/errors/not-found-error.ts:
+    last_write_checksum: sha1:9b6a336fa331d1147c7e5c26666a0534905f682f
+  src/models/errors/response-validation-error.ts:
+    last_write_checksum: sha1:a5da187e3719550b3f66657d638a6298a066795a
+  src/models/errors/sdk-validation-error.ts:
+    last_write_checksum: sha1:92771987c251f02fd86cfd824a3be709cd3c2837
+  src/models/errors/server-error.ts:
+    last_write_checksum: sha1:d5ec663c2dd6a034e33c5e0b8b114be1e4258f32
+  src/models/errors/validation-error.ts:
+    last_write_checksum: sha1:fc041785e424a0f5f44d09f9cf85560b32bb8f8d
+  src/models/forward-message-request.ts:
+    last_write_checksum: sha1:e4887a6c47b0bacc2362265435d691ce206cb005
+  src/models/generate-link-request.ts:
+    last_write_checksum: sha1:42310f39ee6dfb7e7995bfa39a6d262e9b8b4fbe
+  src/models/generate-link-response.ts:
+    last_write_checksum: sha1:5f98c5e65e1887421f18122cb82660acfa2e964a
+  src/models/heartbeat.ts:
+    last_write_checksum: sha1:7faf243081f2cc2bd0184ea1454f352d9b11c7fa
+  src/models/index.ts:
+    last_write_checksum: sha1:97475d7ab2f920983d1b91e09cc47ebb2d9d1fbe
+  src/models/instance-response.ts:
+    last_write_checksum: sha1:7db589e36381cddea2ca01786624b40495e02728
+  src/models/instance-with-qr-response.ts:
+    last_write_checksum: sha1:7b014a40555fb8a36bdd56aae9183f6decc4c4f7
+  src/models/lid-count-response.ts:
+    last_write_checksum: sha1:94d6a54cbc827a0a277315b043959bb4de1ebc53
+  src/models/lid-mapping.ts:
+    last_write_checksum: sha1:44265857d38ef2ca1470fc91eb7a1a8306805f41
+  src/models/message-thread.ts:
+    last_write_checksum: sha1:09d080541a2c5523235e39489fc3f1e49754d159
+  src/models/message.ts:
+    last_write_checksum: sha1:86d55383373afa65a144b141f70444a38924991f
+  src/models/operations/enterprise-get-instance-health.ts:
+    last_write_checksum: sha1:325b144b4a1b61596f91dbfd0c5d231da5ccc24b
+  src/models/operations/enterprise-list-instances.ts:
+    last_write_checksum: sha1:3b9ef11b9e7831ae8fe846e1e05722cc0cdaed85
+  src/models/operations/enterprise-request-new-qr-code.ts:
+    last_write_checksum: sha1:25e2b9e0887eb408b264c0f994636b0e24d55eb9
+  src/models/operations/enterprise-restart-instance.ts:
+    last_write_checksum: sha1:effddc2e558e34fbf03c0e011f989518425f1154
+  src/models/operations/index.ts:
+    last_write_checksum: sha1:a5ce509e3401f39105f1d663541757d04e87cf30
+  src/models/operations/otp-generate-link.ts:
+    last_write_checksum: sha1:c1528ab41c8d57ca94eac52642c0cda43e6399ac
+  src/models/operations/otp-request-code.ts:
+    last_write_checksum: sha1:5c4bc6a6e0e0963c7a8b5b369441277a6f43785e
+  src/models/operations/otp-validate-code.ts:
+    last_write_checksum: sha1:fb36497c40fe0a6432513148b86ea289e1cda48a
+  src/models/operations/sms-delete-message-thread.ts:
+    last_write_checksum: sha1:523714092c2977883d4914a3479f01e5814232fc
+  src/models/operations/sms-delete-message.ts:
+    last_write_checksum: sha1:c5830f5e27303f8edc1b9bcc758fe0d745de1039
+  src/models/operations/sms-edit-message-thread.ts:
+    last_write_checksum: sha1:0948a86e44683a496a0122d9c5a88368069c221b
+  src/models/operations/sms-heartbeats.ts:
+    last_write_checksum: sha1:7f1eb2b0a7d78124d33be7d849e87ed926759edf
+  src/models/operations/sms-index-messages.ts:
+    last_write_checksum: sha1:98a87ee45a83737df7154e142de47354eab65b7d
+  src/models/operations/sms-message-threads.ts:
+    last_write_checksum: sha1:c59e967fc12b705dd4870f98860a79887a392874
+  src/models/operations/sms-send-message.ts:
+    last_write_checksum: sha1:f5b8b5dabf6c469c925f256d4580558d327c75a0
+  src/models/operations/whatsapp-check-contact-exists.ts:
+    last_write_checksum: sha1:902c0775ec3b2a0324c118039b6316e1fa76de63
+  src/models/operations/whatsapp-delete-message.ts:
+    last_write_checksum: sha1:27dca475484d9a20731c560ea04fa00bea4faf3c
+  src/models/operations/whatsapp-forward-message.ts:
+    last_write_checksum: sha1:009f14d4c4b4dd38a59a292c2d89135cba754e13
+  src/models/operations/whatsapp-get-all-contacts.ts:
+    last_write_checksum: sha1:ebb42f3b1124b3b789b61a7cd08f3e3f68a41332
+  src/models/operations/whatsapp-get-all-known-lids.ts:
+    last_write_checksum: sha1:ee74ee63e96646499772a816469d0b87996f7f01
+  src/models/operations/whatsapp-get-contact.ts:
+    last_write_checksum: sha1:6680c24918359d78f86ef9b268811820e3401204
+  src/models/operations/whatsapp-get-lid-by-phone-number.ts:
+    last_write_checksum: sha1:cb3f76a101257ef54b5153909f25a42bee05dc7b
+  src/models/operations/whatsapp-get-lids-count.ts:
+    last_write_checksum: sha1:6b177aa8c27551d6aceba9842f8edf3846006a04
+  src/models/operations/whatsapp-get-phone-number-by-lid.ts:
+    last_write_checksum: sha1:176b07bfc19feac5460754fe9ca81ba090ab33ab
+  src/models/operations/whatsapp-get-profile-picture.ts:
+    last_write_checksum: sha1:13f4d019aca3f8aa49d4ea3813375764a507cf89
+  src/models/operations/whatsapp-get-queued-request.ts:
+    last_write_checksum: sha1:303375b429656beaff0a94eb7b04f04b6a80f4d3
+  src/models/operations/whatsapp-react-to-message.ts:
+    last_write_checksum: sha1:b1bbcf708d41ed50554839cb1c8191ffd841ae4b
+  src/models/operations/whatsapp-read-chat.ts:
+    last_write_checksum: sha1:6853c657cfdcec36775d5286f83e004cb8120ace
+  src/models/operations/whatsapp-send-contact-card.ts:
+    last_write_checksum: sha1:54744e70e4640720b8ac1872a9ff8339cd26aad9
+  src/models/operations/whatsapp-send-file.ts:
+    last_write_checksum: sha1:4b0332038027ee734b7ffa31ec094e307de621a2
+  src/models/operations/whatsapp-send-image.ts:
+    last_write_checksum: sha1:248d0d4632d08344006821aea3d19a796c3a601b
+  src/models/operations/whatsapp-send-link-custom-preview.ts:
+    last_write_checksum: sha1:c0af55a8df8b0e468b68b886407cf500fec5b511
+  src/models/operations/whatsapp-send-location.ts:
+    last_write_checksum: sha1:89043ac27d41f9e505e570830b0aad65dc6e64e3
+  src/models/operations/whatsapp-send-poll.ts:
+    last_write_checksum: sha1:914d898def1b62173fb555dc251c01c9ced9fd7b
+  src/models/operations/whatsapp-send-seen.ts:
+    last_write_checksum: sha1:ee65c7f8233e5b5df8ff8f02c63a2d79c6d145d3
+  src/models/operations/whatsapp-send-text-safe.ts:
+    last_write_checksum: sha1:5941bb96a17daa7259223d211f1c26b59c963fa9
+  src/models/operations/whatsapp-send-text.ts:
+    last_write_checksum: sha1:b6a7b3486d1727273a6d94e3bd246272b2a082cb
+  src/models/operations/whatsapp-send-video.ts:
+    last_write_checksum: sha1:0f118f888aba190fe84c5e877123e1a72fdd06f6
+  src/models/operations/whatsapp-send-voice.ts:
+    last_write_checksum: sha1:b60d7d14148ef6c217b10c77cbc779fc26c8bb47
+  src/models/operations/whatsapp-star-message.ts:
+    last_write_checksum: sha1:3c0c8146e15e48f24a6871aae3a77786e3c18f4e
+  src/models/operations/whatsapp-start-typing.ts:
+    last_write_checksum: sha1:11600c395ef2482429e21c8576357d1c2cd8eaea
+  src/models/operations/whatsapp-stop-typing.ts:
+    last_write_checksum: sha1:d21ef1f9710258ee4953b41a5985bac02fc874db
+  src/models/operations/whatsapp-upsert-contact.ts:
+    last_write_checksum: sha1:f25061bbb8ea755725539ec86b8dfc77eba8c88d
+  src/models/pagination-links.ts:
+    last_write_checksum: sha1:b26c33f08a37b1809d610469c9a1479d7b7a8b3b
+  src/models/pagination-meta.ts:
+    last_write_checksum: sha1:94f4d551e5b1d88298fa8e2caead485b1404d63c
+  src/models/phone.ts:
+    last_write_checksum: sha1:8a53c55849a69997b5324dca839eb185c005c513
+  src/models/queued-request-response.ts:
+    last_write_checksum: sha1:bd8bc314b4c43c028134b67ec99c56f672989f2b
+  src/models/queued-response.ts:
+    last_write_checksum: sha1:5aad2908e0129fe3aba1744de35a0abf48d3d66d
+  src/models/react-to-message-request.ts:
+    last_write_checksum: sha1:04c549736a5ad7a4b3582f9687bf669902a18892
+  src/models/read-chat-request.ts:
+    last_write_checksum: sha1:2f0f4a30097989f96d1a7ef02fe9d05385c93610
+  src/models/request-code-request.ts:
+    last_write_checksum: sha1:368edfb7c580a3a2b7fbea364bdae62c70cbaa01
+  src/models/request-code-response.ts:
+    last_write_checksum: sha1:8faa8fd694ce426dba2f99674184bdf06aa94354
+  src/models/security.ts:
+    last_write_checksum: sha1:abb8e612863fdabdf1392434a0f19bd0bd2fae26
+  src/models/send-contact-card-request.ts:
+    last_write_checksum: sha1:26b493b3298aa0149663031d3fc704d15a4c810e
+  src/models/send-file-request.ts:
+    last_write_checksum: sha1:f1b8d55b6015f454c7fab76c5ecc99100fb4b7d9
+  src/models/send-image-request.ts:
+    last_write_checksum: sha1:0914050cce90894c4d70f3c37c1c51b9cb374517
+  src/models/send-link-custom-preview.ts:
+    last_write_checksum: sha1:6b1153513c3b2d7e6706b55614c038d5f4a5e53e
+  src/models/send-location-request.ts:
+    last_write_checksum: sha1:8ba3f052fe46b6be62514d662ad6f266900dc16b
+  src/models/send-message-request.ts:
+    last_write_checksum: sha1:9ce43656b9448e5f0697f50d61d4f4afb881ced5
+  src/models/send-message-response.ts:
+    last_write_checksum: sha1:da6c3f526bf2084c6015452f411e8e7fc3dc211c
+  src/models/send-poll-request.ts:
+    last_write_checksum: sha1:5ba8ce1d9f8c2c182e10d6d4b0a07117fe29a85f
+  src/models/send-seen-request.ts:
+    last_write_checksum: sha1:9712eb2e21dd949c13138adc4e481db549ea9194
+  src/models/send-video-request.ts:
+    last_write_checksum: sha1:7f097b157f960207b86066f965db995f6acd907f
+  src/models/send-voice-request.ts:
+    last_write_checksum: sha1:2b5ced9f1381bbbe0cfc83517d8dff5546f47df6
+  src/models/star-message-request.ts:
+    last_write_checksum: sha1:9730ada70ad0bf48ed2f9fc63d9e93f0fdb76d4f
+  src/models/start-typing-request.ts:
+    last_write_checksum: sha1:8d757b7bd95666597f0dba1f0b858be49c040410
+  src/models/stop-typing-request.ts:
+    last_write_checksum: sha1:1427f61c985e856f1ac2fe945bfba2b889289daa
+  src/models/upsert-contact-request.ts:
+    last_write_checksum: sha1:0c90d35f4d7a554728120b34f8cc24a3b6ca5365
+  src/models/validate-code-request.ts:
+    last_write_checksum: sha1:ac6d254787bb7a592a72fd82fc3c5b8b4d22a5bc
+  src/models/validate-code-response.ts:
+    last_write_checksum: sha1:3802bc8709bad68e6d25442dc754b85ea85794a8
+  src/models/validation-error.ts:
+    last_write_checksum: sha1:16d1c3d51c9e2d67a7bed1521d555e04f74076a9
+  src/node.ts:
+    last_write_checksum: sha1:e8cd7a8747fa92dcf81cdfc28a4c299b9d933257
+  src/sdk/contacts.lazy.ts:
+    last_write_checksum: sha1:d9530d4b665ee5c76d23cd2a37363594ab7b7703
+  src/sdk/contacts.ts:
+    last_write_checksum: sha1:72c3c0150183aaf0cb55f17ec3edc26cbd04147d
+  src/sdk/enterprise.lazy.ts:
+    last_write_checksum: sha1:61bc3e5e0974d837a90111eac08e83872c5c0c66
+  src/sdk/enterprise.ts:
+    last_write_checksum: sha1:2fa1d7fd3c76882d1ea7d5f486197f8b8934196a
+  src/sdk/index.ts:
+    last_write_checksum: sha1:ed6d64f2a6135349aa8498b8d8cff9ba85c7fb8f
+  src/sdk/otp.lazy.ts:
+    last_write_checksum: sha1:eb9763478ce877888c2dbd754be06b7cc640a9da
+  src/sdk/otp.ts:
+    last_write_checksum: sha1:0da0660a1cdaac230be8e7bf8d3b5189b8ffd201
+  src/sdk/sdk.lazy.ts:
+    last_write_checksum: sha1:6c014e6fcddba92d18bb6cb08dbafc6cab173a63
+  src/sdk/sdk.ts:
+    last_write_checksum: sha1:7bb59a79cfeb08f347a16ddec2c88196ee39cf5a
+  src/sdk/sms.lazy.ts:
+    last_write_checksum: sha1:71e107204564e680e70aebcf2764482ce23a13e4
+  src/sdk/sms.ts:
+    last_write_checksum: sha1:e3c20cb8f5b0656e482bb6e4abaa4ab54b9722c5
+  src/sdk/whatsapp.lazy.ts:
+    last_write_checksum: sha1:cfc43231d8f8a5fa252706f08d7761d59e67054e
+  src/sdk/whatsapp.ts:
+    last_write_checksum: sha1:9326280252b48bdc732825e6e8f682f1e9fc8194
+  src/types/async.ts:
+    last_write_checksum: sha1:675d04bb4b4081dc3482f18de98674f9b446e7b4
+  src/types/blobs.ts:
+    last_write_checksum: sha1:fd681458b532138913c372b05b3e16407abaa7a1
+  src/types/const-date-time.ts:
+    last_write_checksum: sha1:ce05316b31b373401875d5e962d63d2422e09cf2
+  src/types/default-to-zero-value.ts:
+    last_write_checksum: sha1:2820c0bc8e71d475e79cc6b6947ca18d93f6310c
+  src/types/enums.ts:
+    last_write_checksum: sha1:d7d0ffad0c128a11c5feb1f0ae8f3b507ee03c14
+  src/types/fp.ts:
+    last_write_checksum: sha1:d24994d58f37a1ca106847fcc6d2e976c6f1c093
+  src/types/index.ts:
+    last_write_checksum: sha1:a591fec0ad2231615101ebb6a95cc4d043733a6c
+  src/types/operations.ts:
+    last_write_checksum: sha1:c49e724cfb1259296381cb57bc0fcdd2eae45865
+  src/types/primitives.ts:
+    last_write_checksum: sha1:a521a09fa18b1af857d29477d3aa7007b42583ed
+  src/types/rfcdate.ts:
+    last_write_checksum: sha1:8e5f382e02fe21c2f2e24deb1b7bbf8cddd3dd16
+  src/types/smart-union.ts:
+    last_write_checksum: sha1:a81f09ceb76cb40d41f4b0ac9efee243318b4cfc
+  src/types/streams.ts:
+    last_write_checksum: sha1:cc9ced2dd34a76c3a1bd7784ccda1cc3b37ab9a9
+  src/types/unrecognized.ts:
+    last_write_checksum: sha1:d33ac686528492f4cdc0dbf81ed343b4afe020fe
+  temp/example.ts:
+    last_write_checksum: sha1:9ac8387b7d4e177fd64b0011176d272b1b7f732c
+  tsconfig.json:
+    last_write_checksum: sha1:4f9c4daf3281a9be06591b2814e5bbcf98b5c803
+examples:
+  getQueuedRequest:
+    Successful Message:
+      parameters:
+        path:
+          instance: "<value>"
+          queued_request_uuid: "a0816120-7e37-4e8b-8cf3-92deb2cdc133"
+      responses:
+        "200":
+          application/json: {"uuid": "a08358c2-b4d6-4cd6-a882-70e606e4b95f", "request": {"chatId": "2015537361@c.us", "text": "Check this https://hypersender.com/"}, "response_status": 201, "response_body": {}, "response_header": {}}
+    Failed Request:
+      parameters:
+        path:
+          instance: "<value>"
+          queued_request_uuid: "a0816120-7e37-4e8b-8cf3-92deb2cdc133"
+      responses:
+        "200":
+          application/json: {"uuid": "a08358c2-b4d6-4cd6-a882-70e606e4b95f", "request": {"chatId": "invalid@c.us", "text": "Hello!"}, "response_status": 422, "response_body": {}, "response_header": {}}
+  sendTextSafe:
+    Example 1:
+      parameters:
+        path:
+          instance: "<value>"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us", "text": "Hi there!", "reply_to": "string", "link_preview": false, "link_preview_high_quality": false}
+      responses:
+        "500":
+          application/json: {"message": "Server Error"}
+    default:
+      parameters:
+        path:
+          instance: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us", "text": "<value>"}
+      responses:
+        "500":
+          application/json: {"message": "Server Error"}
+    queued:
+      parameters:
+        path:
+          instance: "<value>"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us", "text": "<value>"}
+      responses:
+        "201":
+          application/json: {"queued": true, "message": "Processing your request...", "queued_request_uuid": "a0816120-7e37-4e8b-8cf3-92deb2cdc133", "queued_request_link": "https://app.hypersender.com/api/whatsapp/v2/{instance}/queued-requests/a0816120-7e37-4e8b-8cf3-92deb2cdc133"}
+    Multiple fields Error:
+      parameters:
+        path:
+          instance: "<value>"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us", "text": "<value>"}
+      responses:
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+    'Single Field error ':
+      parameters:
+        path:
+          instance: "<value>"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us", "text": "<value>"}
+      responses:
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+  sendText:
+    Example 1:
+      parameters:
+        path:
+          instance: "<value>"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us", "text": "Hi there!", "reply_to": "string", "link_preview": false, "link_preview_high_quality": false}
+      responses:
+        "500":
+          application/json: {"message": "Server Error"}
+    default:
+      parameters:
+        path:
+          instance: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us", "text": "<value>"}
+      responses:
+        "500":
+          application/json: {"message": "Server Error"}
+    queued:
+      parameters:
+        path:
+          instance: "<value>"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us", "text": "<value>"}
+      responses:
+        "201":
+          application/json: {"queued": true, "message": "Processing your request...", "queued_request_uuid": "a0816120-7e37-4e8b-8cf3-92deb2cdc133", "queued_request_link": "https://app.hypersender.com/api/whatsapp/v2/{instance}/queued-requests/a0816120-7e37-4e8b-8cf3-92deb2cdc133"}
+    Multiple fields Error:
+      parameters:
+        path:
+          instance: "<value>"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us", "text": "<value>"}
+      responses:
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+    'Single Field error ':
+      parameters:
+        path:
+          instance: "<value>"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us", "text": "<value>"}
+      responses:
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+  sendLinkCustomPreview:
+    Example 1:
+      parameters:
+        path:
+          instance: "<value>"
+      requestBody:
+        application/json: {"chatId": "1111111111@c.us", "text": "Check this out! https://hypersender.com/", "reply_to": "string", "high_quality": true, "preview_title": "Hypersender is awesome", "preview_description": "Check this out, this is a custom link preview!", "preview_url": "https://hypersender.com/", "preview_image_url": "https://m.media-amazon.com/images/M/MV5BMjRhYjdkOGMtZDY5Zi00OWEwLTlkOWEtYz.jpg", "preview_image_file": "<value>"}
+      responses:
+        "201":
+          application/json: {"key": {"remoteJid": "1111111111@s.whatsapp.net", "fromMe": true, "id": "3EB091A456D98511123FEA"}, "message": {"extendedTextMessage": {"text": "Check this out! https://hypersender.com/", "matchedText": "https://hypersender.com/", "description": "Check this out, this is a custom link preview!", "title": "Hypersender is awesome", "previewType": "NONE", "jpegThumbnail": "/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wAARCAARACADASIAAhEBAxEB/8QAGgAAAgIDAAAAAAAAAAAAAAAAAAUDBAECBv/EACwQAAECBQIEBAcAAAAAAAAAAAECAwAEBREhBjESEzVBYYGDsTI0UXJ0srP/xAAWAQEBAQAAAAAAAAAAAAAAAAABAAL/xAAXEQEBAQEAAAAAAAAAAAAAAAAAARIC/9oADAMBAAIRAxEAPwBi2HEqaUEXTY54hEEjVF1MOrTLqa5V0pJVnfe0Y1CX6fLS77E206gLIIbTw2NsE2ORviI9OzQmWVNKfQ282LhAbCisdzDehI3VU3kVBEutlTbjgt8YORkeREQ1GvKp86gusp5YBTw8YVfxt4WitW5GWS4h+cfcUt10qBKSjt9ADsIpT7NOm5d0tVdgu9kKSc22AO/naDRzDjUHRXPuT7wr0v8ANzH459xBBGSdDqFK9b+cclpjrvpPfoYIIoa//9k=", "thumbnailDirectPath": "/o1/v/t24/f2/m232/AQMNFP0XcTmGZckNL1WI6_-o4AAzaPTlTtqRat-YC7SlRrlpV8e_0fmUj7xBK5kS_9m4B-3wgG8wJ-aitI6TQqAXSTHEUhH5u4m1QCxRmw?ccb=9-4&oh=01_Q5Aa2gFW4du4I6OfD9Y_djyP1KIukQnFQRfu8YEfQJ6ydbY8JQ&oe=68F20A99&_nc_sid=e6ed6c", "thumbnailSha256": "KccP5I7AxrmcoUeD868qd0ISDFf6TYUTtw6dJS/Sdjk=", "thumbnailEncSha256": "Vveij+Avc8amAa2u6AtPSZG/07FzjJfDtMJqmYt/g4A=", "mediaKey": "Tp1eSebY/WJr+mZmzWmbRAj4WXyEmGsvSKZySAw9Kj8=", "mediaKeyTimestamp": "1758105918", "thumbnailHeight": 649, "thumbnailWidth": 1200}}, "messageTimestamp": "1758105918,", "status": "PENDING"}
+    default:
+      parameters:
+        path:
+          instance: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us", "text": "<value>", "preview_title": "<value>", "preview_description": "<value>", "preview_url": "https://purple-bell.net/", "preview_image_url": "https://spanish-goat.org/", "preview_image_file": "<value>"}
+      responses:
+        "201":
+          application/json: {}
+        "404":
+          application/json: {"message": "Resource not found."}
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+        "500":
+          application/json: {"message": "Internal Server Error"}
+  sendFile:
+    Example 1:
+      parameters:
+        path:
+          instance: "<value>"
+      requestBody:
+        application/json: {"chatId": "11111111111@c.us", "url": "https://hypersender.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo.52c242e8.png&w=640&q=75", "mimetype": "image", "caption": "string", "reply_to": "string"}
+      responses:
+        "201":
+          application/json: {"key": {"remoteJid": "1111111111@s.whatsapp.net", "fromMe": true, "id": "3EB089F063C03E43EECE9D"}, "message": {"documentMessage": {"url": "https://mmg.whatsapp.net/v/t62.7119-24/31809967_2958746007616712_3774955636954933761_n.enc?ccb=11-4&oh=01_Q5AaIPHnpFjuJwCULeqyHMcDO55BAj3YxolxEVLGXVvVkaKM&oe=67F2DD3D&_nc_sid=5e03e0&mms3=true", "mimetype": "image/jpeg", "fileSha256": "ubfaNZ4rY7T7/ghhWnBh1cVf1d00JSHENKunZuHs+yc=", "fileLength": "7200", "mediaKey": "ARUCxn91XDCjmCvFecREY4Fpg9RSOYa8O5D7TxGWGkE=", "fileName": "hypersender.jpeg", "fileEncSha256": "ER9FB+GEzrKmooWDbNpqenokG1mAtvbIU+Ceo7JeNwQ=", "directPath": "/v/t62.7119-24/31809967_2958746007616712_3774955636954933761_n.enc?ccb=11-4&oh=01_Q5AaIPHnpFjuJwCULeqyHMcDO55BAj3YxolxEVLGXVvVkaKM&oe=67F2DD3D&_nc_sid=5e03e0", "mediaKeyTimestamp": "1741390160", "caption": "dolore nulla nisi Duis"}}, "messageTimestamp": "1741390160", "status": "PENDING"}
+    Example 2:
+      parameters:
+        path:
+          instance: "<value>"
+      requestBody:
+        application/json: {"chatId": "11111111111@c.us", "file": "hypersender.jpeg", "mimetype": "image", "caption": "string", "reply_to": "string"}
+      responses:
+        "201":
+          application/json: {}
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+        "500":
+          application/json: {"message": "Internal Server Error"}
+    default:
+      parameters:
+        path:
+          instance: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us"}
+      responses:
+        "201":
+          application/json: {}
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+        "500":
+          application/json: {"message": "Internal Server Error"}
+  sendImage:
+    Example 1:
+      parameters:
+        path:
+          instance: "<value>"
+      requestBody:
+        application/json: {"chatId": "11111111111@c.us", "url": "https://hypersender.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo.52c242e8.png&w=640&q=75", "mimetype": "image", "caption": "string", "reply_to": "string"}
+      responses:
+        "201":
+          application/json: {"key": {"remoteJid": "1111111111@s.whatsapp.net", "fromMe": true, "id": "3EB089F063C03E43EECE9D"}, "message": {"imageMessage": {"url": "https://mmg.whatsapp.net/v/t62.7119-24/31809967_2958746007616712_3774955636954933761_n.enc?ccb=11-4&oh=01_Q5AaIPHnpFjuJwCULeqyHMcDO55BAj3YxolxEVLGXVvVkaKM&oe=67F2DD3D&_nc_sid=5e03e0&mms3=true", "mimetype": "image/jpeg", "fileSha256": "ubfaNZ4rY7T7/ghhWnBh1cVf1d00JSHENKunZuHs+yc=", "fileLength": "7200", "height": 200, "width": 200, "mediaKey": "ARUCxn91XDCjmCvFecREY4Fpg9RSOYa8O5D7TxGWGkE=", "fileName": "hypersender.jpeg", "fileEncSha256": "ER9FB+GEzrKmooWDbNpqenokG1mAtvbIU+Ceo7JeNwQ=", "directPath": "/v/t62.7119-24/31809967_2958746007616712_3774955636954933761_n.enc?ccb=11-4&oh=01_Q5AaIPHnpFjuJwCULeqyHMcDO55BAj3YxolxEVLGXVvVkaKM&oe=67F2DD3D&_nc_sid=5e03e0", "mediaKeyTimestamp": "1741390160", "caption": "dolore nulla nisi Duis", "jpegThumbnail": "/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wAARCAAgACADASIAAhEBAxEB/8QAGAABAQADAAAAAAAAAAAAAAAABQIDBAb/xAAqEAACAQQBAgUDBQAAAAAAAAABAgMABAURIRMxEiJRYXEUkbEVMkGhwf/EABcBAQEBAQAAAAAAAAAAAAAAAAACAQT/xAAdEQACAQUBAQAAAAAAAAAAAAAAAQIREiEiMwNB/9oADAMBAAIRAxEAPwDrctlBZDpRaaYjfPZRRSWGSyA6srEKeR1G19hVY2MZDMSTS+ZVJfR+dCmbm++nvoIG8AjkBLMx1rVDi67TePgHJZZHGjqox8I7mNtgfIpbE5QXo6UoCzKN8dmHrWW2vfqb6eBfA0caghlO97oS9T9NzAaLhQQ4Hse4/NDOVJQeDZw0b2+YuISvAUgn23xSF7Ym6yFvI6K8KKwcN/VXfWsrhpbNxFORonX7h6e1DrkslY+S4jLa/mRf9FCnb5KySwK2dibXIXEiIqQuoCBT96Gv3GRzKpF5l2EBHoO5/NVJf5HIjpRRkK3BEYPPyaUxOLFkOrKQ0zDXHZR6UJ60hBan/9k="}}, "messageTimestamp": "1741390160", "status": "PENDING"}
+    Example 2:
+      parameters:
+        path:
+          instance: "<value>"
+      requestBody:
+        application/json: {"chatId": "11111111111@c.us", "file": "hypersender.jpeg", "mimetype": "image", "caption": "string", "reply_to": "string"}
+      responses:
+        "201":
+          application/json: {}
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+        "500":
+          application/json: {"message": "Internal Server Error"}
+    default:
+      parameters:
+        path:
+          instance: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us"}
+      responses:
+        "201":
+          application/json: {}
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+        "500":
+          application/json: {"message": "Internal Server Error"}
+  sendVideo:
+    Example 1:
+      parameters:
+        path:
+          instance: "<value>"
+      requestBody:
+        application/json: {"chatId": "11111111111@c.us", "url": "https://hypersender.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo.52c242e8.png&w=640&q=75", "mimetype": "image", "caption": "string", "reply_to": "string"}
+      responses:
+        "201":
+          application/json: {"key": {"remoteJid": "1111111111@s.whatsapp.net", "fromMe": true, "id": "3EB089F063C03E43EECE9D"}, "message": {"imageMessage": {"url": "https://mmg.whatsapp.net/v/t62.7119-24/31809967_2958746007616712_3774955636954933761_n.enc?ccb=11-4&oh=01_Q5AaIPHnpFjuJwCULeqyHMcDO55BAj3YxolxEVLGXVvVkaKM&oe=67F2DD3D&_nc_sid=5e03e0&mms3=true", "mimetype": "image/jpeg", "fileSha256": "ubfaNZ4rY7T7/ghhWnBh1cVf1d00JSHENKunZuHs+yc=", "fileLength": "7200", "height": 200, "width": 200, "mediaKey": "ARUCxn91XDCjmCvFecREY4Fpg9RSOYa8O5D7TxGWGkE=", "fileName": "hypersender.jpeg", "fileEncSha256": "ER9FB+GEzrKmooWDbNpqenokG1mAtvbIU+Ceo7JeNwQ=", "directPath": "/v/t62.7119-24/31809967_2958746007616712_3774955636954933761_n.enc?ccb=11-4&oh=01_Q5AaIPHnpFjuJwCULeqyHMcDO55BAj3YxolxEVLGXVvVkaKM&oe=67F2DD3D&_nc_sid=5e03e0", "mediaKeyTimestamp": "1741390160", "caption": "dolore nulla nisi Duis", "jpegThumbnail": "/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wAARCAAgACADASIAAhEBAxEB/8QAGAABAQADAAAAAAAAAAAAAAAABQIDBAb/xAAqEAACAQQBAgUDBQAAAAAAAAABAgMABAURIRMxEiJRYXEUkbEVMkGhwf/EABcBAQEBAQAAAAAAAAAAAAAAAAACAQT/xAAdEQACAQUBAQAAAAAAAAAAAAAAAQIREiEiMwNB/9oADAMBAAIRAxEAPwDrctlBZDpRaaYjfPZRRSWGSyA6srEKeR1G19hVY2MZDMSTS+ZVJfR+dCmbm++nvoIG8AjkBLMx1rVDi67TePgHJZZHGjqox8I7mNtgfIpbE5QXo6UoCzKN8dmHrWW2vfqb6eBfA0caghlO97oS9T9NzAaLhQQ4Hse4/NDOVJQeDZw0b2+YuISvAUgn23xSF7Ym6yFvI6K8KKwcN/VXfWsrhpbNxFORonX7h6e1DrkslY+S4jLa/mRf9FCnb5KySwK2dibXIXEiIqQuoCBT96Gv3GRzKpF5l2EBHoO5/NVJf5HIjpRRkK3BEYPPyaUxOLFkOrKQ0zDXHZR6UJ60hBan/9k="}}, "messageTimestamp": "1741390160", "status": "PENDING"}
+    Example 2:
+      parameters:
+        path:
+          instance: "<value>"
+      requestBody:
+        application/json: {"chatId": "11111111111@c.us", "file": "hypersender.jpeg", "mimetype": "image", "caption": "string", "reply_to": "string"}
+      responses:
+        "201":
+          application/json: {}
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+        "500":
+          application/json: {"message": "Internal Server Error"}
+    default:
+      parameters:
+        path:
+          instance: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us"}
+      responses:
+        "201":
+          application/json: {}
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+        "500":
+          application/json: {"message": "Internal Server Error"}
+  sendVoice:
+    Example 1:
+      parameters:
+        path:
+          instance: "<value>"
+      requestBody:
+        application/json: {"chatId": "1111111111111@c.us", "url": "http://commondatastorage.googleapis.com/codeskulptor-assets/week7-brrring.m4a", "caption": "hypersender", "reply_to": "string"}
+      responses:
+        "201":
+          application/json: {"key": {"remoteJid": "1111111111@s.whatsapp.net", "fromMe": true, "id": "3EB089F063C03E43EECE9D"}, "message": {"audioMessage": {"url": "https://mmg.whatsapp.net/v/t62.7119-24/31809967_2958746007616712_3774955636954933761_n.enc?ccb=11-4&oh=01_Q5AaIPHnpFjuJwCULeqyHMcDO55BAj3YxolxEVLGXVvVkaKM&oe=67F2DD3D&_nc_sid=5e03e0&mms3=true", "mimetype": "audio/ogg", "fileSha256": "ubfaNZ4rY7T7/ghhWnBh1cVf1d00JSHENKunZuHs+yc=", "fileLength": "18886", "seconds": 10, "ptt": true, "mediaKey": "ARUCxn91XDCjmCvFecREY4Fpg9RSOYa8O5D7TxGWGkE=", "fileEncSha256": "ER9FB+GEzrKmooWDbNpqenokG1mAtvbIU+Ceo7JeNwQ=", "directPath": "/v/t62.7119-24/31809967_2958746007616712_3774955636954933761_n.enc?ccb=11-4&oh=01_Q5AaIPHnpFjuJwCULeqyHMcDO55BAj3YxolxEVLGXVvVkaKM&oe=67F2DD3D&_nc_sid=5e03e0", "mediaKeyTimestamp": "1741390160", "waveform": "AAIIAQ0nKCcdX2NTSkUqHQ4KAgICBAUGAwEAAAAAAAAAAAQFARAmMlFQVT4PHkggAgEHGVldZFpGMBYKAwQEBg=="}}, "messageTimestamp": "1741390160", "status": "PENDING"}
+    Example 2:
+      parameters:
+        path:
+          instance: "<value>"
+      requestBody:
+        application/json: {"chatId": "1111111111111@c.us", "file": "audio.opus", "caption": "hypersender", "reply_to": "string"}
+      responses:
+        "201":
+          application/json: {}
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+        "500":
+          application/json: {"message": "Internal Server Error"}
+    default:
+      parameters:
+        path:
+          instance: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us"}
+      responses:
+        "201":
+          application/json: {}
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+        "500":
+          application/json: {"message": "Internal Server Error"}
+  forwardMessage:
+    Example 1:
+      parameters:
+        path:
+          instance: "<value>"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us", "messageId": "false_111111111111@c.us_3EB08F6AD2A432386EFA0E"}
+      responses:
+        "201":
+          application/json: {"id": "true_111111111111@c.us_3EB0579E140521570D238F,", "timestamp": 1741395597, "from": "111111111111@c.us,", "fromMe": false, "body": "Hi there!,", "hasMedia": false, "media": {}, "ack": 0, "ackName": "PENDING,", "replyTo": "null,", "_data": {"key": {"remoteJid": "111111111111@s.whatsapp.net,", "fromMe": false, "id": "3EB0579E140521570D238F"}, "message": {"extendedTextMessage": {"text": "Hi there!,", "contextInfo": {"forwardingScore": 1, "isForwarded": true}}}, "messageTimestamp": "1741395597,", "status": "PENDING"}}
+        "500":
+          application/json: {"message": "Server Error"}
+    default:
+      parameters:
+        path:
+          instance: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us", "messageId": "<id>"}
+      responses:
+        "500":
+          application/json: {"message": "Server Error"}
+    Multiple fields Error:
+      parameters:
+        path:
+          instance: "<value>"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us", "messageId": "<id>"}
+      responses:
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+    'Single Field error ':
+      parameters:
+        path:
+          instance: "<value>"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us", "messageId": "<id>"}
+      responses:
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+  sendSeen:
+    Example 1:
+      parameters:
+        path:
+          instance: "<value>"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us", "messageId": "false_111111111111@c.us_3EB08F6AD2A432386EFA0E", "participant": "111111111111@c.us"}
+      responses:
+        "500":
+          application/json: {"message": "Server Error"}
+    default:
+      parameters:
+        path:
+          instance: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us", "messageId": "<id>"}
+      responses:
+        "500":
+          application/json: {"message": "Server Error"}
+    Multiple fields Error:
+      parameters:
+        path:
+          instance: "<value>"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us", "messageId": "<id>"}
+      responses:
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+    'Single Field error ':
+      parameters:
+        path:
+          instance: "<value>"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us", "messageId": "<id>"}
+      responses:
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+    speakeasy-default-send-seen:
+      parameters:
+        path:
+          instance: "<value>"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us", "messageId": "<id>"}
+      responses:
+        "201":
+          application/json: {}
+        "404":
+          application/json: {"message": "Resource not found."}
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+        "500":
+          application/json: {"message": "Internal Server Error"}
+  readChat:
+    Example 1:
+      parameters:
+        path:
+          instance: "<value>"
+        query:
+          messages: "30"
+          days: "7"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us"}
+      responses:
+        "201":
+          application/json: {"ids": ["false_11111111111@c.us_AAAAAAAAAAAAAAAAAAAA", "true_99999999999@c.us_AAAAAAAAAAAAAAAAAAAA"]}
+        "500":
+          application/json: {"message": "Server Error"}
+    default:
+      parameters:
+        path:
+          instance: "{{ instance_id }}"
+        query:
+          messages: "30"
+          days: "7"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us"}
+      responses:
+        "500":
+          application/json: {"message": "Server Error"}
+    Multiple fields Error:
+      parameters:
+        path:
+          instance: "<value>"
+        query:
+          messages: "30"
+          days: "7"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us"}
+      responses:
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+    'Single Field error ':
+      parameters:
+        path:
+          instance: "<value>"
+        query:
+          messages: "30"
+          days: "7"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us"}
+      responses:
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+  startTyping:
+    Example 1:
+      parameters:
+        path:
+          instance: "<value>"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us"}
+      responses:
+        "500":
+          application/json: {"message": "Server Error"}
+    default:
+      parameters:
+        path:
+          instance: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us"}
+      responses:
+        "500":
+          application/json: {"message": "Server Error"}
+    Multiple fields Error:
+      parameters:
+        path:
+          instance: "<value>"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us"}
+      responses:
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+    'Single Field error ':
+      parameters:
+        path:
+          instance: "<value>"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us"}
+      responses:
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+    speakeasy-default-start-typing:
+      parameters:
+        path:
+          instance: "<value>"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us"}
+      responses:
+        "201":
+          application/json: {}
+        "404":
+          application/json: {"message": "Resource not found."}
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+        "500":
+          application/json: {"message": "Internal Server Error"}
+  stopTyping:
+    Example 1:
+      parameters:
+        path:
+          instance: "<value>"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us"}
+      responses:
+        "500":
+          application/json: {"message": "Server Error"}
+    default:
+      parameters:
+        path:
+          instance: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us"}
+      responses:
+        "500":
+          application/json: {"message": "Server Error"}
+    Multiple fields Error:
+      parameters:
+        path:
+          instance: "<value>"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us"}
+      responses:
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+    'Single Field error ':
+      parameters:
+        path:
+          instance: "<value>"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us"}
+      responses:
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+    speakeasy-default-stop-typing:
+      parameters:
+        path:
+          instance: "<value>"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us"}
+      responses:
+        "201":
+          application/json: {}
+        "404":
+          application/json: {"message": "Resource not found."}
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+        "500":
+          application/json: {"message": "Internal Server Error"}
+  sendPoll:
+    Example 1:
+      parameters:
+        path:
+          instance: "<value>"
+      requestBody:
+        application/json: {"chatId": "1111111111111@c.us", "reply_to": "string", "poll": {"name": "How are you?", "options": ["Awesome!", "Good!", "Not bad!"], "multipleAnswers": true}}
+      responses:
+        "201":
+          application/json: {"id": "true_11111111111@c.us_3EB0A4F993D38D3BBD04F3", "timestamp": 1741448369, "from": "11111111111@c.us", "fromMe": true, "body": "<value>", "hasMedia": false, "media": {}, "ack": 0, "ackName": "PENDING", "replyTo": "<value>", "_data": {"key": {"remoteJid": "11111111111@s.whatsapp.net", "fromMe": true, "id": "3EB0A4F993D38D3BBD04F3"}, "message": {"messageContextInfo": {"messageSecret": "VrTaj/wh+/lyIUdBi8TV4JCpbNK1Dd54SNZHH8vR2x0="}, "pollCreationMessageV3": {"name": "Sample Poll", "options": [{"optionName": "Option 1"}, {"optionName": "Option 2"}, {"optionName": "Option 3"}], "selectableOptionsCount": 1}}, "messageTimestamp": "1741448369", "status": "PENDING"}}
+    Example 2:
+      parameters:
+        path:
+          instance: "<value>"
+      requestBody:
+        application/json: {"chatId": "1111111111111@c.us", "reply_to": "string", "poll": {"name": "How are you?", "options": ["Awesome!", "Good!", "Not bad!"], "multipleAnswers": false}}
+      responses:
+        "201":
+          application/json: {}
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+        "500":
+          application/json: {"message": "Internal Server Error"}
+    default:
+      parameters:
+        path:
+          instance: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "1111111111111@c.us", "poll": {}}
+      responses:
+        "201":
+          application/json: {}
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+        "500":
+          application/json: {"message": "Internal Server Error"}
+  sendContactCard:
+    Example 1:
+      parameters:
+        path:
+          instance: "<value>"
+      requestBody:
+        application/json: {"chatId": "1111111111111@c.us", "contacts": [{"vcard": "BEGIN:VCARD\\nVERSION:3.0\\nFN:Jane Doe\\nORG:Company Name;\\nTEL;type=CELL;type=VOICE;waid=911111111111:+11111111111111\\nEND:VCARD", "organization": "Hypersender", "whatsappId": "911111111111"}]}
+      responses:
+        "201":
+          application/json: {}
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+        "500":
+          application/json: {"message": "Internal Server Error"}
+    Example 2:
+      parameters:
+        path:
+          instance: "<value>"
+      requestBody:
+        application/json: {"chatId": "1111111111111@c.us", "contacts": [{"vcard": "<value>", "fullName": "John Doe", "organization": "Hypersender", "phoneNumber": "111111111111", "whatsappId": "911111111111"}]}
+      responses:
+        "201":
+          application/json: {}
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+        "500":
+          application/json: {"message": "Internal Server Error"}
+    default:
+      parameters:
+        path:
+          instance: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "1111111111111@c.us", "contacts": []}
+      responses:
+        "201":
+          application/json: {}
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+        "500":
+          application/json: {"message": "Internal Server Error"}
+    speakeasy-default-send-contact-card:
+      parameters:
+        path:
+          instance: "<value>"
+      requestBody:
+        application/json: {"chatId": "1111111111111@c.us", "contacts": []}
+      responses:
+        "201":
+          application/json: {}
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+        "500":
+          application/json: {"message": "Internal Server Error"}
+  sendLocation:
+    Example 1:
+      parameters:
+        path:
+          instance: "<value>"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us", "latitude": 38.8937255, "longitude": -77.0969763, "title": "Our office", "reply_to": "string"}
+      responses:
+        "201":
+          application/json: {"key": {"remoteJid": "111111111@s.whatsapp.net,", "fromMe": true, "id": "3EB0CD3810439716606547"}, "message": {"locationMessage": {"degreesLatitude": 38.8937255, "degreesLongitude": -77.0969763}}, "messageTimestamp": "1741359489", "status": "PENDING"}
+        "500":
+          application/json: {"message": "Server Error"}
+    default:
+      parameters:
+        path:
+          instance: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us", "latitude": 8961.2, "longitude": 1872.19}
+      responses:
+        "500":
+          application/json: {"message": "Server Error"}
+    Multiple fields Error:
+      parameters:
+        path:
+          instance: "<value>"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us", "latitude": 8961.2, "longitude": 1872.19}
+      responses:
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+    'Single Field error ':
+      parameters:
+        path:
+          instance: "<value>"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us", "latitude": 8961.2, "longitude": 1872.19}
+      responses:
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+  reactToMessage:
+    Example 1:
+      parameters:
+        path:
+          instance: "<value>"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us", "messageId": "false_111111111111@c.us_3EB08F6AD2A432386EFA0E", "reaction": "\U0001F44D"}
+      responses:
+        "201":
+          application/json: {"key": {"remoteJid": "1111111111@s.whatsapp.net", "fromMe": true, "id": "3EB089F063C03E43EECE9D"}, "message": {"reactionMessage": {"key": {"remoteJid": "1111111111@s.whatsapp.net", "fromMe": false, "id": "3EB08F6AD2A432386EFA0E"}, "text": "\U0001F44D", "senderTimestampMs": "1741410470848"}}, "messageTimestamp": "1741390160", "status": "PENDING"}
+    Example 2:
+      parameters:
+        path:
+          instance: "<value>"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us", "messageId": "false_111111111111@c.us_3EB08F6AD2A432386EFA0E", "reaction": ""}
+      responses:
+        "201":
+          application/json: {}
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+        "500":
+          application/json: {"message": "Internal Server Error"}
+    default:
+      parameters:
+        path:
+          instance: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us"}
+      responses:
+        "201":
+          application/json: {}
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+        "500":
+          application/json: {"message": "Internal Server Error"}
+  starMessage:
+    Example 1:
+      parameters:
+        path:
+          instance: "<value>"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us", "messageId": "true_111111111111@c.us_3EB08F6AD2A432386EFA0E", "star": true}
+      responses:
+        "500":
+          application/json: {"message": "Server Error"}
+    Example 2:
+      parameters:
+        path:
+          instance: "<value>"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us", "messageId": "true_111111111111@c.us_3EB08F6AD2A432386EFA0E", "star": false}
+      responses:
+        "200":
+          application/json: {}
+        "404":
+          application/json: {"message": "Resource not found."}
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+        "500":
+          application/json: {"message": "Internal Server Error"}
+    default:
+      parameters:
+        path:
+          instance: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us", "messageId": "<id>", "star": true}
+      responses:
+        "500":
+          application/json: {"message": "Server Error"}
+    Multiple fields Error:
+      parameters:
+        path:
+          instance: "<value>"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us", "messageId": "<id>", "star": true}
+      responses:
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+    'Single Field error ':
+      parameters:
+        path:
+          instance: "<value>"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us", "messageId": "<id>", "star": true}
+      responses:
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+    speakeasy-default-star-message:
+      parameters:
+        path:
+          instance: "<value>"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us", "messageId": "<id>", "star": true}
+      responses:
+        "200":
+          application/json: {}
+        "404":
+          application/json: {"message": "Resource not found."}
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+        "500":
+          application/json: {"message": "Internal Server Error"}
+  deleteMessage:
+    default:
+      parameters:
+        path:
+          instance: "{{ instance_id }}"
+        query:
+          chatId: "111111111111@c.us"
+          messageId: "true_111111111111@c.us_3EB05B8C1E4"
+      responses:
+        "500":
+          application/json: {"message": "Server Error"}
+    Example 1:
+      parameters:
+        path:
+          instance: "<value>"
+        query:
+          chatId: "111111111111@c.us"
+          messageId: "<id>"
+      responses:
+        "201":
+          application/json: {"key": {"remoteJid": "111111111111@s.whatsapp.net", "fromMe": true, "id": "3EB0E474C76F33528463B1"}, "message": {"protocolMessage": {"key": {"remoteJid": "111111111111@s.whatsapp.net", "fromMe": true, "id": "3EB05B8C1E491431AEAA9A"}, "type": "REVOKE"}}, "messageTimestamp": "1749413855", "status": "PENDING"}
+        "500":
+          application/json: {"message": "Server Error"}
+    Multiple fields Error:
+      parameters:
+        path:
+          instance: "<value>"
+        query:
+          chatId: "111111111111@c.us"
+          messageId: "<id>"
+      responses:
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+    'Single Field error ':
+      parameters:
+        path:
+          instance: "<value>"
+        query:
+          chatId: "111111111111@c.us"
+          messageId: "<id>"
+      responses:
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+  checkContactExists:
+    Existing Contact:
+      parameters:
+        path:
+          instance: "<value>"
+      requestBody:
+        application/json: {"phone": "20123456789"}
+      responses:
+        "200":
+          application/json: {"numberExists": true, "chatId": "20123456789@c.us"}
+    Non-existing Contact:
+      parameters:
+        path:
+          instance: "<value>"
+      requestBody:
+        application/json: {"phone": "20123456789"}
+      responses:
+        "200":
+          application/json: {"numberExists": false, "chatId": null}
+  getAllKnownLids:
+    Default:
+      parameters:
+        path:
+          instance: "<value>"
+        query:
+          limit: 100
+          offset: 0
+      responses:
+        "200":
+          application/json: [{"lid": "1111111@lid", "pn": "3333333@c.us"}, {"lid": "2222222@lid", "pn": "4444444@c.us"}]
+  getAllContacts:
+    speakeasy-default-get-all-contacts:
+      parameters:
+        path:
+          instance: "<value>"
+        query:
+          limit: 100
+          offset: 0
+          sort_by: "name"
+          sort_order: "asc"
+      responses:
+        "200":
+          application/json: {"message": "Contacts retrieved successfully.", "data": [{"id": "100875997589545@lid", "name": "Maria", "pushname": "Maria Doe"}]}
+        "404":
+          application/json: {"message": "Resource not found."}
+        "500":
+          application/json: {"message": "Internal Server Error"}
+  getLidsCount:
+    Default:
+      parameters:
+        path:
+          instance: "<value>"
+      responses:
+        "200":
+          application/json: {"count": 123}
+  getPhoneNumberByLid:
+    Default:
+      parameters:
+        path:
+          instance: "<value>"
+        query:
+          lid: "1111111@lid"
+      responses:
+        "200":
+          application/json: {"lid": "1111111@lid", "pn": "3333333@c.us"}
+  getContact:
+    speakeasy-default-get-contact:
+      parameters:
+        path:
+          instance: "<value>"
+        query:
+          chat_id: "100875997589545@lid"
+      responses:
+        "200":
+          application/json: {"message": "Contact retrieved successfully.", "data": {"id": "100875997589545@lid", "name": "Maria", "pushname": "Maria Doe"}}
+        "404":
+          application/json: {"message": "Resource not found."}
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+        "500":
+          application/json: {"message": "Internal Server Error"}
+  getLidByPhoneNumber:
+    Default:
+      parameters:
+        path:
+          instance: "<value>"
+        query:
+          phoneNumber: "3333333@c.us"
+      responses:
+        "200":
+          application/json: {"lid": "1111111@lid", "pn": "3333333@c.us"}
+  getProfilePicture:
+    speakeasy-default-get-profile-picture:
+      parameters:
+        path:
+          instance: "<value>"
+        query:
+          chat_id: "100875997589545@lid"
+      responses:
+        "200":
+          application/json: {"message": "Profile picture retrieved successfully.", "data": {"profilePictureURL": "https://pps.whatsapp.net/v/t61.24694-24/374498176_337577482181161_7091117586184162691_n.jpg?ccb=11-4&oh=01_Q5Aa3gEERUGD4fegyplSv2MnHmt_UIA9JnpjREhSJMNVWZC-RA&oe=6970FAAA&_nc_sid=5e03e0&_nc_cat=104"}}
+        "404":
+          application/json: {"message": "Resource not found."}
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+        "500":
+          application/json: {"message": "Internal Server Error"}
+  upsertContact:
+    speakeasy-default-upsert-contact:
+      parameters:
+        path:
+          instance: "<value>"
+      requestBody:
+        application/json: {"chat_id": "1234567890@c.us", "first_name": "John", "last_name": "Doe"}
+      responses:
+        "200":
+          application/json: {"message": "Contact upserted successfully.", "data": {"success": true}}
+        "404":
+          application/json: {"message": "Resource not found."}
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+        "500":
+          application/json: {"message": "Internal Server Error"}
+  whatsapp-getQueuedRequest:
+    Successful Message:
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+          queued_request_uuid: "a0816120-7e37-4e8b-8cf3-92deb2cdc133"
+      responses:
+        "200":
+          application/json: {"uuid": "a08358c2-b4d6-4cd6-a882-70e606e4b95f", "request": {"chatId": "2015537361@c.us", "text": "Check this https://hypersender.com/"}, "response_status": 201, "response_body": {}, "response_header": {}}
+    Failed Request:
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+          queued_request_uuid: "a0816120-7e37-4e8b-8cf3-92deb2cdc133"
+      responses:
+        "200":
+          application/json: {"uuid": "a08358c2-b4d6-4cd6-a882-70e606e4b95f", "request": {"chatId": "invalid@c.us", "text": "Hello!"}, "response_status": 422, "response_body": {}, "response_header": {}}
+  whatsapp-sendTextSafe:
+    Example 1:
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us", "text": "Hi there!", "reply_to": "string", "link_preview": false, "link_preview_high_quality": false}
+      responses:
+        "500":
+          application/json: {"message": "Server Error"}
+    default:
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us", "text": "<value>"}
+      responses:
+        "500":
+          application/json: {"message": "Server Error"}
+    queued:
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us", "text": "<value>"}
+      responses:
+        "201":
+          application/json: {"queued": true, "message": "Processing your request...", "queued_request_uuid": "a0816120-7e37-4e8b-8cf3-92deb2cdc133", "queued_request_link": "https://app.hypersender.com/api/whatsapp/v2/{instance}/queued-requests/a0816120-7e37-4e8b-8cf3-92deb2cdc133"}
+    Multiple fields Error:
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us", "text": "<value>"}
+      responses:
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+    'Single Field error ':
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us", "text": "<value>"}
+      responses:
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+  whatsapp-sendText:
+    Example 1:
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us", "text": "Hi there!", "reply_to": "string", "link_preview": false, "link_preview_high_quality": false}
+      responses:
+        "500":
+          application/json: {"message": "Server Error"}
+    default:
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us", "text": "<value>"}
+      responses:
+        "500":
+          application/json: {"message": "Server Error"}
+    queued:
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us", "text": "<value>"}
+      responses:
+        "201":
+          application/json: {"queued": true, "message": "Processing your request...", "queued_request_uuid": "a0816120-7e37-4e8b-8cf3-92deb2cdc133", "queued_request_link": "https://app.hypersender.com/api/whatsapp/v2/{instance}/queued-requests/a0816120-7e37-4e8b-8cf3-92deb2cdc133"}
+    Multiple fields Error:
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us", "text": "<value>"}
+      responses:
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+    'Single Field error ':
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us", "text": "<value>"}
+      responses:
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+  whatsapp-sendLinkCustomPreview:
+    Example 1:
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "1111111111@c.us", "text": "Check this out! https://hypersender.com/", "reply_to": "string", "high_quality": true, "preview_title": "Hypersender is awesome", "preview_description": "Check this out, this is a custom link preview!", "preview_url": "https://hypersender.com/", "preview_image_url": "https://m.media-amazon.com/images/M/MV5BMjRhYjdkOGMtZDY5Zi00OWEwLTlkOWEtYz.jpg", "preview_image_file": "<value>"}
+      responses:
+        "201":
+          application/json: {"key": {"remoteJid": "1111111111@s.whatsapp.net", "fromMe": true, "id": "3EB091A456D98511123FEA"}, "message": {"extendedTextMessage": {"text": "Check this out! https://hypersender.com/", "matchedText": "https://hypersender.com/", "description": "Check this out, this is a custom link preview!", "title": "Hypersender is awesome", "previewType": "NONE", "jpegThumbnail": "/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wAARCAARACADASIAAhEBAxEB/8QAGgAAAgIDAAAAAAAAAAAAAAAAAAUDBAECBv/EACwQAAECBQIEBAcAAAAAAAAAAAECAwAEBREhBjESEzVBYYGDsTI0UXJ0srP/xAAWAQEBAQAAAAAAAAAAAAAAAAABAAL/xAAXEQEBAQEAAAAAAAAAAAAAAAAAARIC/9oADAMBAAIRAxEAPwBi2HEqaUEXTY54hEEjVF1MOrTLqa5V0pJVnfe0Y1CX6fLS77E206gLIIbTw2NsE2ORviI9OzQmWVNKfQ282LhAbCisdzDehI3VU3kVBEutlTbjgt8YORkeREQ1GvKp86gusp5YBTw8YVfxt4WitW5GWS4h+cfcUt10qBKSjt9ADsIpT7NOm5d0tVdgu9kKSc22AO/naDRzDjUHRXPuT7wr0v8ANzH459xBBGSdDqFK9b+cclpjrvpPfoYIIoa//9k=", "thumbnailDirectPath": "/o1/v/t24/f2/m232/AQMNFP0XcTmGZckNL1WI6_-o4AAzaPTlTtqRat-YC7SlRrlpV8e_0fmUj7xBK5kS_9m4B-3wgG8wJ-aitI6TQqAXSTHEUhH5u4m1QCxRmw?ccb=9-4&oh=01_Q5Aa2gFW4du4I6OfD9Y_djyP1KIukQnFQRfu8YEfQJ6ydbY8JQ&oe=68F20A99&_nc_sid=e6ed6c", "thumbnailSha256": "KccP5I7AxrmcoUeD868qd0ISDFf6TYUTtw6dJS/Sdjk=", "thumbnailEncSha256": "Vveij+Avc8amAa2u6AtPSZG/07FzjJfDtMJqmYt/g4A=", "mediaKey": "Tp1eSebY/WJr+mZmzWmbRAj4WXyEmGsvSKZySAw9Kj8=", "mediaKeyTimestamp": "1758105918", "thumbnailHeight": 649, "thumbnailWidth": 1200}}, "messageTimestamp": "1758105918,", "status": "PENDING"}
+    default:
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us", "text": "<value>", "preview_title": "<value>", "preview_description": "<value>", "preview_url": "https://curly-digit.com/", "preview_image_url": "https://basic-swanling.name/", "preview_image_file": "<value>"}
+      responses:
+        "201":
+          application/json: {}
+        "404":
+          application/json: {"message": "Resource not found."}
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+        "500":
+          application/json: {"message": "Internal Server Error"}
+  whatsapp-sendFile:
+    Example 1:
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "11111111111@c.us", "url": "https://hypersender.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo.52c242e8.png&w=640&q=75", "mimetype": "image", "caption": "string", "reply_to": "string"}
+      responses:
+        "201":
+          application/json: {"key": {"remoteJid": "1111111111@s.whatsapp.net", "fromMe": true, "id": "3EB089F063C03E43EECE9D"}, "message": {"documentMessage": {"url": "https://mmg.whatsapp.net/v/t62.7119-24/31809967_2958746007616712_3774955636954933761_n.enc?ccb=11-4&oh=01_Q5AaIPHnpFjuJwCULeqyHMcDO55BAj3YxolxEVLGXVvVkaKM&oe=67F2DD3D&_nc_sid=5e03e0&mms3=true", "mimetype": "image/jpeg", "fileSha256": "ubfaNZ4rY7T7/ghhWnBh1cVf1d00JSHENKunZuHs+yc=", "fileLength": "7200", "mediaKey": "ARUCxn91XDCjmCvFecREY4Fpg9RSOYa8O5D7TxGWGkE=", "fileName": "hypersender.jpeg", "fileEncSha256": "ER9FB+GEzrKmooWDbNpqenokG1mAtvbIU+Ceo7JeNwQ=", "directPath": "/v/t62.7119-24/31809967_2958746007616712_3774955636954933761_n.enc?ccb=11-4&oh=01_Q5AaIPHnpFjuJwCULeqyHMcDO55BAj3YxolxEVLGXVvVkaKM&oe=67F2DD3D&_nc_sid=5e03e0", "mediaKeyTimestamp": "1741390160", "caption": "dolore nulla nisi Duis"}}, "messageTimestamp": "1741390160", "status": "PENDING"}
+    Example 2:
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "11111111111@c.us", "file": "hypersender.jpeg", "mimetype": "image", "caption": "string", "reply_to": "string"}
+      responses:
+        "201":
+          application/json: {}
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+        "500":
+          application/json: {"message": "Internal Server Error"}
+    default:
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us"}
+      responses:
+        "201":
+          application/json: {}
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+        "500":
+          application/json: {"message": "Internal Server Error"}
+  whatsapp-sendImage:
+    Example 1:
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "11111111111@c.us", "url": "https://hypersender.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo.52c242e8.png&w=640&q=75", "mimetype": "image", "caption": "string", "reply_to": "string"}
+      responses:
+        "201":
+          application/json: {"key": {"remoteJid": "1111111111@s.whatsapp.net", "fromMe": true, "id": "3EB089F063C03E43EECE9D"}, "message": {"imageMessage": {"url": "https://mmg.whatsapp.net/v/t62.7119-24/31809967_2958746007616712_3774955636954933761_n.enc?ccb=11-4&oh=01_Q5AaIPHnpFjuJwCULeqyHMcDO55BAj3YxolxEVLGXVvVkaKM&oe=67F2DD3D&_nc_sid=5e03e0&mms3=true", "mimetype": "image/jpeg", "fileSha256": "ubfaNZ4rY7T7/ghhWnBh1cVf1d00JSHENKunZuHs+yc=", "fileLength": "7200", "height": 200, "width": 200, "mediaKey": "ARUCxn91XDCjmCvFecREY4Fpg9RSOYa8O5D7TxGWGkE=", "fileName": "hypersender.jpeg", "fileEncSha256": "ER9FB+GEzrKmooWDbNpqenokG1mAtvbIU+Ceo7JeNwQ=", "directPath": "/v/t62.7119-24/31809967_2958746007616712_3774955636954933761_n.enc?ccb=11-4&oh=01_Q5AaIPHnpFjuJwCULeqyHMcDO55BAj3YxolxEVLGXVvVkaKM&oe=67F2DD3D&_nc_sid=5e03e0", "mediaKeyTimestamp": "1741390160", "caption": "dolore nulla nisi Duis", "jpegThumbnail": "/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wAARCAAgACADASIAAhEBAxEB/8QAGAABAQADAAAAAAAAAAAAAAAABQIDBAb/xAAqEAACAQQBAgUDBQAAAAAAAAABAgMABAURIRMxEiJRYXEUkbEVMkGhwf/EABcBAQEBAQAAAAAAAAAAAAAAAAACAQT/xAAdEQACAQUBAQAAAAAAAAAAAAAAAQIREiEiMwNB/9oADAMBAAIRAxEAPwDrctlBZDpRaaYjfPZRRSWGSyA6srEKeR1G19hVY2MZDMSTS+ZVJfR+dCmbm++nvoIG8AjkBLMx1rVDi67TePgHJZZHGjqox8I7mNtgfIpbE5QXo6UoCzKN8dmHrWW2vfqb6eBfA0caghlO97oS9T9NzAaLhQQ4Hse4/NDOVJQeDZw0b2+YuISvAUgn23xSF7Ym6yFvI6K8KKwcN/VXfWsrhpbNxFORonX7h6e1DrkslY+S4jLa/mRf9FCnb5KySwK2dibXIXEiIqQuoCBT96Gv3GRzKpF5l2EBHoO5/NVJf5HIjpRRkK3BEYPPyaUxOLFkOrKQ0zDXHZR6UJ60hBan/9k="}}, "messageTimestamp": "1741390160", "status": "PENDING"}
+    Example 2:
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "11111111111@c.us", "file": "hypersender.jpeg", "mimetype": "image", "caption": "string", "reply_to": "string"}
+      responses:
+        "201":
+          application/json: {}
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+        "500":
+          application/json: {"message": "Internal Server Error"}
+    default:
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us"}
+      responses:
+        "201":
+          application/json: {}
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+        "500":
+          application/json: {"message": "Internal Server Error"}
+  whatsapp-sendVideo:
+    Example 1:
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "11111111111@c.us", "url": "https://hypersender.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo.52c242e8.png&w=640&q=75", "mimetype": "image", "caption": "string", "reply_to": "string"}
+      responses:
+        "201":
+          application/json: {"key": {"remoteJid": "1111111111@s.whatsapp.net", "fromMe": true, "id": "3EB089F063C03E43EECE9D"}, "message": {"imageMessage": {"url": "https://mmg.whatsapp.net/v/t62.7119-24/31809967_2958746007616712_3774955636954933761_n.enc?ccb=11-4&oh=01_Q5AaIPHnpFjuJwCULeqyHMcDO55BAj3YxolxEVLGXVvVkaKM&oe=67F2DD3D&_nc_sid=5e03e0&mms3=true", "mimetype": "image/jpeg", "fileSha256": "ubfaNZ4rY7T7/ghhWnBh1cVf1d00JSHENKunZuHs+yc=", "fileLength": "7200", "height": 200, "width": 200, "mediaKey": "ARUCxn91XDCjmCvFecREY4Fpg9RSOYa8O5D7TxGWGkE=", "fileName": "hypersender.jpeg", "fileEncSha256": "ER9FB+GEzrKmooWDbNpqenokG1mAtvbIU+Ceo7JeNwQ=", "directPath": "/v/t62.7119-24/31809967_2958746007616712_3774955636954933761_n.enc?ccb=11-4&oh=01_Q5AaIPHnpFjuJwCULeqyHMcDO55BAj3YxolxEVLGXVvVkaKM&oe=67F2DD3D&_nc_sid=5e03e0", "mediaKeyTimestamp": "1741390160", "caption": "dolore nulla nisi Duis", "jpegThumbnail": "/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wAARCAAgACADASIAAhEBAxEB/8QAGAABAQADAAAAAAAAAAAAAAAABQIDBAb/xAAqEAACAQQBAgUDBQAAAAAAAAABAgMABAURIRMxEiJRYXEUkbEVMkGhwf/EABcBAQEBAQAAAAAAAAAAAAAAAAACAQT/xAAdEQACAQUBAQAAAAAAAAAAAAAAAQIREiEiMwNB/9oADAMBAAIRAxEAPwDrctlBZDpRaaYjfPZRRSWGSyA6srEKeR1G19hVY2MZDMSTS+ZVJfR+dCmbm++nvoIG8AjkBLMx1rVDi67TePgHJZZHGjqox8I7mNtgfIpbE5QXo6UoCzKN8dmHrWW2vfqb6eBfA0caghlO97oS9T9NzAaLhQQ4Hse4/NDOVJQeDZw0b2+YuISvAUgn23xSF7Ym6yFvI6K8KKwcN/VXfWsrhpbNxFORonX7h6e1DrkslY+S4jLa/mRf9FCnb5KySwK2dibXIXEiIqQuoCBT96Gv3GRzKpF5l2EBHoO5/NVJf5HIjpRRkK3BEYPPyaUxOLFkOrKQ0zDXHZR6UJ60hBan/9k="}}, "messageTimestamp": "1741390160", "status": "PENDING"}
+    Example 2:
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "11111111111@c.us", "file": "hypersender.jpeg", "mimetype": "image", "caption": "string", "reply_to": "string"}
+      responses:
+        "201":
+          application/json: {}
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+        "500":
+          application/json: {"message": "Internal Server Error"}
+    default:
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us"}
+      responses:
+        "201":
+          application/json: {}
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+        "500":
+          application/json: {"message": "Internal Server Error"}
+  whatsapp-sendVoice:
+    Example 1:
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "1111111111111@c.us", "url": "http://commondatastorage.googleapis.com/codeskulptor-assets/week7-brrring.m4a", "caption": "hypersender", "reply_to": "string"}
+      responses:
+        "201":
+          application/json: {"key": {"remoteJid": "1111111111@s.whatsapp.net", "fromMe": true, "id": "3EB089F063C03E43EECE9D"}, "message": {"audioMessage": {"url": "https://mmg.whatsapp.net/v/t62.7119-24/31809967_2958746007616712_3774955636954933761_n.enc?ccb=11-4&oh=01_Q5AaIPHnpFjuJwCULeqyHMcDO55BAj3YxolxEVLGXVvVkaKM&oe=67F2DD3D&_nc_sid=5e03e0&mms3=true", "mimetype": "audio/ogg", "fileSha256": "ubfaNZ4rY7T7/ghhWnBh1cVf1d00JSHENKunZuHs+yc=", "fileLength": "18886", "seconds": 10, "ptt": true, "mediaKey": "ARUCxn91XDCjmCvFecREY4Fpg9RSOYa8O5D7TxGWGkE=", "fileEncSha256": "ER9FB+GEzrKmooWDbNpqenokG1mAtvbIU+Ceo7JeNwQ=", "directPath": "/v/t62.7119-24/31809967_2958746007616712_3774955636954933761_n.enc?ccb=11-4&oh=01_Q5AaIPHnpFjuJwCULeqyHMcDO55BAj3YxolxEVLGXVvVkaKM&oe=67F2DD3D&_nc_sid=5e03e0", "mediaKeyTimestamp": "1741390160", "waveform": "AAIIAQ0nKCcdX2NTSkUqHQ4KAgICBAUGAwEAAAAAAAAAAAQFARAmMlFQVT4PHkggAgEHGVldZFpGMBYKAwQEBg=="}}, "messageTimestamp": "1741390160", "status": "PENDING"}
+    Example 2:
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "1111111111111@c.us", "file": "audio.opus", "caption": "hypersender", "reply_to": "string"}
+      responses:
+        "201":
+          application/json: {}
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+        "500":
+          application/json: {"message": "Internal Server Error"}
+    default:
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us"}
+      responses:
+        "201":
+          application/json: {}
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+        "500":
+          application/json: {"message": "Internal Server Error"}
+  whatsapp-forwardMessage:
+    Example 1:
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us", "messageId": "false_111111111111@c.us_3EB08F6AD2A432386EFA0E"}
+      responses:
+        "201":
+          application/json: {"id": "true_111111111111@c.us_3EB0579E140521570D238F,", "timestamp": 1741395597, "from": "111111111111@c.us,", "fromMe": false, "body": "Hi there!,", "hasMedia": true, "media": {}, "ack": 0, "ackName": "PENDING,", "replyTo": "null,", "_data": {"key": {"remoteJid": "111111111111@s.whatsapp.net,", "fromMe": false, "id": "3EB0579E140521570D238F"}, "message": {"extendedTextMessage": {"text": "Hi there!,", "contextInfo": {"forwardingScore": 1, "isForwarded": true}}}, "messageTimestamp": "1741395597,", "status": "PENDING"}}
+        "500":
+          application/json: {"message": "Server Error"}
+    default:
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us", "messageId": "<id>"}
+      responses:
+        "500":
+          application/json: {"message": "Server Error"}
+    Multiple fields Error:
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us", "messageId": "<id>"}
+      responses:
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+    'Single Field error ':
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us", "messageId": "<id>"}
+      responses:
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+  whatsapp-sendSeen:
+    Example 1:
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us", "messageId": "false_111111111111@c.us_3EB08F6AD2A432386EFA0E", "participant": "111111111111@c.us"}
+      responses:
+        "500":
+          application/json: {"message": "Server Error"}
+    default:
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us", "messageId": "<id>"}
+      responses:
+        "500":
+          application/json: {"message": "Server Error"}
+    Multiple fields Error:
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us", "messageId": "<id>"}
+      responses:
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+    'Single Field error ':
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us", "messageId": "<id>"}
+      responses:
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+    speakeasy-default-whatsapp-send-seen:
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us", "messageId": "<id>"}
+      responses:
+        "201":
+          application/json: {}
+        "404":
+          application/json: {"message": "Resource not found."}
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+        "500":
+          application/json: {"message": "Internal Server Error"}
+  whatsapp-readChat:
+    Example 1:
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+        query:
+          messages: "30"
+          days: "7"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us"}
+      responses:
+        "201":
+          application/json: {"ids": ["false_11111111111@c.us_AAAAAAAAAAAAAAAAAAAA", "true_99999999999@c.us_AAAAAAAAAAAAAAAAAAAA"]}
+        "500":
+          application/json: {"message": "Server Error"}
+    default:
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+        query:
+          messages: "30"
+          days: "7"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us"}
+      responses:
+        "500":
+          application/json: {"message": "Server Error"}
+    Multiple fields Error:
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+        query:
+          messages: "30"
+          days: "7"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us"}
+      responses:
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+    'Single Field error ':
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+        query:
+          messages: "30"
+          days: "7"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us"}
+      responses:
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+  whatsapp-startTyping:
+    Example 1:
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us"}
+      responses:
+        "500":
+          application/json: {"message": "Server Error"}
+    default:
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us"}
+      responses:
+        "500":
+          application/json: {"message": "Server Error"}
+    Multiple fields Error:
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us"}
+      responses:
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+    'Single Field error ':
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us"}
+      responses:
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+    speakeasy-default-whatsapp-start-typing:
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us"}
+      responses:
+        "201":
+          application/json: {}
+        "404":
+          application/json: {"message": "Resource not found."}
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+        "500":
+          application/json: {"message": "Internal Server Error"}
+  whatsapp-stopTyping:
+    Example 1:
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us"}
+      responses:
+        "500":
+          application/json: {"message": "Server Error"}
+    default:
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us"}
+      responses:
+        "500":
+          application/json: {"message": "Server Error"}
+    Multiple fields Error:
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us"}
+      responses:
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+    'Single Field error ':
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us"}
+      responses:
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+    speakeasy-default-whatsapp-stop-typing:
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us"}
+      responses:
+        "201":
+          application/json: {}
+        "404":
+          application/json: {"message": "Resource not found."}
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+        "500":
+          application/json: {"message": "Internal Server Error"}
+  whatsapp-sendPoll:
+    Example 1:
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "1111111111111@c.us", "reply_to": "string", "poll": {"name": "How are you?", "options": ["Awesome!", "Good!", "Not bad!"], "multipleAnswers": true}}
+      responses:
+        "201":
+          application/json: {"id": "true_11111111111@c.us_3EB0A4F993D38D3BBD04F3", "timestamp": 1741448369, "from": "11111111111@c.us", "fromMe": true, "body": "<value>", "hasMedia": false, "media": {}, "ack": 0, "ackName": "PENDING", "replyTo": "<value>", "_data": {"key": {"remoteJid": "11111111111@s.whatsapp.net", "fromMe": true, "id": "3EB0A4F993D38D3BBD04F3"}, "message": {"messageContextInfo": {"messageSecret": "VrTaj/wh+/lyIUdBi8TV4JCpbNK1Dd54SNZHH8vR2x0="}, "pollCreationMessageV3": {"name": "Sample Poll", "options": [{"optionName": "Option 1"}, {"optionName": "Option 2"}, {"optionName": "Option 3"}], "selectableOptionsCount": 1}}, "messageTimestamp": "1741448369", "status": "PENDING"}}
+    Example 2:
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "1111111111111@c.us", "reply_to": "string", "poll": {"name": "How are you?", "options": ["Awesome!", "Good!", "Not bad!"], "multipleAnswers": false}}
+      responses:
+        "201":
+          application/json: {}
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+        "500":
+          application/json: {"message": "Internal Server Error"}
+    default:
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "1111111111111@c.us", "poll": {}}
+      responses:
+        "201":
+          application/json: {}
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+        "500":
+          application/json: {"message": "Internal Server Error"}
+  whatsapp-sendContactCard:
+    Example 1:
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "1111111111111@c.us", "contacts": [{"vcard": "BEGIN:VCARD\\nVERSION:3.0\\nFN:Jane Doe\\nORG:Company Name;\\nTEL;type=CELL;type=VOICE;waid=911111111111:+11111111111111\\nEND:VCARD", "organization": "Hypersender", "whatsappId": "911111111111"}]}
+      responses:
+        "201":
+          application/json: {}
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+        "500":
+          application/json: {"message": "Internal Server Error"}
+    Example 2:
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "1111111111111@c.us", "contacts": [{"vcard": "<value>", "fullName": "John Doe", "organization": "Hypersender", "phoneNumber": "111111111111", "whatsappId": "911111111111"}]}
+      responses:
+        "201":
+          application/json: {}
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+        "500":
+          application/json: {"message": "Internal Server Error"}
+    default:
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "1111111111111@c.us", "contacts": []}
+      responses:
+        "201":
+          application/json: {}
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+        "500":
+          application/json: {"message": "Internal Server Error"}
+    speakeasy-default-whatsapp-send-contact-card:
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "1111111111111@c.us", "contacts": []}
+      responses:
+        "201":
+          application/json: {}
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+        "500":
+          application/json: {"message": "Internal Server Error"}
+  whatsapp-sendLocation:
+    Example 1:
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us", "latitude": 38.8937255, "longitude": -77.0969763, "title": "Our office", "reply_to": "string"}
+      responses:
+        "201":
+          application/json: {"key": {"remoteJid": "111111111@s.whatsapp.net,", "fromMe": true, "id": "3EB0CD3810439716606547"}, "message": {"locationMessage": {"degreesLatitude": 38.8937255, "degreesLongitude": -77.0969763}}, "messageTimestamp": "1741359489", "status": "PENDING"}
+        "500":
+          application/json: {"message": "Server Error"}
+    default:
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us", "latitude": 1236.2, "longitude": 4385.3}
+      responses:
+        "500":
+          application/json: {"message": "Server Error"}
+    Multiple fields Error:
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us", "latitude": 1236.2, "longitude": 4385.3}
+      responses:
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+    'Single Field error ':
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us", "latitude": 1236.2, "longitude": 4385.3}
+      responses:
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+  whatsapp-reactToMessage:
+    Example 1:
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us", "messageId": "false_111111111111@c.us_3EB08F6AD2A432386EFA0E", "reaction": "\U0001F44D"}
+      responses:
+        "201":
+          application/json: {"key": {"remoteJid": "1111111111@s.whatsapp.net", "fromMe": true, "id": "3EB089F063C03E43EECE9D"}, "message": {"reactionMessage": {"key": {"remoteJid": "1111111111@s.whatsapp.net", "fromMe": false, "id": "3EB08F6AD2A432386EFA0E"}, "text": "\U0001F44D", "senderTimestampMs": "1741410470848"}}, "messageTimestamp": "1741390160", "status": "PENDING"}
+    Example 2:
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us", "messageId": "false_111111111111@c.us_3EB08F6AD2A432386EFA0E", "reaction": ""}
+      responses:
+        "201":
+          application/json: {}
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+        "500":
+          application/json: {"message": "Internal Server Error"}
+    default:
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us"}
+      responses:
+        "201":
+          application/json: {}
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+        "500":
+          application/json: {"message": "Internal Server Error"}
+  whatsapp-starMessage:
+    Example 1:
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us", "messageId": "true_111111111111@c.us_3EB08F6AD2A432386EFA0E", "star": true}
+      responses:
+        "500":
+          application/json: {"message": "Server Error"}
+    Example 2:
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us", "messageId": "true_111111111111@c.us_3EB08F6AD2A432386EFA0E", "star": false}
+      responses:
+        "200":
+          application/json: {}
+        "404":
+          application/json: {"message": "Resource not found."}
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+        "500":
+          application/json: {"message": "Internal Server Error"}
+    default:
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us", "messageId": "<id>", "star": true}
+      responses:
+        "500":
+          application/json: {"message": "Server Error"}
+    Multiple fields Error:
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us", "messageId": "<id>", "star": true}
+      responses:
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+    'Single Field error ':
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us", "messageId": "<id>", "star": true}
+      responses:
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+    speakeasy-default-whatsapp-star-message:
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us", "messageId": "<id>", "star": true}
+      responses:
+        "200":
+          application/json: {}
+        "404":
+          application/json: {"message": "Resource not found."}
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+        "500":
+          application/json: {"message": "Internal Server Error"}
+  whatsapp-deleteMessage:
+    default:
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+        query:
+          chatId: "111111111111@c.us"
+          messageId: "true_111111111111@c.us_3EB05B8C1E4"
+      responses:
+        "500":
+          application/json: {"message": "Server Error"}
+    Example 1:
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+        query:
+          chatId: "111111111111@c.us"
+          messageId: "<id>"
+      responses:
+        "201":
+          application/json: {"key": {"remoteJid": "111111111111@s.whatsapp.net", "fromMe": true, "id": "3EB0E474C76F33528463B1"}, "message": {"protocolMessage": {"key": {"remoteJid": "111111111111@s.whatsapp.net", "fromMe": true, "id": "3EB05B8C1E491431AEAA9A"}, "type": "REVOKE"}}, "messageTimestamp": "1749413855", "status": "PENDING"}
+        "500":
+          application/json: {"message": "Server Error"}
+    Multiple fields Error:
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+        query:
+          chatId: "111111111111@c.us"
+          messageId: "<id>"
+      responses:
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+    'Single Field error ':
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+        query:
+          chatId: "111111111111@c.us"
+          messageId: "<id>"
+      responses:
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+  whatsapp-checkContactExists:
+    Existing Contact:
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+      requestBody:
+        application/json: {"phone": "20123456789"}
+      responses:
+        "200":
+          application/json: {"numberExists": true, "chatId": "20123456789@c.us"}
+    Non-existing Contact:
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+      requestBody:
+        application/json: {"phone": "20123456789"}
+      responses:
+        "200":
+          application/json: {"numberExists": false, "chatId": null}
+  whatsapp-getAllKnownLids:
+    Default:
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+        query:
+          limit: 100
+          offset: 0
+      responses:
+        "200":
+          application/json: [{"lid": "1111111@lid", "pn": "3333333@c.us"}, {"lid": "2222222@lid", "pn": "4444444@c.us"}]
+  whatsapp-getAllContacts:
+    speakeasy-default-whatsapp-get-all-contacts:
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+        query:
+          limit: 100
+          offset: 0
+          sort_by: "name"
+          sort_order: "asc"
+      responses:
+        "200":
+          application/json: {"message": "Contacts retrieved successfully.", "data": [{"id": "100875997589545@lid", "name": "Maria", "pushname": "Maria Doe"}]}
+        "404":
+          application/json: {"message": "Resource not found."}
+        "500":
+          application/json: {"message": "Internal Server Error"}
+  whatsapp-getLidsCount:
+    Default:
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+      responses:
+        "200":
+          application/json: {"count": 123}
+  whatsapp-getPhoneNumberByLid:
+    Default:
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+        query:
+          lid: "1111111@lid"
+      responses:
+        "200":
+          application/json: {"lid": "1111111@lid", "pn": "3333333@c.us"}
+  whatsapp-getContact:
+    speakeasy-default-whatsapp-get-contact:
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+        query:
+          chat_id: "100875997589545@lid"
+      responses:
+        "200":
+          application/json: {"message": "Contact retrieved successfully.", "data": {"id": "100875997589545@lid", "name": "Maria", "pushname": "Maria Doe"}}
+        "404":
+          application/json: {"message": "Resource not found."}
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+        "500":
+          application/json: {"message": "Internal Server Error"}
+  whatsapp-getLidByPhoneNumber:
+    Default:
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+        query:
+          phoneNumber: "3333333@c.us"
+      responses:
+        "200":
+          application/json: {"lid": "1111111@lid", "pn": "3333333@c.us"}
+  whatsapp-getProfilePicture:
+    speakeasy-default-whatsapp-get-profile-picture:
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+        query:
+          chat_id: "100875997589545@lid"
+      responses:
+        "200":
+          application/json: {"message": "Profile picture retrieved successfully.", "data": {"profilePictureURL": "https://pps.whatsapp.net/v/t61.24694-24/374498176_337577482181161_7091117586184162691_n.jpg?ccb=11-4&oh=01_Q5Aa3gEERUGD4fegyplSv2MnHmt_UIA9JnpjREhSJMNVWZC-RA&oe=6970FAAA&_nc_sid=5e03e0&_nc_cat=104"}}
+        "404":
+          application/json: {"message": "Resource not found."}
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+        "500":
+          application/json: {"message": "Internal Server Error"}
+  whatsapp-upsertContact:
+    speakeasy-default-whatsapp-upsert-contact:
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chat_id": "1234567890@c.us", "first_name": "John", "last_name": "Doe"}
+      responses:
+        "200":
+          application/json: {"message": "Contact upserted successfully.", "data": {"success": true}}
+        "404":
+          application/json: {"message": "Resource not found."}
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+        "500":
+          application/json: {"message": "Internal Server Error"}
+  sms-send-message:
+    Send now:
+      parameters:
+        path:
+          smsInstance: "{{ instance_id }}"
+      requestBody:
+        application/json: {"to": "+12025550147", "content": "Acme code: 482913", "request_id": "order-1042-otp", "message_expiration_seconds": 600}
+      responses:
+        "200":
+          application/json: {"data": {"tags": ["otp"]}}
+        "400":
+          application/json: {"message": "<value>"}
+        "500":
+          application/json: {"message": "<value>"}
+    Schedule:
+      parameters:
+        path:
+          smsInstance: "{{ instance_id }}"
+      requestBody:
+        application/json: {"to": "+12025550147", "content": "Your appointment is tomorrow at 10:00.", "request_id": "appointment-reminder-2231", "schedule_send_at": "2026-11-20 09:30:00"}
+      responses:
+        "200":
+          application/json: {"data": {"tags": ["otp"]}}
+        "400":
+          application/json: {"message": "<value>"}
+        "500":
+          application/json: {"message": "<value>"}
+    default:
+      parameters:
+        path:
+          smsInstance: "{{ instance_id }}"
+      requestBody:
+        application/json: {"to": "+12025550147", "content": "Acme code: 482913", "request_id": "order-1042-otp", "schedule_send_at": "2026-11-20 09:30:00", "max_send_attempts": 3, "message_expiration_seconds": 600}
+      responses:
+        "200":
+          application/json: {"data": {"tags": ["otp"]}}
+        "400":
+          application/json: {"message": "<value>"}
+        "500":
+          application/json: {"message": "<value>"}
+    Retry of an existing message:
+      parameters:
+        path:
+          smsInstance: "{{ instance_id }}"
+      requestBody:
+        application/json: {"to": "+12025550147", "content": "Acme code: 482913", "request_id": "order-1042-otp", "schedule_send_at": "2026-11-20 09:30:00", "max_send_attempts": 3, "message_expiration_seconds": 600}
+      responses:
+        "200":
+          application/json: {"message": "A message with this request_id already exists.", "data": {"id": "9f8b7c6d-3333-4a2b-8c3d-4e5f6a7b8c9d", "request_id": "order-1042-otp", "message_thread_id": "9f8b7c6d-4444-4a2b-8c3d-4e5f6a7b8c9d", "phone_id": "9f8b7c6d-1111-4a2b-8c3d-4e5f6a7b8c9d", "from_phone_number": "+12025550101", "to_phone_number": "+12025550147", "content": "Acme code: 482913", "tags": [], "send_duration": null, "schedule_on_phone_at": "2026-11-19 10:00:01", "sent_at": "2026-11-19 10:00:04", "last_attempted_at": "2026-11-19 10:00:01", "delivered_at": null, "received_at": null, "expired_at": null, "schedule_send_at": null, "failed_at": null, "send_attempt_count": 1, "max_send_attempts": 3, "failure_reason": null, "ussd_message": null, "message_expiration_seconds": 600, "timezone": "UTC", "sim": "SIM1", "status": "sent", "type": "sent_to_mobile", "created_at": "2026-11-19 10:00:00", "updated_at": "2026-11-19 10:00:04"}}
+    SMS service unreachable:
+      parameters:
+        path:
+          smsInstance: "{{ instance_id }}"
+      requestBody:
+        application/json: {"to": "+12025550147", "content": "Acme code: 482913", "request_id": "order-1042-otp", "schedule_send_at": "2026-11-20 09:30:00", "max_send_attempts": 3, "message_expiration_seconds": 600}
+      responses:
+        "400":
+          application/json: {"message": "Something went wrong, try again later"}
+        "500":
+          application/json: {"message": "Something went wrong, try again later"}
+  sms-heartbeats:
+    default:
+      parameters:
+        path:
+          smsInstance: "{{ instance_id }}"
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {"message": "<value>"}
+        "500":
+          application/json: {"message": "<value>"}
+    Heartbeats:
+      parameters:
+        path:
+          smsInstance: "{{ instance_id }}"
+      responses:
+        "200":
+          application/json: {"data": [{"id": "9f8b7c6d-5555-4a2b-8c3d-4e5f6a7b8c9d", "phone_id": "9f8b7c6d-1111-4a2b-8c3d-4e5f6a7b8c9d", "battery_level": 87, "is_charging": true, "local_timestamp": "2026-11-19 09:55:00", "app_version": "1.50.0", "created_at": "2026-11-19 09:55:01", "updated_at": "2026-11-19 09:55:01"}], "links": {"first": "https://app.hypersender.com/api/sms/v1/9f8b7c6d-1111-4a2b-8c3d-4e5f6a7b8c9d/heartbeats?page=1", "last": "https://app.hypersender.com/api/sms/v1/9f8b7c6d-1111-4a2b-8c3d-4e5f6a7b8c9d/heartbeats?page=1", "prev": null, "next": null}, "meta": {"current_page": 1, "from": 1, "last_page": 1, "links": [{"url": null, "label": "&laquo; Previous", "page": null, "active": false}, {"url": "https://app.hypersender.com/api/sms/v1/9f8b7c6d-1111-4a2b-8c3d-4e5f6a7b8c9d/heartbeats?page=1", "label": "1", "page": 1, "active": true}, {"url": null, "label": "Next &raquo;", "page": null, "active": false}], "path": "https://app.hypersender.com/api/sms/v1/9f8b7c6d-1111-4a2b-8c3d-4e5f6a7b8c9d/heartbeats", "per_page": 50, "to": 1, "total": 1}}
+    Unknown filter:
+      parameters:
+        path:
+          smsInstance: "{{ instance_id }}"
+      responses:
+        "400":
+          application/json: {"message": "Requested filter(s) `battery` are not allowed. Allowed filter(s) are `app_version, battery_level, is_charging, local_timestamp, created_at, updated_at`.", "errors": null, "statusCode": 400}
+        "500":
+          application/json: {"message": "Requested filter(s) `battery` are not allowed. Allowed filter(s) are `app_version, battery_level, is_charging, local_timestamp, created_at, updated_at`.", "errors": null, "statusCode": 400}
+    SMS service unreachable:
+      parameters:
+        path:
+          smsInstance: "{{ instance_id }}"
+      responses:
+        "400":
+          application/json: {"message": "Something went wrong, try again later"}
+        "500":
+          application/json: {"message": "Something went wrong, try again later"}
+  sms-index-messages:
+    default:
+      parameters:
+        path:
+          smsInstance: "{{ instance_id }}"
+      responses:
+        "200":
+          application/json: {"data": [{"tags": ["otp"]}]}
+        "400":
+          application/json: {"message": "<value>"}
+        "500":
+          application/json: {"message": "<value>"}
+    Messages:
+      parameters:
+        path:
+          smsInstance: "{{ instance_id }}"
+      responses:
+        "200":
+          application/json: {"data": [{"id": "9f8b7c6d-6666-4a2b-8c3d-4e5f6a7b8c9d", "request_id": "5b0e6c1a-2f4d-4e8b-9a7c-3d2e1f0a9b8c", "message_thread_id": "9f8b7c6d-8888-4a2b-8c3d-4e5f6a7b8c9d", "phone_id": "9f8b7c6d-1111-4a2b-8c3d-4e5f6a7b8c9d", "from_phone_number": "+12025550188", "to_phone_number": "+12025550101", "content": "Your bank code is 731205. Do not share it.", "tags": ["otp", "bank"], "send_duration": null, "schedule_on_phone_at": null, "sent_at": null, "last_attempted_at": null, "delivered_at": null, "received_at": "2026-11-19 10:05:12", "expired_at": null, "schedule_send_at": null, "failed_at": null, "send_attempt_count": null, "max_send_attempts": 3, "failure_reason": null, "ussd_message": null, "message_expiration_seconds": 0, "timezone": "UTC", "sim": "SIM1", "status": "received", "type": "received_from_mobile", "created_at": "2026-11-19 10:05:13", "updated_at": "2026-11-19 10:05:13"}, {"id": "9f8b7c6d-3333-4a2b-8c3d-4e5f6a7b8c9d", "request_id": "order-1042-otp", "message_thread_id": "9f8b7c6d-4444-4a2b-8c3d-4e5f6a7b8c9d", "phone_id": "9f8b7c6d-1111-4a2b-8c3d-4e5f6a7b8c9d", "from_phone_number": "+12025550101", "to_phone_number": "+12025550147", "content": "Acme code: 482913", "tags": [], "send_duration": null, "schedule_on_phone_at": "2026-11-19 10:00:01", "sent_at": "2026-11-19 10:00:04", "last_attempted_at": "2026-11-19 10:00:01", "delivered_at": "2026-11-19 10:00:09", "received_at": null, "expired_at": null, "schedule_send_at": null, "failed_at": null, "send_attempt_count": 1, "max_send_attempts": 3, "failure_reason": null, "ussd_message": null, "message_expiration_seconds": 600, "timezone": "UTC", "sim": "SIM1", "status": "delivered", "type": "sent_to_mobile", "created_at": "2026-11-19 10:00:00", "updated_at": "2026-11-19 10:00:09"}], "links": {"first": "https://app.hypersender.com/api/sms/v1/9f8b7c6d-1111-4a2b-8c3d-4e5f6a7b8c9d/messages?page=1", "last": "https://app.hypersender.com/api/sms/v1/9f8b7c6d-1111-4a2b-8c3d-4e5f6a7b8c9d/messages?page=1", "prev": null, "next": null}, "meta": {"current_page": 1, "from": 1, "last_page": 1, "links": [{"url": null, "label": "&laquo; Previous", "page": null, "active": false}, {"url": "https://app.hypersender.com/api/sms/v1/9f8b7c6d-1111-4a2b-8c3d-4e5f6a7b8c9d/messages?page=1", "label": "1", "page": 1, "active": true}, {"url": null, "label": "Next &raquo;", "page": null, "active": false}], "path": "https://app.hypersender.com/api/sms/v1/9f8b7c6d-1111-4a2b-8c3d-4e5f6a7b8c9d/messages", "per_page": 50, "to": 2, "total": 2}}
+    Unknown filter:
+      parameters:
+        path:
+          smsInstance: "{{ instance_id }}"
+      responses:
+        "400":
+          application/json: {"message": "Requested filter(s) `phone` are not allowed. Allowed filter(s) are `request_id, message_thread_id, from_phone_number, to_phone_number, content, status, type, delivered_at, received_at, expired_at, failed_at, schedule_send_at, created_at, updated_at`.", "errors": null, "statusCode": 400}
+        "500":
+          application/json: {"message": "Requested filter(s) `phone` are not allowed. Allowed filter(s) are `request_id, message_thread_id, from_phone_number, to_phone_number, content, status, type, delivered_at, received_at, expired_at, failed_at, schedule_send_at, created_at, updated_at`.", "errors": null, "statusCode": 400}
+    SMS service unreachable:
+      parameters:
+        path:
+          smsInstance: "{{ instance_id }}"
+      responses:
+        "400":
+          application/json: {"message": "Something went wrong, try again later"}
+        "500":
+          application/json: {"message": "Something went wrong, try again later"}
+  sms-delete-message:
+    default:
+      parameters:
+        path:
+          smsInstance: "{{ instance_id }}"
+        query:
+          messageId: "9f8b7c6d-3333-4a2b-8c3d-4e5f6a7b8c9d"
+      responses:
+        "401":
+          application/json: {"message": "<value>"}
+        "500":
+          application/json: {"message": "<value>"}
+    speakeasy-default-sms-delete-message:
+      parameters:
+        path:
+          smsInstance: "{{ instance_id }}"
+        query:
+          messageId: "9f8b7c6d-3333-4a2b-8c3d-4e5f6a7b8c9d"
+      responses:
+        "401":
+          application/json: {"message": "<value>"}
+        "500":
+          application/json: {"message": "<value>"}
+    Invalid token:
+      parameters:
+        path:
+          smsInstance: "{{ instance_id }}"
+        query:
+          messageId: "9f8b7c6d-3333-4a2b-8c3d-4e5f6a7b8c9d"
+      responses:
+        "401":
+          application/json: {"message": "The Bearer token is not valid please check the token and try again."}
+        "500":
+          application/json: {"message": "The Bearer token is not valid please check the token and try again."}
+    Expired token:
+      parameters:
+        path:
+          smsInstance: "{{ instance_id }}"
+        query:
+          messageId: "9f8b7c6d-3333-4a2b-8c3d-4e5f6a7b8c9d"
+      responses:
+        "401":
+          application/json: {"message": "Expired token, please refresh the token."}
+        "500":
+          application/json: {"message": "Expired token, please refresh the token."}
+  sms-message-threads:
+    default:
+      parameters:
+        path:
+          smsInstance: "{{ instance_id }}"
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {"message": "<value>"}
+        "500":
+          application/json: {"message": "<value>"}
+    Threads:
+      parameters:
+        path:
+          smsInstance: "{{ instance_id }}"
+      responses:
+        "200":
+          application/json: {"data": [{"id": "9f8b7c6d-4444-4a2b-8c3d-4e5f6a7b8c9d", "phone_id": "9f8b7c6d-1111-4a2b-8c3d-4e5f6a7b8c9d", "last_message_id": "9f8b7c6d-3333-4a2b-8c3d-4e5f6a7b8c9d", "from_phone_number": "+12025550101", "to_phone_number": "+12025550147", "is_archived": false, "last_message_content": "Acme code: 482913", "last_message_at": "2026-11-19 10:00:01", "created_at": "2026-11-02 14:20:00", "updated_at": "2026-11-19 10:00:01"}], "links": {"first": "https://app.hypersender.com/api/sms/v1/9f8b7c6d-1111-4a2b-8c3d-4e5f6a7b8c9d/message-threads?page=1", "last": "https://app.hypersender.com/api/sms/v1/9f8b7c6d-1111-4a2b-8c3d-4e5f6a7b8c9d/message-threads?page=1", "prev": null, "next": null}, "meta": {"current_page": 1, "from": 1, "last_page": 1, "links": [{"url": null, "label": "&laquo; Previous", "page": null, "active": false}, {"url": "https://app.hypersender.com/api/sms/v1/9f8b7c6d-1111-4a2b-8c3d-4e5f6a7b8c9d/message-threads?page=1", "label": "1", "page": 1, "active": true}, {"url": null, "label": "Next &raquo;", "page": null, "active": false}], "path": "https://app.hypersender.com/api/sms/v1/9f8b7c6d-1111-4a2b-8c3d-4e5f6a7b8c9d/message-threads", "per_page": 50, "to": 1, "total": 1}}
+    Unknown filter:
+      parameters:
+        path:
+          smsInstance: "{{ instance_id }}"
+      responses:
+        "400":
+          application/json: {"message": "Requested filter(s) `status` are not allowed. Allowed filter(s) are `last_message_content, is_archived, last_message_id, from_or_to_number`.", "errors": null, "statusCode": 400}
+        "500":
+          application/json: {"message": "Requested filter(s) `status` are not allowed. Allowed filter(s) are `last_message_content, is_archived, last_message_id, from_or_to_number`.", "errors": null, "statusCode": 400}
+    SMS service unreachable:
+      parameters:
+        path:
+          smsInstance: "{{ instance_id }}"
+      responses:
+        "400":
+          application/json: {"message": "Something went wrong, try again later"}
+        "500":
+          application/json: {"message": "Something went wrong, try again later"}
+  sms-edit-message-thread:
+    Archive:
+      parameters:
+        path:
+          smsInstance: "{{ instance_id }}"
+      requestBody:
+        application/json: {"messageThreadId": "9f8b7c6d-4444-4a2b-8c3d-4e5f6a7b8c9d", "is_archived": true}
+      responses:
+        "200":
+          application/json: {}
+        "401":
+          application/json: {"message": "<value>"}
+        "500":
+          application/json: {"message": "<value>"}
+    default:
+      parameters:
+        path:
+          smsInstance: "{{ instance_id }}"
+      requestBody:
+        application/json: {"messageThreadId": "9f8b7c6d-4444-4a2b-8c3d-4e5f6a7b8c9d", "is_archived": true}
+      responses:
+        "200":
+          application/json: {}
+        "401":
+          application/json: {"message": "<value>"}
+        "500":
+          application/json: {"message": "<value>"}
+    Archived:
+      parameters:
+        path:
+          smsInstance: "{{ instance_id }}"
+      requestBody:
+        application/json: {"messageThreadId": "9f8b7c6d-4444-4a2b-8c3d-4e5f6a7b8c9d", "is_archived": true}
+      responses:
+        "200":
+          application/json: {"message": "Message thread updated successfully", "data": {"id": "9f8b7c6d-4444-4a2b-8c3d-4e5f6a7b8c9d", "phone_id": "9f8b7c6d-1111-4a2b-8c3d-4e5f6a7b8c9d", "last_message_id": "9f8b7c6d-3333-4a2b-8c3d-4e5f6a7b8c9d", "from_phone_number": "+12025550101", "to_phone_number": "+12025550147", "is_archived": true, "last_message_content": "Acme code: 482913", "last_message_at": "2026-11-19 10:00:01", "created_at": "2026-11-02 14:20:00", "updated_at": "2026-11-19 10:30:00"}}
+    Invalid token:
+      parameters:
+        path:
+          smsInstance: "{{ instance_id }}"
+      requestBody:
+        application/json: {"messageThreadId": "9f8b7c6d-4444-4a2b-8c3d-4e5f6a7b8c9d", "is_archived": true}
+      responses:
+        "401":
+          application/json: {"message": "The Bearer token is not valid please check the token and try again."}
+        "500":
+          application/json: {"message": "The Bearer token is not valid please check the token and try again."}
+    Expired token:
+      parameters:
+        path:
+          smsInstance: "{{ instance_id }}"
+      requestBody:
+        application/json: {"messageThreadId": "9f8b7c6d-4444-4a2b-8c3d-4e5f6a7b8c9d", "is_archived": true}
+      responses:
+        "401":
+          application/json: {"message": "Expired token, please refresh the token."}
+        "500":
+          application/json: {"message": "Expired token, please refresh the token."}
+  sms-delete-message-thread:
+    default:
+      parameters:
+        path:
+          smsInstance: "{{ instance_id }}"
+        query:
+          messageThreadId: "9f8b7c6d-4444-4a2b-8c3d-4e5f6a7b8c9d"
+      responses:
+        "401":
+          application/json: {"message": "<value>"}
+        "500":
+          application/json: {"message": "<value>"}
+    speakeasy-default-sms-delete-message-thread:
+      parameters:
+        path:
+          smsInstance: "{{ instance_id }}"
+        query:
+          messageThreadId: "9f8b7c6d-4444-4a2b-8c3d-4e5f6a7b8c9d"
+      responses:
+        "401":
+          application/json: {"message": "<value>"}
+        "500":
+          application/json: {"message": "<value>"}
+    Invalid token:
+      parameters:
+        path:
+          smsInstance: "{{ instance_id }}"
+        query:
+          messageThreadId: "9f8b7c6d-4444-4a2b-8c3d-4e5f6a7b8c9d"
+      responses:
+        "401":
+          application/json: {"message": "The Bearer token is not valid please check the token and try again."}
+        "500":
+          application/json: {"message": "The Bearer token is not valid please check the token and try again."}
+    Expired token:
+      parameters:
+        path:
+          smsInstance: "{{ instance_id }}"
+        query:
+          messageThreadId: "9f8b7c6d-4444-4a2b-8c3d-4e5f6a7b8c9d"
+      responses:
+        "401":
+          application/json: {"message": "Expired token, please refresh the token."}
+        "500":
+          application/json: {"message": "Expired token, please refresh the token."}
+  otp-requestCode:
+    request:
+      parameters:
+        path:
+          otpInstance: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "20123456789@c.us", "length": 6, "useLetter": false, "useNumber": true, "allCapital": false, "name": "hypersender", "expires": 1800}
+      responses:
+        "200":
+          application/json: {}
+    speakeasy-default-otp-request-code:
+      parameters:
+        path:
+          otpInstance: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "<id>"}
+      responses:
+        "200":
+          application/json: {}
+    response:
+      parameters:
+        path:
+          otpInstance: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "<id>"}
+      responses:
+        "200":
+          application/json: {"success": true, "message": "OTP code generated and message queued successfully", "data": {"uuid": "a0b5df6a-b491-4190-80a5-38d85a2a4836", "chat_id": "20123456789@c.us", "code": "439713", "status": "pending", "otp_type": "code", "expires_at": "2025-12-29T18:09:38+00:00", "created_at": "2025-12-29T17:39:38+00:00"}}
+  otp-validateCode:
+    request:
+      parameters:
+        path:
+          otpInstance: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "20123456789@c.us", "code": "439713"}
+      responses:
+        "200":
+          application/json: {}
+    speakeasy-default-otp-validate-code:
+      parameters:
+        path:
+          otpInstance: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "<id>", "code": "<value>"}
+      responses:
+        "200":
+          application/json: {}
+    response:
+      parameters:
+        path:
+          otpInstance: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "<id>", "code": "<value>"}
+      responses:
+        "200":
+          application/json: {"success": true, "message": "OTP code validated successfully", "data": {"uuid": "a0b5df6a-b491-4190-80a5-38d85a2a4836", "chat_id": "20123456789@c.us", "status": "validated", "validated_at": "2025-12-29T17:43:36+00:00"}}
+  otp-generateLink:
+    request:
+      parameters:
+        path:
+          otpInstance: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "20123456789@c.us", "expires": 1800, "name": "Hypersender", "message": {"prompt": "Send me my Hypersender link", "success": "Here is your link: {link}", "failed": "Login failed, please try again later.", "expired": "The link has been expired, please try another one."}, "callback": {"success": "https://yourdomain.com/callback/success", "failed": "https://yourdomain.com/callback/failed"}}
+      responses:
+        "200":
+          application/json: {}
+    speakeasy-default-otp-generate-link:
+      parameters:
+        path:
+          otpInstance: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "<id>"}
+      responses:
+        "200":
+          application/json: {}
+    response:
+      parameters:
+        path:
+          otpInstance: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "<id>"}
+      responses:
+        "200":
+          application/json: {"success": true, "message": "OTP link request created successfully", "data": {"uuid": "a0b5e14e-95da-4bd4-9e2a-071661244bef", "code": "RDYFQUBX", "chat_id": "20123456789@c.us", "status": "pending", "otp_type": "link", "expires_at": "2025-12-29T18:14:55+00:00", "created_at": "2025-12-29T17:44:55+00:00", "whatsapp_link": "https://wa.me/201553730661?text=Give+me+link+to+login+at+7enkesh+%5BRDYFQUBX%5D+-+DO+NOT+CHANGE+THIS+MESSAGE"}}
+  enterprise-getInstanceHealth:
+    speakeasy-default-enterprise-get-instance-health:
+      parameters:
+        path:
+          instance: "{{ instance_id }}"
+      responses:
+        "200":
+          application/json: {"instance_id": "fa3d01c4-1234-4c0d-a12f-df319b612f8c", "connected_at": "2025-05-26T10:12:45", "status": "WORKING"}
+        "404":
+          application/json: {"message": "Resource not found."}
+        "429":
+          application/json: {"message": "Too many requests. Please try again later."}
+  enterprise-listInstances:
+    speakeasy-default-enterprise-list-instances:
+      responses:
+        "200":
+          application/json: [{"id": "fa3d01c4-1234-4c0d-a12f-df319b612f8c", "name": "MyInstanceName", "phone": "+201234567890", "service_type": "whatsapp", "status": "WORKING", "access_token": "234|3uB2pBST2H6If8twXIeUaeNu23VJ8XassYoOVJuva48388e1", "created_at": "2025-05-26T10:12:45"}]
+  enterprise-createInstance:
+    speakeasy-default-enterprise-create-instance:
+      requestBody:
+        application/json: {"phone": "+201234567890", "name": "MyInstanceName", "webhook_url": "https://yourdomain.com/webhooks/whatsapp"}
+      responses:
+        "201":
+          application/json: {"id": "fa3d01c4-1234-4c0d-a12f-df319b612f8c", "name": "MyInstanceName", "phone": "+201234567890", "service_type": "whatsapp", "status": "WORKING", "access_token": "234|3uB2pBST2H6If8twXIeUaeNu23VJ8XassYoOVJuva48388e1", "created_at": "2025-05-26T10:12:45", "qr_code": "iVBORw0KGgoAAAANSUhEUgAAA..."}
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+        "429":
+          application/json: {"message": "Too many requests. Please try again later."}
+  enterprise-requestNewQrCode:
+    speakeasy-default-enterprise-request-new-qr-code:
+      parameters:
+        path:
+          instance: "{{ instance_id }}"
+      responses:
+        "200":
+          application/json: {"id": "fa3d01c4-1234-4c0d-a12f-df319b612f8c", "name": "MyInstanceName", "phone": "+201234567890", "service_type": "whatsapp", "status": "WORKING", "access_token": "234|3uB2pBST2H6If8twXIeUaeNu23VJ8XassYoOVJuva48388e1", "created_at": "2025-05-26T10:12:45", "qr_code": "iVBORw0KGgoAAAANSUhEUgAAA..."}
+        "404":
+          application/json: {"message": "Resource not found."}
+        "429":
+          application/json: {"message": "Too many requests. Please try again later."}
+  enterprise-restartInstance:
+    speakeasy-default-enterprise-restart-instance:
+      parameters:
+        path:
+          instance: "{{ instance_id }}"
+      responses:
+        "200":
+          application/json: {"message": "WhatsApp instance restarted successfully."}
+        "404":
+          application/json: {"message": "Resource not found."}
+        "429":
+          application/json: {"message": "Too many requests. Please try again later."}
+        "500":
+          application/json: {"message": "Failed to restart WhatsApp instance. Please try restarting the instance from hypersender dashboard."}
+examplesVersion: 1.0.2

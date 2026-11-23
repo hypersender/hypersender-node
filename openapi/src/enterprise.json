@@ -1,0 +1,637 @@
+{
+	"openapi": "3.1.0",
+	"info": {
+		"version": "v1.0",
+		"title": "Hypersender Enterprise API Docs",
+		"description": "\nThe Hypersender Enterprise API provides powerful management capabilities for WhatsApp instances.\n\nIn this Docs you'll learn how to use and integrate Hypersender Enterprise API into your existing system/service or application using simple API endpoints.\n\n**What you can Do?**\n\n- Check instance health status\n- List all instances with filtering\n- Create new WhatsApp instances\n- Request new QR codes for authentication\n- Restart instances\n\n<hr />\n\n## Servers (Endpoints)\n\n- Production (activated): [https://app.hypersender.com/api/whatsapp/v2](https://app.hypersender.com/api/whatsapp/v2)\n"
+	},
+	"servers": [
+		{
+			"url": "https://app.hypersender.com/api/whatsapp/v2",
+			"description": "Production"
+		}
+	],
+	"paths": {
+		"/{instance}/health": {
+			"get": {
+				"operationId": "getInstanceHealth",
+				"tags": ["Instance Management"],
+				"x-hidden": true,
+				"summary": "Check Instance Health",
+				"description": "Checks the current health status of a WhatsApp instance by its UUID. This endpoint is limited to 10 requests per minute.",
+				"parameters": [
+					{
+						"name": "Accept",
+						"in": "header",
+						"description": "application/json",
+						"schema": {
+							"type": "string",
+							"example": "application/json"
+						}
+					},
+					{
+						"name": "instance",
+						"in": "path",
+						"description": "Instance UUID copied from hypersender dashboard",
+						"required": true,
+						"schema": {
+							"type": "string",
+							"example": "{{ instance_id }}"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Successful response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"instance_id": {
+											"type": "string",
+											"example": "fa3d01c4-1234-4c0d-a12f-df319b612f8c"
+										},
+										"connected_at": {
+											"type": "string",
+											"example": "2025-05-26T10:12:45"
+										},
+										"status": {
+											"type": "string",
+											"enum": ["STOPPED", "STARTING", "WORKING", "SCAN_QR_CODE", "FAILED", "PENDING"],
+											"example": "WORKING",
+											"description": "Instance status:\n- STOPPED: Instance is stopped\n- STARTING: Instance is starting\n- WORKING: Instance is running and ready\n- SCAN_QR_CODE: Waiting for QR code to be scanned\n- FAILED: Instance failed to start\n- PENDING: Awaiting server assignment"
+										}
+									}
+								}
+							}
+						}
+					},
+					"404": {
+						"description": "Instance not found",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/NotFoundError"
+								}
+							}
+						}
+					},
+					"429": {
+						"description": "Rate limit exceeded",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"message": {
+											"type": "string",
+											"example": "Too many requests. Please try again later."
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"Authorization": []
+					}
+				]
+			}
+		},
+		"/instances": {
+			"get": {
+				"operationId": "listInstances",
+				"tags": ["Instance Management"],
+				"x-hidden": true,
+				"summary": "List Instances",
+				"description": "Lists all WhatsApp instances associated with the authenticated user's account.",
+				"parameters": [
+					{
+						"name": "Accept",
+						"in": "header",
+						"description": "application/json",
+						"schema": {
+							"type": "string",
+							"example": "application/json"
+						}
+					},
+					{
+						"name": "filter[uuid]",
+						"in": "query",
+						"description": "Filter by instance UUID",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"name": "filter[name]",
+						"in": "query",
+						"description": "Filter by instance name (partial match)",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"name": "filter[phone]",
+						"in": "query",
+						"description": "Filter by phone number",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"name": "filter[status]",
+						"in": "query",
+						"description": "Filter by instance status",
+						"required": false,
+						"schema": {
+							"type": "string",
+							"enum": ["STOPPED", "STARTING", "WORKING", "SCAN_QR_CODE", "FAILED", "PENDING"]
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Successful response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"$ref": "#/components/schemas/InstanceResponse"
+									}
+								},
+								"example": [
+									{
+										"id": "fa3d01c4-1234-4c0d-a12f-df319b612f8c",
+										"name": "MyInstanceName",
+										"phone": "+201234567890",
+										"service_type": "whatsapp",
+										"status": "WORKING",
+										"access_token": "234|3uB2pBST2H6If8twXIeUaeNu23VJ8XassYoOVJuva48388e1",
+										"created_at": "2025-05-26T10:12:45"
+									},
+									{
+										"id": "c9a1dd76-5678-4f9d-9012-a5b78de100c3",
+										"name": "SecondInstance",
+										"phone": "+201234567891",
+										"service_type": "whatsapp",
+										"status": "SCAN_QR_CODE",
+										"access_token": null,
+										"created_at": "2025-05-25T15:30:22"
+									}
+								]
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"Authorization": []
+					}
+				]
+			}
+		},
+		"/create-instance": {
+			"post": {
+				"operationId": "createInstance",
+				"tags": ["Instance Management"],
+				"x-hidden": true,
+				"summary": "Create Instance",
+				"description": "Creates a new WhatsApp instance associated with a phone number and a user-defined name. This endpoint is limited to 5 requests per minute.",
+				"parameters": [
+					{
+						"name": "Accept",
+						"in": "header",
+						"description": "application/json",
+						"schema": {
+							"type": "string",
+							"example": "application/json"
+						}
+					},
+					{
+						"name": "Content-Type",
+						"in": "header",
+						"description": "application/json",
+						"schema": {
+							"type": "string",
+							"example": "application/json"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/CreateInstanceRequest"
+							},
+							"example": {
+								"phone": "+201234567890",
+								"name": "MyInstanceName",
+								"webhook_url": "https://yourdomain.com/webhooks/whatsapp"
+							}
+						}
+					}
+				},
+				"responses": {
+					"201": {
+						"description": "Instance created successfully",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/InstanceWithQRResponse"
+								},
+								"example": {
+									"id": "c9a1dd76-5678-4f9d-9012-a5b78de100c3",
+									"name": "MyInstanceName",
+									"phone": "+201234567890",
+									"service_type": "whatsapp",
+									"status": "SCAN_QR_CODE",
+									"qr_code": "iVBORw0KGgoAAAANSUhEUgAAA...",
+									"access_token": "234|3uB2pBST2H6If8twXIeUaeNu23VJ8XassYoOVJuva48388e1",
+									"created_at": "2025-05-26T10:12:45"
+								}
+							}
+						}
+					},
+					"422": {
+						"description": "Validation Error",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ValidationError"
+								}
+							}
+						}
+					},
+					"429": {
+						"description": "Rate limit exceeded",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"message": {
+											"type": "string",
+											"example": "Too many requests. Please try again later."
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"Authorization": []
+					}
+				]
+			}
+		},
+		"/{instance}/request-new-qr-code": {
+			"post": {
+				"operationId": "requestNewQrCode",
+				"tags": ["Instance Management"],
+				"x-hidden": true,
+				"summary": "Request New QR Code",
+				"description": "Forces the instance to generate a new QR code, typically after an expired or failed scan. This endpoint is limited to 1 request per minute.",
+				"parameters": [
+					{
+						"name": "Accept",
+						"in": "header",
+						"description": "application/json",
+						"schema": {
+							"type": "string",
+							"example": "application/json"
+						}
+					},
+					{
+						"name": "instance",
+						"in": "path",
+						"description": "Instance UUID copied from hypersender dashboard",
+						"required": true,
+						"schema": {
+							"type": "string",
+							"example": "{{ instance_id }}"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "New QR code generated successfully",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/InstanceWithQRResponse"
+								},
+								"example": {
+									"id": "c9a1dd76-5678-4f9d-9012-a5b78de100c3",
+									"name": "MyInstanceName",
+									"phone": "+201234567890",
+									"service_type": "whatsapp",
+									"status": "SCAN_QR_CODE",
+									"qr_code": "iVBORw0KGgoAAAANSUhEUgAAA...",
+									"access_token": "234|3uB2pBST2H6If8twXIeUaeNu23VJ8XassYoOVJuva48388e1",
+									"created_at": "2025-05-26T10:12:45"
+								}
+							}
+						}
+					},
+					"404": {
+						"description": "Instance not found",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/NotFoundError"
+								}
+							}
+						}
+					},
+					"429": {
+						"description": "Rate limit exceeded",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"message": {
+											"type": "string",
+											"example": "Too many requests. Please try again later."
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"Authorization": []
+					}
+				]
+			}
+		},
+		"/{instance}/restart": {
+			"post": {
+				"operationId": "restartInstance",
+				"tags": ["Instance Management"],
+				"x-hidden": true,
+				"summary": "Restart Instance",
+				"description": "Restarts a WhatsApp instance. Useful when the instance is stuck or not working properly. This endpoint is limited to 5 requests per minute.",
+				"parameters": [
+					{
+						"name": "Accept",
+						"in": "header",
+						"description": "application/json",
+						"schema": {
+							"type": "string",
+							"example": "application/json"
+						}
+					},
+					{
+						"name": "instance",
+						"in": "path",
+						"description": "Instance UUID copied from hypersender dashboard",
+						"required": true,
+						"schema": {
+							"type": "string",
+							"example": "{{ instance_id }}"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Instance restarted successfully",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"message": {
+											"type": "string",
+											"example": "WhatsApp instance restarted successfully."
+										}
+									}
+								}
+							}
+						}
+					},
+					"404": {
+						"description": "Instance not found",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/NotFoundError"
+								}
+							}
+						}
+					},
+					"500": {
+						"description": "Failed to restart instance",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"message": {
+											"type": "string",
+											"example": "Failed to restart WhatsApp instance. Please try restarting the instance from hypersender dashboard."
+										}
+									}
+								}
+							}
+						}
+					},
+					"429": {
+						"description": "Rate limit exceeded",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"message": {
+											"type": "string",
+											"example": "Too many requests. Please try again later."
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"Authorization": []
+					}
+				]
+			}
+		}
+	},
+	"components": {
+		"parameters": {
+			"instance": {
+				"name": "instance",
+				"in": "path",
+				"description": "Hypersender instance UUID",
+				"required": true,
+				"schema": {
+					"type": "string"
+				},
+				"example": "{{ instance_id }}"
+			}
+		},
+		"securitySchemes": {
+			"Authorization": {
+				"type": "http",
+				"scheme": "bearer",
+				"description": "Bearer token authentication. Example: `Bearer 234|3uB2pBST2H6If8twXIeUaeNu23VJ8XassYoOVJuva48388e1`"
+			}
+		},
+		"schemas": {
+			"CreateInstanceRequest": {
+				"type": "object",
+				"properties": {
+					"phone": {
+						"type": "string",
+						"description": "E.164 format phone number (e.g. +201234567890)",
+						"example": "+201234567890"
+					},
+					"name": {
+						"type": "string",
+						"description": "Instance name (max 50 characters, must be unique per user per service)",
+						"example": "MyInstanceName",
+						"maxLength": 50
+					},
+					"webhook_url": {
+						"type": "string",
+						"description": "Optional webhook URL (must be a valid https URL)",
+						"example": "https://yourdomain.com/webhooks/whatsapp",
+						"format": "uri"
+					}
+				},
+				"required": ["phone", "name"]
+			},
+			"InstanceResponse": {
+				"type": "object",
+				"properties": {
+					"id": {
+						"type": "string",
+						"description": "Instance UUID",
+						"example": "fa3d01c4-1234-4c0d-a12f-df319b612f8c"
+					},
+					"name": {
+						"type": "string",
+						"description": "Instance name",
+						"example": "MyInstanceName"
+					},
+					"phone": {
+						"type": "string",
+						"description": "Phone number in E.164 format",
+						"example": "+201234567890"
+					},
+					"service_type": {
+						"type": "string",
+						"description": "Service type",
+						"example": "whatsapp"
+					},
+					"status": {
+						"type": "string",
+						"enum": ["STOPPED", "STARTING", "WORKING", "SCAN_QR_CODE", "FAILED", "PENDING"],
+						"description": "Instance status",
+						"example": "WORKING"
+					},
+					"access_token": {
+						"type": ["string", "null"],
+						"description": "Access token for the instance",
+						"example": "234|3uB2pBST2H6If8twXIeUaeNu23VJ8XassYoOVJuva48388e1"
+					},
+					"created_at": {
+						"type": "string",
+						"description": "Creation timestamp",
+						"example": "2025-05-26T10:12:45"
+					}
+				}
+			},
+			"InstanceWithQRResponse": {
+				"allOf": [
+					{
+						"$ref": "#/components/schemas/InstanceResponse"
+					},
+					{
+						"type": "object",
+						"properties": {
+							"qr_code": {
+								"type": "string",
+								"description": "Base64-encoded PNG QR code (without data:image/png;base64, prefix). You must prepend it manually when displaying: <img src=\"data:image/png;base64,{{qr_code}}\" />",
+								"example": "iVBORw0KGgoAAAANSUhEUgAAA..."
+							}
+						}
+					}
+				]
+			},
+			"NotFoundError": {
+				"type": "object",
+				"title": "NotFoundError",
+				"example": {
+					"message": "Resource not found."
+				},
+				"properties": {
+					"message": {
+						"type": "string"
+					}
+				}
+			},
+			"ValidationError": {
+				"type": "object",
+				"title": "ValidationError",
+				"properties": {
+					"message": {
+						"type": "string"
+					},
+					"errors": {
+						"type": "object",
+						"description": "Invalid or missing fields will be shown here"
+					},
+					"statusCode": {
+						"type": "integer",
+						"example": 422
+					}
+				},
+				"example": {
+					"message": "The given data was invalid.",
+					"errors": {
+						"phone": ["The phone field is required."],
+						"name": ["The name field is required."]
+					},
+					"statusCode": 422
+				},
+				"required": ["errors", "statusCode"]
+			},
+			"ServerError": {
+				"type": "object",
+				"title": "ServerError",
+				"properties": {
+					"message": {
+						"type": "string"
+					}
+				},
+				"example": {
+					"message": "Internal Server Error"
+				}
+			}
+		}
+	},
+	"security": [
+		{
+			"Authorization": []
+		}
+	],
+	"x-internal": false
+}

@@ -1,0 +1,21 @@
+workflowVersion: 1.0.0
+speakeasyVersion: latest
+sources:
+    Hypersender WhatsApp API Docs:
+        inputs:
+            - location: openapi/hypersender.json
+        overlays:
+            - location: openapi/overlay.yaml
+        output: .speakeasy/out.openapi.yaml
+        registry:
+            location: registry.speakeasyapi.dev/hypersender/hypersender/hypersender-whats-app-api-docs
+targets:
+    hypersender:
+        target: typescript
+        source: Hypersender WhatsApp API Docs
+        codeSamples:
+            registry:
+                location: registry.speakeasyapi.dev/hypersender/hypersender/hypersender-whats-app-api-docs-typescript-code-samples
+            labelOverride:
+                fixedValue: Typescript (SDK)
+            blocking: false

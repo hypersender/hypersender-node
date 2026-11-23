@@ -1,0 +1,2554 @@
+{
+	"openapi": "3.1.0",
+	"info": {
+		"title": "Hypersender SMS API Docs",
+		"version": "v1.0",
+		"description": "Send and receive SMS through your own Android phone and SIM card with the Hypersender SMS API.\n\n**Base URL**: `https://app.hypersender.com/api/sms/v1/{instance}`. Replace `{instance}` with the Instance ID from the dashboard.\n\n**Authentication**: send the instance API Key as a Bearer token in the `Authorization` header.\n\n**The Android app**: install Hypersender SMS from [Google Play](https://play.google.com/store/apps/details?id=com.hypersender.app&hl=en) and link it to your instance. See the [SMS quick start](https://docs.hypersender.com/v2/hypersender/overview/sms/sms-quick-start).\n\n**Quick demo**: [Send an SMS in Postman](https://docs.hypersender.com/v2/api-reference/sms/how-to-send-an-sms-message-in-postman)."
+	},
+	"servers": [
+		{
+			"url": "https://app.hypersender.com/api/sms/v1",
+			"description": "Production"
+		}
+	],
+	"paths": {
+		"/{instance}/send-message": {
+			"post": {
+				"x-hidden": true,
+				"tags": ["Messages"],
+				"summary": "Send Message",
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"to": {
+										"type": "string",
+										"description": "Recipient phone number in international format, for example `+12025550147`. Spaces, dashes, dots, and parentheses are removed first. The result must match `^\\+?[0-9]{3,20}$`.",
+										"example": "+12025550147"
+									},
+									"content": {
+										"type": "string",
+										"maxLength": 1600,
+										"description": "The SMS text. Up to 1600 characters. Long text is sent as a multipart SMS.",
+										"example": "Acme code: 482913"
+									},
+									"request_id": {
+										"type": "string",
+										"maxLength": 255,
+										"description": "Your own ID for this message. Retrying with the same `request_id`, `to`, and `content` returns the existing message with status 200 and does not send it again. If you leave it out, a UUID is generated.",
+										"example": "order-1042-otp"
+									},
+									"schedule_send_at": {
+										"type": "string",
+										"description": "Send the message later. Format `YYYY-MM-DD HH:MM:SS` in the phone's timezone. Must be in the future and less than 3 days ahead.",
+										"example": "2026-11-20 09:30:00"
+									},
+									"max_send_attempts": {
+										"type": "integer",
+										"minimum": 1,
+										"maximum": 15,
+										"description": "How many times Hypersender tries to push the message to the phone. Defaults to the instance setting.",
+										"example": 3
+									},
+									"message_expiration_seconds": {
+										"type": "integer",
+										"minimum": 60,
+										"maximum": 259200,
+										"description": "How long the message stays valid, in seconds. If the phone has not sent it by then, it expires. Useful for one-time codes. Defaults to the instance setting.",
+										"example": 600
+									}
+								},
+								"required": ["to", "content"]
+							},
+							"examples": {
+								"Send now": {
+									"value": {
+										"to": "+12025550147",
+										"content": "Acme code: 482913",
+										"request_id": "order-1042-otp",
+										"message_expiration_seconds": 600
+									}
+								},
+								"Schedule": {
+									"value": {
+										"to": "+12025550147",
+										"content": "Your appointment is tomorrow at 10:00.",
+										"request_id": "appointment-reminder-2231",
+										"schedule_send_at": "2026-11-20 09:30:00"
+									}
+								}
+							}
+						}
+					}
+				},
+				"parameters": [
+					{
+						"name": "instance",
+						"in": "path",
+						"description": "Instance UUID copied from hypersender dashboard",
+						"required": true,
+						"schema": {
+							"type": "string",
+							"example": "{{ instance_id }}"
+						},
+						"examples": {
+							"default": {
+								"value": "{{ instance_id }}"
+							}
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "A message with the same `request_id`, `to`, and `content` already exists. It is returned and not sent again.",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/SendMessageResponse"
+								},
+								"examples": {
+									"Retry of an existing message": {
+										"value": {
+											"message": "A message with this request_id already exists.",
+											"data": {
+												"id": "9f8b7c6d-3333-4a2b-8c3d-4e5f6a7b8c9d",
+												"request_id": "order-1042-otp",
+												"message_thread_id": "9f8b7c6d-4444-4a2b-8c3d-4e5f6a7b8c9d",
+												"phone_id": "9f8b7c6d-1111-4a2b-8c3d-4e5f6a7b8c9d",
+												"from_phone_number": "+12025550101",
+												"to_phone_number": "+12025550147",
+												"content": "Acme code: 482913",
+												"tags": [],
+												"send_duration": null,
+												"schedule_on_phone_at": "2026-11-19 10:00:01",
+												"sent_at": "2026-11-19 10:00:04",
+												"last_attempted_at": "2026-11-19 10:00:01",
+												"delivered_at": null,
+												"received_at": null,
+												"expired_at": null,
+												"schedule_send_at": null,
+												"failed_at": null,
+												"send_attempt_count": 1,
+												"max_send_attempts": 3,
+												"failure_reason": null,
+												"ussd_message": null,
+												"message_expiration_seconds": 600,
+												"timezone": "UTC",
+												"sim": "SIM1",
+												"status": "sent",
+												"type": "sent_to_mobile",
+												"created_at": "2026-11-19 10:00:00",
+												"updated_at": "2026-11-19 10:00:04"
+											}
+										}
+									}
+								}
+							}
+						}
+					},
+					"201": {
+						"description": "The message was created. Follow its status with webhooks.",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/SendMessageResponse"
+								},
+								"examples": {
+									"Send now": {
+										"value": {
+											"message": "Message scheduled on the phone to be sent, check webhooks for updates on the message status.",
+											"data": {
+												"id": "9f8b7c6d-3333-4a2b-8c3d-4e5f6a7b8c9d",
+												"request_id": "order-1042-otp",
+												"phone": {
+													"id": "9f8b7c6d-1111-4a2b-8c3d-4e5f6a7b8c9d",
+													"user_id": "9f8b7c6d-2222-4a2b-8c3d-4e5f6a7b8c9d",
+													"push_registration": {
+														"status": "registered",
+														"recovery_required": false,
+														"synced_at": "2026-11-19T08:00:00+00:00",
+														"client_state": "registered"
+													},
+													"app_update_required": false,
+													"app_update_reason": null,
+													"phone_number": "+12025550101",
+													"name": "Office phone",
+													"sim": "SIM1",
+													"max_send_attempts": 3,
+													"message_expiration_seconds": 0,
+													"is_online": true,
+													"last_online_at": "2026-11-19 08:00:00",
+													"last_offline_at": "2026-11-18 22:10:00",
+													"last_message_at": "2026-11-19 10:00:01",
+													"last_missed_call_at": null,
+													"last_heartbeat_at": "2026-11-19 09:55:00",
+													"heartbeat_enabled_at": "2026-11-19 08:00:00",
+													"timezone": "UTC",
+													"created_at": "2026-10-01 09:00:00",
+													"updated_at": "2026-11-19 10:00:01"
+												},
+												"message_thread_id": "9f8b7c6d-4444-4a2b-8c3d-4e5f6a7b8c9d",
+												"phone_id": "9f8b7c6d-1111-4a2b-8c3d-4e5f6a7b8c9d",
+												"from_phone_number": "+12025550101",
+												"to_phone_number": "+12025550147",
+												"content": "Acme code: 482913",
+												"tags": [],
+												"send_duration": null,
+												"schedule_on_phone_at": null,
+												"sent_at": null,
+												"last_attempted_at": "2026-11-19 10:00:00",
+												"delivered_at": null,
+												"received_at": null,
+												"expired_at": null,
+												"schedule_send_at": null,
+												"failed_at": null,
+												"send_attempt_count": null,
+												"max_send_attempts": 3,
+												"failure_reason": null,
+												"ussd_message": null,
+												"message_expiration_seconds": 600,
+												"timezone": "UTC",
+												"sim": "SIM1",
+												"status": "pending",
+												"type": "sent_to_mobile",
+												"created_at": "2026-11-19 10:00:00",
+												"updated_at": "2026-11-19 10:00:00"
+											}
+										}
+									},
+									"Scheduled for later": {
+										"value": {
+											"message": "Message scheduled successfully",
+											"data": {
+												"id": "9f8b7c6d-9999-4a2b-8c3d-4e5f6a7b8c9d",
+												"request_id": "appointment-reminder-2231",
+												"phone": {
+													"id": "9f8b7c6d-1111-4a2b-8c3d-4e5f6a7b8c9d",
+													"user_id": "9f8b7c6d-2222-4a2b-8c3d-4e5f6a7b8c9d",
+													"push_registration": {
+														"status": "registered",
+														"recovery_required": false,
+														"synced_at": "2026-11-19T08:00:00+00:00",
+														"client_state": "registered"
+													},
+													"app_update_required": false,
+													"app_update_reason": null,
+													"phone_number": "+12025550101",
+													"name": "Office phone",
+													"sim": "SIM1",
+													"max_send_attempts": 3,
+													"message_expiration_seconds": 0,
+													"is_online": true,
+													"last_online_at": "2026-11-19 08:00:00",
+													"last_offline_at": "2026-11-18 22:10:00",
+													"last_message_at": "2026-11-19 10:00:01",
+													"last_missed_call_at": null,
+													"last_heartbeat_at": "2026-11-19 09:55:00",
+													"heartbeat_enabled_at": "2026-11-19 08:00:00",
+													"timezone": "UTC",
+													"created_at": "2026-10-01 09:00:00",
+													"updated_at": "2026-11-19 10:00:01"
+												},
+												"message_thread_id": "9f8b7c6d-4444-4a2b-8c3d-4e5f6a7b8c9d",
+												"phone_id": "9f8b7c6d-1111-4a2b-8c3d-4e5f6a7b8c9d",
+												"from_phone_number": "+12025550101",
+												"to_phone_number": "+12025550147",
+												"content": "Your appointment is tomorrow at 10:00.",
+												"tags": [],
+												"send_duration": null,
+												"schedule_on_phone_at": null,
+												"sent_at": null,
+												"last_attempted_at": "2026-11-19 10:00:00",
+												"delivered_at": null,
+												"received_at": null,
+												"expired_at": null,
+												"schedule_send_at": "2026-11-20 09:30:00",
+												"failed_at": null,
+												"send_attempt_count": null,
+												"max_send_attempts": 3,
+												"failure_reason": null,
+												"ussd_message": null,
+												"message_expiration_seconds": 0,
+												"timezone": "UTC",
+												"sim": "SIM1",
+												"status": "scheduled",
+												"type": "sent_to_mobile",
+												"created_at": "2026-11-19 10:00:00",
+												"updated_at": "2026-11-19 10:00:00"
+											}
+										}
+									}
+								}
+							}
+						}
+					},
+					"400": {
+						"description": "Hypersender could not reach the SMS service. Retry with the same `request_id`.",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Error"
+								},
+								"examples": {
+									"SMS service unreachable": {
+										"value": {
+											"message": "Something went wrong, try again later"
+										}
+									}
+								}
+							}
+						}
+					},
+					"401": {
+						"description": "The Bearer token is missing, invalid, or expired.",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Error"
+								},
+								"examples": {
+									"Invalid token": {
+										"value": {
+											"message": "The Bearer token is not valid please check the token and try again."
+										}
+									},
+									"Expired token": {
+										"value": {
+											"message": "Expired token, please refresh the token."
+										}
+									}
+								}
+							}
+						}
+					},
+					"403": {
+						"description": "The token cannot use this instance, or the instance is not active.",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Error"
+								},
+								"examples": {
+									"Wrong instance": {
+										"value": {
+											"message": "The Bearer token does not have access to this instance."
+										}
+									},
+									"Not an SMS instance": {
+										"value": {
+											"message": "This instance can not be used with the SMS API."
+										}
+									},
+									"Instance not active": {
+										"value": {
+											"message": "Instance (Office phone) is not active, please reactivated it from your dashboard."
+										}
+									}
+								}
+							}
+						}
+					},
+					"404": {
+						"description": "The instance or the record does not exist.",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Error"
+								},
+								"examples": {
+									"Not found": {
+										"value": {
+											"message": "Resource not found.",
+											"errors": null,
+											"statusCode": 404
+										}
+									}
+								}
+							}
+						}
+					},
+					"422": {
+						"description": "Validation failed, the phone is not registered for push notifications, or your plan limit is reached.",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Error"
+								},
+								"examples": {
+									"Validation error": {
+										"value": {
+											"message": "The to field format is invalid. (and 1 more error)",
+											"errors": {
+												"to": ["The to field format is invalid."],
+												"content": ["The content field is required."]
+											},
+											"statusCode": 422
+										}
+									},
+									"PHONE_PUSH_NOT_REGISTERED": {
+										"value": {
+											"message": "Phone does not have an FCM token. Open the Android app to register push notifications.",
+											"errors": {
+												"phone": ["Phone does not have an FCM token. Open the Android app to register push notifications."]
+											},
+											"code": "PHONE_PUSH_NOT_REGISTERED",
+											"statusCode": 422
+										}
+									},
+									"Plan limit reached": {
+										"value": {
+											"message": "You have reached the maximum number of sending requests (100), for your current plan. Please consider upgrading!"
+										}
+									}
+								}
+							}
+						}
+					},
+					"426": {
+						"description": "The app on the phone is too old. Update it from Google Play.",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Error"
+								},
+								"examples": {
+									"APP_VERSION_EXPIRED": {
+										"value": {
+											"message": "App version expired. Please update to the latest version to continue.",
+											"errors": null,
+											"error_code": "APP_VERSION_EXPIRED",
+											"data": {
+												"current_version": "1.10.0",
+												"expired_at": "2026-11-18T12:00:00.000000Z",
+												"update_required": true
+											},
+											"statusCode": 426
+										}
+									},
+									"FORCE_UPDATE_REQUIRED": {
+										"value": {
+											"message": "Critical app update required. Please update immediately.",
+											"errors": null,
+											"error_code": "FORCE_UPDATE_REQUIRED",
+											"data": {
+												"current_version": "1.9.0",
+												"latest_version": "1.10.0",
+												"force_update": true
+											},
+											"statusCode": 426
+										}
+									}
+								}
+							}
+						}
+					},
+					"429": {
+						"description": "Too many send requests. Wait and retry with the same `request_id`.",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Error"
+								},
+								"examples": {
+									"Per-minute limit": {
+										"value": {
+											"message": "Sorry, you've reached the maximum number of sending messages per minute. Please try again later."
+										}
+									},
+									"Parallel requests": {
+										"value": {
+											"message": "Too many sending requests at the same time. Please try again."
+										}
+									}
+								}
+							}
+						}
+					},
+					"500": {
+						"description": "Server error. Retry later.",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Error"
+								},
+								"examples": {
+									"Server error": {
+										"value": {
+											"message": "Something went wrong, try again later"
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"description": "Send an SMS through the Android phone linked to your instance, now or up to 3 days ahead. The API answers before the phone sends the message: follow the result with webhooks.\n\nA retry with the same `request_id`, `to`, and `content` returns the existing message with status 200 instead of creating a new one.",
+				"operationId": "send-message"
+			}
+		},
+		"/{instance}/heartbeats": {
+			"get": {
+				"x-hidden": true,
+				"tags": ["Heartbeats"],
+				"summary": "Heartbeats",
+				"parameters": [
+					{
+						"name": "instance",
+						"in": "path",
+						"description": "Instance UUID copied from hypersender dashboard",
+						"required": true,
+						"schema": {
+							"type": "string",
+							"example": "{{ instance_id }}"
+						},
+						"examples": {
+							"default": {
+								"value": "{{ instance_id }}"
+							}
+						}
+					},
+					{
+						"schema": {
+							"type": "integer",
+							"maximum": 50
+						},
+						"in": "query",
+						"name": "per_page",
+						"description": "Heartbeats per page. Default 50, maximum 50."
+					},
+					{
+						"schema": {
+							"type": "integer"
+						},
+						"in": "query",
+						"name": "page",
+						"description": "Page number, starting at 1."
+					},
+					{
+						"schema": {
+							"type": "string"
+						},
+						"in": "query",
+						"name": "filter[app_version]",
+						"description": "Heartbeats sent by an app version. Partial match, for example `1.50`."
+					},
+					{
+						"schema": {
+							"type": "integer"
+						},
+						"in": "query",
+						"name": "filter[battery_level]",
+						"description": "Battery level in percent. Exact match."
+					},
+					{
+						"schema": {
+							"type": "boolean"
+						},
+						"in": "query",
+						"name": "filter[is_charging]",
+						"description": "Whether the phone was charging."
+					},
+					{
+						"schema": {
+							"type": "string"
+						},
+						"in": "query",
+						"name": "filter[local_timestamp]",
+						"description": "Phone local time range down to the minute, separated by a comma. Example: `2026-11-19 08:00:00,2026-11-19 10:00:00`."
+					},
+					{
+						"schema": {
+							"type": "string"
+						},
+						"in": "query",
+						"name": "filter[created_at]",
+						"description": "Range of when Hypersender stored the heartbeat, separated by a comma. Example: `2026-11-19 08:00:00,2026-11-19 10:00:00`."
+					},
+					{
+						"schema": {
+							"type": "string"
+						},
+						"in": "query",
+						"name": "filter[updated_at]",
+						"description": "Range of when the heartbeat was last updated, separated by a comma."
+					},
+					{
+						"schema": {
+							"type": "string"
+						},
+						"in": "query",
+						"name": "sort",
+						"description": "Default `-created_at` (newest first). Allowed: `created_at`, `local_timestamp`. Add `-` for descending."
+					},
+					{
+						"schema": {
+							"type": "string"
+						},
+						"in": "query",
+						"name": "include",
+						"description": "Add related data: `phone`, or `phone.currentAppVersion` for the phone with its installed app version."
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "A page of heartbeats.",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"data": {
+											"type": "array",
+											"items": {
+												"$ref": "#/components/schemas/Heartbeat"
+											}
+										},
+										"links": {
+											"$ref": "#/components/schemas/PaginationLinks"
+										},
+										"meta": {
+											"$ref": "#/components/schemas/PaginationMeta"
+										}
+									}
+								},
+								"examples": {
+									"Heartbeats": {
+										"value": {
+											"data": [
+												{
+													"id": "9f8b7c6d-5555-4a2b-8c3d-4e5f6a7b8c9d",
+													"phone_id": "9f8b7c6d-1111-4a2b-8c3d-4e5f6a7b8c9d",
+													"battery_level": 87,
+													"is_charging": true,
+													"local_timestamp": "2026-11-19 09:55:00",
+													"app_version": "1.50.0",
+													"created_at": "2026-11-19 09:55:01",
+													"updated_at": "2026-11-19 09:55:01"
+												}
+											],
+											"links": {
+												"first": "https://app.hypersender.com/api/sms/v1/9f8b7c6d-1111-4a2b-8c3d-4e5f6a7b8c9d/heartbeats?page=1",
+												"last": "https://app.hypersender.com/api/sms/v1/9f8b7c6d-1111-4a2b-8c3d-4e5f6a7b8c9d/heartbeats?page=1",
+												"prev": null,
+												"next": null
+											},
+											"meta": {
+												"current_page": 1,
+												"from": 1,
+												"last_page": 1,
+												"links": [
+													{
+														"url": null,
+														"label": "&laquo; Previous",
+														"page": null,
+														"active": false
+													},
+													{
+														"url": "https://app.hypersender.com/api/sms/v1/9f8b7c6d-1111-4a2b-8c3d-4e5f6a7b8c9d/heartbeats?page=1",
+														"label": "1",
+														"page": 1,
+														"active": true
+													},
+													{
+														"url": null,
+														"label": "Next &raquo;",
+														"page": null,
+														"active": false
+													}
+												],
+												"path": "https://app.hypersender.com/api/sms/v1/9f8b7c6d-1111-4a2b-8c3d-4e5f6a7b8c9d/heartbeats",
+												"per_page": 50,
+												"to": 1,
+												"total": 1
+											}
+										}
+									}
+								}
+							}
+						}
+					},
+					"400": {
+						"description": "Unknown filter, sort, or include value, or Hypersender could not reach the SMS service.",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Error"
+								},
+								"examples": {
+									"Unknown filter": {
+										"value": {
+											"message": "Requested filter(s) `battery` are not allowed. Allowed filter(s) are `app_version, battery_level, is_charging, local_timestamp, created_at, updated_at`.",
+											"errors": null,
+											"statusCode": 400
+										}
+									},
+									"SMS service unreachable": {
+										"value": {
+											"message": "Something went wrong, try again later"
+										}
+									}
+								}
+							}
+						}
+					},
+					"401": {
+						"description": "The Bearer token is missing, invalid, or expired.",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Error"
+								},
+								"examples": {
+									"Invalid token": {
+										"value": {
+											"message": "The Bearer token is not valid please check the token and try again."
+										}
+									},
+									"Expired token": {
+										"value": {
+											"message": "Expired token, please refresh the token."
+										}
+									}
+								}
+							}
+						}
+					},
+					"403": {
+						"description": "The token cannot use this instance, or the instance is not active.",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Error"
+								},
+								"examples": {
+									"Wrong instance": {
+										"value": {
+											"message": "The Bearer token does not have access to this instance."
+										}
+									},
+									"Not an SMS instance": {
+										"value": {
+											"message": "This instance can not be used with the SMS API."
+										}
+									},
+									"Instance not active": {
+										"value": {
+											"message": "Instance (Office phone) is not active, please reactivated it from your dashboard."
+										}
+									}
+								}
+							}
+						}
+					},
+					"404": {
+						"description": "The instance or the record does not exist.",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Error"
+								},
+								"examples": {
+									"Not found": {
+										"value": {
+											"message": "Resource not found.",
+											"errors": null,
+											"statusCode": 404
+										}
+									}
+								}
+							}
+						}
+					},
+					"422": {
+						"description": "Invalid query value, such as `per_page` above 50.",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Error"
+								},
+								"examples": {
+									"per_page too large": {
+										"value": {
+											"message": "The per page field must not be greater than 50.",
+											"errors": {
+												"per_page": ["The per page field must not be greater than 50."]
+											},
+											"statusCode": 422
+										}
+									}
+								}
+							}
+						}
+					},
+					"426": {
+						"description": "The app on the phone is too old. Update it from Google Play.",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Error"
+								},
+								"examples": {
+									"APP_VERSION_EXPIRED": {
+										"value": {
+											"message": "App version expired. Please update to the latest version to continue.",
+											"errors": null,
+											"error_code": "APP_VERSION_EXPIRED",
+											"data": {
+												"current_version": "1.10.0",
+												"expired_at": "2026-11-18T12:00:00.000000Z",
+												"update_required": true
+											},
+											"statusCode": 426
+										}
+									},
+									"FORCE_UPDATE_REQUIRED": {
+										"value": {
+											"message": "Critical app update required. Please update immediately.",
+											"errors": null,
+											"error_code": "FORCE_UPDATE_REQUIRED",
+											"data": {
+												"current_version": "1.9.0",
+												"latest_version": "1.10.0",
+												"force_update": true
+											},
+											"statusCode": 426
+										}
+									}
+								}
+							}
+						}
+					},
+					"500": {
+						"description": "Server error. Retry later.",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Error"
+								},
+								"examples": {
+									"Server error": {
+										"value": {
+											"message": "Something went wrong, try again later"
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"description": "List the heartbeats your phone sent, newest first. The app sends one every 15 minutes. Paginated with up to 50 heartbeats per page.",
+				"requestBody": {
+					"content": {}
+				},
+				"operationId": "heartbeats"
+			}
+		},
+		"/{instance}/messages": {
+			"get": {
+				"x-hidden": true,
+				"tags": ["Messages"],
+				"summary": "Index Messages",
+				"parameters": [
+					{
+						"name": "instance",
+						"in": "path",
+						"description": "Instance UUID copied from hypersender dashboard",
+						"required": true,
+						"schema": {
+							"type": "string",
+							"example": "{{ instance_id }}"
+						},
+						"examples": {
+							"default": {
+								"value": "{{ instance_id }}"
+							}
+						}
+					},
+					{
+						"schema": {
+							"type": "integer",
+							"maximum": 50
+						},
+						"in": "query",
+						"name": "per_page",
+						"description": "Messages per page. Default 50, maximum 50."
+					},
+					{
+						"schema": {
+							"type": "integer"
+						},
+						"in": "query",
+						"name": "page",
+						"description": "Page number, starting at 1."
+					},
+					{
+						"schema": {
+							"type": "string"
+						},
+						"in": "query",
+						"name": "filter[request_id]",
+						"description": "The `request_id` you sent with the message. Exact match."
+					},
+					{
+						"schema": {
+							"type": "string"
+						},
+						"in": "query",
+						"name": "filter[message_thread_id]",
+						"description": "Messages in one thread. Exact match."
+					},
+					{
+						"schema": {
+							"type": "string"
+						},
+						"in": "query",
+						"name": "filter[from_phone_number]",
+						"description": "Sender number or name. Exact match, for example `+12025550188`."
+					},
+					{
+						"schema": {
+							"type": "string"
+						},
+						"in": "query",
+						"name": "filter[to_phone_number]",
+						"description": "Recipient number. Exact match, for example `+12025550147`."
+					},
+					{
+						"schema": {
+							"type": "string"
+						},
+						"in": "query",
+						"name": "filter[content]",
+						"description": "Part of the message text."
+					},
+					{
+						"schema": {
+							"type": "string",
+							"enum": ["pending", "scheduled", "sending", "sent", "delivered", "failed", "expired", "received", "deleted"]
+						},
+						"in": "query",
+						"name": "filter[status]",
+						"description": "Message status."
+					},
+					{
+						"schema": {
+							"type": "string",
+							"enum": ["sent", "received"]
+						},
+						"in": "query",
+						"name": "filter[type]",
+						"description": "`sent` for messages you sent, `received` for incoming messages."
+					},
+					{
+						"schema": {
+							"type": "string"
+						},
+						"in": "query",
+						"name": "filter[delivered_at]",
+						"description": "Delivery time. Range down to the minute, separated by a comma. Example: `2026-11-19 10:00:00,2026-11-19 10:20:00`."
+					},
+					{
+						"schema": {
+							"type": "string"
+						},
+						"in": "query",
+						"name": "filter[received_at]",
+						"description": "Time the phone received the message. Range down to the minute, separated by a comma. Example: `2026-11-19 10:00:00,2026-11-19 10:20:00`."
+					},
+					{
+						"schema": {
+							"type": "string"
+						},
+						"in": "query",
+						"name": "filter[expired_at]",
+						"description": "Expiry time. Range down to the minute, separated by a comma. Example: `2026-11-19 10:00:00,2026-11-19 10:20:00`."
+					},
+					{
+						"schema": {
+							"type": "string"
+						},
+						"in": "query",
+						"name": "filter[failed_at]",
+						"description": "Failure time. Range down to the minute, separated by a comma. Example: `2026-11-19 10:00:00,2026-11-19 10:20:00`."
+					},
+					{
+						"schema": {
+							"type": "string"
+						},
+						"in": "query",
+						"name": "filter[schedule_send_at]",
+						"description": "Planned send time. Range down to the minute, separated by a comma. Example: `2026-11-19 10:00:00,2026-11-19 10:20:00`."
+					},
+					{
+						"schema": {
+							"type": "string"
+						},
+						"in": "query",
+						"name": "filter[created_at]",
+						"description": "Time Hypersender stored the message, not when it was sent or received. Range down to the minute, separated by a comma. Example: `2026-11-19 10:00:00,2026-11-19 10:20:00`."
+					},
+					{
+						"schema": {
+							"type": "string"
+						},
+						"in": "query",
+						"name": "filter[updated_at]",
+						"description": "Last update time. Range down to the minute, separated by a comma. Example: `2026-11-19 10:00:00,2026-11-19 10:20:00`."
+					},
+					{
+						"schema": {
+							"type": "string"
+						},
+						"in": "query",
+						"name": "sort",
+						"description": "Default `-updated_at` (newest first). Allowed: `created_at`, `updated_at`, `delivered_at`, `received_at`, `expired_at`, `failed_at`, `schedule_send_at`. Add `-` for descending."
+					},
+					{
+						"schema": {
+							"type": "string"
+						},
+						"in": "query",
+						"name": "include",
+						"description": "Add related data: `phone`, `messageThread`, or both separated by a comma."
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "A page of messages.",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"data": {
+											"type": "array",
+											"items": {
+												"$ref": "#/components/schemas/Message"
+											}
+										},
+										"links": {
+											"$ref": "#/components/schemas/PaginationLinks"
+										},
+										"meta": {
+											"$ref": "#/components/schemas/PaginationMeta"
+										}
+									}
+								},
+								"examples": {
+									"Messages": {
+										"value": {
+											"data": [
+												{
+													"id": "9f8b7c6d-6666-4a2b-8c3d-4e5f6a7b8c9d",
+													"request_id": "5b0e6c1a-2f4d-4e8b-9a7c-3d2e1f0a9b8c",
+													"message_thread_id": "9f8b7c6d-8888-4a2b-8c3d-4e5f6a7b8c9d",
+													"phone_id": "9f8b7c6d-1111-4a2b-8c3d-4e5f6a7b8c9d",
+													"from_phone_number": "+12025550188",
+													"to_phone_number": "+12025550101",
+													"content": "Your bank code is 731205. Do not share it.",
+													"tags": ["otp", "bank"],
+													"send_duration": null,
+													"schedule_on_phone_at": null,
+													"sent_at": null,
+													"last_attempted_at": null,
+													"delivered_at": null,
+													"received_at": "2026-11-19 10:05:12",
+													"expired_at": null,
+													"schedule_send_at": null,
+													"failed_at": null,
+													"send_attempt_count": null,
+													"max_send_attempts": 3,
+													"failure_reason": null,
+													"ussd_message": null,
+													"message_expiration_seconds": 0,
+													"timezone": "UTC",
+													"sim": "SIM1",
+													"status": "received",
+													"type": "received_from_mobile",
+													"created_at": "2026-11-19 10:05:13",
+													"updated_at": "2026-11-19 10:05:13"
+												},
+												{
+													"id": "9f8b7c6d-3333-4a2b-8c3d-4e5f6a7b8c9d",
+													"request_id": "order-1042-otp",
+													"message_thread_id": "9f8b7c6d-4444-4a2b-8c3d-4e5f6a7b8c9d",
+													"phone_id": "9f8b7c6d-1111-4a2b-8c3d-4e5f6a7b8c9d",
+													"from_phone_number": "+12025550101",
+													"to_phone_number": "+12025550147",
+													"content": "Acme code: 482913",
+													"tags": [],
+													"send_duration": null,
+													"schedule_on_phone_at": "2026-11-19 10:00:01",
+													"sent_at": "2026-11-19 10:00:04",
+													"last_attempted_at": "2026-11-19 10:00:01",
+													"delivered_at": "2026-11-19 10:00:09",
+													"received_at": null,
+													"expired_at": null,
+													"schedule_send_at": null,
+													"failed_at": null,
+													"send_attempt_count": 1,
+													"max_send_attempts": 3,
+													"failure_reason": null,
+													"ussd_message": null,
+													"message_expiration_seconds": 600,
+													"timezone": "UTC",
+													"sim": "SIM1",
+													"status": "delivered",
+													"type": "sent_to_mobile",
+													"created_at": "2026-11-19 10:00:00",
+													"updated_at": "2026-11-19 10:00:09"
+												}
+											],
+											"links": {
+												"first": "https://app.hypersender.com/api/sms/v1/9f8b7c6d-1111-4a2b-8c3d-4e5f6a7b8c9d/messages?page=1",
+												"last": "https://app.hypersender.com/api/sms/v1/9f8b7c6d-1111-4a2b-8c3d-4e5f6a7b8c9d/messages?page=1",
+												"prev": null,
+												"next": null
+											},
+											"meta": {
+												"current_page": 1,
+												"from": 1,
+												"last_page": 1,
+												"links": [
+													{
+														"url": null,
+														"label": "&laquo; Previous",
+														"page": null,
+														"active": false
+													},
+													{
+														"url": "https://app.hypersender.com/api/sms/v1/9f8b7c6d-1111-4a2b-8c3d-4e5f6a7b8c9d/messages?page=1",
+														"label": "1",
+														"page": 1,
+														"active": true
+													},
+													{
+														"url": null,
+														"label": "Next &raquo;",
+														"page": null,
+														"active": false
+													}
+												],
+												"path": "https://app.hypersender.com/api/sms/v1/9f8b7c6d-1111-4a2b-8c3d-4e5f6a7b8c9d/messages",
+												"per_page": 50,
+												"to": 2,
+												"total": 2
+											}
+										}
+									}
+								}
+							}
+						}
+					},
+					"400": {
+						"description": "Unknown filter, sort, or include value, or Hypersender could not reach the SMS service.",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Error"
+								},
+								"examples": {
+									"Unknown filter": {
+										"value": {
+											"message": "Requested filter(s) `phone` are not allowed. Allowed filter(s) are `request_id, message_thread_id, from_phone_number, to_phone_number, content, status, type, delivered_at, received_at, expired_at, failed_at, schedule_send_at, created_at, updated_at`.",
+											"errors": null,
+											"statusCode": 400
+										}
+									},
+									"SMS service unreachable": {
+										"value": {
+											"message": "Something went wrong, try again later"
+										}
+									}
+								}
+							}
+						}
+					},
+					"401": {
+						"description": "The Bearer token is missing, invalid, or expired.",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Error"
+								},
+								"examples": {
+									"Invalid token": {
+										"value": {
+											"message": "The Bearer token is not valid please check the token and try again."
+										}
+									},
+									"Expired token": {
+										"value": {
+											"message": "Expired token, please refresh the token."
+										}
+									}
+								}
+							}
+						}
+					},
+					"403": {
+						"description": "The token cannot use this instance, or the instance is not active.",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Error"
+								},
+								"examples": {
+									"Wrong instance": {
+										"value": {
+											"message": "The Bearer token does not have access to this instance."
+										}
+									},
+									"Not an SMS instance": {
+										"value": {
+											"message": "This instance can not be used with the SMS API."
+										}
+									},
+									"Instance not active": {
+										"value": {
+											"message": "Instance (Office phone) is not active, please reactivated it from your dashboard."
+										}
+									}
+								}
+							}
+						}
+					},
+					"404": {
+						"description": "The instance or the record does not exist.",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Error"
+								},
+								"examples": {
+									"Not found": {
+										"value": {
+											"message": "Resource not found.",
+											"errors": null,
+											"statusCode": 404
+										}
+									}
+								}
+							}
+						}
+					},
+					"422": {
+						"description": "Invalid query value, such as an unknown status.",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Error"
+								},
+								"examples": {
+									"Unknown status": {
+										"value": {
+											"message": "Invalid message status.",
+											"errors": {
+												"status": ["Invalid message status."]
+											},
+											"statusCode": 422
+										}
+									}
+								}
+							}
+						}
+					},
+					"500": {
+						"description": "Server error. Retry later.",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Error"
+								},
+								"examples": {
+									"Server error": {
+										"value": {
+											"message": "Something went wrong, try again later"
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"description": "List sent and received messages. Filter by `request_id`, number, content, status, type, or date. Paginated with up to 50 messages per page, newest first by `updated_at`.",
+				"requestBody": {
+					"content": {},
+					"description": ""
+				},
+				"operationId": "index-messages"
+			}
+		},
+		"/{instance}/delete-message": {
+			"delete": {
+				"x-hidden": true,
+				"tags": ["Messages"],
+				"summary": "Delete Message",
+				"parameters": [
+					{
+						"name": "Accept",
+						"in": "header",
+						"schema": {
+							"type": "string"
+						},
+						"example": "application/json"
+					},
+					{
+						"name": "messageId",
+						"in": "query",
+						"required": true,
+						"description": "The `id` of the message to delete.",
+						"schema": {
+							"type": "string"
+						},
+						"example": "9f8b7c6d-3333-4a2b-8c3d-4e5f6a7b8c9d"
+					},
+					{
+						"name": "instance",
+						"in": "path",
+						"description": "Instance ID from the Hypersender dashboard.",
+						"required": true,
+						"schema": {
+							"type": "string",
+							"example": "{{ instance_id }}"
+						},
+						"examples": {
+							"default": {
+								"value": "{{ instance_id }}"
+							}
+						}
+					}
+				],
+				"responses": {
+					"204": {
+						"description": "The message was deleted. No body."
+					},
+					"401": {
+						"description": "The Bearer token is missing, invalid, or expired.",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Error"
+								},
+								"examples": {
+									"Invalid token": {
+										"value": {
+											"message": "The Bearer token is not valid please check the token and try again."
+										}
+									},
+									"Expired token": {
+										"value": {
+											"message": "Expired token, please refresh the token."
+										}
+									}
+								}
+							}
+						}
+					},
+					"403": {
+						"description": "The token cannot use this instance, or the instance is not active.",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Error"
+								},
+								"examples": {
+									"Wrong instance": {
+										"value": {
+											"message": "The Bearer token does not have access to this instance."
+										}
+									},
+									"Not an SMS instance": {
+										"value": {
+											"message": "This instance can not be used with the SMS API."
+										}
+									},
+									"Instance not active": {
+										"value": {
+											"message": "Instance (Office phone) is not active, please reactivated it from your dashboard."
+										}
+									}
+								}
+							}
+						}
+					},
+					"404": {
+						"description": "The instance or the record does not exist.",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Error"
+								},
+								"examples": {
+									"Not found": {
+										"value": {
+											"message": "Resource not found.",
+											"errors": null,
+											"statusCode": 404
+										}
+									}
+								}
+							}
+						}
+					},
+					"500": {
+						"description": "Server error. Retry later.",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Error"
+								},
+								"examples": {
+									"Server error": {
+										"value": {
+											"message": "Something went wrong, try again later"
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"description": "Delete a message. It is removed from its thread and cannot be restored.",
+				"operationId": "delete-message"
+			}
+		},
+		"/{instance}/message-threads": {
+			"get": {
+				"x-hidden": true,
+				"tags": ["Message threads"],
+				"summary": "Message threads",
+				"parameters": [
+					{
+						"name": "Accept",
+						"in": "header",
+						"schema": {
+							"type": "string"
+						},
+						"example": "application/json"
+					},
+					{
+						"schema": {
+							"type": "integer",
+							"maximum": 50
+						},
+						"in": "query",
+						"name": "per_page",
+						"description": "Threads per page. Default 50, maximum 50."
+					},
+					{
+						"name": "instance",
+						"in": "path",
+						"description": "Instance ID from the Hypersender dashboard.",
+						"required": true,
+						"schema": {
+							"type": "string",
+							"example": "{{ instance_id }}"
+						},
+						"examples": {
+							"default": {
+								"value": "{{ instance_id }}"
+							}
+						}
+					},
+					{
+						"schema": {
+							"type": "integer"
+						},
+						"in": "query",
+						"name": "page",
+						"description": "Page number, starting at 1."
+					},
+					{
+						"schema": {
+							"type": "string"
+						},
+						"in": "query",
+						"name": "sort",
+						"description": "Default `-updated_at` (newest first). Allowed: `created_at`, `last_message_at`, `updated_at`. Add `-` for descending."
+					},
+					{
+						"schema": {
+							"type": "string"
+						},
+						"in": "query",
+						"name": "filter[last_message_content]",
+						"description": "Part of the last message text."
+					},
+					{
+						"schema": {
+							"type": "boolean"
+						},
+						"in": "query",
+						"name": "filter[is_archived]",
+						"description": "`true` for archived threads, `false` for the others."
+					},
+					{
+						"schema": {
+							"type": "string"
+						},
+						"in": "query",
+						"name": "filter[last_message_id]",
+						"description": "The thread whose last message has this `id`."
+					},
+					{
+						"schema": {
+							"type": "string"
+						},
+						"in": "query",
+						"name": "filter[from_or_to_number]",
+						"description": "Threads with this number as sender or recipient, for example `+12025550147`."
+					},
+					{
+						"schema": {
+							"type": "string"
+						},
+						"in": "query",
+						"name": "include",
+						"description": "Add related data: `phone`, `lastMessage`, or both separated by a comma."
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "A page of threads.",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"data": {
+											"type": "array",
+											"items": {
+												"$ref": "#/components/schemas/MessageThread"
+											}
+										},
+										"links": {
+											"$ref": "#/components/schemas/PaginationLinks"
+										},
+										"meta": {
+											"$ref": "#/components/schemas/PaginationMeta"
+										}
+									}
+								},
+								"examples": {
+									"Threads": {
+										"value": {
+											"data": [
+												{
+													"id": "9f8b7c6d-4444-4a2b-8c3d-4e5f6a7b8c9d",
+													"phone_id": "9f8b7c6d-1111-4a2b-8c3d-4e5f6a7b8c9d",
+													"last_message_id": "9f8b7c6d-3333-4a2b-8c3d-4e5f6a7b8c9d",
+													"from_phone_number": "+12025550101",
+													"to_phone_number": "+12025550147",
+													"is_archived": false,
+													"last_message_content": "Acme code: 482913",
+													"last_message_at": "2026-11-19 10:00:01",
+													"created_at": "2026-11-02 14:20:00",
+													"updated_at": "2026-11-19 10:00:01"
+												}
+											],
+											"links": {
+												"first": "https://app.hypersender.com/api/sms/v1/9f8b7c6d-1111-4a2b-8c3d-4e5f6a7b8c9d/message-threads?page=1",
+												"last": "https://app.hypersender.com/api/sms/v1/9f8b7c6d-1111-4a2b-8c3d-4e5f6a7b8c9d/message-threads?page=1",
+												"prev": null,
+												"next": null
+											},
+											"meta": {
+												"current_page": 1,
+												"from": 1,
+												"last_page": 1,
+												"links": [
+													{
+														"url": null,
+														"label": "&laquo; Previous",
+														"page": null,
+														"active": false
+													},
+													{
+														"url": "https://app.hypersender.com/api/sms/v1/9f8b7c6d-1111-4a2b-8c3d-4e5f6a7b8c9d/message-threads?page=1",
+														"label": "1",
+														"page": 1,
+														"active": true
+													},
+													{
+														"url": null,
+														"label": "Next &raquo;",
+														"page": null,
+														"active": false
+													}
+												],
+												"path": "https://app.hypersender.com/api/sms/v1/9f8b7c6d-1111-4a2b-8c3d-4e5f6a7b8c9d/message-threads",
+												"per_page": 50,
+												"to": 1,
+												"total": 1
+											}
+										}
+									}
+								}
+							}
+						}
+					},
+					"400": {
+						"description": "Unknown filter, sort, or include value, or Hypersender could not reach the SMS service.",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Error"
+								},
+								"examples": {
+									"Unknown filter": {
+										"value": {
+											"message": "Requested filter(s) `status` are not allowed. Allowed filter(s) are `last_message_content, is_archived, last_message_id, from_or_to_number`.",
+											"errors": null,
+											"statusCode": 400
+										}
+									},
+									"SMS service unreachable": {
+										"value": {
+											"message": "Something went wrong, try again later"
+										}
+									}
+								}
+							}
+						}
+					},
+					"401": {
+						"description": "The Bearer token is missing, invalid, or expired.",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Error"
+								},
+								"examples": {
+									"Invalid token": {
+										"value": {
+											"message": "The Bearer token is not valid please check the token and try again."
+										}
+									},
+									"Expired token": {
+										"value": {
+											"message": "Expired token, please refresh the token."
+										}
+									}
+								}
+							}
+						}
+					},
+					"403": {
+						"description": "The token cannot use this instance, or the instance is not active.",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Error"
+								},
+								"examples": {
+									"Wrong instance": {
+										"value": {
+											"message": "The Bearer token does not have access to this instance."
+										}
+									},
+									"Not an SMS instance": {
+										"value": {
+											"message": "This instance can not be used with the SMS API."
+										}
+									},
+									"Instance not active": {
+										"value": {
+											"message": "Instance (Office phone) is not active, please reactivated it from your dashboard."
+										}
+									}
+								}
+							}
+						}
+					},
+					"404": {
+						"description": "The instance or the record does not exist.",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Error"
+								},
+								"examples": {
+									"Not found": {
+										"value": {
+											"message": "Resource not found.",
+											"errors": null,
+											"statusCode": 404
+										}
+									}
+								}
+							}
+						}
+					},
+					"422": {
+						"description": "Invalid query value, such as `per_page` above 50.",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Error"
+								},
+								"examples": {
+									"per_page too large": {
+										"value": {
+											"message": "The per page field must not be greater than 50.",
+											"errors": {
+												"per_page": ["The per page field must not be greater than 50."]
+											},
+											"statusCode": 422
+										}
+									}
+								}
+							}
+						}
+					},
+					"500": {
+						"description": "Server error. Retry later.",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Error"
+								},
+								"examples": {
+									"Server error": {
+										"value": {
+											"message": "Something went wrong, try again later"
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"description": "List the conversations (threads) of your phone. Each thread is one number your phone sent to or received from. Paginated with up to 50 threads per page, newest first by `updated_at`.",
+				"requestBody": {
+					"content": {}
+				},
+				"operationId": "message-threads"
+			}
+		},
+		"/{instance}/edit-message-thread": {
+			"put": {
+				"x-hidden": true,
+				"summary": "Edit Message Thread",
+				"operationId": "edit-message-thread",
+				"parameters": [
+					{
+						"name": "instance",
+						"in": "path",
+						"description": "Instance UUID copied from hypersender dashboard",
+						"required": true,
+						"schema": {
+							"type": "string",
+							"example": "{{ instance_id }}"
+						},
+						"examples": {
+							"default": {
+								"value": "{{ instance_id }}"
+							}
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "The thread was updated.",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/EditMessageThread"
+								},
+								"examples": {
+									"Archived": {
+										"value": {
+											"message": "Message thread updated successfully",
+											"data": {
+												"id": "9f8b7c6d-4444-4a2b-8c3d-4e5f6a7b8c9d",
+												"phone_id": "9f8b7c6d-1111-4a2b-8c3d-4e5f6a7b8c9d",
+												"last_message_id": "9f8b7c6d-3333-4a2b-8c3d-4e5f6a7b8c9d",
+												"from_phone_number": "+12025550101",
+												"to_phone_number": "+12025550147",
+												"is_archived": true,
+												"last_message_content": "Acme code: 482913",
+												"last_message_at": "2026-11-19 10:00:01",
+												"created_at": "2026-11-02 14:20:00",
+												"updated_at": "2026-11-19 10:30:00"
+											}
+										}
+									}
+								}
+							}
+						}
+					},
+					"401": {
+						"description": "The Bearer token is missing, invalid, or expired.",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Error"
+								},
+								"examples": {
+									"Invalid token": {
+										"value": {
+											"message": "The Bearer token is not valid please check the token and try again."
+										}
+									},
+									"Expired token": {
+										"value": {
+											"message": "Expired token, please refresh the token."
+										}
+									}
+								}
+							}
+						}
+					},
+					"403": {
+						"description": "The token cannot use this instance, or the instance is not active.",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Error"
+								},
+								"examples": {
+									"Wrong instance": {
+										"value": {
+											"message": "The Bearer token does not have access to this instance."
+										}
+									},
+									"Not an SMS instance": {
+										"value": {
+											"message": "This instance can not be used with the SMS API."
+										}
+									},
+									"Instance not active": {
+										"value": {
+											"message": "Instance (Office phone) is not active, please reactivated it from your dashboard."
+										}
+									}
+								}
+							}
+						}
+					},
+					"404": {
+						"description": "The instance or the record does not exist.",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Error"
+								},
+								"examples": {
+									"Not found": {
+										"value": {
+											"message": "Resource not found.",
+											"errors": null,
+											"statusCode": 404
+										}
+									}
+								}
+							}
+						}
+					},
+					"422": {
+						"description": "`is_archived` is missing or not a boolean.",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Error"
+								},
+								"examples": {
+									"Missing is_archived": {
+										"value": {
+											"message": "The is archived field is required.",
+											"errors": {
+												"is_archived": ["The is archived field is required."]
+											},
+											"statusCode": 422
+										}
+									}
+								}
+							}
+						}
+					},
+					"500": {
+						"description": "Server error. Retry later.",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Error"
+								},
+								"examples": {
+									"Server error": {
+										"value": {
+											"message": "Something went wrong, try again later"
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"description": "Archive or unarchive a thread.",
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"messageThreadId": {
+										"type": "string",
+										"description": "The `id` of the thread.",
+										"example": "9f8b7c6d-4444-4a2b-8c3d-4e5f6a7b8c9d"
+									},
+									"is_archived": {
+										"type": "boolean",
+										"description": "`true` to archive the thread, `false` to unarchive it.",
+										"example": true
+									}
+								},
+								"required": ["messageThreadId", "is_archived"]
+							},
+							"examples": {
+								"Archive": {
+									"value": {
+										"messageThreadId": "9f8b7c6d-4444-4a2b-8c3d-4e5f6a7b8c9d",
+										"is_archived": true
+									}
+								}
+							}
+						}
+					}
+				},
+				"tags": ["Message threads"]
+			}
+		},
+		"/{instance}/delete-message-thread": {
+			"delete": {
+				"x-hidden": true,
+				"tags": ["Message threads"],
+				"summary": "Delete Message threads",
+				"parameters": [
+					{
+						"name": "Accept",
+						"in": "header",
+						"schema": {
+							"type": "string"
+						},
+						"example": "application/json"
+					},
+					{
+						"name": "messageThreadId",
+						"in": "query",
+						"required": true,
+						"description": "The `id` of the thread to delete.",
+						"schema": {
+							"type": "string"
+						},
+						"example": "9f8b7c6d-4444-4a2b-8c3d-4e5f6a7b8c9d"
+					},
+					{
+						"name": "instance",
+						"in": "path",
+						"description": "Instance ID from the Hypersender dashboard.",
+						"required": true,
+						"schema": {
+							"type": "string",
+							"example": "{{ instance_id }}"
+						},
+						"examples": {
+							"default": {
+								"value": "{{ instance_id }}"
+							}
+						}
+					}
+				],
+				"responses": {
+					"204": {
+						"description": "The thread and its messages were deleted. No body."
+					},
+					"401": {
+						"description": "The Bearer token is missing, invalid, or expired.",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Error"
+								},
+								"examples": {
+									"Invalid token": {
+										"value": {
+											"message": "The Bearer token is not valid please check the token and try again."
+										}
+									},
+									"Expired token": {
+										"value": {
+											"message": "Expired token, please refresh the token."
+										}
+									}
+								}
+							}
+						}
+					},
+					"403": {
+						"description": "The token cannot use this instance, or the instance is not active.",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Error"
+								},
+								"examples": {
+									"Wrong instance": {
+										"value": {
+											"message": "The Bearer token does not have access to this instance."
+										}
+									},
+									"Not an SMS instance": {
+										"value": {
+											"message": "This instance can not be used with the SMS API."
+										}
+									},
+									"Instance not active": {
+										"value": {
+											"message": "Instance (Office phone) is not active, please reactivated it from your dashboard."
+										}
+									}
+								}
+							}
+						}
+					},
+					"404": {
+						"description": "The instance or the record does not exist.",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Error"
+								},
+								"examples": {
+									"Not found": {
+										"value": {
+											"message": "Resource not found.",
+											"errors": null,
+											"statusCode": 404
+										}
+									}
+								}
+							}
+						}
+					},
+					"500": {
+						"description": "Server error. Retry later.",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Error"
+								},
+								"examples": {
+									"Server error": {
+										"value": {
+											"message": "Something went wrong, try again later"
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"description": "Delete a thread and every message in it. This cannot be undone.",
+				"operationId": "delete-message-thread"
+			},
+			"parameters": [
+				{
+					"schema": {
+						"type": "string"
+					},
+					"name": "instance",
+					"in": "path",
+					"required": true
+				}
+			]
+		}
+	},
+	"components": {
+		"securitySchemes": {
+			"Authorization": {
+				"type": "http",
+				"scheme": "bearer"
+			}
+		},
+		"schemas": {
+			"Message": {
+				"type": "object",
+				"properties": {
+					"id": {
+						"type": "string",
+						"description": "Message ID."
+					},
+					"request_id": {
+						"type": "string",
+						"description": "The `request_id` you sent, or a generated UUID."
+					},
+					"phone": {
+						"$ref": "#/components/schemas/Phone",
+						"description": "The phone. Present on the send response, in some webhooks, and with `include=phone`."
+					},
+					"message_thread": {
+						"$ref": "#/components/schemas/MessageThread",
+						"description": "The thread. Only present with `include=messageThread`."
+					},
+					"message_thread_id": {
+						"type": "string"
+					},
+					"phone_id": {
+						"type": "string",
+						"description": "Your Instance ID."
+					},
+					"from_phone_number": {
+						"type": "string",
+						"description": "Sender. For received messages this can be a name, such as a bank or carrier."
+					},
+					"to_phone_number": {
+						"type": "string",
+						"description": "Recipient."
+					},
+					"content": {
+						"type": "string"
+					},
+					"tags": {
+						"type": "array",
+						"items": {
+							"type": "string"
+						},
+						"maxItems": 10,
+						"description": "Lowercase tags added by rules on the phone. Empty list when no rule tagged the message.",
+						"example": ["otp"]
+					},
+					"send_duration": {
+						"type": ["integer", "null"],
+						"description": "Reserved. Currently always `null`."
+					},
+					"schedule_on_phone_at": {
+						"type": ["string", "null"],
+						"description": "When the message was pushed to the phone."
+					},
+					"sent_at": {
+						"type": ["string", "null"],
+						"description": "When the phone handed the message to the carrier."
+					},
+					"last_attempted_at": {
+						"type": ["string", "null"],
+						"description": "Last push attempt."
+					},
+					"delivered_at": {
+						"type": ["string", "null"],
+						"description": "When the carrier confirmed delivery."
+					},
+					"received_at": {
+						"type": ["string", "null"],
+						"description": "When the phone received an incoming message."
+					},
+					"expired_at": {
+						"type": ["string", "null"]
+					},
+					"schedule_send_at": {
+						"type": ["string", "null"],
+						"description": "Planned send time (UTC), for scheduled messages."
+					},
+					"failed_at": {
+						"type": ["string", "null"]
+					},
+					"send_attempt_count": {
+						"type": ["integer", "null"],
+						"description": "How many times Hypersender pushed the message to the phone."
+					},
+					"max_send_attempts": {
+						"type": "integer"
+					},
+					"failure_reason": {
+						"type": ["string", "null"],
+						"description": "Why the message failed, for example `GENERIC_FAILURE`, `NO_SERVICE`, `PHONE_DID_NOT_RESPOND`, or `Max send attempts reached`. Treat it as text: new values can appear."
+					},
+					"ussd_message": {
+						"type": ["string", "null"],
+						"description": "USSD or flash reply the phone received for this message."
+					},
+					"message_expiration_seconds": {
+						"type": "integer",
+						"description": "`0` means the message does not expire."
+					},
+					"timezone": {
+						"type": "string",
+						"description": "Timezone used to read `schedule_send_at` in the send request."
+					},
+					"sim": {
+						"type": ["string", "null"],
+						"enum": ["SIM1", "SIM2", null],
+						"description": "For received messages, the SIM that received it. For sent messages, the instance's SIM."
+					},
+					"status": {
+						"type": "string",
+						"enum": ["pending", "scheduled", "sending", "sent", "delivered", "failed", "expired", "received", "deleted"]
+					},
+					"type": {
+						"type": "string",
+						"enum": ["sent_to_mobile", "received_from_mobile"],
+						"description": "`sent_to_mobile` for messages you sent, `received_from_mobile` for incoming messages."
+					},
+					"created_at": {
+						"type": "string"
+					},
+					"updated_at": {
+						"type": "string"
+					}
+				}
+			},
+			"SendMessageResponse": {
+				"type": "object",
+				"properties": {
+					"message": {
+						"type": "string"
+					},
+					"data": {
+						"$ref": "#/components/schemas/Message"
+					}
+				}
+			},
+			"Phone": {
+				"type": "object",
+				"properties": {
+					"app_version": {
+						"$ref": "#/components/schemas/AppVersion",
+						"description": "The installed app version. Only present with `include=phone.currentAppVersion` and in some webhooks."
+					},
+					"id": {
+						"type": "string",
+						"description": "Your Instance ID."
+					},
+					"user_id": {
+						"type": "string",
+						"description": "Your Hypersender user ID."
+					},
+					"push_registration": {
+						"type": "object",
+						"description": "Whether Hypersender can push messages to the phone.",
+						"properties": {
+							"status": {
+								"type": "string",
+								"enum": ["registered", "missing"],
+								"description": "`missing` means sends are refused with `PHONE_PUSH_NOT_REGISTERED` until the app registers again."
+							},
+							"recovery_required": {
+								"type": "boolean",
+								"description": "`true` when the app must register again. Open the app on the phone."
+							},
+							"synced_at": {
+								"type": ["string", "null"],
+								"description": "When the app last reported its registration (ISO 8601)."
+							},
+							"client_state": {
+								"type": ["string", "null"],
+								"description": "Registration state reported by the app."
+							}
+						}
+					},
+					"app_update_required": {
+						"type": "boolean",
+						"description": "`true` when the app on the phone must be updated. Requests that need the phone return `426` until it is."
+					},
+					"app_update_reason": {
+						"type": ["string", "null"],
+						"enum": ["expired", "force_update", null],
+						"description": "Why an update is required."
+					},
+					"phone_number": {
+						"type": "string",
+						"description": "The SIM card's phone number."
+					},
+					"name": {
+						"type": "string",
+						"description": "The instance name."
+					},
+					"sim": {
+						"type": "string",
+						"enum": ["SIM1", "SIM2"],
+						"description": "The SIM slot this instance uses."
+					},
+					"max_send_attempts": {
+						"type": "integer",
+						"description": "Default `max_send_attempts` for new messages."
+					},
+					"message_expiration_seconds": {
+						"type": "integer",
+						"description": "Default `message_expiration_seconds` for new messages. `0` means messages do not expire."
+					},
+					"is_online": {
+						"type": "boolean"
+					},
+					"last_online_at": {
+						"type": ["string", "null"]
+					},
+					"last_offline_at": {
+						"type": ["string", "null"]
+					},
+					"last_message_at": {
+						"type": ["string", "null"]
+					},
+					"last_missed_call_at": {
+						"type": ["string", "null"],
+						"description": "Legacy field. Missed-call tracking was removed."
+					},
+					"last_heartbeat_at": {
+						"type": ["string", "null"]
+					},
+					"heartbeat_enabled_at": {
+						"type": ["string", "null"],
+						"description": "When heartbeat checks started. `null` after `phone.heartbeat.disabled`."
+					},
+					"timezone": {
+						"type": "string",
+						"description": "The phone's timezone. `schedule_send_at` in send requests uses it."
+					},
+					"created_at": {
+						"type": "string"
+					},
+					"updated_at": {
+						"type": "string"
+					}
+				}
+			},
+			"AppVersion": {
+				"type": "object",
+				"properties": {
+					"id": {
+						"type": "string"
+					},
+					"version_number": {
+						"type": "string"
+					},
+					"version_code": {
+						"type": "integer"
+					},
+					"channel": {
+						"type": "string",
+						"enum": ["stable", "beta", "development"]
+					},
+					"release_notes": {
+						"type": ["string", "null"]
+					},
+					"force_update": {
+						"type": "boolean"
+					},
+					"description": {
+						"type": ["string", "null"]
+					},
+					"is_active": {
+						"type": "boolean"
+					},
+					"expires_at": {
+						"type": ["string", "null"]
+					},
+					"released_at": {
+						"type": ["string", "null"]
+					},
+					"created_at": {
+						"type": "string"
+					},
+					"updated_at": {
+						"type": "string"
+					},
+					"is_expired": {
+						"type": "boolean"
+					},
+					"is_expiring": {
+						"type": "boolean"
+					},
+					"days_until_expiration": {
+						"type": ["integer", "null"]
+					}
+				}
+			},
+			"MessageThread": {
+				"type": "object",
+				"properties": {
+					"id": {
+						"type": "string"
+					},
+					"phone_id": {
+						"type": "string",
+						"description": "Your Instance ID."
+					},
+					"last_message_id": {
+						"type": "string"
+					},
+					"from_phone_number": {
+						"type": "string"
+					},
+					"to_phone_number": {
+						"type": "string"
+					},
+					"is_archived": {
+						"type": "boolean"
+					},
+					"last_message_content": {
+						"type": "string"
+					},
+					"last_message_at": {
+						"type": ["string", "null"]
+					},
+					"created_at": {
+						"type": "string"
+					},
+					"updated_at": {
+						"type": "string"
+					}
+				}
+			},
+			"EditMessageThread": {
+				"type": "object",
+				"properties": {
+					"message": {
+						"type": "string"
+					},
+					"data": {
+						"$ref": "#/components/schemas/MessageThread"
+					}
+				}
+			},
+			"Heartbeat": {
+				"type": "object",
+				"properties": {
+					"phone": {
+						"$ref": "#/components/schemas/Phone",
+						"description": "Only present with `include=phone`."
+					},
+					"id": {
+						"type": "string"
+					},
+					"phone_id": {
+						"type": "string",
+						"description": "Your Instance ID."
+					},
+					"battery_level": {
+						"type": ["integer", "null"],
+						"description": "Battery level in percent."
+					},
+					"is_charging": {
+						"type": ["boolean", "null"]
+					},
+					"local_timestamp": {
+						"type": ["string", "null"],
+						"description": "The phone's local time when it sent the heartbeat."
+					},
+					"app_version": {
+						"type": ["string", "null"],
+						"description": "App version that sent the heartbeat."
+					},
+					"created_at": {
+						"type": "string"
+					},
+					"updated_at": {
+						"type": "string"
+					}
+				}
+			},
+			"Error": {
+				"type": "object",
+				"properties": {
+					"message": {
+						"type": "string",
+						"description": "What went wrong."
+					},
+					"errors": {
+						"type": ["object", "null"],
+						"description": "Validation errors by field. Each value is a list of messages."
+					},
+					"code": {
+						"type": "string",
+						"description": "Machine-readable reason, when there is one. Example: `PHONE_PUSH_NOT_REGISTERED`."
+					},
+					"error_code": {
+						"type": "string",
+						"enum": ["APP_VERSION_EXPIRED", "FORCE_UPDATE_REQUIRED"],
+						"description": "Set on `426` responses."
+					},
+					"data": {
+						"type": "object",
+						"description": "Extra details, for example the app versions on a `426`."
+					},
+					"statusCode": {
+						"type": "integer",
+						"description": "The HTTP status. Present on errors returned by the SMS service."
+					}
+				},
+				"required": ["message"]
+			},
+			"PaginationLinks": {
+				"type": "object",
+				"properties": {
+					"first": {
+						"type": ["string", "null"]
+					},
+					"last": {
+						"type": ["string", "null"]
+					},
+					"prev": {
+						"type": ["string", "null"]
+					},
+					"next": {
+						"type": ["string", "null"]
+					}
+				}
+			},
+			"PaginationMeta": {
+				"type": "object",
+				"properties": {
+					"current_page": {
+						"type": "integer"
+					},
+					"from": {
+						"type": ["integer", "null"]
+					},
+					"last_page": {
+						"type": "integer"
+					},
+					"links": {
+						"type": "array",
+						"items": {
+							"type": "object",
+							"properties": {
+								"url": {
+									"type": ["string", "null"]
+								},
+								"label": {
+									"type": "string"
+								},
+								"page": {
+									"type": ["integer", "null"]
+								},
+								"active": {
+									"type": "boolean"
+								}
+							}
+						}
+					},
+					"path": {
+						"type": "string"
+					},
+					"per_page": {
+						"type": "integer"
+					},
+					"to": {
+						"type": ["integer", "null"]
+					},
+					"total": {
+						"type": "integer"
+					}
+				}
+			}
+		}
+	},
+	"security": [
+		{
+			"Authorization": []
+		}
+	]
+}

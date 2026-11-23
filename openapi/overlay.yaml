@@ -1,0 +1,34 @@
+overlay: 1.0.0
+info:
+  title: Hypersender SDK adjustments
+  version: 0.0.1
+# Applied on top of openapi/hypersender.json (built by scripts/build-spec.py).
+actions:
+  # Docs-only header params; the SDK sets these itself.
+  - target: $.paths.*.*.parameters[?(@.name == 'Accept' || @.name == 'Content-Type')]
+    remove: true
+
+  # Each product's instance ID is set once on the client.
+  - target: $
+    update:
+      x-speakeasy-globals:
+        parameters:
+          - name: whatsappInstance
+            in: path
+            required: true
+            schema:
+              type: string
+          - name: smsInstance
+            in: path
+            required: true
+            schema:
+              type: string
+          - name: otpInstance
+            in: path
+            required: true
+            schema:
+              type: string
+  # No per-call instance override, so methods take just their own arguments.
+  - target: $.paths.*.*.parameters[?(@.name == 'whatsappInstance' || @.name == 'smsInstance' || @.name == 'otpInstance')]
+    update:
+      x-speakeasy-globals-hidden: true

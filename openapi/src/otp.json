@@ -1,0 +1,310 @@
+{
+	"openapi": "3.1.0",
+	"info": {
+		"version": "v2.0",
+		"title": "Hypersender OTP API Docs",
+		"description": ""
+	},
+	"servers": [
+		{
+			"url": "https://app.hypersender.com/api/otp/v2",
+			"description": "Production"
+		}
+	],
+	"paths": {
+		"/{instance}/request-code": {
+			"post": {
+				"summary": "Request OTP code",
+				"description": "Generate an OTP code and queue the message to the provided chatId.",
+				"operationId": "requestCode",
+				"x-hidden": true,
+				"parameters": [{ "$ref": "#/components/parameters/instance" }],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": { "$ref": "#/components/schemas/RequestCodeRequest" },
+							"examples": {
+								"request": {
+									"value": {
+										"chatId": "20123456789@c.us",
+										"length": 6,
+										"useLetter": false,
+										"useNumber": true,
+										"allCapital": false,
+										"name": "hypersender",
+										"expires": 1800
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "Successful response",
+						"content": {
+							"application/json": {
+								"schema": { "$ref": "#/components/schemas/RequestCodeResponse" },
+								"examples": {
+									"response": {
+										"value": {
+											"success": true,
+											"message": "OTP code generated and message queued successfully",
+											"data": {
+												"uuid": "a0b5df6a-b491-4190-80a5-38d85a2a4836",
+												"chat_id": "20123456789@c.us",
+												"code": "439713",
+												"status": "pending",
+												"otp_type": "code",
+												"expires_at": "2025-12-29T18:09:38+00:00",
+												"created_at": "2025-12-29T17:39:38+00:00"
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/{instance}/validate-code": {
+			"post": {
+				"summary": "Validate OTP code",
+				"description": "Validate an OTP code previously generated for a chat.",
+				"operationId": "validateCode",
+				"x-hidden": true,
+				"parameters": [{ "$ref": "#/components/parameters/instance" }],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": { "$ref": "#/components/schemas/ValidateCodeRequest" },
+							"examples": {
+								"request": { "value": { "chatId": "20123456789@c.us", "code": "439713" } }
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "Successful validation",
+						"content": {
+							"application/json": {
+								"schema": { "$ref": "#/components/schemas/ValidateCodeResponse" },
+								"examples": {
+									"response": {
+										"value": {
+											"success": true,
+											"message": "OTP code validated successfully",
+											"data": {
+												"uuid": "a0b5df6a-b491-4190-80a5-38d85a2a4836",
+												"chat_id": "20123456789@c.us",
+												"status": "validated",
+												"validated_at": "2025-12-29T17:43:36+00:00"
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/{instance}/generate-link": {
+			"post": {
+				"summary": "Generate OTP link",
+				"description": "Generate an OTP link for the chat; returns a short code and a whatsapp link template.",
+				"operationId": "generateLink",
+				"x-hidden": true,
+				"parameters": [{ "$ref": "#/components/parameters/instance" }],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": { "$ref": "#/components/schemas/GenerateLinkRequest" },
+							"examples": {
+								"request": {
+									"value": {
+										"chatId": "20123456789@c.us",
+										"expires": 1800,
+										"name": "Hypersender",
+										"message": {
+											"prompt": "Send me my Hypersender link",
+											"success": "Here is your link: {link}",
+											"failed": "Login failed, please try again later.",
+											"expired": "The link has been expired, please try another one."
+										},
+										"callback": {
+											"success": "https://yourdomain.com/callback/success",
+											"failed": "https://yourdomain.com/callback/failed"
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "Link created",
+						"content": {
+							"application/json": {
+								"schema": { "$ref": "#/components/schemas/GenerateLinkResponse" },
+								"examples": {
+									"response": {
+										"value": {
+											"success": true,
+											"message": "OTP link request created successfully",
+											"data": {
+												"uuid": "a0b5e14e-95da-4bd4-9e2a-071661244bef",
+												"code": "RDYFQUBX",
+												"chat_id": "20123456789@c.us",
+												"status": "pending",
+												"otp_type": "link",
+												"expires_at": "2025-12-29T18:14:55+00:00",
+												"created_at": "2025-12-29T17:44:55+00:00",
+												"whatsapp_link": "https://wa.me/201553730661?text=Give+me+link+to+login+at+7enkesh+%5BRDYFQUBX%5D+-+DO+NOT+CHANGE+THIS+MESSAGE"
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	},
+	"components": {
+		"parameters": {
+			"instance": {
+				"name": "instance",
+				"in": "path",
+				"description": "Hypersender instance UUID",
+				"required": true,
+				"schema": {
+					"type": "string"
+				},
+				"example": "{{ instance_id }}"
+			}
+		},
+		"securitySchemes": {
+			"Authorization": {
+				"type": "http",
+				"scheme": "bearer"
+			}
+		},
+		"schemas": {
+			"RequestCodeRequest": {
+				"type": "object",
+				"properties": {
+					"chatId": { "type": "string", "description": "WhatsApp chat id (e.g. 20123456789@c.us)" },
+					"length": { "type": "integer", "description": "Length of the code" },
+					"useLetter": { "type": "boolean" },
+					"useNumber": { "type": "boolean" },
+					"allCapital": { "type": "boolean" },
+					"name": { "type": "string", "description": "Name to show in messages" },
+					"expires": { "type": "integer", "description": "TTL in seconds" }
+				},
+				"required": ["chatId"]
+			},
+			"ValidateCodeRequest": {
+				"type": "object",
+				"properties": {
+					"chatId": { "type": "string" },
+					"code": { "type": "string" }
+				},
+				"required": ["chatId", "code"]
+			},
+			"GenerateLinkRequest": {
+				"type": "object",
+				"properties": {
+					"chatId": { "type": "string", "description": "WhatsApp chat ID of the recipient (e.g. 20123456789@c.us)" },
+					"expires": { "type": "integer", "description": "TTL in seconds" },
+					"name": { "type": "string" },
+					"message": {
+						"type": "object",
+						"properties": {
+							"prompt": { "type": "string" },
+							"success": { "type": "string" },
+							"failed": { "type": "string" },
+							"expired": { "type": "string" }
+						}
+					},
+					"callback": {
+						"type": "object",
+						"properties": {
+							"success": { "type": "string" },
+							"failed": { "type": "string" }
+						}
+					}
+				},
+				"required": ["chatId"]
+			},
+			"RequestCodeResponse": {
+				"type": "object",
+				"properties": {
+					"success": { "type": "boolean" },
+					"message": { "type": "string" },
+					"data": {
+						"type": "object",
+						"properties": {
+							"uuid": { "type": "string" },
+							"chat_id": { "type": "string" },
+							"code": { "type": "string" },
+							"status": { "type": "string" },
+							"otp_type": { "type": "string" },
+							"expires_at": { "type": "string", "format": "date-time" },
+							"created_at": { "type": "string", "format": "date-time" }
+						}
+					}
+				}
+			},
+			"ValidateCodeResponse": {
+				"type": "object",
+				"properties": {
+					"success": { "type": "boolean" },
+					"message": { "type": "string" },
+					"data": {
+						"type": "object",
+						"properties": {
+							"uuid": { "type": "string" },
+							"chat_id": { "type": "string" },
+							"status": { "type": "string" },
+							"validated_at": { "type": "string", "format": "date-time" }
+						}
+					}
+				}
+			},
+			"GenerateLinkResponse": {
+				"type": "object",
+				"properties": {
+					"success": { "type": "boolean" },
+					"message": { "type": "string" },
+					"data": {
+						"type": "object",
+						"properties": {
+							"uuid": { "type": "string" },
+							"code": { "type": "string" },
+							"chat_id": { "type": "string" },
+							"status": { "type": "string" },
+							"otp_type": { "type": "string" },
+							"expires_at": { "type": "string", "format": "date-time" },
+							"created_at": { "type": "string", "format": "date-time" },
+							"whatsapp_link": { "type": "string" }
+						}
+					}
+				}
+			}
+		}
+	},
+	"security": [
+		{
+			"Authorization": []
+		}
+	],
+	"x-internal": false
+}
