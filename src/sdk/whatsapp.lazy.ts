@@ -83,6 +83,28 @@ const whatsappSendLinkCustomPreview =
       ),
     )) as typeof import("../funcs/whatsapp-send-link-custom-preview.js").whatsappSendLinkCustomPreview;
 
+let whatsappSendLinkCustomPreviewMultipart$module:
+  | Promise<
+    typeof import("../funcs/whatsapp-send-link-custom-preview-multipart.js")
+  >
+  | undefined;
+const whatsappSendLinkCustomPreviewMultipart =
+  ((
+    ...args: Parameters<
+      typeof import("../funcs/whatsapp-send-link-custom-preview-multipart.js").whatsappSendLinkCustomPreviewMultipart
+    >
+  ) =>
+    new APIPromise(
+      (whatsappSendLinkCustomPreviewMultipart$module ??= import(
+        "../funcs/whatsapp-send-link-custom-preview-multipart.js"
+      ).catch((error: unknown) => {
+        whatsappSendLinkCustomPreviewMultipart$module = undefined;
+        throw error;
+      })).then((module) =>
+        module.whatsappSendLinkCustomPreviewMultipart(...args).$inspect()
+      ),
+    )) as typeof import("../funcs/whatsapp-send-link-custom-preview-multipart.js").whatsappSendLinkCustomPreviewMultipart;
+
 let whatsappSendFile$module:
   | Promise<typeof import("../funcs/whatsapp-send-file.js")>
   | undefined;
@@ -99,6 +121,26 @@ const whatsappSendFile =
           throw error;
         })).then((module) => module.whatsappSendFile(...args).$inspect()),
     )) as typeof import("../funcs/whatsapp-send-file.js").whatsappSendFile;
+
+let whatsappSendFileMultipart$module:
+  | Promise<typeof import("../funcs/whatsapp-send-file-multipart.js")>
+  | undefined;
+const whatsappSendFileMultipart =
+  ((
+    ...args: Parameters<
+      typeof import("../funcs/whatsapp-send-file-multipart.js").whatsappSendFileMultipart
+    >
+  ) =>
+    new APIPromise(
+      (whatsappSendFileMultipart$module ??= import(
+        "../funcs/whatsapp-send-file-multipart.js"
+      ).catch((error: unknown) => {
+        whatsappSendFileMultipart$module = undefined;
+        throw error;
+      })).then((module) =>
+        module.whatsappSendFileMultipart(...args).$inspect()
+      ),
+    )) as typeof import("../funcs/whatsapp-send-file-multipart.js").whatsappSendFileMultipart;
 
 let whatsappSendImage$module:
   | Promise<typeof import("../funcs/whatsapp-send-image.js")>
@@ -117,6 +159,26 @@ const whatsappSendImage =
         })).then((module) => module.whatsappSendImage(...args).$inspect()),
     )) as typeof import("../funcs/whatsapp-send-image.js").whatsappSendImage;
 
+let whatsappSendImageMultipart$module:
+  | Promise<typeof import("../funcs/whatsapp-send-image-multipart.js")>
+  | undefined;
+const whatsappSendImageMultipart =
+  ((
+    ...args: Parameters<
+      typeof import("../funcs/whatsapp-send-image-multipart.js").whatsappSendImageMultipart
+    >
+  ) =>
+    new APIPromise(
+      (whatsappSendImageMultipart$module ??= import(
+        "../funcs/whatsapp-send-image-multipart.js"
+      ).catch((error: unknown) => {
+        whatsappSendImageMultipart$module = undefined;
+        throw error;
+      })).then((module) =>
+        module.whatsappSendImageMultipart(...args).$inspect()
+      ),
+    )) as typeof import("../funcs/whatsapp-send-image-multipart.js").whatsappSendImageMultipart;
+
 let whatsappSendVideo$module:
   | Promise<typeof import("../funcs/whatsapp-send-video.js")>
   | undefined;
@@ -134,6 +196,26 @@ const whatsappSendVideo =
         })).then((module) => module.whatsappSendVideo(...args).$inspect()),
     )) as typeof import("../funcs/whatsapp-send-video.js").whatsappSendVideo;
 
+let whatsappSendVideoMultipart$module:
+  | Promise<typeof import("../funcs/whatsapp-send-video-multipart.js")>
+  | undefined;
+const whatsappSendVideoMultipart =
+  ((
+    ...args: Parameters<
+      typeof import("../funcs/whatsapp-send-video-multipart.js").whatsappSendVideoMultipart
+    >
+  ) =>
+    new APIPromise(
+      (whatsappSendVideoMultipart$module ??= import(
+        "../funcs/whatsapp-send-video-multipart.js"
+      ).catch((error: unknown) => {
+        whatsappSendVideoMultipart$module = undefined;
+        throw error;
+      })).then((module) =>
+        module.whatsappSendVideoMultipart(...args).$inspect()
+      ),
+    )) as typeof import("../funcs/whatsapp-send-video-multipart.js").whatsappSendVideoMultipart;
+
 let whatsappSendVoice$module:
   | Promise<typeof import("../funcs/whatsapp-send-voice.js")>
   | undefined;
@@ -150,6 +232,26 @@ const whatsappSendVoice =
           throw error;
         })).then((module) => module.whatsappSendVoice(...args).$inspect()),
     )) as typeof import("../funcs/whatsapp-send-voice.js").whatsappSendVoice;
+
+let whatsappSendVoiceMultipart$module:
+  | Promise<typeof import("../funcs/whatsapp-send-voice-multipart.js")>
+  | undefined;
+const whatsappSendVoiceMultipart =
+  ((
+    ...args: Parameters<
+      typeof import("../funcs/whatsapp-send-voice-multipart.js").whatsappSendVoiceMultipart
+    >
+  ) =>
+    new APIPromise(
+      (whatsappSendVoiceMultipart$module ??= import(
+        "../funcs/whatsapp-send-voice-multipart.js"
+      ).catch((error: unknown) => {
+        whatsappSendVoiceMultipart$module = undefined;
+        throw error;
+      })).then((module) =>
+        module.whatsappSendVoiceMultipart(...args).$inspect()
+      ),
+    )) as typeof import("../funcs/whatsapp-send-voice-multipart.js").whatsappSendVoiceMultipart;
 
 let whatsappForwardMessage$module:
   | Promise<typeof import("../funcs/whatsapp-forward-message.js")>
@@ -395,11 +497,33 @@ export class Whatsapp extends ClientSDK {
     ));
   }
 
+  async sendLinkCustomPreviewMultipart(
+    request: models.SendLinkCustomPreviewMultipart,
+    options?: RequestOptions,
+  ): Promise<operations.WhatsappSendLinkCustomPreviewMultipartResponse> {
+    return unwrapAsync(whatsappSendLinkCustomPreviewMultipart(
+      this,
+      request,
+      options,
+    ));
+  }
+
   async sendFile(
     request: models.SendFileRequest,
     options?: RequestOptions,
   ): Promise<operations.WhatsappSendFileResponse> {
     return unwrapAsync(whatsappSendFile(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  async sendFileMultipart(
+    request: models.SendFileRequestMultipart,
+    options?: RequestOptions,
+  ): Promise<operations.WhatsappSendFileMultipartResponse> {
+    return unwrapAsync(whatsappSendFileMultipart(
       this,
       request,
       options,
@@ -417,6 +541,17 @@ export class Whatsapp extends ClientSDK {
     ));
   }
 
+  async sendImageMultipart(
+    request: models.SendImageRequestMultipart,
+    options?: RequestOptions,
+  ): Promise<operations.WhatsappSendImageMultipartResponse> {
+    return unwrapAsync(whatsappSendImageMultipart(
+      this,
+      request,
+      options,
+    ));
+  }
+
   async sendVideo(
     request: models.SendVideoRequest,
     options?: RequestOptions,
@@ -428,11 +563,33 @@ export class Whatsapp extends ClientSDK {
     ));
   }
 
+  async sendVideoMultipart(
+    request: models.SendVideoRequestMultipart,
+    options?: RequestOptions,
+  ): Promise<operations.WhatsappSendVideoMultipartResponse> {
+    return unwrapAsync(whatsappSendVideoMultipart(
+      this,
+      request,
+      options,
+    ));
+  }
+
   async sendVoice(
     request: models.SendVoiceRequest,
     options?: RequestOptions,
   ): Promise<operations.WhatsappSendVoiceResponse> {
     return unwrapAsync(whatsappSendVoice(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  async sendVoiceMultipart(
+    request: models.SendVoiceRequestMultipart,
+    options?: RequestOptions,
+  ): Promise<operations.WhatsappSendVoiceMultipartResponse> {
+    return unwrapAsync(whatsappSendVoiceMultipart(
       this,
       request,
       options,

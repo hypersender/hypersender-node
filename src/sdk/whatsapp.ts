@@ -9,15 +9,20 @@ import { whatsappGetQueuedRequest } from "../funcs/whatsapp-get-queued-request.j
 import { whatsappReactToMessage } from "../funcs/whatsapp-react-to-message.js";
 import { whatsappReadChat } from "../funcs/whatsapp-read-chat.js";
 import { whatsappSendContactCard } from "../funcs/whatsapp-send-contact-card.js";
+import { whatsappSendFileMultipart } from "../funcs/whatsapp-send-file-multipart.js";
 import { whatsappSendFile } from "../funcs/whatsapp-send-file.js";
+import { whatsappSendImageMultipart } from "../funcs/whatsapp-send-image-multipart.js";
 import { whatsappSendImage } from "../funcs/whatsapp-send-image.js";
+import { whatsappSendLinkCustomPreviewMultipart } from "../funcs/whatsapp-send-link-custom-preview-multipart.js";
 import { whatsappSendLinkCustomPreview } from "../funcs/whatsapp-send-link-custom-preview.js";
 import { whatsappSendLocation } from "../funcs/whatsapp-send-location.js";
 import { whatsappSendPoll } from "../funcs/whatsapp-send-poll.js";
 import { whatsappSendSeen } from "../funcs/whatsapp-send-seen.js";
 import { whatsappSendTextSafe } from "../funcs/whatsapp-send-text-safe.js";
 import { whatsappSendText } from "../funcs/whatsapp-send-text.js";
+import { whatsappSendVideoMultipart } from "../funcs/whatsapp-send-video-multipart.js";
 import { whatsappSendVideo } from "../funcs/whatsapp-send-video.js";
+import { whatsappSendVoiceMultipart } from "../funcs/whatsapp-send-voice-multipart.js";
 import { whatsappSendVoice } from "../funcs/whatsapp-send-voice.js";
 import { whatsappStarMessage } from "../funcs/whatsapp-star-message.js";
 import { whatsappStartTyping } from "../funcs/whatsapp-start-typing.js";
@@ -78,11 +83,33 @@ export class Whatsapp extends ClientSDK {
     ));
   }
 
+  async sendLinkCustomPreviewMultipart(
+    request: models.SendLinkCustomPreviewMultipart,
+    options?: RequestOptions,
+  ): Promise<operations.WhatsappSendLinkCustomPreviewMultipartResponse> {
+    return unwrapAsync(whatsappSendLinkCustomPreviewMultipart(
+      this,
+      request,
+      options,
+    ));
+  }
+
   async sendFile(
     request: models.SendFileRequest,
     options?: RequestOptions,
   ): Promise<operations.WhatsappSendFileResponse> {
     return unwrapAsync(whatsappSendFile(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  async sendFileMultipart(
+    request: models.SendFileRequestMultipart,
+    options?: RequestOptions,
+  ): Promise<operations.WhatsappSendFileMultipartResponse> {
+    return unwrapAsync(whatsappSendFileMultipart(
       this,
       request,
       options,
@@ -100,6 +127,17 @@ export class Whatsapp extends ClientSDK {
     ));
   }
 
+  async sendImageMultipart(
+    request: models.SendImageRequestMultipart,
+    options?: RequestOptions,
+  ): Promise<operations.WhatsappSendImageMultipartResponse> {
+    return unwrapAsync(whatsappSendImageMultipart(
+      this,
+      request,
+      options,
+    ));
+  }
+
   async sendVideo(
     request: models.SendVideoRequest,
     options?: RequestOptions,
@@ -111,11 +149,33 @@ export class Whatsapp extends ClientSDK {
     ));
   }
 
+  async sendVideoMultipart(
+    request: models.SendVideoRequestMultipart,
+    options?: RequestOptions,
+  ): Promise<operations.WhatsappSendVideoMultipartResponse> {
+    return unwrapAsync(whatsappSendVideoMultipart(
+      this,
+      request,
+      options,
+    ));
+  }
+
   async sendVoice(
     request: models.SendVoiceRequest,
     options?: RequestOptions,
   ): Promise<operations.WhatsappSendVoiceResponse> {
     return unwrapAsync(whatsappSendVoice(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  async sendVoiceMultipart(
+    request: models.SendVoiceRequestMultipart,
+    options?: RequestOptions,
+  ): Promise<operations.WhatsappSendVoiceMultipartResponse> {
+    return unwrapAsync(whatsappSendVoiceMultipart(
       this,
       request,
       options,

@@ -1,11 +1,11 @@
-# AudioMessage
+# WhatsappSendVoiceMultipartAudioMessage
 
 ## Example Usage
 
 ```typescript
-import { AudioMessage } from "hypersender-node/models/operations";
+import { WhatsappSendVoiceMultipartAudioMessage } from "hypersender-node/models/operations";
 
-let value: AudioMessage = {};
+let value: WhatsappSendVoiceMultipartAudioMessage = {};
 ```
 
 ## Fields
