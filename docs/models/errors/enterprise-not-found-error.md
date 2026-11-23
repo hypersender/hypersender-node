@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { EnterpriseNotFoundError } from "hypersender/models/errors";
+import { EnterpriseNotFoundError } from "hypersender-node/models/errors";
 
 // No examples available for this model
 ```

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { LidCountResponse } from "hypersender/models";
+import { LidCountResponse } from "hypersender-node/models";
 
 let value: LidCountResponse = {
   count: 123,

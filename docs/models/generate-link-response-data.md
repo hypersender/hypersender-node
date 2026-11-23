@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GenerateLinkResponseData } from "hypersender/models";
+import { GenerateLinkResponseData } from "hypersender-node/models";
 
 let value: GenerateLinkResponseData = {};
 ```

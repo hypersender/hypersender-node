@@ -5,7 +5,7 @@ Rate limit exceeded
 ## Example Usage
 
 ```typescript
-import { EnterpriseGetInstanceHealthTooManyRequestsError } from "hypersender/models/errors";
+import { EnterpriseGetInstanceHealthTooManyRequestsError } from "hypersender-node/models/errors";
 
 // No examples available for this model
 ```

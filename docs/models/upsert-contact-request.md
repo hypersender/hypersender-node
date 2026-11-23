@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UpsertContactRequest } from "hypersender/models";
+import { UpsertContactRequest } from "hypersender-node/models";
 
 let value: UpsertContactRequest = {
   chatId: "1234567890@c.us",

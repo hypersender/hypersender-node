@@ -5,7 +5,7 @@ Profile picture retrieved successfully
 ## Example Usage
 
 ```typescript
-import { WhatsappGetProfilePictureResponse } from "hypersender/models/operations";
+import { WhatsappGetProfilePictureResponse } from "hypersender-node/models/operations";
 
 let value: WhatsappGetProfilePictureResponse = {
   message: "Profile picture retrieved successfully.",

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ReactToMessageRequest } from "hypersender/models";
+import { ReactToMessageRequest } from "hypersender-node/models";
 
 let value: ReactToMessageRequest = {
   chatId: "111111111111@c.us",

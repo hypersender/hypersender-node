@@ -5,7 +5,7 @@ Successful response
 ## Example Usage
 
 ```typescript
-import { WhatsappSendVideoResponse } from "hypersender/models/operations";
+import { WhatsappSendVideoResponse } from "hypersender-node/models/operations";
 
 let value: WhatsappSendVideoResponse = {};
 ```

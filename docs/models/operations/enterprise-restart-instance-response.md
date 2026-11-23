@@ -5,7 +5,7 @@ Instance restarted successfully
 ## Example Usage
 
 ```typescript
-import { EnterpriseRestartInstanceResponse } from "hypersender/models/operations";
+import { EnterpriseRestartInstanceResponse } from "hypersender-node/models/operations";
 
 let value: EnterpriseRestartInstanceResponse = {
   message: "WhatsApp instance restarted successfully.",

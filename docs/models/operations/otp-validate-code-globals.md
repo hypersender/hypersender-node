@@ -3,10 +3,10 @@
 ## Example Usage
 
 ```typescript
-import { OtpValidateCodeGlobals } from "hypersender/models/operations";
+import { OtpValidateCodeGlobals } from "hypersender-node/models/operations";
 
 let value: OtpValidateCodeGlobals = {
-  otpInstance: "<value>",
+  otpInstanceId: "<id>",
 };
 ```
 
@@ -14,4 +14,4 @@ let value: OtpValidateCodeGlobals = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `otpInstance`      | *string*           | :heavy_minus_sign: | N/A                |
+| `otpInstanceId`    | *string*           | :heavy_minus_sign: | N/A                |

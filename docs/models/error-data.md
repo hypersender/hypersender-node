@@ -5,7 +5,7 @@ Extra details, for example the app versions on a `426`.
 ## Example Usage
 
 ```typescript
-import { ErrorData } from "hypersender/models";
+import { ErrorData } from "hypersender-node/models";
 
 let value: ErrorData = {};
 ```

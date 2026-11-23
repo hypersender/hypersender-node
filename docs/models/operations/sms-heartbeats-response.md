@@ -5,7 +5,7 @@ A page of heartbeats.
 ## Example Usage
 
 ```typescript
-import { SmsHeartbeatsResponse } from "hypersender/models/operations";
+import { SmsHeartbeatsResponse } from "hypersender-node/models/operations";
 
 let value: SmsHeartbeatsResponse = {};
 ```

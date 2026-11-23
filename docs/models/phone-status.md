@@ -5,7 +5,7 @@
 ## Example Usage
 
 ```typescript
-import { PhoneStatus } from "hypersender/models";
+import { PhoneStatus } from "hypersender-node/models";
 
 let value: PhoneStatus = "registered";
 

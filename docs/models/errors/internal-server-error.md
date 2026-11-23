@@ -5,7 +5,7 @@ Failed to restart instance
 ## Example Usage
 
 ```typescript
-import { InternalServerError } from "hypersender/models/errors";
+import { InternalServerError } from "hypersender-node/models/errors";
 
 // No examples available for this model
 ```

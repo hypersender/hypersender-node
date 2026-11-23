@@ -3,15 +3,15 @@
 ## Example Usage
 
 ```typescript
-import { WhatsappDeleteMessageGlobals } from "hypersender/models/operations";
+import { WhatsappDeleteMessageGlobals } from "hypersender-node/models/operations";
 
 let value: WhatsappDeleteMessageGlobals = {
-  whatsappInstance: "<value>",
+  whatsappInstanceId: "<id>",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `whatsappInstance` | *string*           | :heavy_minus_sign: | N/A                |
+| Field                | Type                 | Required             | Description          |
+| -------------------- | -------------------- | -------------------- | -------------------- |
+| `whatsappInstanceId` | *string*             | :heavy_minus_sign:   | N/A                  |

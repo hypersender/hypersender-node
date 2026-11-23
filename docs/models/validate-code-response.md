@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ValidateCodeResponse } from "hypersender/models";
+import { ValidateCodeResponse } from "hypersender-node/models";
 
 let value: ValidateCodeResponse = {};
 ```

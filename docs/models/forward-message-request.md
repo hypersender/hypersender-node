@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ForwardMessageRequest } from "hypersender/models";
+import { ForwardMessageRequest } from "hypersender-node/models";
 
 let value: ForwardMessageRequest = {
   chatId: "111111111111@c.us",

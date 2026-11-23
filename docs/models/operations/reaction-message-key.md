@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ReactionMessageKey } from "hypersender/models/operations";
+import { ReactionMessageKey } from "hypersender-node/models/operations";
 
 let value: ReactionMessageKey = {};
 ```

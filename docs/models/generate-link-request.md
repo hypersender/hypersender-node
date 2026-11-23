@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GenerateLinkRequest } from "hypersender/models";
+import { GenerateLinkRequest } from "hypersender-node/models";
 
 let value: GenerateLinkRequest = {
   chatId: "<id>",

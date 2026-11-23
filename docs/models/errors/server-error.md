@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ServerError } from "hypersender/models/errors";
+import { ServerError } from "hypersender-node/models/errors";
 
 // No examples available for this model
 ```

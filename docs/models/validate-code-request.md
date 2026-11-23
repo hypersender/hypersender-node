@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ValidateCodeRequest } from "hypersender/models";
+import { ValidateCodeRequest } from "hypersender-node/models";
 
 let value: ValidateCodeRequest = {
   chatId: "<id>",

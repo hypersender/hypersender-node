@@ -3,15 +3,15 @@
 ## Example Usage
 
 ```typescript
-import { WhatsappStopTypingGlobals } from "hypersender/models/operations";
+import { WhatsappStopTypingGlobals } from "hypersender-node/models/operations";
 
 let value: WhatsappStopTypingGlobals = {
-  whatsappInstance: "<value>",
+  whatsappInstanceId: "<id>",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `whatsappInstance` | *string*           | :heavy_minus_sign: | N/A                |
+| Field                | Type                 | Required             | Description          |
+| -------------------- | -------------------- | -------------------- | -------------------- |
+| `whatsappInstanceId` | *string*             | :heavy_minus_sign:   | N/A                  |

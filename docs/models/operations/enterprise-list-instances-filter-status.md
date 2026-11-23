@@ -5,7 +5,7 @@ Filter by instance status
 ## Example Usage
 
 ```typescript
-import { EnterpriseListInstancesFilterStatus } from "hypersender/models/operations";
+import { EnterpriseListInstancesFilterStatus } from "hypersender-node/models/operations";
 
 let value: EnterpriseListInstancesFilterStatus = "STOPPED";
 ```

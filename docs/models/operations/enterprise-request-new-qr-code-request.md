@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { EnterpriseRequestNewQrCodeRequest } from "hypersender/models/operations";
+import { EnterpriseRequestNewQrCodeRequest } from "hypersender-node/models/operations";
 
 let value: EnterpriseRequestNewQrCodeRequest = {
   instance: "{{ instance_id }}",

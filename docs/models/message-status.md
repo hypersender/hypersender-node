@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { MessageStatus } from "hypersender/models";
+import { MessageStatus } from "hypersender-node/models";
 
 let value: MessageStatus = "expired";
 

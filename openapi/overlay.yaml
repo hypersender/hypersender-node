@@ -13,22 +13,22 @@ actions:
     update:
       x-speakeasy-globals:
         parameters:
-          - name: whatsappInstance
+          - name: whatsappInstanceId
             in: path
             required: true
             schema:
               type: string
-          - name: smsInstance
+          - name: smsInstanceId
             in: path
             required: true
             schema:
               type: string
-          - name: otpInstance
+          - name: otpInstanceId
             in: path
             required: true
             schema:
               type: string
   # No per-call instance override, so methods take just their own arguments.
-  - target: $.paths.*.*.parameters[?(@.name == 'whatsappInstance' || @.name == 'smsInstance' || @.name == 'otpInstance')]
+  - target: $.paths.*.*.parameters[?(@.name == 'whatsappInstanceId' || @.name == 'smsInstanceId' || @.name == 'otpInstanceId')]
     update:
       x-speakeasy-globals-hidden: true

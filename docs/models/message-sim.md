@@ -5,7 +5,7 @@ For received messages, the SIM that received it. For sent messages, the instance
 ## Example Usage
 
 ```typescript
-import { MessageSim } from "hypersender/models";
+import { MessageSim } from "hypersender-node/models";
 
 let value: MessageSim = "SIM2";
 

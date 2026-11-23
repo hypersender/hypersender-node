@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { CreateInstanceRequest } from "hypersender/models";
+import { CreateInstanceRequest } from "hypersender-node/models";
 
 let value: CreateInstanceRequest = {
   phone: "+201234567890",

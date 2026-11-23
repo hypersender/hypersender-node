@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { WhatsappDeleteMessageRequest } from "hypersender/models/operations";
+import { WhatsappDeleteMessageRequest } from "hypersender-node/models/operations";
 
 let value: WhatsappDeleteMessageRequest = {
   chatId: "111111111111@c.us",

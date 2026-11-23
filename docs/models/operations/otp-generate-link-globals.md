@@ -3,10 +3,10 @@
 ## Example Usage
 
 ```typescript
-import { OtpGenerateLinkGlobals } from "hypersender/models/operations";
+import { OtpGenerateLinkGlobals } from "hypersender-node/models/operations";
 
 let value: OtpGenerateLinkGlobals = {
-  otpInstance: "<value>",
+  otpInstanceId: "<id>",
 };
 ```
 
@@ -14,4 +14,4 @@ let value: OtpGenerateLinkGlobals = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `otpInstance`      | *string*           | :heavy_minus_sign: | N/A                |
+| `otpInstanceId`    | *string*           | :heavy_minus_sign: | N/A                |

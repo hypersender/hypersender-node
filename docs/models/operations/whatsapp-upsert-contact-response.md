@@ -5,7 +5,7 @@ Contact upserted successfully
 ## Example Usage
 
 ```typescript
-import { WhatsappUpsertContactResponse } from "hypersender/models/operations";
+import { WhatsappUpsertContactResponse } from "hypersender-node/models/operations";
 
 let value: WhatsappUpsertContactResponse = {
   message: "Contact upserted successfully.",

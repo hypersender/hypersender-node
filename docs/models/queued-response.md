@@ -5,7 +5,7 @@ All API requests in v2 return a queued response. Use the queued_request_link to 
 ## Example Usage
 
 ```typescript
-import { QueuedResponse } from "hypersender/models";
+import { QueuedResponse } from "hypersender-node/models";
 
 let value: QueuedResponse = {
   queued: true,

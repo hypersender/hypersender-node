@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { WhatsappGetContactRequest } from "hypersender/models/operations";
+import { WhatsappGetContactRequest } from "hypersender-node/models/operations";
 
 let value: WhatsappGetContactRequest = {
   chatId: "100875997589545@lid",

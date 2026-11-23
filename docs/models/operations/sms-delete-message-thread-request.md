@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { SmsDeleteMessageThreadRequest } from "hypersender/models/operations";
+import { SmsDeleteMessageThreadRequest } from "hypersender-node/models/operations";
 
 let value: SmsDeleteMessageThreadRequest = {
   messageThreadId: "9f8b7c6d-4444-4a2b-8c3d-4e5f6a7b8c9d",

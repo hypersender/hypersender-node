@@ -5,7 +5,7 @@ Successful response
 ## Example Usage
 
 ```typescript
-import { EnterpriseGetInstanceHealthResponse } from "hypersender/models/operations";
+import { EnterpriseGetInstanceHealthResponse } from "hypersender-node/models/operations";
 
 let value: EnterpriseGetInstanceHealthResponse = {
   instanceId: "fa3d01c4-1234-4c0d-a12f-df319b612f8c",

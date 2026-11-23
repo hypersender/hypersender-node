@@ -5,7 +5,7 @@ A page of threads.
 ## Example Usage
 
 ```typescript
-import { SmsMessageThreadsResponse } from "hypersender/models/operations";
+import { SmsMessageThreadsResponse } from "hypersender-node/models/operations";
 
 let value: SmsMessageThreadsResponse = {};
 ```

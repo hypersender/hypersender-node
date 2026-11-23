@@ -5,7 +5,7 @@ The SIM slot this instance uses.
 ## Example Usage
 
 ```typescript
-import { PhoneSim } from "hypersender/models";
+import { PhoneSim } from "hypersender-node/models";
 
 let value: PhoneSim = "SIM1";
 

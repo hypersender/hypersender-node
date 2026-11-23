@@ -19,20 +19,20 @@ specific category of applications.
 ## Example
 
 ```typescript
-import { HypersenderCore } from "hypersender/core.js";
-import { whatsappGetQueuedRequest } from "hypersender/funcs/whatsapp-get-queued-request.js";
+import { HypersenderClientCore } from "hypersender-node/core.js";
+import { whatsappGetQueuedRequest } from "hypersender-node/funcs/whatsapp-get-queued-request.js";
 
-// Use `HypersenderCore` for best tree-shaking performance.
+// Use `HypersenderClientCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const hypersender = new HypersenderCore({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClientCore({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const res = await whatsappGetQueuedRequest(hypersender, "a0816120-7e37-4e8b-8cf3-92deb2cdc133");
+  const res = await whatsappGetQueuedRequest(hypersenderClient, "a0816120-7e37-4e8b-8cf3-92deb2cdc133");
   if (res.ok) {
     const { value: result } = res;
     console.log(result);

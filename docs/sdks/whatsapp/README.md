@@ -28,19 +28,19 @@
 
 ### Example Usage: Failed Request
 
-<!-- UsageSnippet language="typescript" operationID="whatsapp-getQueuedRequest" method="get" path="/whatsapp/v2/{whatsappInstance}/queued-requests/{queued_request_uuid}" example="Failed Request" -->
+<!-- UsageSnippet language="typescript" operationID="whatsapp-getQueuedRequest" method="get" path="/whatsapp/v2/{whatsappInstanceId}/queued-requests/{queued_request_uuid}" example="Failed Request" -->
 ```typescript
-import { Hypersender } from "hypersender";
+import { HypersenderClient } from "hypersender-node";
 
-const hypersender = new Hypersender({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClient({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const result = await hypersender.whatsapp.getQueuedRequest("a0816120-7e37-4e8b-8cf3-92deb2cdc133");
+  const result = await hypersenderClient.whatsapp.getQueuedRequest("a0816120-7e37-4e8b-8cf3-92deb2cdc133");
 
   console.log(result);
 }
@@ -53,20 +53,20 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { HypersenderCore } from "hypersender/core.js";
-import { whatsappGetQueuedRequest } from "hypersender/funcs/whatsapp-get-queued-request.js";
+import { HypersenderClientCore } from "hypersender-node/core.js";
+import { whatsappGetQueuedRequest } from "hypersender-node/funcs/whatsapp-get-queued-request.js";
 
-// Use `HypersenderCore` for best tree-shaking performance.
+// Use `HypersenderClientCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const hypersender = new HypersenderCore({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClientCore({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const res = await whatsappGetQueuedRequest(hypersender, "a0816120-7e37-4e8b-8cf3-92deb2cdc133");
+  const res = await whatsappGetQueuedRequest(hypersenderClient, "a0816120-7e37-4e8b-8cf3-92deb2cdc133");
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
@@ -79,19 +79,19 @@ run();
 ```
 ### Example Usage: Successful Message
 
-<!-- UsageSnippet language="typescript" operationID="whatsapp-getQueuedRequest" method="get" path="/whatsapp/v2/{whatsappInstance}/queued-requests/{queued_request_uuid}" example="Successful Message" -->
+<!-- UsageSnippet language="typescript" operationID="whatsapp-getQueuedRequest" method="get" path="/whatsapp/v2/{whatsappInstanceId}/queued-requests/{queued_request_uuid}" example="Successful Message" -->
 ```typescript
-import { Hypersender } from "hypersender";
+import { HypersenderClient } from "hypersender-node";
 
-const hypersender = new Hypersender({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClient({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const result = await hypersender.whatsapp.getQueuedRequest("a0816120-7e37-4e8b-8cf3-92deb2cdc133");
+  const result = await hypersenderClient.whatsapp.getQueuedRequest("a0816120-7e37-4e8b-8cf3-92deb2cdc133");
 
   console.log(result);
 }
@@ -104,20 +104,20 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { HypersenderCore } from "hypersender/core.js";
-import { whatsappGetQueuedRequest } from "hypersender/funcs/whatsapp-get-queued-request.js";
+import { HypersenderClientCore } from "hypersender-node/core.js";
+import { whatsappGetQueuedRequest } from "hypersender-node/funcs/whatsapp-get-queued-request.js";
 
-// Use `HypersenderCore` for best tree-shaking performance.
+// Use `HypersenderClientCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const hypersender = new HypersenderCore({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClientCore({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const res = await whatsappGetQueuedRequest(hypersender, "a0816120-7e37-4e8b-8cf3-92deb2cdc133");
+  const res = await whatsappGetQueuedRequest(hypersenderClient, "a0816120-7e37-4e8b-8cf3-92deb2cdc133");
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
@@ -153,19 +153,19 @@ run();
 
 ### Example Usage: Example 1
 
-<!-- UsageSnippet language="typescript" operationID="whatsapp-sendTextSafe" method="post" path="/whatsapp/v2/{whatsappInstance}/send-text-safe" example="Example 1" -->
+<!-- UsageSnippet language="typescript" operationID="whatsapp-sendTextSafe" method="post" path="/whatsapp/v2/{whatsappInstanceId}/send-text-safe" example="Example 1" -->
 ```typescript
-import { Hypersender } from "hypersender";
+import { HypersenderClient } from "hypersender-node";
 
-const hypersender = new Hypersender({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClient({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const result = await hypersender.whatsapp.sendTextSafe({
+  const result = await hypersenderClient.whatsapp.sendTextSafe({
     chatId: "111111111111@c.us",
     text: "Hi there!",
     replyTo: "string",
@@ -184,20 +184,20 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { HypersenderCore } from "hypersender/core.js";
-import { whatsappSendTextSafe } from "hypersender/funcs/whatsapp-send-text-safe.js";
+import { HypersenderClientCore } from "hypersender-node/core.js";
+import { whatsappSendTextSafe } from "hypersender-node/funcs/whatsapp-send-text-safe.js";
 
-// Use `HypersenderCore` for best tree-shaking performance.
+// Use `HypersenderClientCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const hypersender = new HypersenderCore({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClientCore({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const res = await whatsappSendTextSafe(hypersender, {
+  const res = await whatsappSendTextSafe(hypersenderClient, {
     chatId: "111111111111@c.us",
     text: "Hi there!",
     replyTo: "string",
@@ -216,19 +216,19 @@ run();
 ```
 ### Example Usage: Multiple fields Error
 
-<!-- UsageSnippet language="typescript" operationID="whatsapp-sendTextSafe" method="post" path="/whatsapp/v2/{whatsappInstance}/send-text-safe" example="Multiple fields Error" -->
+<!-- UsageSnippet language="typescript" operationID="whatsapp-sendTextSafe" method="post" path="/whatsapp/v2/{whatsappInstanceId}/send-text-safe" example="Multiple fields Error" -->
 ```typescript
-import { Hypersender } from "hypersender";
+import { HypersenderClient } from "hypersender-node";
 
-const hypersender = new Hypersender({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClient({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const result = await hypersender.whatsapp.sendTextSafe({
+  const result = await hypersenderClient.whatsapp.sendTextSafe({
     chatId: "111111111111@c.us",
     text: "<value>",
   });
@@ -244,20 +244,20 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { HypersenderCore } from "hypersender/core.js";
-import { whatsappSendTextSafe } from "hypersender/funcs/whatsapp-send-text-safe.js";
+import { HypersenderClientCore } from "hypersender-node/core.js";
+import { whatsappSendTextSafe } from "hypersender-node/funcs/whatsapp-send-text-safe.js";
 
-// Use `HypersenderCore` for best tree-shaking performance.
+// Use `HypersenderClientCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const hypersender = new HypersenderCore({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClientCore({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const res = await whatsappSendTextSafe(hypersender, {
+  const res = await whatsappSendTextSafe(hypersenderClient, {
     chatId: "111111111111@c.us",
     text: "<value>",
   });
@@ -273,19 +273,19 @@ run();
 ```
 ### Example Usage: Single Field error 
 
-<!-- UsageSnippet language="typescript" operationID="whatsapp-sendTextSafe" method="post" path="/whatsapp/v2/{whatsappInstance}/send-text-safe" example="Single Field error " -->
+<!-- UsageSnippet language="typescript" operationID="whatsapp-sendTextSafe" method="post" path="/whatsapp/v2/{whatsappInstanceId}/send-text-safe" example="Single Field error " -->
 ```typescript
-import { Hypersender } from "hypersender";
+import { HypersenderClient } from "hypersender-node";
 
-const hypersender = new Hypersender({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClient({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const result = await hypersender.whatsapp.sendTextSafe({
+  const result = await hypersenderClient.whatsapp.sendTextSafe({
     chatId: "111111111111@c.us",
     text: "<value>",
   });
@@ -301,20 +301,20 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { HypersenderCore } from "hypersender/core.js";
-import { whatsappSendTextSafe } from "hypersender/funcs/whatsapp-send-text-safe.js";
+import { HypersenderClientCore } from "hypersender-node/core.js";
+import { whatsappSendTextSafe } from "hypersender-node/funcs/whatsapp-send-text-safe.js";
 
-// Use `HypersenderCore` for best tree-shaking performance.
+// Use `HypersenderClientCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const hypersender = new HypersenderCore({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClientCore({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const res = await whatsappSendTextSafe(hypersender, {
+  const res = await whatsappSendTextSafe(hypersenderClient, {
     chatId: "111111111111@c.us",
     text: "<value>",
   });
@@ -330,19 +330,19 @@ run();
 ```
 ### Example Usage: default
 
-<!-- UsageSnippet language="typescript" operationID="whatsapp-sendTextSafe" method="post" path="/whatsapp/v2/{whatsappInstance}/send-text-safe" example="default" -->
+<!-- UsageSnippet language="typescript" operationID="whatsapp-sendTextSafe" method="post" path="/whatsapp/v2/{whatsappInstanceId}/send-text-safe" example="default" -->
 ```typescript
-import { Hypersender } from "hypersender";
+import { HypersenderClient } from "hypersender-node";
 
-const hypersender = new Hypersender({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClient({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const result = await hypersender.whatsapp.sendTextSafe({
+  const result = await hypersenderClient.whatsapp.sendTextSafe({
     chatId: "111111111111@c.us",
     text: "<value>",
   });
@@ -358,20 +358,20 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { HypersenderCore } from "hypersender/core.js";
-import { whatsappSendTextSafe } from "hypersender/funcs/whatsapp-send-text-safe.js";
+import { HypersenderClientCore } from "hypersender-node/core.js";
+import { whatsappSendTextSafe } from "hypersender-node/funcs/whatsapp-send-text-safe.js";
 
-// Use `HypersenderCore` for best tree-shaking performance.
+// Use `HypersenderClientCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const hypersender = new HypersenderCore({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClientCore({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const res = await whatsappSendTextSafe(hypersender, {
+  const res = await whatsappSendTextSafe(hypersenderClient, {
     chatId: "111111111111@c.us",
     text: "<value>",
   });
@@ -387,19 +387,19 @@ run();
 ```
 ### Example Usage: queued
 
-<!-- UsageSnippet language="typescript" operationID="whatsapp-sendTextSafe" method="post" path="/whatsapp/v2/{whatsappInstance}/send-text-safe" example="queued" -->
+<!-- UsageSnippet language="typescript" operationID="whatsapp-sendTextSafe" method="post" path="/whatsapp/v2/{whatsappInstanceId}/send-text-safe" example="queued" -->
 ```typescript
-import { Hypersender } from "hypersender";
+import { HypersenderClient } from "hypersender-node";
 
-const hypersender = new Hypersender({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClient({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const result = await hypersender.whatsapp.sendTextSafe({
+  const result = await hypersenderClient.whatsapp.sendTextSafe({
     chatId: "111111111111@c.us",
     text: "<value>",
   });
@@ -415,20 +415,20 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { HypersenderCore } from "hypersender/core.js";
-import { whatsappSendTextSafe } from "hypersender/funcs/whatsapp-send-text-safe.js";
+import { HypersenderClientCore } from "hypersender-node/core.js";
+import { whatsappSendTextSafe } from "hypersender-node/funcs/whatsapp-send-text-safe.js";
 
-// Use `HypersenderCore` for best tree-shaking performance.
+// Use `HypersenderClientCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const hypersender = new HypersenderCore({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClientCore({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const res = await whatsappSendTextSafe(hypersender, {
+  const res = await whatsappSendTextSafe(hypersenderClient, {
     chatId: "111111111111@c.us",
     text: "<value>",
   });
@@ -469,19 +469,19 @@ run();
 
 ### Example Usage: Example 1
 
-<!-- UsageSnippet language="typescript" operationID="whatsapp-sendText" method="post" path="/whatsapp/v2/{whatsappInstance}/send-text" example="Example 1" -->
+<!-- UsageSnippet language="typescript" operationID="whatsapp-sendText" method="post" path="/whatsapp/v2/{whatsappInstanceId}/send-text" example="Example 1" -->
 ```typescript
-import { Hypersender } from "hypersender";
+import { HypersenderClient } from "hypersender-node";
 
-const hypersender = new Hypersender({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClient({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const result = await hypersender.whatsapp.sendText({
+  const result = await hypersenderClient.whatsapp.sendText({
     chatId: "111111111111@c.us",
     text: "Hi there!",
     replyTo: "string",
@@ -500,20 +500,20 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { HypersenderCore } from "hypersender/core.js";
-import { whatsappSendText } from "hypersender/funcs/whatsapp-send-text.js";
+import { HypersenderClientCore } from "hypersender-node/core.js";
+import { whatsappSendText } from "hypersender-node/funcs/whatsapp-send-text.js";
 
-// Use `HypersenderCore` for best tree-shaking performance.
+// Use `HypersenderClientCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const hypersender = new HypersenderCore({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClientCore({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const res = await whatsappSendText(hypersender, {
+  const res = await whatsappSendText(hypersenderClient, {
     chatId: "111111111111@c.us",
     text: "Hi there!",
     replyTo: "string",
@@ -532,19 +532,19 @@ run();
 ```
 ### Example Usage: Multiple fields Error
 
-<!-- UsageSnippet language="typescript" operationID="whatsapp-sendText" method="post" path="/whatsapp/v2/{whatsappInstance}/send-text" example="Multiple fields Error" -->
+<!-- UsageSnippet language="typescript" operationID="whatsapp-sendText" method="post" path="/whatsapp/v2/{whatsappInstanceId}/send-text" example="Multiple fields Error" -->
 ```typescript
-import { Hypersender } from "hypersender";
+import { HypersenderClient } from "hypersender-node";
 
-const hypersender = new Hypersender({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClient({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const result = await hypersender.whatsapp.sendText({
+  const result = await hypersenderClient.whatsapp.sendText({
     chatId: "111111111111@c.us",
     text: "<value>",
   });
@@ -560,20 +560,20 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { HypersenderCore } from "hypersender/core.js";
-import { whatsappSendText } from "hypersender/funcs/whatsapp-send-text.js";
+import { HypersenderClientCore } from "hypersender-node/core.js";
+import { whatsappSendText } from "hypersender-node/funcs/whatsapp-send-text.js";
 
-// Use `HypersenderCore` for best tree-shaking performance.
+// Use `HypersenderClientCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const hypersender = new HypersenderCore({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClientCore({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const res = await whatsappSendText(hypersender, {
+  const res = await whatsappSendText(hypersenderClient, {
     chatId: "111111111111@c.us",
     text: "<value>",
   });
@@ -589,19 +589,19 @@ run();
 ```
 ### Example Usage: Single Field error 
 
-<!-- UsageSnippet language="typescript" operationID="whatsapp-sendText" method="post" path="/whatsapp/v2/{whatsappInstance}/send-text" example="Single Field error " -->
+<!-- UsageSnippet language="typescript" operationID="whatsapp-sendText" method="post" path="/whatsapp/v2/{whatsappInstanceId}/send-text" example="Single Field error " -->
 ```typescript
-import { Hypersender } from "hypersender";
+import { HypersenderClient } from "hypersender-node";
 
-const hypersender = new Hypersender({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClient({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const result = await hypersender.whatsapp.sendText({
+  const result = await hypersenderClient.whatsapp.sendText({
     chatId: "111111111111@c.us",
     text: "<value>",
   });
@@ -617,20 +617,20 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { HypersenderCore } from "hypersender/core.js";
-import { whatsappSendText } from "hypersender/funcs/whatsapp-send-text.js";
+import { HypersenderClientCore } from "hypersender-node/core.js";
+import { whatsappSendText } from "hypersender-node/funcs/whatsapp-send-text.js";
 
-// Use `HypersenderCore` for best tree-shaking performance.
+// Use `HypersenderClientCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const hypersender = new HypersenderCore({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClientCore({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const res = await whatsappSendText(hypersender, {
+  const res = await whatsappSendText(hypersenderClient, {
     chatId: "111111111111@c.us",
     text: "<value>",
   });
@@ -646,19 +646,19 @@ run();
 ```
 ### Example Usage: default
 
-<!-- UsageSnippet language="typescript" operationID="whatsapp-sendText" method="post" path="/whatsapp/v2/{whatsappInstance}/send-text" example="default" -->
+<!-- UsageSnippet language="typescript" operationID="whatsapp-sendText" method="post" path="/whatsapp/v2/{whatsappInstanceId}/send-text" example="default" -->
 ```typescript
-import { Hypersender } from "hypersender";
+import { HypersenderClient } from "hypersender-node";
 
-const hypersender = new Hypersender({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClient({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const result = await hypersender.whatsapp.sendText({
+  const result = await hypersenderClient.whatsapp.sendText({
     chatId: "111111111111@c.us",
     text: "<value>",
   });
@@ -674,20 +674,20 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { HypersenderCore } from "hypersender/core.js";
-import { whatsappSendText } from "hypersender/funcs/whatsapp-send-text.js";
+import { HypersenderClientCore } from "hypersender-node/core.js";
+import { whatsappSendText } from "hypersender-node/funcs/whatsapp-send-text.js";
 
-// Use `HypersenderCore` for best tree-shaking performance.
+// Use `HypersenderClientCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const hypersender = new HypersenderCore({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClientCore({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const res = await whatsappSendText(hypersender, {
+  const res = await whatsappSendText(hypersenderClient, {
     chatId: "111111111111@c.us",
     text: "<value>",
   });
@@ -703,19 +703,19 @@ run();
 ```
 ### Example Usage: queued
 
-<!-- UsageSnippet language="typescript" operationID="whatsapp-sendText" method="post" path="/whatsapp/v2/{whatsappInstance}/send-text" example="queued" -->
+<!-- UsageSnippet language="typescript" operationID="whatsapp-sendText" method="post" path="/whatsapp/v2/{whatsappInstanceId}/send-text" example="queued" -->
 ```typescript
-import { Hypersender } from "hypersender";
+import { HypersenderClient } from "hypersender-node";
 
-const hypersender = new Hypersender({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClient({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const result = await hypersender.whatsapp.sendText({
+  const result = await hypersenderClient.whatsapp.sendText({
     chatId: "111111111111@c.us",
     text: "<value>",
   });
@@ -731,20 +731,20 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { HypersenderCore } from "hypersender/core.js";
-import { whatsappSendText } from "hypersender/funcs/whatsapp-send-text.js";
+import { HypersenderClientCore } from "hypersender-node/core.js";
+import { whatsappSendText } from "hypersender-node/funcs/whatsapp-send-text.js";
 
-// Use `HypersenderCore` for best tree-shaking performance.
+// Use `HypersenderClientCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const hypersender = new HypersenderCore({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClientCore({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const res = await whatsappSendText(hypersender, {
+  const res = await whatsappSendText(hypersenderClient, {
     chatId: "111111111111@c.us",
     text: "<value>",
   });
@@ -785,19 +785,19 @@ run();
 
 ### Example Usage: Example 1
 
-<!-- UsageSnippet language="typescript" operationID="whatsapp-sendLinkCustomPreview" method="post" path="/whatsapp/v2/{whatsappInstance}/send-link-custom-preview" example="Example 1" -->
+<!-- UsageSnippet language="typescript" operationID="whatsapp-sendLinkCustomPreview" method="post" path="/whatsapp/v2/{whatsappInstanceId}/send-link-custom-preview" example="Example 1" -->
 ```typescript
-import { Hypersender } from "hypersender";
+import { HypersenderClient } from "hypersender-node";
 
-const hypersender = new Hypersender({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClient({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const result = await hypersender.whatsapp.sendLinkCustomPreview({
+  const result = await hypersenderClient.whatsapp.sendLinkCustomPreview({
     chatId: "1111111111@c.us",
     text: "Check this out! https://hypersender.com/",
     replyTo: "string",
@@ -820,20 +820,20 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { HypersenderCore } from "hypersender/core.js";
-import { whatsappSendLinkCustomPreview } from "hypersender/funcs/whatsapp-send-link-custom-preview.js";
+import { HypersenderClientCore } from "hypersender-node/core.js";
+import { whatsappSendLinkCustomPreview } from "hypersender-node/funcs/whatsapp-send-link-custom-preview.js";
 
-// Use `HypersenderCore` for best tree-shaking performance.
+// Use `HypersenderClientCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const hypersender = new HypersenderCore({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClientCore({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const res = await whatsappSendLinkCustomPreview(hypersender, {
+  const res = await whatsappSendLinkCustomPreview(hypersenderClient, {
     chatId: "1111111111@c.us",
     text: "Check this out! https://hypersender.com/",
     replyTo: "string",
@@ -856,19 +856,19 @@ run();
 ```
 ### Example Usage: default
 
-<!-- UsageSnippet language="typescript" operationID="whatsapp-sendLinkCustomPreview" method="post" path="/whatsapp/v2/{whatsappInstance}/send-link-custom-preview" example="default" -->
+<!-- UsageSnippet language="typescript" operationID="whatsapp-sendLinkCustomPreview" method="post" path="/whatsapp/v2/{whatsappInstanceId}/send-link-custom-preview" example="default" -->
 ```typescript
-import { Hypersender } from "hypersender";
+import { HypersenderClient } from "hypersender-node";
 
-const hypersender = new Hypersender({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClient({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const result = await hypersender.whatsapp.sendLinkCustomPreview({
+  const result = await hypersenderClient.whatsapp.sendLinkCustomPreview({
     chatId: "111111111111@c.us",
     text: "<value>",
     previewTitle: "<value>",
@@ -889,20 +889,20 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { HypersenderCore } from "hypersender/core.js";
-import { whatsappSendLinkCustomPreview } from "hypersender/funcs/whatsapp-send-link-custom-preview.js";
+import { HypersenderClientCore } from "hypersender-node/core.js";
+import { whatsappSendLinkCustomPreview } from "hypersender-node/funcs/whatsapp-send-link-custom-preview.js";
 
-// Use `HypersenderCore` for best tree-shaking performance.
+// Use `HypersenderClientCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const hypersender = new HypersenderCore({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClientCore({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const res = await whatsappSendLinkCustomPreview(hypersender, {
+  const res = await whatsappSendLinkCustomPreview(hypersenderClient, {
     chatId: "111111111111@c.us",
     text: "<value>",
     previewTitle: "<value>",
@@ -948,19 +948,19 @@ run();
 
 ### Example Usage: Example 1
 
-<!-- UsageSnippet language="typescript" operationID="whatsapp-sendFile" method="post" path="/whatsapp/v2/{whatsappInstance}/send-file" example="Example 1" -->
+<!-- UsageSnippet language="typescript" operationID="whatsapp-sendFile" method="post" path="/whatsapp/v2/{whatsappInstanceId}/send-file" example="Example 1" -->
 ```typescript
-import { Hypersender } from "hypersender";
+import { HypersenderClient } from "hypersender-node";
 
-const hypersender = new Hypersender({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClient({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const result = await hypersender.whatsapp.sendFile({
+  const result = await hypersenderClient.whatsapp.sendFile({
     chatId: "11111111111@c.us",
     url: "https://hypersender.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo.52c242e8.png&w=640&q=75",
     mimetype: "image",
@@ -979,20 +979,20 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { HypersenderCore } from "hypersender/core.js";
-import { whatsappSendFile } from "hypersender/funcs/whatsapp-send-file.js";
+import { HypersenderClientCore } from "hypersender-node/core.js";
+import { whatsappSendFile } from "hypersender-node/funcs/whatsapp-send-file.js";
 
-// Use `HypersenderCore` for best tree-shaking performance.
+// Use `HypersenderClientCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const hypersender = new HypersenderCore({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClientCore({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const res = await whatsappSendFile(hypersender, {
+  const res = await whatsappSendFile(hypersenderClient, {
     chatId: "11111111111@c.us",
     url: "https://hypersender.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo.52c242e8.png&w=640&q=75",
     mimetype: "image",
@@ -1011,19 +1011,19 @@ run();
 ```
 ### Example Usage: Example 2
 
-<!-- UsageSnippet language="typescript" operationID="whatsapp-sendFile" method="post" path="/whatsapp/v2/{whatsappInstance}/send-file" example="Example 2" -->
+<!-- UsageSnippet language="typescript" operationID="whatsapp-sendFile" method="post" path="/whatsapp/v2/{whatsappInstanceId}/send-file" example="Example 2" -->
 ```typescript
-import { Hypersender } from "hypersender";
+import { HypersenderClient } from "hypersender-node";
 
-const hypersender = new Hypersender({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClient({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const result = await hypersender.whatsapp.sendFile({
+  const result = await hypersenderClient.whatsapp.sendFile({
     chatId: "11111111111@c.us",
     file: "hypersender.jpeg",
     mimetype: "image",
@@ -1042,20 +1042,20 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { HypersenderCore } from "hypersender/core.js";
-import { whatsappSendFile } from "hypersender/funcs/whatsapp-send-file.js";
+import { HypersenderClientCore } from "hypersender-node/core.js";
+import { whatsappSendFile } from "hypersender-node/funcs/whatsapp-send-file.js";
 
-// Use `HypersenderCore` for best tree-shaking performance.
+// Use `HypersenderClientCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const hypersender = new HypersenderCore({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClientCore({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const res = await whatsappSendFile(hypersender, {
+  const res = await whatsappSendFile(hypersenderClient, {
     chatId: "11111111111@c.us",
     file: "hypersender.jpeg",
     mimetype: "image",
@@ -1074,19 +1074,19 @@ run();
 ```
 ### Example Usage: default
 
-<!-- UsageSnippet language="typescript" operationID="whatsapp-sendFile" method="post" path="/whatsapp/v2/{whatsappInstance}/send-file" example="default" -->
+<!-- UsageSnippet language="typescript" operationID="whatsapp-sendFile" method="post" path="/whatsapp/v2/{whatsappInstanceId}/send-file" example="default" -->
 ```typescript
-import { Hypersender } from "hypersender";
+import { HypersenderClient } from "hypersender-node";
 
-const hypersender = new Hypersender({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClient({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const result = await hypersender.whatsapp.sendFile({
+  const result = await hypersenderClient.whatsapp.sendFile({
     chatId: "111111111111@c.us",
   });
 
@@ -1101,20 +1101,20 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { HypersenderCore } from "hypersender/core.js";
-import { whatsappSendFile } from "hypersender/funcs/whatsapp-send-file.js";
+import { HypersenderClientCore } from "hypersender-node/core.js";
+import { whatsappSendFile } from "hypersender-node/funcs/whatsapp-send-file.js";
 
-// Use `HypersenderCore` for best tree-shaking performance.
+// Use `HypersenderClientCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const hypersender = new HypersenderCore({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClientCore({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const res = await whatsappSendFile(hypersender, {
+  const res = await whatsappSendFile(hypersenderClient, {
     chatId: "111111111111@c.us",
   });
   if (res.ok) {
@@ -1153,19 +1153,19 @@ run();
 
 ### Example Usage: Example 1
 
-<!-- UsageSnippet language="typescript" operationID="whatsapp-sendImage" method="post" path="/whatsapp/v2/{whatsappInstance}/send-image" example="Example 1" -->
+<!-- UsageSnippet language="typescript" operationID="whatsapp-sendImage" method="post" path="/whatsapp/v2/{whatsappInstanceId}/send-image" example="Example 1" -->
 ```typescript
-import { Hypersender } from "hypersender";
+import { HypersenderClient } from "hypersender-node";
 
-const hypersender = new Hypersender({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClient({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const result = await hypersender.whatsapp.sendImage({
+  const result = await hypersenderClient.whatsapp.sendImage({
     chatId: "11111111111@c.us",
     url: "https://hypersender.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo.52c242e8.png&w=640&q=75",
     mimetype: "image",
@@ -1184,20 +1184,20 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { HypersenderCore } from "hypersender/core.js";
-import { whatsappSendImage } from "hypersender/funcs/whatsapp-send-image.js";
+import { HypersenderClientCore } from "hypersender-node/core.js";
+import { whatsappSendImage } from "hypersender-node/funcs/whatsapp-send-image.js";
 
-// Use `HypersenderCore` for best tree-shaking performance.
+// Use `HypersenderClientCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const hypersender = new HypersenderCore({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClientCore({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const res = await whatsappSendImage(hypersender, {
+  const res = await whatsappSendImage(hypersenderClient, {
     chatId: "11111111111@c.us",
     url: "https://hypersender.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo.52c242e8.png&w=640&q=75",
     mimetype: "image",
@@ -1216,19 +1216,19 @@ run();
 ```
 ### Example Usage: Example 2
 
-<!-- UsageSnippet language="typescript" operationID="whatsapp-sendImage" method="post" path="/whatsapp/v2/{whatsappInstance}/send-image" example="Example 2" -->
+<!-- UsageSnippet language="typescript" operationID="whatsapp-sendImage" method="post" path="/whatsapp/v2/{whatsappInstanceId}/send-image" example="Example 2" -->
 ```typescript
-import { Hypersender } from "hypersender";
+import { HypersenderClient } from "hypersender-node";
 
-const hypersender = new Hypersender({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClient({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const result = await hypersender.whatsapp.sendImage({
+  const result = await hypersenderClient.whatsapp.sendImage({
     chatId: "11111111111@c.us",
     file: "hypersender.jpeg",
     mimetype: "image",
@@ -1247,20 +1247,20 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { HypersenderCore } from "hypersender/core.js";
-import { whatsappSendImage } from "hypersender/funcs/whatsapp-send-image.js";
+import { HypersenderClientCore } from "hypersender-node/core.js";
+import { whatsappSendImage } from "hypersender-node/funcs/whatsapp-send-image.js";
 
-// Use `HypersenderCore` for best tree-shaking performance.
+// Use `HypersenderClientCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const hypersender = new HypersenderCore({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClientCore({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const res = await whatsappSendImage(hypersender, {
+  const res = await whatsappSendImage(hypersenderClient, {
     chatId: "11111111111@c.us",
     file: "hypersender.jpeg",
     mimetype: "image",
@@ -1279,19 +1279,19 @@ run();
 ```
 ### Example Usage: default
 
-<!-- UsageSnippet language="typescript" operationID="whatsapp-sendImage" method="post" path="/whatsapp/v2/{whatsappInstance}/send-image" example="default" -->
+<!-- UsageSnippet language="typescript" operationID="whatsapp-sendImage" method="post" path="/whatsapp/v2/{whatsappInstanceId}/send-image" example="default" -->
 ```typescript
-import { Hypersender } from "hypersender";
+import { HypersenderClient } from "hypersender-node";
 
-const hypersender = new Hypersender({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClient({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const result = await hypersender.whatsapp.sendImage({
+  const result = await hypersenderClient.whatsapp.sendImage({
     chatId: "111111111111@c.us",
   });
 
@@ -1306,20 +1306,20 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { HypersenderCore } from "hypersender/core.js";
-import { whatsappSendImage } from "hypersender/funcs/whatsapp-send-image.js";
+import { HypersenderClientCore } from "hypersender-node/core.js";
+import { whatsappSendImage } from "hypersender-node/funcs/whatsapp-send-image.js";
 
-// Use `HypersenderCore` for best tree-shaking performance.
+// Use `HypersenderClientCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const hypersender = new HypersenderCore({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClientCore({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const res = await whatsappSendImage(hypersender, {
+  const res = await whatsappSendImage(hypersenderClient, {
     chatId: "111111111111@c.us",
   });
   if (res.ok) {
@@ -1358,19 +1358,19 @@ run();
 
 ### Example Usage: Example 1
 
-<!-- UsageSnippet language="typescript" operationID="whatsapp-sendVideo" method="post" path="/whatsapp/v2/{whatsappInstance}/send-video" example="Example 1" -->
+<!-- UsageSnippet language="typescript" operationID="whatsapp-sendVideo" method="post" path="/whatsapp/v2/{whatsappInstanceId}/send-video" example="Example 1" -->
 ```typescript
-import { Hypersender } from "hypersender";
+import { HypersenderClient } from "hypersender-node";
 
-const hypersender = new Hypersender({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClient({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const result = await hypersender.whatsapp.sendVideo({
+  const result = await hypersenderClient.whatsapp.sendVideo({
     chatId: "11111111111@c.us",
     url: "https://hypersender.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo.52c242e8.png&w=640&q=75",
     mimetype: "image",
@@ -1389,20 +1389,20 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { HypersenderCore } from "hypersender/core.js";
-import { whatsappSendVideo } from "hypersender/funcs/whatsapp-send-video.js";
+import { HypersenderClientCore } from "hypersender-node/core.js";
+import { whatsappSendVideo } from "hypersender-node/funcs/whatsapp-send-video.js";
 
-// Use `HypersenderCore` for best tree-shaking performance.
+// Use `HypersenderClientCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const hypersender = new HypersenderCore({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClientCore({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const res = await whatsappSendVideo(hypersender, {
+  const res = await whatsappSendVideo(hypersenderClient, {
     chatId: "11111111111@c.us",
     url: "https://hypersender.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo.52c242e8.png&w=640&q=75",
     mimetype: "image",
@@ -1421,19 +1421,19 @@ run();
 ```
 ### Example Usage: Example 2
 
-<!-- UsageSnippet language="typescript" operationID="whatsapp-sendVideo" method="post" path="/whatsapp/v2/{whatsappInstance}/send-video" example="Example 2" -->
+<!-- UsageSnippet language="typescript" operationID="whatsapp-sendVideo" method="post" path="/whatsapp/v2/{whatsappInstanceId}/send-video" example="Example 2" -->
 ```typescript
-import { Hypersender } from "hypersender";
+import { HypersenderClient } from "hypersender-node";
 
-const hypersender = new Hypersender({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClient({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const result = await hypersender.whatsapp.sendVideo({
+  const result = await hypersenderClient.whatsapp.sendVideo({
     chatId: "11111111111@c.us",
     file: "hypersender.jpeg",
     mimetype: "image",
@@ -1452,20 +1452,20 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { HypersenderCore } from "hypersender/core.js";
-import { whatsappSendVideo } from "hypersender/funcs/whatsapp-send-video.js";
+import { HypersenderClientCore } from "hypersender-node/core.js";
+import { whatsappSendVideo } from "hypersender-node/funcs/whatsapp-send-video.js";
 
-// Use `HypersenderCore` for best tree-shaking performance.
+// Use `HypersenderClientCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const hypersender = new HypersenderCore({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClientCore({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const res = await whatsappSendVideo(hypersender, {
+  const res = await whatsappSendVideo(hypersenderClient, {
     chatId: "11111111111@c.us",
     file: "hypersender.jpeg",
     mimetype: "image",
@@ -1484,19 +1484,19 @@ run();
 ```
 ### Example Usage: default
 
-<!-- UsageSnippet language="typescript" operationID="whatsapp-sendVideo" method="post" path="/whatsapp/v2/{whatsappInstance}/send-video" example="default" -->
+<!-- UsageSnippet language="typescript" operationID="whatsapp-sendVideo" method="post" path="/whatsapp/v2/{whatsappInstanceId}/send-video" example="default" -->
 ```typescript
-import { Hypersender } from "hypersender";
+import { HypersenderClient } from "hypersender-node";
 
-const hypersender = new Hypersender({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClient({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const result = await hypersender.whatsapp.sendVideo({
+  const result = await hypersenderClient.whatsapp.sendVideo({
     chatId: "111111111111@c.us",
   });
 
@@ -1511,20 +1511,20 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { HypersenderCore } from "hypersender/core.js";
-import { whatsappSendVideo } from "hypersender/funcs/whatsapp-send-video.js";
+import { HypersenderClientCore } from "hypersender-node/core.js";
+import { whatsappSendVideo } from "hypersender-node/funcs/whatsapp-send-video.js";
 
-// Use `HypersenderCore` for best tree-shaking performance.
+// Use `HypersenderClientCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const hypersender = new HypersenderCore({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClientCore({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const res = await whatsappSendVideo(hypersender, {
+  const res = await whatsappSendVideo(hypersenderClient, {
     chatId: "111111111111@c.us",
   });
   if (res.ok) {
@@ -1563,19 +1563,19 @@ run();
 
 ### Example Usage: Example 1
 
-<!-- UsageSnippet language="typescript" operationID="whatsapp-sendVoice" method="post" path="/whatsapp/v2/{whatsappInstance}/send-voice" example="Example 1" -->
+<!-- UsageSnippet language="typescript" operationID="whatsapp-sendVoice" method="post" path="/whatsapp/v2/{whatsappInstanceId}/send-voice" example="Example 1" -->
 ```typescript
-import { Hypersender } from "hypersender";
+import { HypersenderClient } from "hypersender-node";
 
-const hypersender = new Hypersender({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClient({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const result = await hypersender.whatsapp.sendVoice({
+  const result = await hypersenderClient.whatsapp.sendVoice({
     chatId: "1111111111111@c.us",
     url: "http://commondatastorage.googleapis.com/codeskulptor-assets/week7-brrring.m4a",
     caption: "hypersender",
@@ -1593,20 +1593,20 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { HypersenderCore } from "hypersender/core.js";
-import { whatsappSendVoice } from "hypersender/funcs/whatsapp-send-voice.js";
+import { HypersenderClientCore } from "hypersender-node/core.js";
+import { whatsappSendVoice } from "hypersender-node/funcs/whatsapp-send-voice.js";
 
-// Use `HypersenderCore` for best tree-shaking performance.
+// Use `HypersenderClientCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const hypersender = new HypersenderCore({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClientCore({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const res = await whatsappSendVoice(hypersender, {
+  const res = await whatsappSendVoice(hypersenderClient, {
     chatId: "1111111111111@c.us",
     url: "http://commondatastorage.googleapis.com/codeskulptor-assets/week7-brrring.m4a",
     caption: "hypersender",
@@ -1624,19 +1624,19 @@ run();
 ```
 ### Example Usage: Example 2
 
-<!-- UsageSnippet language="typescript" operationID="whatsapp-sendVoice" method="post" path="/whatsapp/v2/{whatsappInstance}/send-voice" example="Example 2" -->
+<!-- UsageSnippet language="typescript" operationID="whatsapp-sendVoice" method="post" path="/whatsapp/v2/{whatsappInstanceId}/send-voice" example="Example 2" -->
 ```typescript
-import { Hypersender } from "hypersender";
+import { HypersenderClient } from "hypersender-node";
 
-const hypersender = new Hypersender({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClient({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const result = await hypersender.whatsapp.sendVoice({
+  const result = await hypersenderClient.whatsapp.sendVoice({
     chatId: "1111111111111@c.us",
     file: "audio.opus",
     caption: "hypersender",
@@ -1654,20 +1654,20 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { HypersenderCore } from "hypersender/core.js";
-import { whatsappSendVoice } from "hypersender/funcs/whatsapp-send-voice.js";
+import { HypersenderClientCore } from "hypersender-node/core.js";
+import { whatsappSendVoice } from "hypersender-node/funcs/whatsapp-send-voice.js";
 
-// Use `HypersenderCore` for best tree-shaking performance.
+// Use `HypersenderClientCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const hypersender = new HypersenderCore({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClientCore({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const res = await whatsappSendVoice(hypersender, {
+  const res = await whatsappSendVoice(hypersenderClient, {
     chatId: "1111111111111@c.us",
     file: "audio.opus",
     caption: "hypersender",
@@ -1685,19 +1685,19 @@ run();
 ```
 ### Example Usage: default
 
-<!-- UsageSnippet language="typescript" operationID="whatsapp-sendVoice" method="post" path="/whatsapp/v2/{whatsappInstance}/send-voice" example="default" -->
+<!-- UsageSnippet language="typescript" operationID="whatsapp-sendVoice" method="post" path="/whatsapp/v2/{whatsappInstanceId}/send-voice" example="default" -->
 ```typescript
-import { Hypersender } from "hypersender";
+import { HypersenderClient } from "hypersender-node";
 
-const hypersender = new Hypersender({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClient({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const result = await hypersender.whatsapp.sendVoice({
+  const result = await hypersenderClient.whatsapp.sendVoice({
     chatId: "111111111111@c.us",
   });
 
@@ -1712,20 +1712,20 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { HypersenderCore } from "hypersender/core.js";
-import { whatsappSendVoice } from "hypersender/funcs/whatsapp-send-voice.js";
+import { HypersenderClientCore } from "hypersender-node/core.js";
+import { whatsappSendVoice } from "hypersender-node/funcs/whatsapp-send-voice.js";
 
-// Use `HypersenderCore` for best tree-shaking performance.
+// Use `HypersenderClientCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const hypersender = new HypersenderCore({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClientCore({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const res = await whatsappSendVoice(hypersender, {
+  const res = await whatsappSendVoice(hypersenderClient, {
     chatId: "111111111111@c.us",
   });
   if (res.ok) {
@@ -1764,19 +1764,19 @@ run();
 
 ### Example Usage: Example 1
 
-<!-- UsageSnippet language="typescript" operationID="whatsapp-forwardMessage" method="post" path="/whatsapp/v2/{whatsappInstance}/forward-message" example="Example 1" -->
+<!-- UsageSnippet language="typescript" operationID="whatsapp-forwardMessage" method="post" path="/whatsapp/v2/{whatsappInstanceId}/forward-message" example="Example 1" -->
 ```typescript
-import { Hypersender } from "hypersender";
+import { HypersenderClient } from "hypersender-node";
 
-const hypersender = new Hypersender({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClient({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const result = await hypersender.whatsapp.forwardMessage({
+  const result = await hypersenderClient.whatsapp.forwardMessage({
     chatId: "111111111111@c.us",
     messageId: "false_111111111111@c.us_3EB08F6AD2A432386EFA0E",
   });
@@ -1792,20 +1792,20 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { HypersenderCore } from "hypersender/core.js";
-import { whatsappForwardMessage } from "hypersender/funcs/whatsapp-forward-message.js";
+import { HypersenderClientCore } from "hypersender-node/core.js";
+import { whatsappForwardMessage } from "hypersender-node/funcs/whatsapp-forward-message.js";
 
-// Use `HypersenderCore` for best tree-shaking performance.
+// Use `HypersenderClientCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const hypersender = new HypersenderCore({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClientCore({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const res = await whatsappForwardMessage(hypersender, {
+  const res = await whatsappForwardMessage(hypersenderClient, {
     chatId: "111111111111@c.us",
     messageId: "false_111111111111@c.us_3EB08F6AD2A432386EFA0E",
   });
@@ -1821,19 +1821,19 @@ run();
 ```
 ### Example Usage: Multiple fields Error
 
-<!-- UsageSnippet language="typescript" operationID="whatsapp-forwardMessage" method="post" path="/whatsapp/v2/{whatsappInstance}/forward-message" example="Multiple fields Error" -->
+<!-- UsageSnippet language="typescript" operationID="whatsapp-forwardMessage" method="post" path="/whatsapp/v2/{whatsappInstanceId}/forward-message" example="Multiple fields Error" -->
 ```typescript
-import { Hypersender } from "hypersender";
+import { HypersenderClient } from "hypersender-node";
 
-const hypersender = new Hypersender({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClient({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const result = await hypersender.whatsapp.forwardMessage({
+  const result = await hypersenderClient.whatsapp.forwardMessage({
     chatId: "111111111111@c.us",
     messageId: "<id>",
   });
@@ -1849,20 +1849,20 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { HypersenderCore } from "hypersender/core.js";
-import { whatsappForwardMessage } from "hypersender/funcs/whatsapp-forward-message.js";
+import { HypersenderClientCore } from "hypersender-node/core.js";
+import { whatsappForwardMessage } from "hypersender-node/funcs/whatsapp-forward-message.js";
 
-// Use `HypersenderCore` for best tree-shaking performance.
+// Use `HypersenderClientCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const hypersender = new HypersenderCore({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClientCore({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const res = await whatsappForwardMessage(hypersender, {
+  const res = await whatsappForwardMessage(hypersenderClient, {
     chatId: "111111111111@c.us",
     messageId: "<id>",
   });
@@ -1878,19 +1878,19 @@ run();
 ```
 ### Example Usage: Single Field error 
 
-<!-- UsageSnippet language="typescript" operationID="whatsapp-forwardMessage" method="post" path="/whatsapp/v2/{whatsappInstance}/forward-message" example="Single Field error " -->
+<!-- UsageSnippet language="typescript" operationID="whatsapp-forwardMessage" method="post" path="/whatsapp/v2/{whatsappInstanceId}/forward-message" example="Single Field error " -->
 ```typescript
-import { Hypersender } from "hypersender";
+import { HypersenderClient } from "hypersender-node";
 
-const hypersender = new Hypersender({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClient({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const result = await hypersender.whatsapp.forwardMessage({
+  const result = await hypersenderClient.whatsapp.forwardMessage({
     chatId: "111111111111@c.us",
     messageId: "<id>",
   });
@@ -1906,20 +1906,20 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { HypersenderCore } from "hypersender/core.js";
-import { whatsappForwardMessage } from "hypersender/funcs/whatsapp-forward-message.js";
+import { HypersenderClientCore } from "hypersender-node/core.js";
+import { whatsappForwardMessage } from "hypersender-node/funcs/whatsapp-forward-message.js";
 
-// Use `HypersenderCore` for best tree-shaking performance.
+// Use `HypersenderClientCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const hypersender = new HypersenderCore({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClientCore({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const res = await whatsappForwardMessage(hypersender, {
+  const res = await whatsappForwardMessage(hypersenderClient, {
     chatId: "111111111111@c.us",
     messageId: "<id>",
   });
@@ -1935,19 +1935,19 @@ run();
 ```
 ### Example Usage: default
 
-<!-- UsageSnippet language="typescript" operationID="whatsapp-forwardMessage" method="post" path="/whatsapp/v2/{whatsappInstance}/forward-message" example="default" -->
+<!-- UsageSnippet language="typescript" operationID="whatsapp-forwardMessage" method="post" path="/whatsapp/v2/{whatsappInstanceId}/forward-message" example="default" -->
 ```typescript
-import { Hypersender } from "hypersender";
+import { HypersenderClient } from "hypersender-node";
 
-const hypersender = new Hypersender({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClient({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const result = await hypersender.whatsapp.forwardMessage({
+  const result = await hypersenderClient.whatsapp.forwardMessage({
     chatId: "111111111111@c.us",
     messageId: "<id>",
   });
@@ -1963,20 +1963,20 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { HypersenderCore } from "hypersender/core.js";
-import { whatsappForwardMessage } from "hypersender/funcs/whatsapp-forward-message.js";
+import { HypersenderClientCore } from "hypersender-node/core.js";
+import { whatsappForwardMessage } from "hypersender-node/funcs/whatsapp-forward-message.js";
 
-// Use `HypersenderCore` for best tree-shaking performance.
+// Use `HypersenderClientCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const hypersender = new HypersenderCore({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClientCore({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const res = await whatsappForwardMessage(hypersender, {
+  const res = await whatsappForwardMessage(hypersenderClient, {
     chatId: "111111111111@c.us",
     messageId: "<id>",
   });
@@ -2017,19 +2017,19 @@ run();
 
 ### Example Usage: Example 1
 
-<!-- UsageSnippet language="typescript" operationID="whatsapp-sendSeen" method="post" path="/whatsapp/v2/{whatsappInstance}/send-seen" example="Example 1" -->
+<!-- UsageSnippet language="typescript" operationID="whatsapp-sendSeen" method="post" path="/whatsapp/v2/{whatsappInstanceId}/send-seen" example="Example 1" -->
 ```typescript
-import { Hypersender } from "hypersender";
+import { HypersenderClient } from "hypersender-node";
 
-const hypersender = new Hypersender({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClient({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const result = await hypersender.whatsapp.sendSeen({
+  const result = await hypersenderClient.whatsapp.sendSeen({
     chatId: "111111111111@c.us",
     messageId: "false_111111111111@c.us_3EB08F6AD2A432386EFA0E",
     participant: "111111111111@c.us",
@@ -2046,20 +2046,20 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { HypersenderCore } from "hypersender/core.js";
-import { whatsappSendSeen } from "hypersender/funcs/whatsapp-send-seen.js";
+import { HypersenderClientCore } from "hypersender-node/core.js";
+import { whatsappSendSeen } from "hypersender-node/funcs/whatsapp-send-seen.js";
 
-// Use `HypersenderCore` for best tree-shaking performance.
+// Use `HypersenderClientCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const hypersender = new HypersenderCore({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClientCore({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const res = await whatsappSendSeen(hypersender, {
+  const res = await whatsappSendSeen(hypersenderClient, {
     chatId: "111111111111@c.us",
     messageId: "false_111111111111@c.us_3EB08F6AD2A432386EFA0E",
     participant: "111111111111@c.us",
@@ -2076,19 +2076,19 @@ run();
 ```
 ### Example Usage: Multiple fields Error
 
-<!-- UsageSnippet language="typescript" operationID="whatsapp-sendSeen" method="post" path="/whatsapp/v2/{whatsappInstance}/send-seen" example="Multiple fields Error" -->
+<!-- UsageSnippet language="typescript" operationID="whatsapp-sendSeen" method="post" path="/whatsapp/v2/{whatsappInstanceId}/send-seen" example="Multiple fields Error" -->
 ```typescript
-import { Hypersender } from "hypersender";
+import { HypersenderClient } from "hypersender-node";
 
-const hypersender = new Hypersender({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClient({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const result = await hypersender.whatsapp.sendSeen({
+  const result = await hypersenderClient.whatsapp.sendSeen({
     chatId: "111111111111@c.us",
     messageId: "<id>",
   });
@@ -2104,20 +2104,20 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { HypersenderCore } from "hypersender/core.js";
-import { whatsappSendSeen } from "hypersender/funcs/whatsapp-send-seen.js";
+import { HypersenderClientCore } from "hypersender-node/core.js";
+import { whatsappSendSeen } from "hypersender-node/funcs/whatsapp-send-seen.js";
 
-// Use `HypersenderCore` for best tree-shaking performance.
+// Use `HypersenderClientCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const hypersender = new HypersenderCore({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClientCore({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const res = await whatsappSendSeen(hypersender, {
+  const res = await whatsappSendSeen(hypersenderClient, {
     chatId: "111111111111@c.us",
     messageId: "<id>",
   });
@@ -2133,19 +2133,19 @@ run();
 ```
 ### Example Usage: Single Field error 
 
-<!-- UsageSnippet language="typescript" operationID="whatsapp-sendSeen" method="post" path="/whatsapp/v2/{whatsappInstance}/send-seen" example="Single Field error " -->
+<!-- UsageSnippet language="typescript" operationID="whatsapp-sendSeen" method="post" path="/whatsapp/v2/{whatsappInstanceId}/send-seen" example="Single Field error " -->
 ```typescript
-import { Hypersender } from "hypersender";
+import { HypersenderClient } from "hypersender-node";
 
-const hypersender = new Hypersender({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClient({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const result = await hypersender.whatsapp.sendSeen({
+  const result = await hypersenderClient.whatsapp.sendSeen({
     chatId: "111111111111@c.us",
     messageId: "<id>",
   });
@@ -2161,20 +2161,20 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { HypersenderCore } from "hypersender/core.js";
-import { whatsappSendSeen } from "hypersender/funcs/whatsapp-send-seen.js";
+import { HypersenderClientCore } from "hypersender-node/core.js";
+import { whatsappSendSeen } from "hypersender-node/funcs/whatsapp-send-seen.js";
 
-// Use `HypersenderCore` for best tree-shaking performance.
+// Use `HypersenderClientCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const hypersender = new HypersenderCore({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClientCore({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const res = await whatsappSendSeen(hypersender, {
+  const res = await whatsappSendSeen(hypersenderClient, {
     chatId: "111111111111@c.us",
     messageId: "<id>",
   });
@@ -2190,19 +2190,19 @@ run();
 ```
 ### Example Usage: default
 
-<!-- UsageSnippet language="typescript" operationID="whatsapp-sendSeen" method="post" path="/whatsapp/v2/{whatsappInstance}/send-seen" example="default" -->
+<!-- UsageSnippet language="typescript" operationID="whatsapp-sendSeen" method="post" path="/whatsapp/v2/{whatsappInstanceId}/send-seen" example="default" -->
 ```typescript
-import { Hypersender } from "hypersender";
+import { HypersenderClient } from "hypersender-node";
 
-const hypersender = new Hypersender({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClient({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const result = await hypersender.whatsapp.sendSeen({
+  const result = await hypersenderClient.whatsapp.sendSeen({
     chatId: "111111111111@c.us",
     messageId: "<id>",
   });
@@ -2218,20 +2218,20 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { HypersenderCore } from "hypersender/core.js";
-import { whatsappSendSeen } from "hypersender/funcs/whatsapp-send-seen.js";
+import { HypersenderClientCore } from "hypersender-node/core.js";
+import { whatsappSendSeen } from "hypersender-node/funcs/whatsapp-send-seen.js";
 
-// Use `HypersenderCore` for best tree-shaking performance.
+// Use `HypersenderClientCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const hypersender = new HypersenderCore({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClientCore({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const res = await whatsappSendSeen(hypersender, {
+  const res = await whatsappSendSeen(hypersenderClient, {
     chatId: "111111111111@c.us",
     messageId: "<id>",
   });
@@ -2272,19 +2272,19 @@ run();
 
 ### Example Usage: Example 1
 
-<!-- UsageSnippet language="typescript" operationID="whatsapp-readChat" method="post" path="/whatsapp/v2/{whatsappInstance}/read-chat" example="Example 1" -->
+<!-- UsageSnippet language="typescript" operationID="whatsapp-readChat" method="post" path="/whatsapp/v2/{whatsappInstanceId}/read-chat" example="Example 1" -->
 ```typescript
-import { Hypersender } from "hypersender";
+import { HypersenderClient } from "hypersender-node";
 
-const hypersender = new Hypersender({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClient({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const result = await hypersender.whatsapp.readChat({
+  const result = await hypersenderClient.whatsapp.readChat({
     messages: "30",
     days: "7",
     body: {
@@ -2303,20 +2303,20 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { HypersenderCore } from "hypersender/core.js";
-import { whatsappReadChat } from "hypersender/funcs/whatsapp-read-chat.js";
+import { HypersenderClientCore } from "hypersender-node/core.js";
+import { whatsappReadChat } from "hypersender-node/funcs/whatsapp-read-chat.js";
 
-// Use `HypersenderCore` for best tree-shaking performance.
+// Use `HypersenderClientCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const hypersender = new HypersenderCore({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClientCore({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const res = await whatsappReadChat(hypersender, {
+  const res = await whatsappReadChat(hypersenderClient, {
     messages: "30",
     days: "7",
     body: {
@@ -2335,19 +2335,19 @@ run();
 ```
 ### Example Usage: Multiple fields Error
 
-<!-- UsageSnippet language="typescript" operationID="whatsapp-readChat" method="post" path="/whatsapp/v2/{whatsappInstance}/read-chat" example="Multiple fields Error" -->
+<!-- UsageSnippet language="typescript" operationID="whatsapp-readChat" method="post" path="/whatsapp/v2/{whatsappInstanceId}/read-chat" example="Multiple fields Error" -->
 ```typescript
-import { Hypersender } from "hypersender";
+import { HypersenderClient } from "hypersender-node";
 
-const hypersender = new Hypersender({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClient({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const result = await hypersender.whatsapp.readChat({
+  const result = await hypersenderClient.whatsapp.readChat({
     messages: "30",
     days: "7",
     body: {
@@ -2366,20 +2366,20 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { HypersenderCore } from "hypersender/core.js";
-import { whatsappReadChat } from "hypersender/funcs/whatsapp-read-chat.js";
+import { HypersenderClientCore } from "hypersender-node/core.js";
+import { whatsappReadChat } from "hypersender-node/funcs/whatsapp-read-chat.js";
 
-// Use `HypersenderCore` for best tree-shaking performance.
+// Use `HypersenderClientCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const hypersender = new HypersenderCore({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClientCore({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const res = await whatsappReadChat(hypersender, {
+  const res = await whatsappReadChat(hypersenderClient, {
     messages: "30",
     days: "7",
     body: {
@@ -2398,19 +2398,19 @@ run();
 ```
 ### Example Usage: Single Field error 
 
-<!-- UsageSnippet language="typescript" operationID="whatsapp-readChat" method="post" path="/whatsapp/v2/{whatsappInstance}/read-chat" example="Single Field error " -->
+<!-- UsageSnippet language="typescript" operationID="whatsapp-readChat" method="post" path="/whatsapp/v2/{whatsappInstanceId}/read-chat" example="Single Field error " -->
 ```typescript
-import { Hypersender } from "hypersender";
+import { HypersenderClient } from "hypersender-node";
 
-const hypersender = new Hypersender({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClient({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const result = await hypersender.whatsapp.readChat({
+  const result = await hypersenderClient.whatsapp.readChat({
     messages: "30",
     days: "7",
     body: {
@@ -2429,20 +2429,20 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { HypersenderCore } from "hypersender/core.js";
-import { whatsappReadChat } from "hypersender/funcs/whatsapp-read-chat.js";
+import { HypersenderClientCore } from "hypersender-node/core.js";
+import { whatsappReadChat } from "hypersender-node/funcs/whatsapp-read-chat.js";
 
-// Use `HypersenderCore` for best tree-shaking performance.
+// Use `HypersenderClientCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const hypersender = new HypersenderCore({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClientCore({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const res = await whatsappReadChat(hypersender, {
+  const res = await whatsappReadChat(hypersenderClient, {
     messages: "30",
     days: "7",
     body: {
@@ -2461,19 +2461,19 @@ run();
 ```
 ### Example Usage: default
 
-<!-- UsageSnippet language="typescript" operationID="whatsapp-readChat" method="post" path="/whatsapp/v2/{whatsappInstance}/read-chat" example="default" -->
+<!-- UsageSnippet language="typescript" operationID="whatsapp-readChat" method="post" path="/whatsapp/v2/{whatsappInstanceId}/read-chat" example="default" -->
 ```typescript
-import { Hypersender } from "hypersender";
+import { HypersenderClient } from "hypersender-node";
 
-const hypersender = new Hypersender({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClient({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const result = await hypersender.whatsapp.readChat({
+  const result = await hypersenderClient.whatsapp.readChat({
     messages: "30",
     days: "7",
     body: {
@@ -2492,20 +2492,20 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { HypersenderCore } from "hypersender/core.js";
-import { whatsappReadChat } from "hypersender/funcs/whatsapp-read-chat.js";
+import { HypersenderClientCore } from "hypersender-node/core.js";
+import { whatsappReadChat } from "hypersender-node/funcs/whatsapp-read-chat.js";
 
-// Use `HypersenderCore` for best tree-shaking performance.
+// Use `HypersenderClientCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const hypersender = new HypersenderCore({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClientCore({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const res = await whatsappReadChat(hypersender, {
+  const res = await whatsappReadChat(hypersenderClient, {
     messages: "30",
     days: "7",
     body: {
@@ -2549,19 +2549,19 @@ run();
 
 ### Example Usage: Example 1
 
-<!-- UsageSnippet language="typescript" operationID="whatsapp-startTyping" method="post" path="/whatsapp/v2/{whatsappInstance}/start-typing" example="Example 1" -->
+<!-- UsageSnippet language="typescript" operationID="whatsapp-startTyping" method="post" path="/whatsapp/v2/{whatsappInstanceId}/start-typing" example="Example 1" -->
 ```typescript
-import { Hypersender } from "hypersender";
+import { HypersenderClient } from "hypersender-node";
 
-const hypersender = new Hypersender({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClient({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const result = await hypersender.whatsapp.startTyping({
+  const result = await hypersenderClient.whatsapp.startTyping({
     chatId: "111111111111@c.us",
   });
 
@@ -2576,20 +2576,20 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { HypersenderCore } from "hypersender/core.js";
-import { whatsappStartTyping } from "hypersender/funcs/whatsapp-start-typing.js";
+import { HypersenderClientCore } from "hypersender-node/core.js";
+import { whatsappStartTyping } from "hypersender-node/funcs/whatsapp-start-typing.js";
 
-// Use `HypersenderCore` for best tree-shaking performance.
+// Use `HypersenderClientCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const hypersender = new HypersenderCore({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClientCore({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const res = await whatsappStartTyping(hypersender, {
+  const res = await whatsappStartTyping(hypersenderClient, {
     chatId: "111111111111@c.us",
   });
   if (res.ok) {
@@ -2604,19 +2604,19 @@ run();
 ```
 ### Example Usage: Multiple fields Error
 
-<!-- UsageSnippet language="typescript" operationID="whatsapp-startTyping" method="post" path="/whatsapp/v2/{whatsappInstance}/start-typing" example="Multiple fields Error" -->
+<!-- UsageSnippet language="typescript" operationID="whatsapp-startTyping" method="post" path="/whatsapp/v2/{whatsappInstanceId}/start-typing" example="Multiple fields Error" -->
 ```typescript
-import { Hypersender } from "hypersender";
+import { HypersenderClient } from "hypersender-node";
 
-const hypersender = new Hypersender({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClient({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const result = await hypersender.whatsapp.startTyping({
+  const result = await hypersenderClient.whatsapp.startTyping({
     chatId: "111111111111@c.us",
   });
 
@@ -2631,20 +2631,20 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { HypersenderCore } from "hypersender/core.js";
-import { whatsappStartTyping } from "hypersender/funcs/whatsapp-start-typing.js";
+import { HypersenderClientCore } from "hypersender-node/core.js";
+import { whatsappStartTyping } from "hypersender-node/funcs/whatsapp-start-typing.js";
 
-// Use `HypersenderCore` for best tree-shaking performance.
+// Use `HypersenderClientCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const hypersender = new HypersenderCore({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClientCore({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const res = await whatsappStartTyping(hypersender, {
+  const res = await whatsappStartTyping(hypersenderClient, {
     chatId: "111111111111@c.us",
   });
   if (res.ok) {
@@ -2659,19 +2659,19 @@ run();
 ```
 ### Example Usage: Single Field error 
 
-<!-- UsageSnippet language="typescript" operationID="whatsapp-startTyping" method="post" path="/whatsapp/v2/{whatsappInstance}/start-typing" example="Single Field error " -->
+<!-- UsageSnippet language="typescript" operationID="whatsapp-startTyping" method="post" path="/whatsapp/v2/{whatsappInstanceId}/start-typing" example="Single Field error " -->
 ```typescript
-import { Hypersender } from "hypersender";
+import { HypersenderClient } from "hypersender-node";
 
-const hypersender = new Hypersender({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClient({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const result = await hypersender.whatsapp.startTyping({
+  const result = await hypersenderClient.whatsapp.startTyping({
     chatId: "111111111111@c.us",
   });
 
@@ -2686,20 +2686,20 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { HypersenderCore } from "hypersender/core.js";
-import { whatsappStartTyping } from "hypersender/funcs/whatsapp-start-typing.js";
+import { HypersenderClientCore } from "hypersender-node/core.js";
+import { whatsappStartTyping } from "hypersender-node/funcs/whatsapp-start-typing.js";
 
-// Use `HypersenderCore` for best tree-shaking performance.
+// Use `HypersenderClientCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const hypersender = new HypersenderCore({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClientCore({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const res = await whatsappStartTyping(hypersender, {
+  const res = await whatsappStartTyping(hypersenderClient, {
     chatId: "111111111111@c.us",
   });
   if (res.ok) {
@@ -2714,19 +2714,19 @@ run();
 ```
 ### Example Usage: default
 
-<!-- UsageSnippet language="typescript" operationID="whatsapp-startTyping" method="post" path="/whatsapp/v2/{whatsappInstance}/start-typing" example="default" -->
+<!-- UsageSnippet language="typescript" operationID="whatsapp-startTyping" method="post" path="/whatsapp/v2/{whatsappInstanceId}/start-typing" example="default" -->
 ```typescript
-import { Hypersender } from "hypersender";
+import { HypersenderClient } from "hypersender-node";
 
-const hypersender = new Hypersender({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClient({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const result = await hypersender.whatsapp.startTyping({
+  const result = await hypersenderClient.whatsapp.startTyping({
     chatId: "111111111111@c.us",
   });
 
@@ -2741,20 +2741,20 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { HypersenderCore } from "hypersender/core.js";
-import { whatsappStartTyping } from "hypersender/funcs/whatsapp-start-typing.js";
+import { HypersenderClientCore } from "hypersender-node/core.js";
+import { whatsappStartTyping } from "hypersender-node/funcs/whatsapp-start-typing.js";
 
-// Use `HypersenderCore` for best tree-shaking performance.
+// Use `HypersenderClientCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const hypersender = new HypersenderCore({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClientCore({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const res = await whatsappStartTyping(hypersender, {
+  const res = await whatsappStartTyping(hypersenderClient, {
     chatId: "111111111111@c.us",
   });
   if (res.ok) {
@@ -2794,19 +2794,19 @@ run();
 
 ### Example Usage: Example 1
 
-<!-- UsageSnippet language="typescript" operationID="whatsapp-stopTyping" method="post" path="/whatsapp/v2/{whatsappInstance}/stop-typing" example="Example 1" -->
+<!-- UsageSnippet language="typescript" operationID="whatsapp-stopTyping" method="post" path="/whatsapp/v2/{whatsappInstanceId}/stop-typing" example="Example 1" -->
 ```typescript
-import { Hypersender } from "hypersender";
+import { HypersenderClient } from "hypersender-node";
 
-const hypersender = new Hypersender({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClient({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const result = await hypersender.whatsapp.stopTyping({
+  const result = await hypersenderClient.whatsapp.stopTyping({
     chatId: "111111111111@c.us",
   });
 
@@ -2821,20 +2821,20 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { HypersenderCore } from "hypersender/core.js";
-import { whatsappStopTyping } from "hypersender/funcs/whatsapp-stop-typing.js";
+import { HypersenderClientCore } from "hypersender-node/core.js";
+import { whatsappStopTyping } from "hypersender-node/funcs/whatsapp-stop-typing.js";
 
-// Use `HypersenderCore` for best tree-shaking performance.
+// Use `HypersenderClientCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const hypersender = new HypersenderCore({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClientCore({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const res = await whatsappStopTyping(hypersender, {
+  const res = await whatsappStopTyping(hypersenderClient, {
     chatId: "111111111111@c.us",
   });
   if (res.ok) {
@@ -2849,19 +2849,19 @@ run();
 ```
 ### Example Usage: Multiple fields Error
 
-<!-- UsageSnippet language="typescript" operationID="whatsapp-stopTyping" method="post" path="/whatsapp/v2/{whatsappInstance}/stop-typing" example="Multiple fields Error" -->
+<!-- UsageSnippet language="typescript" operationID="whatsapp-stopTyping" method="post" path="/whatsapp/v2/{whatsappInstanceId}/stop-typing" example="Multiple fields Error" -->
 ```typescript
-import { Hypersender } from "hypersender";
+import { HypersenderClient } from "hypersender-node";
 
-const hypersender = new Hypersender({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClient({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const result = await hypersender.whatsapp.stopTyping({
+  const result = await hypersenderClient.whatsapp.stopTyping({
     chatId: "111111111111@c.us",
   });
 
@@ -2876,20 +2876,20 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { HypersenderCore } from "hypersender/core.js";
-import { whatsappStopTyping } from "hypersender/funcs/whatsapp-stop-typing.js";
+import { HypersenderClientCore } from "hypersender-node/core.js";
+import { whatsappStopTyping } from "hypersender-node/funcs/whatsapp-stop-typing.js";
 
-// Use `HypersenderCore` for best tree-shaking performance.
+// Use `HypersenderClientCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const hypersender = new HypersenderCore({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClientCore({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const res = await whatsappStopTyping(hypersender, {
+  const res = await whatsappStopTyping(hypersenderClient, {
     chatId: "111111111111@c.us",
   });
   if (res.ok) {
@@ -2904,19 +2904,19 @@ run();
 ```
 ### Example Usage: Single Field error 
 
-<!-- UsageSnippet language="typescript" operationID="whatsapp-stopTyping" method="post" path="/whatsapp/v2/{whatsappInstance}/stop-typing" example="Single Field error " -->
+<!-- UsageSnippet language="typescript" operationID="whatsapp-stopTyping" method="post" path="/whatsapp/v2/{whatsappInstanceId}/stop-typing" example="Single Field error " -->
 ```typescript
-import { Hypersender } from "hypersender";
+import { HypersenderClient } from "hypersender-node";
 
-const hypersender = new Hypersender({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClient({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const result = await hypersender.whatsapp.stopTyping({
+  const result = await hypersenderClient.whatsapp.stopTyping({
     chatId: "111111111111@c.us",
   });
 
@@ -2931,20 +2931,20 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { HypersenderCore } from "hypersender/core.js";
-import { whatsappStopTyping } from "hypersender/funcs/whatsapp-stop-typing.js";
+import { HypersenderClientCore } from "hypersender-node/core.js";
+import { whatsappStopTyping } from "hypersender-node/funcs/whatsapp-stop-typing.js";
 
-// Use `HypersenderCore` for best tree-shaking performance.
+// Use `HypersenderClientCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const hypersender = new HypersenderCore({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClientCore({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const res = await whatsappStopTyping(hypersender, {
+  const res = await whatsappStopTyping(hypersenderClient, {
     chatId: "111111111111@c.us",
   });
   if (res.ok) {
@@ -2959,19 +2959,19 @@ run();
 ```
 ### Example Usage: default
 
-<!-- UsageSnippet language="typescript" operationID="whatsapp-stopTyping" method="post" path="/whatsapp/v2/{whatsappInstance}/stop-typing" example="default" -->
+<!-- UsageSnippet language="typescript" operationID="whatsapp-stopTyping" method="post" path="/whatsapp/v2/{whatsappInstanceId}/stop-typing" example="default" -->
 ```typescript
-import { Hypersender } from "hypersender";
+import { HypersenderClient } from "hypersender-node";
 
-const hypersender = new Hypersender({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClient({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const result = await hypersender.whatsapp.stopTyping({
+  const result = await hypersenderClient.whatsapp.stopTyping({
     chatId: "111111111111@c.us",
   });
 
@@ -2986,20 +2986,20 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { HypersenderCore } from "hypersender/core.js";
-import { whatsappStopTyping } from "hypersender/funcs/whatsapp-stop-typing.js";
+import { HypersenderClientCore } from "hypersender-node/core.js";
+import { whatsappStopTyping } from "hypersender-node/funcs/whatsapp-stop-typing.js";
 
-// Use `HypersenderCore` for best tree-shaking performance.
+// Use `HypersenderClientCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const hypersender = new HypersenderCore({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClientCore({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const res = await whatsappStopTyping(hypersender, {
+  const res = await whatsappStopTyping(hypersenderClient, {
     chatId: "111111111111@c.us",
   });
   if (res.ok) {
@@ -3039,19 +3039,19 @@ run();
 
 ### Example Usage: Example 1
 
-<!-- UsageSnippet language="typescript" operationID="whatsapp-sendPoll" method="post" path="/whatsapp/v2/{whatsappInstance}/send-poll" example="Example 1" -->
+<!-- UsageSnippet language="typescript" operationID="whatsapp-sendPoll" method="post" path="/whatsapp/v2/{whatsappInstanceId}/send-poll" example="Example 1" -->
 ```typescript
-import { Hypersender } from "hypersender";
+import { HypersenderClient } from "hypersender-node";
 
-const hypersender = new Hypersender({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClient({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const result = await hypersender.whatsapp.sendPoll({
+  const result = await hypersenderClient.whatsapp.sendPoll({
     chatId: "1111111111111@c.us",
     replyTo: "string",
     poll: {
@@ -3076,20 +3076,20 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { HypersenderCore } from "hypersender/core.js";
-import { whatsappSendPoll } from "hypersender/funcs/whatsapp-send-poll.js";
+import { HypersenderClientCore } from "hypersender-node/core.js";
+import { whatsappSendPoll } from "hypersender-node/funcs/whatsapp-send-poll.js";
 
-// Use `HypersenderCore` for best tree-shaking performance.
+// Use `HypersenderClientCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const hypersender = new HypersenderCore({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClientCore({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const res = await whatsappSendPoll(hypersender, {
+  const res = await whatsappSendPoll(hypersenderClient, {
     chatId: "1111111111111@c.us",
     replyTo: "string",
     poll: {
@@ -3114,19 +3114,19 @@ run();
 ```
 ### Example Usage: Example 2
 
-<!-- UsageSnippet language="typescript" operationID="whatsapp-sendPoll" method="post" path="/whatsapp/v2/{whatsappInstance}/send-poll" example="Example 2" -->
+<!-- UsageSnippet language="typescript" operationID="whatsapp-sendPoll" method="post" path="/whatsapp/v2/{whatsappInstanceId}/send-poll" example="Example 2" -->
 ```typescript
-import { Hypersender } from "hypersender";
+import { HypersenderClient } from "hypersender-node";
 
-const hypersender = new Hypersender({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClient({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const result = await hypersender.whatsapp.sendPoll({
+  const result = await hypersenderClient.whatsapp.sendPoll({
     chatId: "1111111111111@c.us",
     replyTo: "string",
     poll: {
@@ -3151,20 +3151,20 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { HypersenderCore } from "hypersender/core.js";
-import { whatsappSendPoll } from "hypersender/funcs/whatsapp-send-poll.js";
+import { HypersenderClientCore } from "hypersender-node/core.js";
+import { whatsappSendPoll } from "hypersender-node/funcs/whatsapp-send-poll.js";
 
-// Use `HypersenderCore` for best tree-shaking performance.
+// Use `HypersenderClientCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const hypersender = new HypersenderCore({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClientCore({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const res = await whatsappSendPoll(hypersender, {
+  const res = await whatsappSendPoll(hypersenderClient, {
     chatId: "1111111111111@c.us",
     replyTo: "string",
     poll: {
@@ -3189,19 +3189,19 @@ run();
 ```
 ### Example Usage: default
 
-<!-- UsageSnippet language="typescript" operationID="whatsapp-sendPoll" method="post" path="/whatsapp/v2/{whatsappInstance}/send-poll" example="default" -->
+<!-- UsageSnippet language="typescript" operationID="whatsapp-sendPoll" method="post" path="/whatsapp/v2/{whatsappInstanceId}/send-poll" example="default" -->
 ```typescript
-import { Hypersender } from "hypersender";
+import { HypersenderClient } from "hypersender-node";
 
-const hypersender = new Hypersender({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClient({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const result = await hypersender.whatsapp.sendPoll({
+  const result = await hypersenderClient.whatsapp.sendPoll({
     chatId: "1111111111111@c.us",
     poll: {},
   });
@@ -3217,20 +3217,20 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { HypersenderCore } from "hypersender/core.js";
-import { whatsappSendPoll } from "hypersender/funcs/whatsapp-send-poll.js";
+import { HypersenderClientCore } from "hypersender-node/core.js";
+import { whatsappSendPoll } from "hypersender-node/funcs/whatsapp-send-poll.js";
 
-// Use `HypersenderCore` for best tree-shaking performance.
+// Use `HypersenderClientCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const hypersender = new HypersenderCore({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClientCore({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const res = await whatsappSendPoll(hypersender, {
+  const res = await whatsappSendPoll(hypersenderClient, {
     chatId: "1111111111111@c.us",
     poll: {},
   });
@@ -3270,19 +3270,19 @@ run();
 
 ### Example Usage: Example 1
 
-<!-- UsageSnippet language="typescript" operationID="whatsapp-sendContactCard" method="post" path="/whatsapp/v2/{whatsappInstance}/send-contact-card" example="Example 1" -->
+<!-- UsageSnippet language="typescript" operationID="whatsapp-sendContactCard" method="post" path="/whatsapp/v2/{whatsappInstanceId}/send-contact-card" example="Example 1" -->
 ```typescript
-import { Hypersender } from "hypersender";
+import { HypersenderClient } from "hypersender-node";
 
-const hypersender = new Hypersender({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClient({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const result = await hypersender.whatsapp.sendContactCard({
+  const result = await hypersenderClient.whatsapp.sendContactCard({
     chatId: "1111111111111@c.us",
     contacts: [
       {
@@ -3304,20 +3304,20 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { HypersenderCore } from "hypersender/core.js";
-import { whatsappSendContactCard } from "hypersender/funcs/whatsapp-send-contact-card.js";
+import { HypersenderClientCore } from "hypersender-node/core.js";
+import { whatsappSendContactCard } from "hypersender-node/funcs/whatsapp-send-contact-card.js";
 
-// Use `HypersenderCore` for best tree-shaking performance.
+// Use `HypersenderClientCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const hypersender = new HypersenderCore({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClientCore({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const res = await whatsappSendContactCard(hypersender, {
+  const res = await whatsappSendContactCard(hypersenderClient, {
     chatId: "1111111111111@c.us",
     contacts: [
       {
@@ -3339,19 +3339,19 @@ run();
 ```
 ### Example Usage: Example 2
 
-<!-- UsageSnippet language="typescript" operationID="whatsapp-sendContactCard" method="post" path="/whatsapp/v2/{whatsappInstance}/send-contact-card" example="Example 2" -->
+<!-- UsageSnippet language="typescript" operationID="whatsapp-sendContactCard" method="post" path="/whatsapp/v2/{whatsappInstanceId}/send-contact-card" example="Example 2" -->
 ```typescript
-import { Hypersender } from "hypersender";
+import { HypersenderClient } from "hypersender-node";
 
-const hypersender = new Hypersender({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClient({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const result = await hypersender.whatsapp.sendContactCard({
+  const result = await hypersenderClient.whatsapp.sendContactCard({
     chatId: "1111111111111@c.us",
     contacts: [
       {
@@ -3375,20 +3375,20 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { HypersenderCore } from "hypersender/core.js";
-import { whatsappSendContactCard } from "hypersender/funcs/whatsapp-send-contact-card.js";
+import { HypersenderClientCore } from "hypersender-node/core.js";
+import { whatsappSendContactCard } from "hypersender-node/funcs/whatsapp-send-contact-card.js";
 
-// Use `HypersenderCore` for best tree-shaking performance.
+// Use `HypersenderClientCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const hypersender = new HypersenderCore({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClientCore({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const res = await whatsappSendContactCard(hypersender, {
+  const res = await whatsappSendContactCard(hypersenderClient, {
     chatId: "1111111111111@c.us",
     contacts: [
       {
@@ -3412,19 +3412,19 @@ run();
 ```
 ### Example Usage: default
 
-<!-- UsageSnippet language="typescript" operationID="whatsapp-sendContactCard" method="post" path="/whatsapp/v2/{whatsappInstance}/send-contact-card" example="default" -->
+<!-- UsageSnippet language="typescript" operationID="whatsapp-sendContactCard" method="post" path="/whatsapp/v2/{whatsappInstanceId}/send-contact-card" example="default" -->
 ```typescript
-import { Hypersender } from "hypersender";
+import { HypersenderClient } from "hypersender-node";
 
-const hypersender = new Hypersender({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClient({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const result = await hypersender.whatsapp.sendContactCard({
+  const result = await hypersenderClient.whatsapp.sendContactCard({
     chatId: "1111111111111@c.us",
     contacts: [],
   });
@@ -3440,20 +3440,20 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { HypersenderCore } from "hypersender/core.js";
-import { whatsappSendContactCard } from "hypersender/funcs/whatsapp-send-contact-card.js";
+import { HypersenderClientCore } from "hypersender-node/core.js";
+import { whatsappSendContactCard } from "hypersender-node/funcs/whatsapp-send-contact-card.js";
 
-// Use `HypersenderCore` for best tree-shaking performance.
+// Use `HypersenderClientCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const hypersender = new HypersenderCore({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClientCore({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const res = await whatsappSendContactCard(hypersender, {
+  const res = await whatsappSendContactCard(hypersenderClient, {
     chatId: "1111111111111@c.us",
     contacts: [],
   });
@@ -3493,19 +3493,19 @@ run();
 
 ### Example Usage: Example 1
 
-<!-- UsageSnippet language="typescript" operationID="whatsapp-sendLocation" method="post" path="/whatsapp/v2/{whatsappInstance}/send-location" example="Example 1" -->
+<!-- UsageSnippet language="typescript" operationID="whatsapp-sendLocation" method="post" path="/whatsapp/v2/{whatsappInstanceId}/send-location" example="Example 1" -->
 ```typescript
-import { Hypersender } from "hypersender";
+import { HypersenderClient } from "hypersender-node";
 
-const hypersender = new Hypersender({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClient({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const result = await hypersender.whatsapp.sendLocation({
+  const result = await hypersenderClient.whatsapp.sendLocation({
     chatId: "111111111111@c.us",
     latitude: 38.8937255,
     longitude: -77.0969763,
@@ -3524,20 +3524,20 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { HypersenderCore } from "hypersender/core.js";
-import { whatsappSendLocation } from "hypersender/funcs/whatsapp-send-location.js";
+import { HypersenderClientCore } from "hypersender-node/core.js";
+import { whatsappSendLocation } from "hypersender-node/funcs/whatsapp-send-location.js";
 
-// Use `HypersenderCore` for best tree-shaking performance.
+// Use `HypersenderClientCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const hypersender = new HypersenderCore({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClientCore({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const res = await whatsappSendLocation(hypersender, {
+  const res = await whatsappSendLocation(hypersenderClient, {
     chatId: "111111111111@c.us",
     latitude: 38.8937255,
     longitude: -77.0969763,
@@ -3556,19 +3556,19 @@ run();
 ```
 ### Example Usage: Multiple fields Error
 
-<!-- UsageSnippet language="typescript" operationID="whatsapp-sendLocation" method="post" path="/whatsapp/v2/{whatsappInstance}/send-location" example="Multiple fields Error" -->
+<!-- UsageSnippet language="typescript" operationID="whatsapp-sendLocation" method="post" path="/whatsapp/v2/{whatsappInstanceId}/send-location" example="Multiple fields Error" -->
 ```typescript
-import { Hypersender } from "hypersender";
+import { HypersenderClient } from "hypersender-node";
 
-const hypersender = new Hypersender({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClient({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const result = await hypersender.whatsapp.sendLocation({
+  const result = await hypersenderClient.whatsapp.sendLocation({
     chatId: "111111111111@c.us",
     latitude: 1236.2,
     longitude: 4385.3,
@@ -3585,20 +3585,20 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { HypersenderCore } from "hypersender/core.js";
-import { whatsappSendLocation } from "hypersender/funcs/whatsapp-send-location.js";
+import { HypersenderClientCore } from "hypersender-node/core.js";
+import { whatsappSendLocation } from "hypersender-node/funcs/whatsapp-send-location.js";
 
-// Use `HypersenderCore` for best tree-shaking performance.
+// Use `HypersenderClientCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const hypersender = new HypersenderCore({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClientCore({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const res = await whatsappSendLocation(hypersender, {
+  const res = await whatsappSendLocation(hypersenderClient, {
     chatId: "111111111111@c.us",
     latitude: 1236.2,
     longitude: 4385.3,
@@ -3615,19 +3615,19 @@ run();
 ```
 ### Example Usage: Single Field error 
 
-<!-- UsageSnippet language="typescript" operationID="whatsapp-sendLocation" method="post" path="/whatsapp/v2/{whatsappInstance}/send-location" example="Single Field error " -->
+<!-- UsageSnippet language="typescript" operationID="whatsapp-sendLocation" method="post" path="/whatsapp/v2/{whatsappInstanceId}/send-location" example="Single Field error " -->
 ```typescript
-import { Hypersender } from "hypersender";
+import { HypersenderClient } from "hypersender-node";
 
-const hypersender = new Hypersender({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClient({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const result = await hypersender.whatsapp.sendLocation({
+  const result = await hypersenderClient.whatsapp.sendLocation({
     chatId: "111111111111@c.us",
     latitude: 1236.2,
     longitude: 4385.3,
@@ -3644,20 +3644,20 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { HypersenderCore } from "hypersender/core.js";
-import { whatsappSendLocation } from "hypersender/funcs/whatsapp-send-location.js";
+import { HypersenderClientCore } from "hypersender-node/core.js";
+import { whatsappSendLocation } from "hypersender-node/funcs/whatsapp-send-location.js";
 
-// Use `HypersenderCore` for best tree-shaking performance.
+// Use `HypersenderClientCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const hypersender = new HypersenderCore({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClientCore({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const res = await whatsappSendLocation(hypersender, {
+  const res = await whatsappSendLocation(hypersenderClient, {
     chatId: "111111111111@c.us",
     latitude: 1236.2,
     longitude: 4385.3,
@@ -3674,19 +3674,19 @@ run();
 ```
 ### Example Usage: default
 
-<!-- UsageSnippet language="typescript" operationID="whatsapp-sendLocation" method="post" path="/whatsapp/v2/{whatsappInstance}/send-location" example="default" -->
+<!-- UsageSnippet language="typescript" operationID="whatsapp-sendLocation" method="post" path="/whatsapp/v2/{whatsappInstanceId}/send-location" example="default" -->
 ```typescript
-import { Hypersender } from "hypersender";
+import { HypersenderClient } from "hypersender-node";
 
-const hypersender = new Hypersender({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClient({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const result = await hypersender.whatsapp.sendLocation({
+  const result = await hypersenderClient.whatsapp.sendLocation({
     chatId: "111111111111@c.us",
     latitude: 1236.2,
     longitude: 4385.3,
@@ -3703,20 +3703,20 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { HypersenderCore } from "hypersender/core.js";
-import { whatsappSendLocation } from "hypersender/funcs/whatsapp-send-location.js";
+import { HypersenderClientCore } from "hypersender-node/core.js";
+import { whatsappSendLocation } from "hypersender-node/funcs/whatsapp-send-location.js";
 
-// Use `HypersenderCore` for best tree-shaking performance.
+// Use `HypersenderClientCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const hypersender = new HypersenderCore({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClientCore({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const res = await whatsappSendLocation(hypersender, {
+  const res = await whatsappSendLocation(hypersenderClient, {
     chatId: "111111111111@c.us",
     latitude: 1236.2,
     longitude: 4385.3,
@@ -3758,19 +3758,19 @@ run();
 
 ### Example Usage: Example 1
 
-<!-- UsageSnippet language="typescript" operationID="whatsapp-reactToMessage" method="put" path="/whatsapp/v2/{whatsappInstance}/react-to-message" example="Example 1" -->
+<!-- UsageSnippet language="typescript" operationID="whatsapp-reactToMessage" method="put" path="/whatsapp/v2/{whatsappInstanceId}/react-to-message" example="Example 1" -->
 ```typescript
-import { Hypersender } from "hypersender";
+import { HypersenderClient } from "hypersender-node";
 
-const hypersender = new Hypersender({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClient({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const result = await hypersender.whatsapp.reactToMessage({
+  const result = await hypersenderClient.whatsapp.reactToMessage({
     chatId: "111111111111@c.us",
     messageId: "false_111111111111@c.us_3EB08F6AD2A432386EFA0E",
     reaction: "👍",
@@ -3787,20 +3787,20 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { HypersenderCore } from "hypersender/core.js";
-import { whatsappReactToMessage } from "hypersender/funcs/whatsapp-react-to-message.js";
+import { HypersenderClientCore } from "hypersender-node/core.js";
+import { whatsappReactToMessage } from "hypersender-node/funcs/whatsapp-react-to-message.js";
 
-// Use `HypersenderCore` for best tree-shaking performance.
+// Use `HypersenderClientCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const hypersender = new HypersenderCore({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClientCore({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const res = await whatsappReactToMessage(hypersender, {
+  const res = await whatsappReactToMessage(hypersenderClient, {
     chatId: "111111111111@c.us",
     messageId: "false_111111111111@c.us_3EB08F6AD2A432386EFA0E",
     reaction: "👍",
@@ -3817,19 +3817,19 @@ run();
 ```
 ### Example Usage: Example 2
 
-<!-- UsageSnippet language="typescript" operationID="whatsapp-reactToMessage" method="put" path="/whatsapp/v2/{whatsappInstance}/react-to-message" example="Example 2" -->
+<!-- UsageSnippet language="typescript" operationID="whatsapp-reactToMessage" method="put" path="/whatsapp/v2/{whatsappInstanceId}/react-to-message" example="Example 2" -->
 ```typescript
-import { Hypersender } from "hypersender";
+import { HypersenderClient } from "hypersender-node";
 
-const hypersender = new Hypersender({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClient({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const result = await hypersender.whatsapp.reactToMessage({
+  const result = await hypersenderClient.whatsapp.reactToMessage({
     chatId: "111111111111@c.us",
     messageId: "false_111111111111@c.us_3EB08F6AD2A432386EFA0E",
     reaction: "",
@@ -3846,20 +3846,20 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { HypersenderCore } from "hypersender/core.js";
-import { whatsappReactToMessage } from "hypersender/funcs/whatsapp-react-to-message.js";
+import { HypersenderClientCore } from "hypersender-node/core.js";
+import { whatsappReactToMessage } from "hypersender-node/funcs/whatsapp-react-to-message.js";
 
-// Use `HypersenderCore` for best tree-shaking performance.
+// Use `HypersenderClientCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const hypersender = new HypersenderCore({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClientCore({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const res = await whatsappReactToMessage(hypersender, {
+  const res = await whatsappReactToMessage(hypersenderClient, {
     chatId: "111111111111@c.us",
     messageId: "false_111111111111@c.us_3EB08F6AD2A432386EFA0E",
     reaction: "",
@@ -3876,19 +3876,19 @@ run();
 ```
 ### Example Usage: default
 
-<!-- UsageSnippet language="typescript" operationID="whatsapp-reactToMessage" method="put" path="/whatsapp/v2/{whatsappInstance}/react-to-message" example="default" -->
+<!-- UsageSnippet language="typescript" operationID="whatsapp-reactToMessage" method="put" path="/whatsapp/v2/{whatsappInstanceId}/react-to-message" example="default" -->
 ```typescript
-import { Hypersender } from "hypersender";
+import { HypersenderClient } from "hypersender-node";
 
-const hypersender = new Hypersender({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClient({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const result = await hypersender.whatsapp.reactToMessage({
+  const result = await hypersenderClient.whatsapp.reactToMessage({
     chatId: "111111111111@c.us",
   });
 
@@ -3903,20 +3903,20 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { HypersenderCore } from "hypersender/core.js";
-import { whatsappReactToMessage } from "hypersender/funcs/whatsapp-react-to-message.js";
+import { HypersenderClientCore } from "hypersender-node/core.js";
+import { whatsappReactToMessage } from "hypersender-node/funcs/whatsapp-react-to-message.js";
 
-// Use `HypersenderCore` for best tree-shaking performance.
+// Use `HypersenderClientCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const hypersender = new HypersenderCore({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClientCore({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const res = await whatsappReactToMessage(hypersender, {
+  const res = await whatsappReactToMessage(hypersenderClient, {
     chatId: "111111111111@c.us",
   });
   if (res.ok) {
@@ -3955,19 +3955,19 @@ run();
 
 ### Example Usage: Example 1
 
-<!-- UsageSnippet language="typescript" operationID="whatsapp-starMessage" method="put" path="/whatsapp/v2/{whatsappInstance}/star-message" example="Example 1" -->
+<!-- UsageSnippet language="typescript" operationID="whatsapp-starMessage" method="put" path="/whatsapp/v2/{whatsappInstanceId}/star-message" example="Example 1" -->
 ```typescript
-import { Hypersender } from "hypersender";
+import { HypersenderClient } from "hypersender-node";
 
-const hypersender = new Hypersender({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClient({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const result = await hypersender.whatsapp.starMessage({
+  const result = await hypersenderClient.whatsapp.starMessage({
     chatId: "111111111111@c.us",
     messageId: "true_111111111111@c.us_3EB08F6AD2A432386EFA0E",
     star: true,
@@ -3984,20 +3984,20 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { HypersenderCore } from "hypersender/core.js";
-import { whatsappStarMessage } from "hypersender/funcs/whatsapp-star-message.js";
+import { HypersenderClientCore } from "hypersender-node/core.js";
+import { whatsappStarMessage } from "hypersender-node/funcs/whatsapp-star-message.js";
 
-// Use `HypersenderCore` for best tree-shaking performance.
+// Use `HypersenderClientCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const hypersender = new HypersenderCore({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClientCore({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const res = await whatsappStarMessage(hypersender, {
+  const res = await whatsappStarMessage(hypersenderClient, {
     chatId: "111111111111@c.us",
     messageId: "true_111111111111@c.us_3EB08F6AD2A432386EFA0E",
     star: true,
@@ -4014,19 +4014,19 @@ run();
 ```
 ### Example Usage: Example 2
 
-<!-- UsageSnippet language="typescript" operationID="whatsapp-starMessage" method="put" path="/whatsapp/v2/{whatsappInstance}/star-message" example="Example 2" -->
+<!-- UsageSnippet language="typescript" operationID="whatsapp-starMessage" method="put" path="/whatsapp/v2/{whatsappInstanceId}/star-message" example="Example 2" -->
 ```typescript
-import { Hypersender } from "hypersender";
+import { HypersenderClient } from "hypersender-node";
 
-const hypersender = new Hypersender({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClient({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const result = await hypersender.whatsapp.starMessage({
+  const result = await hypersenderClient.whatsapp.starMessage({
     chatId: "111111111111@c.us",
     messageId: "true_111111111111@c.us_3EB08F6AD2A432386EFA0E",
     star: false,
@@ -4043,20 +4043,20 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { HypersenderCore } from "hypersender/core.js";
-import { whatsappStarMessage } from "hypersender/funcs/whatsapp-star-message.js";
+import { HypersenderClientCore } from "hypersender-node/core.js";
+import { whatsappStarMessage } from "hypersender-node/funcs/whatsapp-star-message.js";
 
-// Use `HypersenderCore` for best tree-shaking performance.
+// Use `HypersenderClientCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const hypersender = new HypersenderCore({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClientCore({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const res = await whatsappStarMessage(hypersender, {
+  const res = await whatsappStarMessage(hypersenderClient, {
     chatId: "111111111111@c.us",
     messageId: "true_111111111111@c.us_3EB08F6AD2A432386EFA0E",
     star: false,
@@ -4073,19 +4073,19 @@ run();
 ```
 ### Example Usage: Multiple fields Error
 
-<!-- UsageSnippet language="typescript" operationID="whatsapp-starMessage" method="put" path="/whatsapp/v2/{whatsappInstance}/star-message" example="Multiple fields Error" -->
+<!-- UsageSnippet language="typescript" operationID="whatsapp-starMessage" method="put" path="/whatsapp/v2/{whatsappInstanceId}/star-message" example="Multiple fields Error" -->
 ```typescript
-import { Hypersender } from "hypersender";
+import { HypersenderClient } from "hypersender-node";
 
-const hypersender = new Hypersender({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClient({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const result = await hypersender.whatsapp.starMessage({
+  const result = await hypersenderClient.whatsapp.starMessage({
     chatId: "111111111111@c.us",
     messageId: "<id>",
     star: true,
@@ -4102,20 +4102,20 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { HypersenderCore } from "hypersender/core.js";
-import { whatsappStarMessage } from "hypersender/funcs/whatsapp-star-message.js";
+import { HypersenderClientCore } from "hypersender-node/core.js";
+import { whatsappStarMessage } from "hypersender-node/funcs/whatsapp-star-message.js";
 
-// Use `HypersenderCore` for best tree-shaking performance.
+// Use `HypersenderClientCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const hypersender = new HypersenderCore({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClientCore({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const res = await whatsappStarMessage(hypersender, {
+  const res = await whatsappStarMessage(hypersenderClient, {
     chatId: "111111111111@c.us",
     messageId: "<id>",
     star: true,
@@ -4132,19 +4132,19 @@ run();
 ```
 ### Example Usage: Single Field error 
 
-<!-- UsageSnippet language="typescript" operationID="whatsapp-starMessage" method="put" path="/whatsapp/v2/{whatsappInstance}/star-message" example="Single Field error " -->
+<!-- UsageSnippet language="typescript" operationID="whatsapp-starMessage" method="put" path="/whatsapp/v2/{whatsappInstanceId}/star-message" example="Single Field error " -->
 ```typescript
-import { Hypersender } from "hypersender";
+import { HypersenderClient } from "hypersender-node";
 
-const hypersender = new Hypersender({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClient({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const result = await hypersender.whatsapp.starMessage({
+  const result = await hypersenderClient.whatsapp.starMessage({
     chatId: "111111111111@c.us",
     messageId: "<id>",
     star: true,
@@ -4161,20 +4161,20 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { HypersenderCore } from "hypersender/core.js";
-import { whatsappStarMessage } from "hypersender/funcs/whatsapp-star-message.js";
+import { HypersenderClientCore } from "hypersender-node/core.js";
+import { whatsappStarMessage } from "hypersender-node/funcs/whatsapp-star-message.js";
 
-// Use `HypersenderCore` for best tree-shaking performance.
+// Use `HypersenderClientCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const hypersender = new HypersenderCore({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClientCore({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const res = await whatsappStarMessage(hypersender, {
+  const res = await whatsappStarMessage(hypersenderClient, {
     chatId: "111111111111@c.us",
     messageId: "<id>",
     star: true,
@@ -4191,19 +4191,19 @@ run();
 ```
 ### Example Usage: default
 
-<!-- UsageSnippet language="typescript" operationID="whatsapp-starMessage" method="put" path="/whatsapp/v2/{whatsappInstance}/star-message" example="default" -->
+<!-- UsageSnippet language="typescript" operationID="whatsapp-starMessage" method="put" path="/whatsapp/v2/{whatsappInstanceId}/star-message" example="default" -->
 ```typescript
-import { Hypersender } from "hypersender";
+import { HypersenderClient } from "hypersender-node";
 
-const hypersender = new Hypersender({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClient({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const result = await hypersender.whatsapp.starMessage({
+  const result = await hypersenderClient.whatsapp.starMessage({
     chatId: "111111111111@c.us",
     messageId: "<id>",
     star: true,
@@ -4220,20 +4220,20 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { HypersenderCore } from "hypersender/core.js";
-import { whatsappStarMessage } from "hypersender/funcs/whatsapp-star-message.js";
+import { HypersenderClientCore } from "hypersender-node/core.js";
+import { whatsappStarMessage } from "hypersender-node/funcs/whatsapp-star-message.js";
 
-// Use `HypersenderCore` for best tree-shaking performance.
+// Use `HypersenderClientCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const hypersender = new HypersenderCore({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClientCore({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const res = await whatsappStarMessage(hypersender, {
+  const res = await whatsappStarMessage(hypersenderClient, {
     chatId: "111111111111@c.us",
     messageId: "<id>",
     star: true,
@@ -4275,19 +4275,19 @@ run();
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="whatsapp-deleteMessage" method="delete" path="/whatsapp/v2/{whatsappInstance}/delete-message" example="Example 1" -->
+<!-- UsageSnippet language="typescript" operationID="whatsapp-deleteMessage" method="delete" path="/whatsapp/v2/{whatsappInstanceId}/delete-message" example="Example 1" -->
 ```typescript
-import { Hypersender } from "hypersender";
+import { HypersenderClient } from "hypersender-node";
 
-const hypersender = new Hypersender({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClient({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const result = await hypersender.whatsapp.deleteMessage({
+  const result = await hypersenderClient.whatsapp.deleteMessage({
     chatId: "111111111111@c.us",
     messageId: "<id>",
   });
@@ -4303,20 +4303,20 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { HypersenderCore } from "hypersender/core.js";
-import { whatsappDeleteMessage } from "hypersender/funcs/whatsapp-delete-message.js";
+import { HypersenderClientCore } from "hypersender-node/core.js";
+import { whatsappDeleteMessage } from "hypersender-node/funcs/whatsapp-delete-message.js";
 
-// Use `HypersenderCore` for best tree-shaking performance.
+// Use `HypersenderClientCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const hypersender = new HypersenderCore({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClientCore({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const res = await whatsappDeleteMessage(hypersender, {
+  const res = await whatsappDeleteMessage(hypersenderClient, {
     chatId: "111111111111@c.us",
     messageId: "<id>",
   });

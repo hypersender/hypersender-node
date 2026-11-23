@@ -5,7 +5,7 @@ Rate limit exceeded
 ## Example Usage
 
 ```typescript
-import { EnterpriseCreateInstanceTooManyRequestsError } from "hypersender/models/errors";
+import { EnterpriseCreateInstanceTooManyRequestsError } from "hypersender-node/models/errors";
 
 // No examples available for this model
 ```

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { InstanceWithQRResponse } from "hypersender/models";
+import { InstanceWithQRResponse } from "hypersender-node/models";
 
 let value: InstanceWithQRResponse = {
   id: "fa3d01c4-1234-4c0d-a12f-df319b612f8c",

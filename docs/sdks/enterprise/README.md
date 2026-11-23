@@ -18,16 +18,16 @@ Checks the current health status of a WhatsApp instance by its UUID. This endpoi
 
 <!-- UsageSnippet language="typescript" operationID="enterprise-getInstanceHealth" method="get" path="/whatsapp/v2/{instance}/health" -->
 ```typescript
-import { Hypersender } from "hypersender";
+import { HypersenderClient } from "hypersender-node";
 
-const hypersender = new Hypersender({
+const hypersenderClient = new HypersenderClient({
   security: {
     enterpriseApiKey: process.env["HYPERSENDER_ENTERPRISE_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const result = await hypersender.enterprise.getInstanceHealth("{{ instance_id }}");
+  const result = await hypersenderClient.enterprise.getInstanceHealth("{{ instance_id }}");
 
   console.log(result);
 }
@@ -40,19 +40,19 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { HypersenderCore } from "hypersender/core.js";
-import { enterpriseGetInstanceHealth } from "hypersender/funcs/enterprise-get-instance-health.js";
+import { HypersenderClientCore } from "hypersender-node/core.js";
+import { enterpriseGetInstanceHealth } from "hypersender-node/funcs/enterprise-get-instance-health.js";
 
-// Use `HypersenderCore` for best tree-shaking performance.
+// Use `HypersenderClientCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const hypersender = new HypersenderCore({
+const hypersenderClient = new HypersenderClientCore({
   security: {
     enterpriseApiKey: process.env["HYPERSENDER_ENTERPRISE_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const res = await enterpriseGetInstanceHealth(hypersender, "{{ instance_id }}");
+  const res = await enterpriseGetInstanceHealth(hypersenderClient, "{{ instance_id }}");
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
@@ -93,16 +93,16 @@ Lists all WhatsApp instances associated with the authenticated user's account.
 
 <!-- UsageSnippet language="typescript" operationID="enterprise-listInstances" method="get" path="/whatsapp/v2/instances" -->
 ```typescript
-import { Hypersender } from "hypersender";
+import { HypersenderClient } from "hypersender-node";
 
-const hypersender = new Hypersender({
+const hypersenderClient = new HypersenderClient({
   security: {
     enterpriseApiKey: process.env["HYPERSENDER_ENTERPRISE_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const result = await hypersender.enterprise.listInstances();
+  const result = await hypersenderClient.enterprise.listInstances();
 
   console.log(result);
 }
@@ -115,19 +115,19 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { HypersenderCore } from "hypersender/core.js";
-import { enterpriseListInstances } from "hypersender/funcs/enterprise-list-instances.js";
+import { HypersenderClientCore } from "hypersender-node/core.js";
+import { enterpriseListInstances } from "hypersender-node/funcs/enterprise-list-instances.js";
 
-// Use `HypersenderCore` for best tree-shaking performance.
+// Use `HypersenderClientCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const hypersender = new HypersenderCore({
+const hypersenderClient = new HypersenderClientCore({
   security: {
     enterpriseApiKey: process.env["HYPERSENDER_ENTERPRISE_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const res = await enterpriseListInstances(hypersender);
+  const res = await enterpriseListInstances(hypersenderClient);
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
@@ -166,16 +166,16 @@ Creates a new WhatsApp instance associated with a phone number and a user-define
 
 <!-- UsageSnippet language="typescript" operationID="enterprise-createInstance" method="post" path="/whatsapp/v2/create-instance" -->
 ```typescript
-import { Hypersender } from "hypersender";
+import { HypersenderClient } from "hypersender-node";
 
-const hypersender = new Hypersender({
+const hypersenderClient = new HypersenderClient({
   security: {
     enterpriseApiKey: process.env["HYPERSENDER_ENTERPRISE_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const result = await hypersender.enterprise.createInstance({
+  const result = await hypersenderClient.enterprise.createInstance({
     phone: "+201234567890",
     name: "MyInstanceName",
     webhookUrl: "https://yourdomain.com/webhooks/whatsapp",
@@ -192,19 +192,19 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { HypersenderCore } from "hypersender/core.js";
-import { enterpriseCreateInstance } from "hypersender/funcs/enterprise-create-instance.js";
+import { HypersenderClientCore } from "hypersender-node/core.js";
+import { enterpriseCreateInstance } from "hypersender-node/funcs/enterprise-create-instance.js";
 
-// Use `HypersenderCore` for best tree-shaking performance.
+// Use `HypersenderClientCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const hypersender = new HypersenderCore({
+const hypersenderClient = new HypersenderClientCore({
   security: {
     enterpriseApiKey: process.env["HYPERSENDER_ENTERPRISE_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const res = await enterpriseCreateInstance(hypersender, {
+  const res = await enterpriseCreateInstance(hypersenderClient, {
     phone: "+201234567890",
     name: "MyInstanceName",
     webhookUrl: "https://yourdomain.com/webhooks/whatsapp",
@@ -249,16 +249,16 @@ Forces the instance to generate a new QR code, typically after an expired or fai
 
 <!-- UsageSnippet language="typescript" operationID="enterprise-requestNewQrCode" method="post" path="/whatsapp/v2/{instance}/request-new-qr-code" -->
 ```typescript
-import { Hypersender } from "hypersender";
+import { HypersenderClient } from "hypersender-node";
 
-const hypersender = new Hypersender({
+const hypersenderClient = new HypersenderClient({
   security: {
     enterpriseApiKey: process.env["HYPERSENDER_ENTERPRISE_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const result = await hypersender.enterprise.requestNewQrCode("{{ instance_id }}");
+  const result = await hypersenderClient.enterprise.requestNewQrCode("{{ instance_id }}");
 
   console.log(result);
 }
@@ -271,19 +271,19 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { HypersenderCore } from "hypersender/core.js";
-import { enterpriseRequestNewQrCode } from "hypersender/funcs/enterprise-request-new-qr-code.js";
+import { HypersenderClientCore } from "hypersender-node/core.js";
+import { enterpriseRequestNewQrCode } from "hypersender-node/funcs/enterprise-request-new-qr-code.js";
 
-// Use `HypersenderCore` for best tree-shaking performance.
+// Use `HypersenderClientCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const hypersender = new HypersenderCore({
+const hypersenderClient = new HypersenderClientCore({
   security: {
     enterpriseApiKey: process.env["HYPERSENDER_ENTERPRISE_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const res = await enterpriseRequestNewQrCode(hypersender, "{{ instance_id }}");
+  const res = await enterpriseRequestNewQrCode(hypersenderClient, "{{ instance_id }}");
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
@@ -324,16 +324,16 @@ Restarts a WhatsApp instance. Useful when the instance is stuck or not working p
 
 <!-- UsageSnippet language="typescript" operationID="enterprise-restartInstance" method="post" path="/whatsapp/v2/{instance}/restart" -->
 ```typescript
-import { Hypersender } from "hypersender";
+import { HypersenderClient } from "hypersender-node";
 
-const hypersender = new Hypersender({
+const hypersenderClient = new HypersenderClient({
   security: {
     enterpriseApiKey: process.env["HYPERSENDER_ENTERPRISE_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const result = await hypersender.enterprise.restartInstance("{{ instance_id }}");
+  const result = await hypersenderClient.enterprise.restartInstance("{{ instance_id }}");
 
   console.log(result);
 }
@@ -346,19 +346,19 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { HypersenderCore } from "hypersender/core.js";
-import { enterpriseRestartInstance } from "hypersender/funcs/enterprise-restart-instance.js";
+import { HypersenderClientCore } from "hypersender-node/core.js";
+import { enterpriseRestartInstance } from "hypersender-node/funcs/enterprise-restart-instance.js";
 
-// Use `HypersenderCore` for best tree-shaking performance.
+// Use `HypersenderClientCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const hypersender = new HypersenderCore({
+const hypersenderClient = new HypersenderClientCore({
   security: {
     enterpriseApiKey: process.env["HYPERSENDER_ENTERPRISE_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const res = await enterpriseRestartInstance(hypersender, "{{ instance_id }}");
+  const res = await enterpriseRestartInstance(hypersenderClient, "{{ instance_id }}");
   if (res.ok) {
     const { value: result } = res;
     console.log(result);

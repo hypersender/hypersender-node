@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { WhatsappSendLinkCustomPreviewMessage } from "hypersender/models/operations";
+import { WhatsappSendLinkCustomPreviewMessage } from "hypersender-node/models/operations";
 
 let value: WhatsappSendLinkCustomPreviewMessage = {};
 ```

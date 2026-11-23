@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { EnterpriseRestartInstanceRequest } from "hypersender/models/operations";
+import { EnterpriseRestartInstanceRequest } from "hypersender-node/models/operations";
 
 let value: EnterpriseRestartInstanceRequest = {
   instance: "{{ instance_id }}",

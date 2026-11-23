@@ -5,7 +5,7 @@ Response when checking the status of a queued request
 ## Example Usage
 
 ```typescript
-import { QueuedRequestResponse } from "hypersender/models";
+import { QueuedRequestResponse } from "hypersender-node/models";
 
 let value: QueuedRequestResponse = {
   uuid: "a0816120-7e37-4e8b-8cf3-92deb2cdc133",

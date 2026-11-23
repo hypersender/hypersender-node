@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { SendLocationRequest } from "hypersender/models";
+import { SendLocationRequest } from "hypersender-node/models";
 
 let value: SendLocationRequest = {
   chatId: "111111111111@c.us",

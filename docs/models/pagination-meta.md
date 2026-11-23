@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { PaginationMeta } from "hypersender/models";
+import { PaginationMeta } from "hypersender-node/models";
 
 let value: PaginationMeta = {};
 ```

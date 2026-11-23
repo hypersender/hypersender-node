@@ -11,7 +11,7 @@ Instance status:
 ## Example Usage
 
 ```typescript
-import { Status } from "hypersender/models/operations";
+import { Status } from "hypersender-node/models/operations";
 
 let value: Status = "WORKING";
 

@@ -20,19 +20,19 @@ Verify if a phone number is registered on WhatsApp and get its chatId
 
 ### Example Usage: Existing Contact
 
-<!-- UsageSnippet language="typescript" operationID="whatsapp-checkContactExists" method="post" path="/whatsapp/v2/{whatsappInstance}/contacts/check-exists" example="Existing Contact" -->
+<!-- UsageSnippet language="typescript" operationID="whatsapp-checkContactExists" method="post" path="/whatsapp/v2/{whatsappInstanceId}/contacts/check-exists" example="Existing Contact" -->
 ```typescript
-import { Hypersender } from "hypersender";
+import { HypersenderClient } from "hypersender-node";
 
-const hypersender = new Hypersender({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClient({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const result = await hypersender.whatsapp.contacts.checkContactExists({
+  const result = await hypersenderClient.whatsapp.contacts.checkContactExists({
     phone: "20123456789",
   });
 
@@ -47,20 +47,20 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { HypersenderCore } from "hypersender/core.js";
-import { whatsappContactsCheckContactExists } from "hypersender/funcs/whatsapp-contacts-check-contact-exists.js";
+import { HypersenderClientCore } from "hypersender-node/core.js";
+import { whatsappContactsCheckContactExists } from "hypersender-node/funcs/whatsapp-contacts-check-contact-exists.js";
 
-// Use `HypersenderCore` for best tree-shaking performance.
+// Use `HypersenderClientCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const hypersender = new HypersenderCore({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClientCore({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const res = await whatsappContactsCheckContactExists(hypersender, {
+  const res = await whatsappContactsCheckContactExists(hypersenderClient, {
     phone: "20123456789",
   });
   if (res.ok) {
@@ -75,19 +75,19 @@ run();
 ```
 ### Example Usage: Non-existing Contact
 
-<!-- UsageSnippet language="typescript" operationID="whatsapp-checkContactExists" method="post" path="/whatsapp/v2/{whatsappInstance}/contacts/check-exists" example="Non-existing Contact" -->
+<!-- UsageSnippet language="typescript" operationID="whatsapp-checkContactExists" method="post" path="/whatsapp/v2/{whatsappInstanceId}/contacts/check-exists" example="Non-existing Contact" -->
 ```typescript
-import { Hypersender } from "hypersender";
+import { HypersenderClient } from "hypersender-node";
 
-const hypersender = new Hypersender({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClient({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const result = await hypersender.whatsapp.contacts.checkContactExists({
+  const result = await hypersenderClient.whatsapp.contacts.checkContactExists({
     phone: "20123456789",
   });
 
@@ -102,20 +102,20 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { HypersenderCore } from "hypersender/core.js";
-import { whatsappContactsCheckContactExists } from "hypersender/funcs/whatsapp-contacts-check-contact-exists.js";
+import { HypersenderClientCore } from "hypersender-node/core.js";
+import { whatsappContactsCheckContactExists } from "hypersender-node/funcs/whatsapp-contacts-check-contact-exists.js";
 
-// Use `HypersenderCore` for best tree-shaking performance.
+// Use `HypersenderClientCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const hypersender = new HypersenderCore({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClientCore({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const res = await whatsappContactsCheckContactExists(hypersender, {
+  const res = await whatsappContactsCheckContactExists(hypersenderClient, {
     phone: "20123456789",
   });
   if (res.ok) {
@@ -157,19 +157,19 @@ List the @lid to @c.us mappings already known by the instance.
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="whatsapp-getAllKnownLids" method="get" path="/whatsapp/v2/{whatsappInstance}/contacts/get-all-known-lids" example="Default" -->
+<!-- UsageSnippet language="typescript" operationID="whatsapp-getAllKnownLids" method="get" path="/whatsapp/v2/{whatsappInstanceId}/contacts/get-all-known-lids" example="Default" -->
 ```typescript
-import { Hypersender } from "hypersender";
+import { HypersenderClient } from "hypersender-node";
 
-const hypersender = new Hypersender({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClient({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const result = await hypersender.whatsapp.contacts.getAllKnownLids({});
+  const result = await hypersenderClient.whatsapp.contacts.getAllKnownLids({});
 
   console.log(result);
 }
@@ -182,20 +182,20 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { HypersenderCore } from "hypersender/core.js";
-import { whatsappContactsGetAllKnownLids } from "hypersender/funcs/whatsapp-contacts-get-all-known-lids.js";
+import { HypersenderClientCore } from "hypersender-node/core.js";
+import { whatsappContactsGetAllKnownLids } from "hypersender-node/funcs/whatsapp-contacts-get-all-known-lids.js";
 
-// Use `HypersenderCore` for best tree-shaking performance.
+// Use `HypersenderClientCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const hypersender = new HypersenderCore({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClientCore({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const res = await whatsappContactsGetAllKnownLids(hypersender, {});
+  const res = await whatsappContactsGetAllKnownLids(hypersenderClient, {});
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
@@ -235,19 +235,19 @@ Retrieve a list of all contacts in the WhatsApp instance with pagination and sor
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="whatsapp-getAllContacts" method="get" path="/whatsapp/v2/{whatsappInstance}/contacts/get-all" -->
+<!-- UsageSnippet language="typescript" operationID="whatsapp-getAllContacts" method="get" path="/whatsapp/v2/{whatsappInstanceId}/contacts/get-all" -->
 ```typescript
-import { Hypersender } from "hypersender";
+import { HypersenderClient } from "hypersender-node";
 
-const hypersender = new Hypersender({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClient({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const result = await hypersender.whatsapp.contacts.getAllContacts({});
+  const result = await hypersenderClient.whatsapp.contacts.getAllContacts({});
 
   console.log(result);
 }
@@ -260,20 +260,20 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { HypersenderCore } from "hypersender/core.js";
-import { whatsappContactsGetAllContacts } from "hypersender/funcs/whatsapp-contacts-get-all-contacts.js";
+import { HypersenderClientCore } from "hypersender-node/core.js";
+import { whatsappContactsGetAllContacts } from "hypersender-node/funcs/whatsapp-contacts-get-all-contacts.js";
 
-// Use `HypersenderCore` for best tree-shaking performance.
+// Use `HypersenderClientCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const hypersender = new HypersenderCore({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClientCore({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const res = await whatsappContactsGetAllContacts(hypersender, {});
+  const res = await whatsappContactsGetAllContacts(hypersenderClient, {});
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
@@ -312,19 +312,19 @@ Return the number of @lid to @c.us mappings already known by the instance.
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="whatsapp-getLidsCount" method="get" path="/whatsapp/v2/{whatsappInstance}/contacts/get-lids-count" example="Default" -->
+<!-- UsageSnippet language="typescript" operationID="whatsapp-getLidsCount" method="get" path="/whatsapp/v2/{whatsappInstanceId}/contacts/get-lids-count" example="Default" -->
 ```typescript
-import { Hypersender } from "hypersender";
+import { HypersenderClient } from "hypersender-node";
 
-const hypersender = new Hypersender({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClient({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const result = await hypersender.whatsapp.contacts.getLidsCount();
+  const result = await hypersenderClient.whatsapp.contacts.getLidsCount();
 
   console.log(result);
 }
@@ -337,20 +337,20 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { HypersenderCore } from "hypersender/core.js";
-import { whatsappContactsGetLidsCount } from "hypersender/funcs/whatsapp-contacts-get-lids-count.js";
+import { HypersenderClientCore } from "hypersender-node/core.js";
+import { whatsappContactsGetLidsCount } from "hypersender-node/funcs/whatsapp-contacts-get-lids-count.js";
 
-// Use `HypersenderCore` for best tree-shaking performance.
+// Use `HypersenderClientCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const hypersender = new HypersenderCore({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClientCore({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const res = await whatsappContactsGetLidsCount(hypersender);
+  const res = await whatsappContactsGetLidsCount(hypersenderClient);
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
@@ -388,19 +388,19 @@ Resolve a linked identifier to its phone-number-based chat ID.
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="whatsapp-getPhoneNumberByLid" method="get" path="/whatsapp/v2/{whatsappInstance}/contacts/get-phone-number-by-lid" example="Default" -->
+<!-- UsageSnippet language="typescript" operationID="whatsapp-getPhoneNumberByLid" method="get" path="/whatsapp/v2/{whatsappInstanceId}/contacts/get-phone-number-by-lid" example="Default" -->
 ```typescript
-import { Hypersender } from "hypersender";
+import { HypersenderClient } from "hypersender-node";
 
-const hypersender = new Hypersender({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClient({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const result = await hypersender.whatsapp.contacts.getPhoneNumberByLid("1111111@lid");
+  const result = await hypersenderClient.whatsapp.contacts.getPhoneNumberByLid("1111111@lid");
 
   console.log(result);
 }
@@ -413,20 +413,20 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { HypersenderCore } from "hypersender/core.js";
-import { whatsappContactsGetPhoneNumberByLid } from "hypersender/funcs/whatsapp-contacts-get-phone-number-by-lid.js";
+import { HypersenderClientCore } from "hypersender-node/core.js";
+import { whatsappContactsGetPhoneNumberByLid } from "hypersender-node/funcs/whatsapp-contacts-get-phone-number-by-lid.js";
 
-// Use `HypersenderCore` for best tree-shaking performance.
+// Use `HypersenderClientCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const hypersender = new HypersenderCore({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClientCore({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const res = await whatsappContactsGetPhoneNumberByLid(hypersender, "1111111@lid");
+  const res = await whatsappContactsGetPhoneNumberByLid(hypersenderClient, "1111111@lid");
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
@@ -466,19 +466,19 @@ Retrieve a specific contact by phone number or chat ID.
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="whatsapp-getContact" method="get" path="/whatsapp/v2/{whatsappInstance}/contacts/get" -->
+<!-- UsageSnippet language="typescript" operationID="whatsapp-getContact" method="get" path="/whatsapp/v2/{whatsappInstanceId}/contacts/get" -->
 ```typescript
-import { Hypersender } from "hypersender";
+import { HypersenderClient } from "hypersender-node";
 
-const hypersender = new Hypersender({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClient({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const result = await hypersender.whatsapp.contacts.getContact("100875997589545@lid");
+  const result = await hypersenderClient.whatsapp.contacts.getContact("100875997589545@lid");
 
   console.log(result);
 }
@@ -491,20 +491,20 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { HypersenderCore } from "hypersender/core.js";
-import { whatsappContactsGetContact } from "hypersender/funcs/whatsapp-contacts-get-contact.js";
+import { HypersenderClientCore } from "hypersender-node/core.js";
+import { whatsappContactsGetContact } from "hypersender-node/funcs/whatsapp-contacts-get-contact.js";
 
-// Use `HypersenderCore` for best tree-shaking performance.
+// Use `HypersenderClientCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const hypersender = new HypersenderCore({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClientCore({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const res = await whatsappContactsGetContact(hypersender, "100875997589545@lid");
+  const res = await whatsappContactsGetContact(hypersenderClient, "100875997589545@lid");
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
@@ -544,19 +544,19 @@ Resolve a phone-number-based chat ID to its linked identifier.
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="whatsapp-getLidByPhoneNumber" method="get" path="/whatsapp/v2/{whatsappInstance}/contacts/get-lid-by-phone-number" example="Default" -->
+<!-- UsageSnippet language="typescript" operationID="whatsapp-getLidByPhoneNumber" method="get" path="/whatsapp/v2/{whatsappInstanceId}/contacts/get-lid-by-phone-number" example="Default" -->
 ```typescript
-import { Hypersender } from "hypersender";
+import { HypersenderClient } from "hypersender-node";
 
-const hypersender = new Hypersender({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClient({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const result = await hypersender.whatsapp.contacts.getLidByPhoneNumber("3333333@c.us");
+  const result = await hypersenderClient.whatsapp.contacts.getLidByPhoneNumber("3333333@c.us");
 
   console.log(result);
 }
@@ -569,20 +569,20 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { HypersenderCore } from "hypersender/core.js";
-import { whatsappContactsGetLidByPhoneNumber } from "hypersender/funcs/whatsapp-contacts-get-lid-by-phone-number.js";
+import { HypersenderClientCore } from "hypersender-node/core.js";
+import { whatsappContactsGetLidByPhoneNumber } from "hypersender-node/funcs/whatsapp-contacts-get-lid-by-phone-number.js";
 
-// Use `HypersenderCore` for best tree-shaking performance.
+// Use `HypersenderClientCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const hypersender = new HypersenderCore({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClientCore({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const res = await whatsappContactsGetLidByPhoneNumber(hypersender, "3333333@c.us");
+  const res = await whatsappContactsGetLidByPhoneNumber(hypersenderClient, "3333333@c.us");
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
@@ -622,19 +622,19 @@ Retrieve the profile picture URL for a specific contact.
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="whatsapp-getProfilePicture" method="get" path="/whatsapp/v2/{whatsappInstance}/contacts/profile-picture" -->
+<!-- UsageSnippet language="typescript" operationID="whatsapp-getProfilePicture" method="get" path="/whatsapp/v2/{whatsappInstanceId}/contacts/profile-picture" -->
 ```typescript
-import { Hypersender } from "hypersender";
+import { HypersenderClient } from "hypersender-node";
 
-const hypersender = new Hypersender({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClient({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const result = await hypersender.whatsapp.contacts.getProfilePicture("100875997589545@lid");
+  const result = await hypersenderClient.whatsapp.contacts.getProfilePicture("100875997589545@lid");
 
   console.log(result);
 }
@@ -647,20 +647,20 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { HypersenderCore } from "hypersender/core.js";
-import { whatsappContactsGetProfilePicture } from "hypersender/funcs/whatsapp-contacts-get-profile-picture.js";
+import { HypersenderClientCore } from "hypersender-node/core.js";
+import { whatsappContactsGetProfilePicture } from "hypersender-node/funcs/whatsapp-contacts-get-profile-picture.js";
 
-// Use `HypersenderCore` for best tree-shaking performance.
+// Use `HypersenderClientCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const hypersender = new HypersenderCore({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClientCore({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const res = await whatsappContactsGetProfilePicture(hypersender, "100875997589545@lid");
+  const res = await whatsappContactsGetProfilePicture(hypersenderClient, "100875997589545@lid");
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
@@ -700,19 +700,19 @@ Update or create a contact in your phone address book and WhatsApp
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="whatsapp-upsertContact" method="post" path="/whatsapp/v2/{whatsappInstance}/contacts/upsert" -->
+<!-- UsageSnippet language="typescript" operationID="whatsapp-upsertContact" method="post" path="/whatsapp/v2/{whatsappInstanceId}/contacts/upsert" -->
 ```typescript
-import { Hypersender } from "hypersender";
+import { HypersenderClient } from "hypersender-node";
 
-const hypersender = new Hypersender({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClient({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const result = await hypersender.whatsapp.contacts.upsertContact({
+  const result = await hypersenderClient.whatsapp.contacts.upsertContact({
     chatId: "1234567890@c.us",
     firstName: "John",
     lastName: "Doe",
@@ -729,20 +729,20 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { HypersenderCore } from "hypersender/core.js";
-import { whatsappContactsUpsertContact } from "hypersender/funcs/whatsapp-contacts-upsert-contact.js";
+import { HypersenderClientCore } from "hypersender-node/core.js";
+import { whatsappContactsUpsertContact } from "hypersender-node/funcs/whatsapp-contacts-upsert-contact.js";
 
-// Use `HypersenderCore` for best tree-shaking performance.
+// Use `HypersenderClientCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const hypersender = new HypersenderCore({
-  whatsappInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClientCore({
+  whatsappInstanceId: "{{ instance_id }}",
   security: {
     whatsappApiKey: process.env["HYPERSENDER_WHATSAPP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const res = await whatsappContactsUpsertContact(hypersender, {
+  const res = await whatsappContactsUpsertContact(hypersenderClient, {
     chatId: "1234567890@c.us",
     firstName: "John",
     lastName: "Doe",

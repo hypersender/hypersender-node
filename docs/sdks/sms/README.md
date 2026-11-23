@@ -20,19 +20,19 @@ A retry with the same `request_id`, `to`, and `content` returns the existing mes
 
 ### Example Usage: Retry of an existing message
 
-<!-- UsageSnippet language="typescript" operationID="sms-send-message" method="post" path="/sms/v1/{smsInstance}/send-message" example="Retry of an existing message" -->
+<!-- UsageSnippet language="typescript" operationID="sms-send-message" method="post" path="/sms/v1/{smsInstanceId}/send-message" example="Retry of an existing message" -->
 ```typescript
-import { Hypersender } from "hypersender";
+import { HypersenderClient } from "hypersender-node";
 
-const hypersender = new Hypersender({
-  smsInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClient({
+  smsInstanceId: "{{ instance_id }}",
   security: {
     smsApiKey: process.env["HYPERSENDER_SMS_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const result = await hypersender.sms.sendMessage({
+  const result = await hypersenderClient.sms.sendMessage({
     to: "+12025550147",
     content: "Acme code: 482913",
     requestId: "order-1042-otp",
@@ -52,20 +52,20 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { HypersenderCore } from "hypersender/core.js";
-import { smsSendMessage } from "hypersender/funcs/sms-send-message.js";
+import { HypersenderClientCore } from "hypersender-node/core.js";
+import { smsSendMessage } from "hypersender-node/funcs/sms-send-message.js";
 
-// Use `HypersenderCore` for best tree-shaking performance.
+// Use `HypersenderClientCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const hypersender = new HypersenderCore({
-  smsInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClientCore({
+  smsInstanceId: "{{ instance_id }}",
   security: {
     smsApiKey: process.env["HYPERSENDER_SMS_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const res = await smsSendMessage(hypersender, {
+  const res = await smsSendMessage(hypersenderClient, {
     to: "+12025550147",
     content: "Acme code: 482913",
     requestId: "order-1042-otp",
@@ -85,19 +85,19 @@ run();
 ```
 ### Example Usage: SMS service unreachable
 
-<!-- UsageSnippet language="typescript" operationID="sms-send-message" method="post" path="/sms/v1/{smsInstance}/send-message" example="SMS service unreachable" -->
+<!-- UsageSnippet language="typescript" operationID="sms-send-message" method="post" path="/sms/v1/{smsInstanceId}/send-message" example="SMS service unreachable" -->
 ```typescript
-import { Hypersender } from "hypersender";
+import { HypersenderClient } from "hypersender-node";
 
-const hypersender = new Hypersender({
-  smsInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClient({
+  smsInstanceId: "{{ instance_id }}",
   security: {
     smsApiKey: process.env["HYPERSENDER_SMS_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const result = await hypersender.sms.sendMessage({
+  const result = await hypersenderClient.sms.sendMessage({
     to: "+12025550147",
     content: "Acme code: 482913",
     requestId: "order-1042-otp",
@@ -117,20 +117,20 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { HypersenderCore } from "hypersender/core.js";
-import { smsSendMessage } from "hypersender/funcs/sms-send-message.js";
+import { HypersenderClientCore } from "hypersender-node/core.js";
+import { smsSendMessage } from "hypersender-node/funcs/sms-send-message.js";
 
-// Use `HypersenderCore` for best tree-shaking performance.
+// Use `HypersenderClientCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const hypersender = new HypersenderCore({
-  smsInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClientCore({
+  smsInstanceId: "{{ instance_id }}",
   security: {
     smsApiKey: process.env["HYPERSENDER_SMS_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const res = await smsSendMessage(hypersender, {
+  const res = await smsSendMessage(hypersenderClient, {
     to: "+12025550147",
     content: "Acme code: 482913",
     requestId: "order-1042-otp",
@@ -150,19 +150,19 @@ run();
 ```
 ### Example Usage: Schedule
 
-<!-- UsageSnippet language="typescript" operationID="sms-send-message" method="post" path="/sms/v1/{smsInstance}/send-message" example="Schedule" -->
+<!-- UsageSnippet language="typescript" operationID="sms-send-message" method="post" path="/sms/v1/{smsInstanceId}/send-message" example="Schedule" -->
 ```typescript
-import { Hypersender } from "hypersender";
+import { HypersenderClient } from "hypersender-node";
 
-const hypersender = new Hypersender({
-  smsInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClient({
+  smsInstanceId: "{{ instance_id }}",
   security: {
     smsApiKey: process.env["HYPERSENDER_SMS_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const result = await hypersender.sms.sendMessage({
+  const result = await hypersenderClient.sms.sendMessage({
     to: "+12025550147",
     content: "Your appointment is tomorrow at 10:00.",
     requestId: "appointment-reminder-2231",
@@ -180,20 +180,20 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { HypersenderCore } from "hypersender/core.js";
-import { smsSendMessage } from "hypersender/funcs/sms-send-message.js";
+import { HypersenderClientCore } from "hypersender-node/core.js";
+import { smsSendMessage } from "hypersender-node/funcs/sms-send-message.js";
 
-// Use `HypersenderCore` for best tree-shaking performance.
+// Use `HypersenderClientCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const hypersender = new HypersenderCore({
-  smsInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClientCore({
+  smsInstanceId: "{{ instance_id }}",
   security: {
     smsApiKey: process.env["HYPERSENDER_SMS_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const res = await smsSendMessage(hypersender, {
+  const res = await smsSendMessage(hypersenderClient, {
     to: "+12025550147",
     content: "Your appointment is tomorrow at 10:00.",
     requestId: "appointment-reminder-2231",
@@ -211,19 +211,19 @@ run();
 ```
 ### Example Usage: Send now
 
-<!-- UsageSnippet language="typescript" operationID="sms-send-message" method="post" path="/sms/v1/{smsInstance}/send-message" example="Send now" -->
+<!-- UsageSnippet language="typescript" operationID="sms-send-message" method="post" path="/sms/v1/{smsInstanceId}/send-message" example="Send now" -->
 ```typescript
-import { Hypersender } from "hypersender";
+import { HypersenderClient } from "hypersender-node";
 
-const hypersender = new Hypersender({
-  smsInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClient({
+  smsInstanceId: "{{ instance_id }}",
   security: {
     smsApiKey: process.env["HYPERSENDER_SMS_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const result = await hypersender.sms.sendMessage({
+  const result = await hypersenderClient.sms.sendMessage({
     to: "+12025550147",
     content: "Acme code: 482913",
     requestId: "order-1042-otp",
@@ -241,20 +241,20 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { HypersenderCore } from "hypersender/core.js";
-import { smsSendMessage } from "hypersender/funcs/sms-send-message.js";
+import { HypersenderClientCore } from "hypersender-node/core.js";
+import { smsSendMessage } from "hypersender-node/funcs/sms-send-message.js";
 
-// Use `HypersenderCore` for best tree-shaking performance.
+// Use `HypersenderClientCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const hypersender = new HypersenderCore({
-  smsInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClientCore({
+  smsInstanceId: "{{ instance_id }}",
   security: {
     smsApiKey: process.env["HYPERSENDER_SMS_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const res = await smsSendMessage(hypersender, {
+  const res = await smsSendMessage(hypersenderClient, {
     to: "+12025550147",
     content: "Acme code: 482913",
     requestId: "order-1042-otp",
@@ -272,19 +272,19 @@ run();
 ```
 ### Example Usage: default
 
-<!-- UsageSnippet language="typescript" operationID="sms-send-message" method="post" path="/sms/v1/{smsInstance}/send-message" example="default" -->
+<!-- UsageSnippet language="typescript" operationID="sms-send-message" method="post" path="/sms/v1/{smsInstanceId}/send-message" example="default" -->
 ```typescript
-import { Hypersender } from "hypersender";
+import { HypersenderClient } from "hypersender-node";
 
-const hypersender = new Hypersender({
-  smsInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClient({
+  smsInstanceId: "{{ instance_id }}",
   security: {
     smsApiKey: process.env["HYPERSENDER_SMS_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const result = await hypersender.sms.sendMessage({
+  const result = await hypersenderClient.sms.sendMessage({
     to: "+12025550147",
     content: "Acme code: 482913",
     requestId: "order-1042-otp",
@@ -304,20 +304,20 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { HypersenderCore } from "hypersender/core.js";
-import { smsSendMessage } from "hypersender/funcs/sms-send-message.js";
+import { HypersenderClientCore } from "hypersender-node/core.js";
+import { smsSendMessage } from "hypersender-node/funcs/sms-send-message.js";
 
-// Use `HypersenderCore` for best tree-shaking performance.
+// Use `HypersenderClientCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const hypersender = new HypersenderCore({
-  smsInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClientCore({
+  smsInstanceId: "{{ instance_id }}",
   security: {
     smsApiKey: process.env["HYPERSENDER_SMS_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const res = await smsSendMessage(hypersender, {
+  const res = await smsSendMessage(hypersenderClient, {
     to: "+12025550147",
     content: "Acme code: 482913",
     requestId: "order-1042-otp",
@@ -363,19 +363,19 @@ List the heartbeats your phone sent, newest first. The app sends one every 15 mi
 
 ### Example Usage: Heartbeats
 
-<!-- UsageSnippet language="typescript" operationID="sms-heartbeats" method="get" path="/sms/v1/{smsInstance}/heartbeats" example="Heartbeats" -->
+<!-- UsageSnippet language="typescript" operationID="sms-heartbeats" method="get" path="/sms/v1/{smsInstanceId}/heartbeats" example="Heartbeats" -->
 ```typescript
-import { Hypersender } from "hypersender";
+import { HypersenderClient } from "hypersender-node";
 
-const hypersender = new Hypersender({
-  smsInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClient({
+  smsInstanceId: "{{ instance_id }}",
   security: {
     smsApiKey: process.env["HYPERSENDER_SMS_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const result = await hypersender.sms.getHeartbeats();
+  const result = await hypersenderClient.sms.getHeartbeats();
 
   console.log(result);
 }
@@ -388,20 +388,20 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { HypersenderCore } from "hypersender/core.js";
-import { smsGetHeartbeats } from "hypersender/funcs/sms-get-heartbeats.js";
+import { HypersenderClientCore } from "hypersender-node/core.js";
+import { smsGetHeartbeats } from "hypersender-node/funcs/sms-get-heartbeats.js";
 
-// Use `HypersenderCore` for best tree-shaking performance.
+// Use `HypersenderClientCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const hypersender = new HypersenderCore({
-  smsInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClientCore({
+  smsInstanceId: "{{ instance_id }}",
   security: {
     smsApiKey: process.env["HYPERSENDER_SMS_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const res = await smsGetHeartbeats(hypersender);
+  const res = await smsGetHeartbeats(hypersenderClient);
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
@@ -414,19 +414,19 @@ run();
 ```
 ### Example Usage: default
 
-<!-- UsageSnippet language="typescript" operationID="sms-heartbeats" method="get" path="/sms/v1/{smsInstance}/heartbeats" example="default" -->
+<!-- UsageSnippet language="typescript" operationID="sms-heartbeats" method="get" path="/sms/v1/{smsInstanceId}/heartbeats" example="default" -->
 ```typescript
-import { Hypersender } from "hypersender";
+import { HypersenderClient } from "hypersender-node";
 
-const hypersender = new Hypersender({
-  smsInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClient({
+  smsInstanceId: "{{ instance_id }}",
   security: {
     smsApiKey: process.env["HYPERSENDER_SMS_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const result = await hypersender.sms.getHeartbeats();
+  const result = await hypersenderClient.sms.getHeartbeats();
 
   console.log(result);
 }
@@ -439,20 +439,20 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { HypersenderCore } from "hypersender/core.js";
-import { smsGetHeartbeats } from "hypersender/funcs/sms-get-heartbeats.js";
+import { HypersenderClientCore } from "hypersender-node/core.js";
+import { smsGetHeartbeats } from "hypersender-node/funcs/sms-get-heartbeats.js";
 
-// Use `HypersenderCore` for best tree-shaking performance.
+// Use `HypersenderClientCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const hypersender = new HypersenderCore({
-  smsInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClientCore({
+  smsInstanceId: "{{ instance_id }}",
   security: {
     smsApiKey: process.env["HYPERSENDER_SMS_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const res = await smsGetHeartbeats(hypersender);
+  const res = await smsGetHeartbeats(hypersenderClient);
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
@@ -491,19 +491,19 @@ List sent and received messages. Filter by `request_id`, number, content, status
 
 ### Example Usage: Messages
 
-<!-- UsageSnippet language="typescript" operationID="sms-index-messages" method="get" path="/sms/v1/{smsInstance}/messages" example="Messages" -->
+<!-- UsageSnippet language="typescript" operationID="sms-index-messages" method="get" path="/sms/v1/{smsInstanceId}/messages" example="Messages" -->
 ```typescript
-import { Hypersender } from "hypersender";
+import { HypersenderClient } from "hypersender-node";
 
-const hypersender = new Hypersender({
-  smsInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClient({
+  smsInstanceId: "{{ instance_id }}",
   security: {
     smsApiKey: process.env["HYPERSENDER_SMS_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const result = await hypersender.sms.listMessages();
+  const result = await hypersenderClient.sms.listMessages();
 
   console.log(result);
 }
@@ -516,20 +516,20 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { HypersenderCore } from "hypersender/core.js";
-import { smsListMessages } from "hypersender/funcs/sms-list-messages.js";
+import { HypersenderClientCore } from "hypersender-node/core.js";
+import { smsListMessages } from "hypersender-node/funcs/sms-list-messages.js";
 
-// Use `HypersenderCore` for best tree-shaking performance.
+// Use `HypersenderClientCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const hypersender = new HypersenderCore({
-  smsInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClientCore({
+  smsInstanceId: "{{ instance_id }}",
   security: {
     smsApiKey: process.env["HYPERSENDER_SMS_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const res = await smsListMessages(hypersender);
+  const res = await smsListMessages(hypersenderClient);
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
@@ -542,19 +542,19 @@ run();
 ```
 ### Example Usage: default
 
-<!-- UsageSnippet language="typescript" operationID="sms-index-messages" method="get" path="/sms/v1/{smsInstance}/messages" example="default" -->
+<!-- UsageSnippet language="typescript" operationID="sms-index-messages" method="get" path="/sms/v1/{smsInstanceId}/messages" example="default" -->
 ```typescript
-import { Hypersender } from "hypersender";
+import { HypersenderClient } from "hypersender-node";
 
-const hypersender = new Hypersender({
-  smsInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClient({
+  smsInstanceId: "{{ instance_id }}",
   security: {
     smsApiKey: process.env["HYPERSENDER_SMS_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const result = await hypersender.sms.listMessages();
+  const result = await hypersenderClient.sms.listMessages();
 
   console.log(result);
 }
@@ -567,20 +567,20 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { HypersenderCore } from "hypersender/core.js";
-import { smsListMessages } from "hypersender/funcs/sms-list-messages.js";
+import { HypersenderClientCore } from "hypersender-node/core.js";
+import { smsListMessages } from "hypersender-node/funcs/sms-list-messages.js";
 
-// Use `HypersenderCore` for best tree-shaking performance.
+// Use `HypersenderClientCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const hypersender = new HypersenderCore({
-  smsInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClientCore({
+  smsInstanceId: "{{ instance_id }}",
   security: {
     smsApiKey: process.env["HYPERSENDER_SMS_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const res = await smsListMessages(hypersender);
+  const res = await smsListMessages(hypersenderClient);
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
@@ -619,19 +619,19 @@ Delete a message. It is removed from its thread and cannot be restored.
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="sms-delete-message" method="delete" path="/sms/v1/{smsInstance}/delete-message" -->
+<!-- UsageSnippet language="typescript" operationID="sms-delete-message" method="delete" path="/sms/v1/{smsInstanceId}/delete-message" -->
 ```typescript
-import { Hypersender } from "hypersender";
+import { HypersenderClient } from "hypersender-node";
 
-const hypersender = new Hypersender({
-  smsInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClient({
+  smsInstanceId: "{{ instance_id }}",
   security: {
     smsApiKey: process.env["HYPERSENDER_SMS_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  await hypersender.sms.deleteMessage("9f8b7c6d-3333-4a2b-8c3d-4e5f6a7b8c9d");
+  await hypersenderClient.sms.deleteMessage("9f8b7c6d-3333-4a2b-8c3d-4e5f6a7b8c9d");
 
 
 }
@@ -644,20 +644,20 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { HypersenderCore } from "hypersender/core.js";
-import { smsDeleteMessage } from "hypersender/funcs/sms-delete-message.js";
+import { HypersenderClientCore } from "hypersender-node/core.js";
+import { smsDeleteMessage } from "hypersender-node/funcs/sms-delete-message.js";
 
-// Use `HypersenderCore` for best tree-shaking performance.
+// Use `HypersenderClientCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const hypersender = new HypersenderCore({
-  smsInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClientCore({
+  smsInstanceId: "{{ instance_id }}",
   security: {
     smsApiKey: process.env["HYPERSENDER_SMS_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const res = await smsDeleteMessage(hypersender, "9f8b7c6d-3333-4a2b-8c3d-4e5f6a7b8c9d");
+  const res = await smsDeleteMessage(hypersenderClient, "9f8b7c6d-3333-4a2b-8c3d-4e5f6a7b8c9d");
   if (res.ok) {
     const { value: result } = res;
     
@@ -696,19 +696,19 @@ List the conversations (threads) of your phone. Each thread is one number your p
 
 ### Example Usage: Threads
 
-<!-- UsageSnippet language="typescript" operationID="sms-message-threads" method="get" path="/sms/v1/{smsInstance}/message-threads" example="Threads" -->
+<!-- UsageSnippet language="typescript" operationID="sms-message-threads" method="get" path="/sms/v1/{smsInstanceId}/message-threads" example="Threads" -->
 ```typescript
-import { Hypersender } from "hypersender";
+import { HypersenderClient } from "hypersender-node";
 
-const hypersender = new Hypersender({
-  smsInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClient({
+  smsInstanceId: "{{ instance_id }}",
   security: {
     smsApiKey: process.env["HYPERSENDER_SMS_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const result = await hypersender.sms.listMessageThreads();
+  const result = await hypersenderClient.sms.listMessageThreads();
 
   console.log(result);
 }
@@ -721,20 +721,20 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { HypersenderCore } from "hypersender/core.js";
-import { smsListMessageThreads } from "hypersender/funcs/sms-list-message-threads.js";
+import { HypersenderClientCore } from "hypersender-node/core.js";
+import { smsListMessageThreads } from "hypersender-node/funcs/sms-list-message-threads.js";
 
-// Use `HypersenderCore` for best tree-shaking performance.
+// Use `HypersenderClientCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const hypersender = new HypersenderCore({
-  smsInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClientCore({
+  smsInstanceId: "{{ instance_id }}",
   security: {
     smsApiKey: process.env["HYPERSENDER_SMS_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const res = await smsListMessageThreads(hypersender);
+  const res = await smsListMessageThreads(hypersenderClient);
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
@@ -747,19 +747,19 @@ run();
 ```
 ### Example Usage: default
 
-<!-- UsageSnippet language="typescript" operationID="sms-message-threads" method="get" path="/sms/v1/{smsInstance}/message-threads" example="default" -->
+<!-- UsageSnippet language="typescript" operationID="sms-message-threads" method="get" path="/sms/v1/{smsInstanceId}/message-threads" example="default" -->
 ```typescript
-import { Hypersender } from "hypersender";
+import { HypersenderClient } from "hypersender-node";
 
-const hypersender = new Hypersender({
-  smsInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClient({
+  smsInstanceId: "{{ instance_id }}",
   security: {
     smsApiKey: process.env["HYPERSENDER_SMS_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const result = await hypersender.sms.listMessageThreads();
+  const result = await hypersenderClient.sms.listMessageThreads();
 
   console.log(result);
 }
@@ -772,20 +772,20 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { HypersenderCore } from "hypersender/core.js";
-import { smsListMessageThreads } from "hypersender/funcs/sms-list-message-threads.js";
+import { HypersenderClientCore } from "hypersender-node/core.js";
+import { smsListMessageThreads } from "hypersender-node/funcs/sms-list-message-threads.js";
 
-// Use `HypersenderCore` for best tree-shaking performance.
+// Use `HypersenderClientCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const hypersender = new HypersenderCore({
-  smsInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClientCore({
+  smsInstanceId: "{{ instance_id }}",
   security: {
     smsApiKey: process.env["HYPERSENDER_SMS_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const res = await smsListMessageThreads(hypersender);
+  const res = await smsListMessageThreads(hypersenderClient);
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
@@ -824,19 +824,19 @@ Archive or unarchive a thread.
 
 ### Example Usage: Archive
 
-<!-- UsageSnippet language="typescript" operationID="sms-edit-message-thread" method="put" path="/sms/v1/{smsInstance}/edit-message-thread" example="Archive" -->
+<!-- UsageSnippet language="typescript" operationID="sms-edit-message-thread" method="put" path="/sms/v1/{smsInstanceId}/edit-message-thread" example="Archive" -->
 ```typescript
-import { Hypersender } from "hypersender";
+import { HypersenderClient } from "hypersender-node";
 
-const hypersender = new Hypersender({
-  smsInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClient({
+  smsInstanceId: "{{ instance_id }}",
   security: {
     smsApiKey: process.env["HYPERSENDER_SMS_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const result = await hypersender.sms.editMessageThread({
+  const result = await hypersenderClient.sms.editMessageThread({
     messageThreadId: "9f8b7c6d-4444-4a2b-8c3d-4e5f6a7b8c9d",
     isArchived: true,
   });
@@ -852,20 +852,20 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { HypersenderCore } from "hypersender/core.js";
-import { smsEditMessageThread } from "hypersender/funcs/sms-edit-message-thread.js";
+import { HypersenderClientCore } from "hypersender-node/core.js";
+import { smsEditMessageThread } from "hypersender-node/funcs/sms-edit-message-thread.js";
 
-// Use `HypersenderCore` for best tree-shaking performance.
+// Use `HypersenderClientCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const hypersender = new HypersenderCore({
-  smsInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClientCore({
+  smsInstanceId: "{{ instance_id }}",
   security: {
     smsApiKey: process.env["HYPERSENDER_SMS_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const res = await smsEditMessageThread(hypersender, {
+  const res = await smsEditMessageThread(hypersenderClient, {
     messageThreadId: "9f8b7c6d-4444-4a2b-8c3d-4e5f6a7b8c9d",
     isArchived: true,
   });
@@ -881,19 +881,19 @@ run();
 ```
 ### Example Usage: Archived
 
-<!-- UsageSnippet language="typescript" operationID="sms-edit-message-thread" method="put" path="/sms/v1/{smsInstance}/edit-message-thread" example="Archived" -->
+<!-- UsageSnippet language="typescript" operationID="sms-edit-message-thread" method="put" path="/sms/v1/{smsInstanceId}/edit-message-thread" example="Archived" -->
 ```typescript
-import { Hypersender } from "hypersender";
+import { HypersenderClient } from "hypersender-node";
 
-const hypersender = new Hypersender({
-  smsInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClient({
+  smsInstanceId: "{{ instance_id }}",
   security: {
     smsApiKey: process.env["HYPERSENDER_SMS_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const result = await hypersender.sms.editMessageThread({
+  const result = await hypersenderClient.sms.editMessageThread({
     messageThreadId: "9f8b7c6d-4444-4a2b-8c3d-4e5f6a7b8c9d",
     isArchived: true,
   });
@@ -909,20 +909,20 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { HypersenderCore } from "hypersender/core.js";
-import { smsEditMessageThread } from "hypersender/funcs/sms-edit-message-thread.js";
+import { HypersenderClientCore } from "hypersender-node/core.js";
+import { smsEditMessageThread } from "hypersender-node/funcs/sms-edit-message-thread.js";
 
-// Use `HypersenderCore` for best tree-shaking performance.
+// Use `HypersenderClientCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const hypersender = new HypersenderCore({
-  smsInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClientCore({
+  smsInstanceId: "{{ instance_id }}",
   security: {
     smsApiKey: process.env["HYPERSENDER_SMS_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const res = await smsEditMessageThread(hypersender, {
+  const res = await smsEditMessageThread(hypersenderClient, {
     messageThreadId: "9f8b7c6d-4444-4a2b-8c3d-4e5f6a7b8c9d",
     isArchived: true,
   });
@@ -938,19 +938,19 @@ run();
 ```
 ### Example Usage: Expired token
 
-<!-- UsageSnippet language="typescript" operationID="sms-edit-message-thread" method="put" path="/sms/v1/{smsInstance}/edit-message-thread" example="Expired token" -->
+<!-- UsageSnippet language="typescript" operationID="sms-edit-message-thread" method="put" path="/sms/v1/{smsInstanceId}/edit-message-thread" example="Expired token" -->
 ```typescript
-import { Hypersender } from "hypersender";
+import { HypersenderClient } from "hypersender-node";
 
-const hypersender = new Hypersender({
-  smsInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClient({
+  smsInstanceId: "{{ instance_id }}",
   security: {
     smsApiKey: process.env["HYPERSENDER_SMS_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const result = await hypersender.sms.editMessageThread({
+  const result = await hypersenderClient.sms.editMessageThread({
     messageThreadId: "9f8b7c6d-4444-4a2b-8c3d-4e5f6a7b8c9d",
     isArchived: true,
   });
@@ -966,20 +966,20 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { HypersenderCore } from "hypersender/core.js";
-import { smsEditMessageThread } from "hypersender/funcs/sms-edit-message-thread.js";
+import { HypersenderClientCore } from "hypersender-node/core.js";
+import { smsEditMessageThread } from "hypersender-node/funcs/sms-edit-message-thread.js";
 
-// Use `HypersenderCore` for best tree-shaking performance.
+// Use `HypersenderClientCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const hypersender = new HypersenderCore({
-  smsInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClientCore({
+  smsInstanceId: "{{ instance_id }}",
   security: {
     smsApiKey: process.env["HYPERSENDER_SMS_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const res = await smsEditMessageThread(hypersender, {
+  const res = await smsEditMessageThread(hypersenderClient, {
     messageThreadId: "9f8b7c6d-4444-4a2b-8c3d-4e5f6a7b8c9d",
     isArchived: true,
   });
@@ -995,19 +995,19 @@ run();
 ```
 ### Example Usage: Invalid token
 
-<!-- UsageSnippet language="typescript" operationID="sms-edit-message-thread" method="put" path="/sms/v1/{smsInstance}/edit-message-thread" example="Invalid token" -->
+<!-- UsageSnippet language="typescript" operationID="sms-edit-message-thread" method="put" path="/sms/v1/{smsInstanceId}/edit-message-thread" example="Invalid token" -->
 ```typescript
-import { Hypersender } from "hypersender";
+import { HypersenderClient } from "hypersender-node";
 
-const hypersender = new Hypersender({
-  smsInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClient({
+  smsInstanceId: "{{ instance_id }}",
   security: {
     smsApiKey: process.env["HYPERSENDER_SMS_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const result = await hypersender.sms.editMessageThread({
+  const result = await hypersenderClient.sms.editMessageThread({
     messageThreadId: "9f8b7c6d-4444-4a2b-8c3d-4e5f6a7b8c9d",
     isArchived: true,
   });
@@ -1023,20 +1023,20 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { HypersenderCore } from "hypersender/core.js";
-import { smsEditMessageThread } from "hypersender/funcs/sms-edit-message-thread.js";
+import { HypersenderClientCore } from "hypersender-node/core.js";
+import { smsEditMessageThread } from "hypersender-node/funcs/sms-edit-message-thread.js";
 
-// Use `HypersenderCore` for best tree-shaking performance.
+// Use `HypersenderClientCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const hypersender = new HypersenderCore({
-  smsInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClientCore({
+  smsInstanceId: "{{ instance_id }}",
   security: {
     smsApiKey: process.env["HYPERSENDER_SMS_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const res = await smsEditMessageThread(hypersender, {
+  const res = await smsEditMessageThread(hypersenderClient, {
     messageThreadId: "9f8b7c6d-4444-4a2b-8c3d-4e5f6a7b8c9d",
     isArchived: true,
   });
@@ -1052,19 +1052,19 @@ run();
 ```
 ### Example Usage: default
 
-<!-- UsageSnippet language="typescript" operationID="sms-edit-message-thread" method="put" path="/sms/v1/{smsInstance}/edit-message-thread" example="default" -->
+<!-- UsageSnippet language="typescript" operationID="sms-edit-message-thread" method="put" path="/sms/v1/{smsInstanceId}/edit-message-thread" example="default" -->
 ```typescript
-import { Hypersender } from "hypersender";
+import { HypersenderClient } from "hypersender-node";
 
-const hypersender = new Hypersender({
-  smsInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClient({
+  smsInstanceId: "{{ instance_id }}",
   security: {
     smsApiKey: process.env["HYPERSENDER_SMS_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const result = await hypersender.sms.editMessageThread({
+  const result = await hypersenderClient.sms.editMessageThread({
     messageThreadId: "9f8b7c6d-4444-4a2b-8c3d-4e5f6a7b8c9d",
     isArchived: true,
   });
@@ -1080,20 +1080,20 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { HypersenderCore } from "hypersender/core.js";
-import { smsEditMessageThread } from "hypersender/funcs/sms-edit-message-thread.js";
+import { HypersenderClientCore } from "hypersender-node/core.js";
+import { smsEditMessageThread } from "hypersender-node/funcs/sms-edit-message-thread.js";
 
-// Use `HypersenderCore` for best tree-shaking performance.
+// Use `HypersenderClientCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const hypersender = new HypersenderCore({
-  smsInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClientCore({
+  smsInstanceId: "{{ instance_id }}",
   security: {
     smsApiKey: process.env["HYPERSENDER_SMS_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const res = await smsEditMessageThread(hypersender, {
+  const res = await smsEditMessageThread(hypersenderClient, {
     messageThreadId: "9f8b7c6d-4444-4a2b-8c3d-4e5f6a7b8c9d",
     isArchived: true,
   });
@@ -1135,19 +1135,19 @@ Delete a thread and every message in it. This cannot be undone.
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="sms-delete-message-thread" method="delete" path="/sms/v1/{smsInstance}/delete-message-thread" -->
+<!-- UsageSnippet language="typescript" operationID="sms-delete-message-thread" method="delete" path="/sms/v1/{smsInstanceId}/delete-message-thread" -->
 ```typescript
-import { Hypersender } from "hypersender";
+import { HypersenderClient } from "hypersender-node";
 
-const hypersender = new Hypersender({
-  smsInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClient({
+  smsInstanceId: "{{ instance_id }}",
   security: {
     smsApiKey: process.env["HYPERSENDER_SMS_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  await hypersender.sms.deleteMessageThread("9f8b7c6d-4444-4a2b-8c3d-4e5f6a7b8c9d");
+  await hypersenderClient.sms.deleteMessageThread("9f8b7c6d-4444-4a2b-8c3d-4e5f6a7b8c9d");
 
 
 }
@@ -1160,20 +1160,20 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { HypersenderCore } from "hypersender/core.js";
-import { smsDeleteMessageThread } from "hypersender/funcs/sms-delete-message-thread.js";
+import { HypersenderClientCore } from "hypersender-node/core.js";
+import { smsDeleteMessageThread } from "hypersender-node/funcs/sms-delete-message-thread.js";
 
-// Use `HypersenderCore` for best tree-shaking performance.
+// Use `HypersenderClientCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const hypersender = new HypersenderCore({
-  smsInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClientCore({
+  smsInstanceId: "{{ instance_id }}",
   security: {
     smsApiKey: process.env["HYPERSENDER_SMS_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const res = await smsDeleteMessageThread(hypersender, "9f8b7c6d-4444-4a2b-8c3d-4e5f6a7b8c9d");
+  const res = await smsDeleteMessageThread(hypersenderClient, "9f8b7c6d-4444-4a2b-8c3d-4e5f6a7b8c9d");
   if (res.ok) {
     const { value: result } = res;
     

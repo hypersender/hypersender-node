@@ -1,7 +1,25 @@
 {
-  "name": "hypersender",
-  "version": "0.3.0",
-  "author": "Speakeasy",
+  "name": "hypersender-node",
+  "version": "0.3.6",
+  "description": "Node.js / TypeScript SDK for the Hypersender WhatsApp, SMS and OTP API",
+  "keywords": [
+    "hypersender",
+    "whatsapp",
+    "sms",
+    "otp",
+    "whatsapp-api",
+    "sdk"
+  ],
+  "homepage": "https://docs.hypersender.com",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hypersender/hypersender-node.git"
+  },
+  "bugs": {
+    "url": "https://github.com/hypersender/hypersender-node/issues"
+  },
+  "license": "MIT",
+  "author": "Hypersender",
   "type": "module",
   "main": "./esm/index.js",
   "exports": {
@@ -53,9 +71,7 @@
     "build": "tsgo",
     "prepublishOnly": "npm run build"
   },
-  "peerDependencies": {
-    
-  },
+  "peerDependencies": {},
   "devDependencies": {
     "@typescript/native-preview": "7.0.0-dev.20260302.1",
     "oxlint": "^1.60.0",

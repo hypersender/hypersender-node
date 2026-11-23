@@ -14,19 +14,19 @@ Generate an OTP code and queue the message to the provided chatId.
 
 ### Example Usage: request
 
-<!-- UsageSnippet language="typescript" operationID="otp-requestCode" method="post" path="/otp/v2/{otpInstance}/request-code" example="request" -->
+<!-- UsageSnippet language="typescript" operationID="otp-requestCode" method="post" path="/otp/v2/{otpInstanceId}/request-code" example="request" -->
 ```typescript
-import { Hypersender } from "hypersender";
+import { HypersenderClient } from "hypersender-node";
 
-const hypersender = new Hypersender({
-  otpInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClient({
+  otpInstanceId: "{{ instance_id }}",
   security: {
     otpApiKey: process.env["HYPERSENDER_OTP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const result = await hypersender.otp.requestCode({
+  const result = await hypersenderClient.otp.requestCode({
     chatId: "20123456789@c.us",
     length: 6,
     useLetter: false,
@@ -47,20 +47,20 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { HypersenderCore } from "hypersender/core.js";
-import { otpRequestCode } from "hypersender/funcs/otp-request-code.js";
+import { HypersenderClientCore } from "hypersender-node/core.js";
+import { otpRequestCode } from "hypersender-node/funcs/otp-request-code.js";
 
-// Use `HypersenderCore` for best tree-shaking performance.
+// Use `HypersenderClientCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const hypersender = new HypersenderCore({
-  otpInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClientCore({
+  otpInstanceId: "{{ instance_id }}",
   security: {
     otpApiKey: process.env["HYPERSENDER_OTP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const res = await otpRequestCode(hypersender, {
+  const res = await otpRequestCode(hypersenderClient, {
     chatId: "20123456789@c.us",
     length: 6,
     useLetter: false,
@@ -81,19 +81,19 @@ run();
 ```
 ### Example Usage: response
 
-<!-- UsageSnippet language="typescript" operationID="otp-requestCode" method="post" path="/otp/v2/{otpInstance}/request-code" example="response" -->
+<!-- UsageSnippet language="typescript" operationID="otp-requestCode" method="post" path="/otp/v2/{otpInstanceId}/request-code" example="response" -->
 ```typescript
-import { Hypersender } from "hypersender";
+import { HypersenderClient } from "hypersender-node";
 
-const hypersender = new Hypersender({
-  otpInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClient({
+  otpInstanceId: "{{ instance_id }}",
   security: {
     otpApiKey: process.env["HYPERSENDER_OTP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const result = await hypersender.otp.requestCode({
+  const result = await hypersenderClient.otp.requestCode({
     chatId: "<id>",
   });
 
@@ -108,20 +108,20 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { HypersenderCore } from "hypersender/core.js";
-import { otpRequestCode } from "hypersender/funcs/otp-request-code.js";
+import { HypersenderClientCore } from "hypersender-node/core.js";
+import { otpRequestCode } from "hypersender-node/funcs/otp-request-code.js";
 
-// Use `HypersenderCore` for best tree-shaking performance.
+// Use `HypersenderClientCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const hypersender = new HypersenderCore({
-  otpInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClientCore({
+  otpInstanceId: "{{ instance_id }}",
   security: {
     otpApiKey: process.env["HYPERSENDER_OTP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const res = await otpRequestCode(hypersender, {
+  const res = await otpRequestCode(hypersenderClient, {
     chatId: "<id>",
   });
   if (res.ok) {
@@ -160,19 +160,19 @@ Validate an OTP code previously generated for a chat.
 
 ### Example Usage: request
 
-<!-- UsageSnippet language="typescript" operationID="otp-validateCode" method="post" path="/otp/v2/{otpInstance}/validate-code" example="request" -->
+<!-- UsageSnippet language="typescript" operationID="otp-validateCode" method="post" path="/otp/v2/{otpInstanceId}/validate-code" example="request" -->
 ```typescript
-import { Hypersender } from "hypersender";
+import { HypersenderClient } from "hypersender-node";
 
-const hypersender = new Hypersender({
-  otpInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClient({
+  otpInstanceId: "{{ instance_id }}",
   security: {
     otpApiKey: process.env["HYPERSENDER_OTP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const result = await hypersender.otp.validateCode({
+  const result = await hypersenderClient.otp.validateCode({
     chatId: "20123456789@c.us",
     code: "439713",
   });
@@ -188,20 +188,20 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { HypersenderCore } from "hypersender/core.js";
-import { otpValidateCode } from "hypersender/funcs/otp-validate-code.js";
+import { HypersenderClientCore } from "hypersender-node/core.js";
+import { otpValidateCode } from "hypersender-node/funcs/otp-validate-code.js";
 
-// Use `HypersenderCore` for best tree-shaking performance.
+// Use `HypersenderClientCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const hypersender = new HypersenderCore({
-  otpInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClientCore({
+  otpInstanceId: "{{ instance_id }}",
   security: {
     otpApiKey: process.env["HYPERSENDER_OTP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const res = await otpValidateCode(hypersender, {
+  const res = await otpValidateCode(hypersenderClient, {
     chatId: "20123456789@c.us",
     code: "439713",
   });
@@ -217,19 +217,19 @@ run();
 ```
 ### Example Usage: response
 
-<!-- UsageSnippet language="typescript" operationID="otp-validateCode" method="post" path="/otp/v2/{otpInstance}/validate-code" example="response" -->
+<!-- UsageSnippet language="typescript" operationID="otp-validateCode" method="post" path="/otp/v2/{otpInstanceId}/validate-code" example="response" -->
 ```typescript
-import { Hypersender } from "hypersender";
+import { HypersenderClient } from "hypersender-node";
 
-const hypersender = new Hypersender({
-  otpInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClient({
+  otpInstanceId: "{{ instance_id }}",
   security: {
     otpApiKey: process.env["HYPERSENDER_OTP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const result = await hypersender.otp.validateCode({
+  const result = await hypersenderClient.otp.validateCode({
     chatId: "<id>",
     code: "<value>",
   });
@@ -245,20 +245,20 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { HypersenderCore } from "hypersender/core.js";
-import { otpValidateCode } from "hypersender/funcs/otp-validate-code.js";
+import { HypersenderClientCore } from "hypersender-node/core.js";
+import { otpValidateCode } from "hypersender-node/funcs/otp-validate-code.js";
 
-// Use `HypersenderCore` for best tree-shaking performance.
+// Use `HypersenderClientCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const hypersender = new HypersenderCore({
-  otpInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClientCore({
+  otpInstanceId: "{{ instance_id }}",
   security: {
     otpApiKey: process.env["HYPERSENDER_OTP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const res = await otpValidateCode(hypersender, {
+  const res = await otpValidateCode(hypersenderClient, {
     chatId: "<id>",
     code: "<value>",
   });
@@ -298,19 +298,19 @@ Generate an OTP link for the chat; returns a short code and a whatsapp link temp
 
 ### Example Usage: request
 
-<!-- UsageSnippet language="typescript" operationID="otp-generateLink" method="post" path="/otp/v2/{otpInstance}/generate-link" example="request" -->
+<!-- UsageSnippet language="typescript" operationID="otp-generateLink" method="post" path="/otp/v2/{otpInstanceId}/generate-link" example="request" -->
 ```typescript
-import { Hypersender } from "hypersender";
+import { HypersenderClient } from "hypersender-node";
 
-const hypersender = new Hypersender({
-  otpInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClient({
+  otpInstanceId: "{{ instance_id }}",
   security: {
     otpApiKey: process.env["HYPERSENDER_OTP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const result = await hypersender.otp.generateLink({
+  const result = await hypersenderClient.otp.generateLink({
     chatId: "20123456789@c.us",
     expires: 1800,
     name: "Hypersender",
@@ -337,20 +337,20 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { HypersenderCore } from "hypersender/core.js";
-import { otpGenerateLink } from "hypersender/funcs/otp-generate-link.js";
+import { HypersenderClientCore } from "hypersender-node/core.js";
+import { otpGenerateLink } from "hypersender-node/funcs/otp-generate-link.js";
 
-// Use `HypersenderCore` for best tree-shaking performance.
+// Use `HypersenderClientCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const hypersender = new HypersenderCore({
-  otpInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClientCore({
+  otpInstanceId: "{{ instance_id }}",
   security: {
     otpApiKey: process.env["HYPERSENDER_OTP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const res = await otpGenerateLink(hypersender, {
+  const res = await otpGenerateLink(hypersenderClient, {
     chatId: "20123456789@c.us",
     expires: 1800,
     name: "Hypersender",
@@ -377,19 +377,19 @@ run();
 ```
 ### Example Usage: response
 
-<!-- UsageSnippet language="typescript" operationID="otp-generateLink" method="post" path="/otp/v2/{otpInstance}/generate-link" example="response" -->
+<!-- UsageSnippet language="typescript" operationID="otp-generateLink" method="post" path="/otp/v2/{otpInstanceId}/generate-link" example="response" -->
 ```typescript
-import { Hypersender } from "hypersender";
+import { HypersenderClient } from "hypersender-node";
 
-const hypersender = new Hypersender({
-  otpInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClient({
+  otpInstanceId: "{{ instance_id }}",
   security: {
     otpApiKey: process.env["HYPERSENDER_OTP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const result = await hypersender.otp.generateLink({
+  const result = await hypersenderClient.otp.generateLink({
     chatId: "<id>",
   });
 
@@ -404,20 +404,20 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { HypersenderCore } from "hypersender/core.js";
-import { otpGenerateLink } from "hypersender/funcs/otp-generate-link.js";
+import { HypersenderClientCore } from "hypersender-node/core.js";
+import { otpGenerateLink } from "hypersender-node/funcs/otp-generate-link.js";
 
-// Use `HypersenderCore` for best tree-shaking performance.
+// Use `HypersenderClientCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const hypersender = new HypersenderCore({
-  otpInstance: "{{ instance_id }}",
+const hypersenderClient = new HypersenderClientCore({
+  otpInstanceId: "{{ instance_id }}",
   security: {
     otpApiKey: process.env["HYPERSENDER_OTP_API_KEY"] ?? "",
   },
 });
 
 async function run() {
-  const res = await otpGenerateLink(hypersender, {
+  const res = await otpGenerateLink(hypersenderClient, {
     chatId: "<id>",
   });
   if (res.ok) {

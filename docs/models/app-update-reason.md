@@ -5,7 +5,7 @@ Why an update is required.
 ## Example Usage
 
 ```typescript
-import { AppUpdateReason } from "hypersender/models";
+import { AppUpdateReason } from "hypersender-node/models";
 
 let value: AppUpdateReason = "expired";
 

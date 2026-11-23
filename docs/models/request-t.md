@@ -5,7 +5,7 @@ The original request details
 ## Example Usage
 
 ```typescript
-import { RequestT } from "hypersender/models";
+import { RequestT } from "hypersender-node/models";
 
 let value: RequestT = {
   chatId: "111111111111@c.us",

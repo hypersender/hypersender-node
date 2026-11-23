@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { StopTypingRequest } from "hypersender/models";
+import { StopTypingRequest } from "hypersender-node/models";
 
 let value: StopTypingRequest = {
   chatId: "111111111111@c.us",

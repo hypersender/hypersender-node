@@ -5,7 +5,7 @@ Instance status
 ## Example Usage
 
 ```typescript
-import { InstanceResponseStatus } from "hypersender/models";
+import { InstanceResponseStatus } from "hypersender-node/models";
 
 let value: InstanceResponseStatus = "WORKING";
 

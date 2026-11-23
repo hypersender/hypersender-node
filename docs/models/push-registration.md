@@ -5,7 +5,7 @@ Whether Hypersender can push messages to the phone.
 ## Example Usage
 
 ```typescript
-import { PushRegistration } from "hypersender/models";
+import { PushRegistration } from "hypersender-node/models";
 
 let value: PushRegistration = {};
 ```

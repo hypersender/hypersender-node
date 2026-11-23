@@ -5,7 +5,7 @@ Rate limit exceeded
 ## Example Usage
 
 ```typescript
-import { EnterpriseRequestNewQrCodeTooManyRequestsError } from "hypersender/models/errors";
+import { EnterpriseRequestNewQrCodeTooManyRequestsError } from "hypersender-node/models/errors";
 
 // No examples available for this model
 ```

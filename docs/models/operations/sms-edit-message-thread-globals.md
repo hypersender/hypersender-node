@@ -3,10 +3,10 @@
 ## Example Usage
 
 ```typescript
-import { SmsEditMessageThreadGlobals } from "hypersender/models/operations";
+import { SmsEditMessageThreadGlobals } from "hypersender-node/models/operations";
 
 let value: SmsEditMessageThreadGlobals = {
-  smsInstance: "<value>",
+  smsInstanceId: "<id>",
 };
 ```
 
@@ -14,4 +14,4 @@ let value: SmsEditMessageThreadGlobals = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `smsInstance`      | *string*           | :heavy_minus_sign: | N/A                |
+| `smsInstanceId`    | *string*           | :heavy_minus_sign: | N/A                |

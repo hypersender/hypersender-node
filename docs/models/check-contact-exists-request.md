@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { CheckContactExistsRequest } from "hypersender/models";
+import { CheckContactExistsRequest } from "hypersender-node/models";
 
 let value: CheckContactExistsRequest = {
   phone: "20123456789",

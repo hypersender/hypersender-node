@@ -5,7 +5,7 @@ Successful response
 ## Example Usage
 
 ```typescript
-import { WhatsappSendLinkCustomPreviewResponse } from "hypersender/models/operations";
+import { WhatsappSendLinkCustomPreviewResponse } from "hypersender-node/models/operations";
 
 let value: WhatsappSendLinkCustomPreviewResponse = {};
 ```

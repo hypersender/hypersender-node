@@ -5,7 +5,7 @@ The actual API response body once the request is processed. Contains the message
 ## Example Usage
 
 ```typescript
-import { ResponseBody } from "hypersender/models";
+import { ResponseBody } from "hypersender-node/models";
 
 let value: ResponseBody = {
   messageId: "AAAAAA0000BBBBB00CCCCCC",

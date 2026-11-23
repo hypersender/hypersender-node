@@ -5,7 +5,7 @@
 ## Example Usage
 
 ```typescript
-import { FilterType } from "hypersender/models/operations";
+import { FilterType } from "hypersender-node/models/operations";
 
 let value: FilterType = "received";
 ```

@@ -5,7 +5,7 @@ A page of messages.
 ## Example Usage
 
 ```typescript
-import { SmsIndexMessagesResponse } from "hypersender/models/operations";
+import { SmsIndexMessagesResponse } from "hypersender-node/models/operations";
 
 let value: SmsIndexMessagesResponse = {
   data: [

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ProtocolMessageKey } from "hypersender/models/operations";
+import { ProtocolMessageKey } from "hypersender-node/models/operations";
 
 let value: ProtocolMessageKey = {};
 ```

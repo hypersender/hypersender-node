@@ -24,7 +24,7 @@
     }
   ],
   "paths": {
-    "/whatsapp/v2/{whatsappInstance}/queued-requests/{queued_request_uuid}": {
+    "/whatsapp/v2/{whatsappInstanceId}/queued-requests/{queued_request_uuid}": {
       "get": {
         "operationId": "whatsapp-getQueuedRequest",
         "tags": [
@@ -42,7 +42,7 @@
             }
           },
           {
-            "name": "whatsappInstance",
+            "name": "whatsappInstanceId",
             "in": "path",
             "description": "Instance UUID copied from hypersender dashboard",
             "required": true,
@@ -157,7 +157,7 @@
         "x-speakeasy-name-override": "getQueuedRequest"
       }
     },
-    "/whatsapp/v2/{whatsappInstance}/send-text-safe": {
+    "/whatsapp/v2/{whatsappInstanceId}/send-text-safe": {
       "post": {
         "operationId": "whatsapp-sendTextSafe",
         "x-hidden": true,
@@ -194,7 +194,7 @@
             }
           },
           {
-            "name": "whatsappInstance",
+            "name": "whatsappInstanceId",
             "in": "path",
             "description": "Instance UUID copied from hypersender dashboard",
             "required": true,
@@ -329,7 +329,7 @@
         "x-speakeasy-name-override": "sendTextSafe"
       }
     },
-    "/whatsapp/v2/{whatsappInstance}/send-text": {
+    "/whatsapp/v2/{whatsappInstanceId}/send-text": {
       "post": {
         "operationId": "whatsapp-sendText",
         "x-hidden": true,
@@ -366,7 +366,7 @@
             }
           },
           {
-            "name": "whatsappInstance",
+            "name": "whatsappInstanceId",
             "in": "path",
             "description": "Instance UUID copied from hypersender dashboard",
             "required": true,
@@ -501,7 +501,7 @@
         "x-speakeasy-name-override": "sendText"
       }
     },
-    "/whatsapp/v2/{whatsappInstance}/send-link-custom-preview": {
+    "/whatsapp/v2/{whatsappInstanceId}/send-link-custom-preview": {
       "post": {
         "operationId": "whatsapp-sendLinkCustomPreview",
         "x-hidden": true,
@@ -536,7 +536,7 @@
             }
           },
           {
-            "name": "whatsappInstance",
+            "name": "whatsappInstanceId",
             "in": "path",
             "description": "Instance UUID copied from hypersender dashboard",
             "required": true,
@@ -743,7 +743,7 @@
         "x-speakeasy-name-override": "sendLinkCustomPreview"
       }
     },
-    "/whatsapp/v2/{whatsappInstance}/send-file": {
+    "/whatsapp/v2/{whatsappInstanceId}/send-file": {
       "post": {
         "operationId": "whatsapp-sendFile",
         "x-hidden": true,
@@ -779,7 +779,7 @@
             }
           },
           {
-            "name": "whatsappInstance",
+            "name": "whatsappInstanceId",
             "in": "path",
             "required": true,
             "schema": {
@@ -975,7 +975,7 @@
         "x-speakeasy-name-override": "sendFile"
       }
     },
-    "/whatsapp/v2/{whatsappInstance}/send-image": {
+    "/whatsapp/v2/{whatsappInstanceId}/send-image": {
       "post": {
         "operationId": "whatsapp-sendImage",
         "x-hidden": true,
@@ -1011,7 +1011,7 @@
             }
           },
           {
-            "name": "whatsappInstance",
+            "name": "whatsappInstanceId",
             "in": "path",
             "required": true,
             "schema": {
@@ -1219,7 +1219,7 @@
         "x-speakeasy-name-override": "sendImage"
       }
     },
-    "/whatsapp/v2/{whatsappInstance}/send-video": {
+    "/whatsapp/v2/{whatsappInstanceId}/send-video": {
       "post": {
         "operationId": "whatsapp-sendVideo",
         "x-hidden": true,
@@ -1255,7 +1255,7 @@
             }
           },
           {
-            "name": "whatsappInstance",
+            "name": "whatsappInstanceId",
             "in": "path",
             "required": true,
             "schema": {
@@ -1463,7 +1463,7 @@
         "x-speakeasy-name-override": "sendVideo"
       }
     },
-    "/whatsapp/v2/{whatsappInstance}/send-voice": {
+    "/whatsapp/v2/{whatsappInstanceId}/send-voice": {
       "post": {
         "operationId": "whatsapp-sendVoice",
         "x-hidden": true,
@@ -1498,7 +1498,7 @@
             }
           },
           {
-            "name": "whatsappInstance",
+            "name": "whatsappInstanceId",
             "in": "path",
             "required": true,
             "schema": {
@@ -1695,7 +1695,7 @@
         "x-speakeasy-name-override": "sendVoice"
       }
     },
-    "/whatsapp/v2/{whatsappInstance}/forward-message": {
+    "/whatsapp/v2/{whatsappInstanceId}/forward-message": {
       "post": {
         "operationId": "whatsapp-forwardMessage",
         "x-hidden": true,
@@ -1732,7 +1732,7 @@
             }
           },
           {
-            "name": "whatsappInstance",
+            "name": "whatsappInstanceId",
             "in": "path",
             "description": "Instance UUID copied from hypersender dashboard",
             "required": true,
@@ -1982,7 +1982,7 @@
         "x-speakeasy-name-override": "forwardMessage"
       }
     },
-    "/whatsapp/v2/{whatsappInstance}/send-seen": {
+    "/whatsapp/v2/{whatsappInstanceId}/send-seen": {
       "post": {
         "operationId": "whatsapp-sendSeen",
         "x-hidden": true,
@@ -2019,7 +2019,7 @@
             }
           },
           {
-            "name": "whatsappInstance",
+            "name": "whatsappInstanceId",
             "in": "path",
             "description": "Instance UUID copied from hypersender dashboard",
             "required": true,
@@ -2155,7 +2155,7 @@
         "x-speakeasy-name-override": "sendSeen"
       }
     },
-    "/whatsapp/v2/{whatsappInstance}/read-chat": {
+    "/whatsapp/v2/{whatsappInstanceId}/read-chat": {
       "post": {
         "operationId": "whatsapp-readChat",
         "x-hidden": true,
@@ -2192,7 +2192,7 @@
             }
           },
           {
-            "name": "whatsappInstance",
+            "name": "whatsappInstanceId",
             "in": "path",
             "description": "Instance UUID copied from hypersender dashboard",
             "required": true,
@@ -2362,7 +2362,7 @@
         "x-speakeasy-name-override": "readChat"
       }
     },
-    "/whatsapp/v2/{whatsappInstance}/start-typing": {
+    "/whatsapp/v2/{whatsappInstanceId}/start-typing": {
       "post": {
         "operationId": "whatsapp-startTyping",
         "x-hidden": true,
@@ -2399,7 +2399,7 @@
             }
           },
           {
-            "name": "whatsappInstance",
+            "name": "whatsappInstanceId",
             "in": "path",
             "description": "Instance UUID copied from hypersender dashboard",
             "required": true,
@@ -2538,7 +2538,7 @@
         "x-speakeasy-name-override": "startTyping"
       }
     },
-    "/whatsapp/v2/{whatsappInstance}/stop-typing": {
+    "/whatsapp/v2/{whatsappInstanceId}/stop-typing": {
       "post": {
         "operationId": "whatsapp-stopTyping",
         "x-hidden": true,
@@ -2575,7 +2575,7 @@
             }
           },
           {
-            "name": "whatsappInstance",
+            "name": "whatsappInstanceId",
             "in": "path",
             "description": "Instance UUID copied from hypersender dashboard",
             "required": true,
@@ -2714,7 +2714,7 @@
         "x-speakeasy-name-override": "stopTyping"
       }
     },
-    "/whatsapp/v2/{whatsappInstance}/send-poll": {
+    "/whatsapp/v2/{whatsappInstanceId}/send-poll": {
       "post": {
         "operationId": "whatsapp-sendPoll",
         "x-hidden": true,
@@ -2750,7 +2750,7 @@
             }
           },
           {
-            "name": "whatsappInstance",
+            "name": "whatsappInstanceId",
             "in": "path",
             "required": true,
             "schema": {
@@ -2989,7 +2989,7 @@
         "x-speakeasy-name-override": "sendPoll"
       }
     },
-    "/whatsapp/v2/{whatsappInstance}/send-contact-card": {
+    "/whatsapp/v2/{whatsappInstanceId}/send-contact-card": {
       "post": {
         "operationId": "whatsapp-sendContactCard",
         "x-hidden": true,
@@ -3025,7 +3025,7 @@
             }
           },
           {
-            "name": "whatsappInstance",
+            "name": "whatsappInstanceId",
             "in": "path",
             "required": true,
             "schema": {
@@ -3123,7 +3123,7 @@
         "x-speakeasy-name-override": "sendContactCard"
       }
     },
-    "/whatsapp/v2/{whatsappInstance}/send-location": {
+    "/whatsapp/v2/{whatsappInstanceId}/send-location": {
       "post": {
         "operationId": "whatsapp-sendLocation",
         "x-hidden": true,
@@ -3160,7 +3160,7 @@
             }
           },
           {
-            "name": "whatsappInstance",
+            "name": "whatsappInstanceId",
             "in": "path",
             "description": "Instance UUID copied from hypersender dashboard",
             "required": true,
@@ -3354,7 +3354,7 @@
         "x-speakeasy-name-override": "sendLocation"
       }
     },
-    "/whatsapp/v2/{whatsappInstance}/react-to-message": {
+    "/whatsapp/v2/{whatsappInstanceId}/react-to-message": {
       "put": {
         "operationId": "whatsapp-reactToMessage",
         "x-hidden": true,
@@ -3390,7 +3390,7 @@
             }
           },
           {
-            "name": "whatsappInstance",
+            "name": "whatsappInstanceId",
             "in": "path",
             "required": true,
             "schema": {
@@ -3550,7 +3550,7 @@
         "x-speakeasy-name-override": "reactToMessage"
       }
     },
-    "/whatsapp/v2/{whatsappInstance}/star-message": {
+    "/whatsapp/v2/{whatsappInstanceId}/star-message": {
       "put": {
         "operationId": "whatsapp-starMessage",
         "x-hidden": true,
@@ -3587,7 +3587,7 @@
             }
           },
           {
-            "name": "whatsappInstance",
+            "name": "whatsappInstanceId",
             "in": "path",
             "description": "Instance UUID copied from hypersender dashboard",
             "required": true,
@@ -3730,7 +3730,7 @@
         "x-speakeasy-name-override": "starMessage"
       }
     },
-    "/whatsapp/v2/{whatsappInstance}/delete-message": {
+    "/whatsapp/v2/{whatsappInstanceId}/delete-message": {
       "delete": {
         "operationId": "whatsapp-deleteMessage",
         "x-hidden": true,
@@ -3767,7 +3767,7 @@
             }
           },
           {
-            "name": "whatsappInstance",
+            "name": "whatsappInstanceId",
             "in": "path",
             "description": "Instance UUID copied from hypersender dashboard",
             "required": true,
@@ -3972,7 +3972,7 @@
         "x-speakeasy-name-override": "deleteMessage"
       }
     },
-    "/whatsapp/v2/{whatsappInstance}/contacts/check-exists": {
+    "/whatsapp/v2/{whatsappInstanceId}/contacts/check-exists": {
       "post": {
         "operationId": "whatsapp-checkContactExists",
         "x-hidden": true,
@@ -4001,7 +4001,7 @@
             }
           },
           {
-            "name": "whatsappInstance",
+            "name": "whatsappInstanceId",
             "in": "path",
             "description": "Instance UUID copied from hypersender dashboard",
             "required": true,
@@ -4099,7 +4099,7 @@
         "x-speakeasy-name-override": "checkContactExists"
       }
     },
-    "/whatsapp/v2/{whatsappInstance}/contacts/get-all-known-lids": {
+    "/whatsapp/v2/{whatsappInstanceId}/contacts/get-all-known-lids": {
       "get": {
         "operationId": "whatsapp-getAllKnownLids",
         "x-hidden": true,
@@ -4128,7 +4128,7 @@
             }
           },
           {
-            "name": "whatsappInstance",
+            "name": "whatsappInstanceId",
             "in": "path",
             "description": "Instance UUID copied from hypersender dashboard",
             "required": true,
@@ -4230,7 +4230,7 @@
         "x-speakeasy-name-override": "getAllKnownLids"
       }
     },
-    "/whatsapp/v2/{whatsappInstance}/contacts/get-all": {
+    "/whatsapp/v2/{whatsappInstanceId}/contacts/get-all": {
       "get": {
         "operationId": "whatsapp-getAllContacts",
         "x-hidden": true,
@@ -4259,7 +4259,7 @@
             }
           },
           {
-            "name": "whatsappInstance",
+            "name": "whatsappInstanceId",
             "in": "path",
             "description": "Instance UUID copied from hypersender dashboard",
             "required": true,
@@ -4394,7 +4394,7 @@
         "x-speakeasy-name-override": "getAllContacts"
       }
     },
-    "/whatsapp/v2/{whatsappInstance}/contacts/get-lids-count": {
+    "/whatsapp/v2/{whatsappInstanceId}/contacts/get-lids-count": {
       "get": {
         "operationId": "whatsapp-getLidsCount",
         "x-hidden": true,
@@ -4423,7 +4423,7 @@
             }
           },
           {
-            "name": "whatsappInstance",
+            "name": "whatsappInstanceId",
             "in": "path",
             "description": "Instance UUID copied from hypersender dashboard",
             "required": true,
@@ -4481,7 +4481,7 @@
         "x-speakeasy-name-override": "getLidsCount"
       }
     },
-    "/whatsapp/v2/{whatsappInstance}/contacts/get-phone-number-by-lid": {
+    "/whatsapp/v2/{whatsappInstanceId}/contacts/get-phone-number-by-lid": {
       "get": {
         "operationId": "whatsapp-getPhoneNumberByLid",
         "x-hidden": true,
@@ -4510,7 +4510,7 @@
             }
           },
           {
-            "name": "whatsappInstance",
+            "name": "whatsappInstanceId",
             "in": "path",
             "description": "Instance UUID copied from hypersender dashboard",
             "required": true,
@@ -4589,7 +4589,7 @@
         "x-speakeasy-name-override": "getPhoneNumberByLid"
       }
     },
-    "/whatsapp/v2/{whatsappInstance}/contacts/get": {
+    "/whatsapp/v2/{whatsappInstanceId}/contacts/get": {
       "get": {
         "operationId": "whatsapp-getContact",
         "x-hidden": true,
@@ -4618,7 +4618,7 @@
             }
           },
           {
-            "name": "whatsappInstance",
+            "name": "whatsappInstanceId",
             "in": "path",
             "description": "Instance UUID copied from hypersender dashboard",
             "required": true,
@@ -4715,7 +4715,7 @@
         "x-speakeasy-name-override": "getContact"
       }
     },
-    "/whatsapp/v2/{whatsappInstance}/contacts/get-lid-by-phone-number": {
+    "/whatsapp/v2/{whatsappInstanceId}/contacts/get-lid-by-phone-number": {
       "get": {
         "operationId": "whatsapp-getLidByPhoneNumber",
         "x-hidden": true,
@@ -4744,7 +4744,7 @@
             }
           },
           {
-            "name": "whatsappInstance",
+            "name": "whatsappInstanceId",
             "in": "path",
             "description": "Instance UUID copied from hypersender dashboard",
             "required": true,
@@ -4823,7 +4823,7 @@
         "x-speakeasy-name-override": "getLidByPhoneNumber"
       }
     },
-    "/whatsapp/v2/{whatsappInstance}/contacts/profile-picture": {
+    "/whatsapp/v2/{whatsappInstanceId}/contacts/profile-picture": {
       "get": {
         "operationId": "whatsapp-getProfilePicture",
         "x-hidden": true,
@@ -4852,7 +4852,7 @@
             }
           },
           {
-            "name": "whatsappInstance",
+            "name": "whatsappInstanceId",
             "in": "path",
             "description": "Instance UUID copied from hypersender dashboard",
             "required": true,
@@ -4939,7 +4939,7 @@
         "x-speakeasy-name-override": "getProfilePicture"
       }
     },
-    "/whatsapp/v2/{whatsappInstance}/contacts/upsert": {
+    "/whatsapp/v2/{whatsappInstanceId}/contacts/upsert": {
       "post": {
         "operationId": "whatsapp-upsertContact",
         "x-hidden": true,
@@ -4968,7 +4968,7 @@
             }
           },
           {
-            "name": "whatsappInstance",
+            "name": "whatsappInstanceId",
             "in": "path",
             "description": "Instance UUID copied from hypersender dashboard",
             "required": true,
@@ -5054,7 +5054,7 @@
         "x-speakeasy-name-override": "upsertContact"
       }
     },
-    "/sms/v1/{smsInstance}/send-message": {
+    "/sms/v1/{smsInstanceId}/send-message": {
       "post": {
         "x-hidden": true,
         "tags": [
@@ -5133,7 +5133,7 @@
         },
         "parameters": [
           {
-            "name": "smsInstance",
+            "name": "smsInstanceId",
             "in": "path",
             "description": "Instance UUID copied from hypersender dashboard",
             "required": true,
@@ -5549,7 +5549,7 @@
         "x-speakeasy-name-override": "sendMessage"
       }
     },
-    "/sms/v1/{smsInstance}/heartbeats": {
+    "/sms/v1/{smsInstanceId}/heartbeats": {
       "get": {
         "x-hidden": true,
         "tags": [
@@ -5558,7 +5558,7 @@
         "summary": "Heartbeats",
         "parameters": [
           {
-            "name": "smsInstance",
+            "name": "smsInstanceId",
             "in": "path",
             "description": "Instance UUID copied from hypersender dashboard",
             "required": true,
@@ -5914,7 +5914,7 @@
         "x-speakeasy-name-override": "getHeartbeats"
       }
     },
-    "/sms/v1/{smsInstance}/messages": {
+    "/sms/v1/{smsInstanceId}/messages": {
       "get": {
         "x-hidden": true,
         "tags": [
@@ -5923,7 +5923,7 @@
         "summary": "Index Messages",
         "parameters": [
           {
-            "name": "smsInstance",
+            "name": "smsInstanceId",
             "in": "path",
             "description": "Instance UUID copied from hypersender dashboard",
             "required": true,
@@ -6373,7 +6373,7 @@
         "x-speakeasy-name-override": "listMessages"
       }
     },
-    "/sms/v1/{smsInstance}/delete-message": {
+    "/sms/v1/{smsInstanceId}/delete-message": {
       "delete": {
         "x-hidden": true,
         "tags": [
@@ -6400,7 +6400,7 @@
             "example": "9f8b7c6d-3333-4a2b-8c3d-4e5f6a7b8c9d"
           },
           {
-            "name": "smsInstance",
+            "name": "smsInstanceId",
             "in": "path",
             "description": "Instance ID from the Hypersender dashboard.",
             "required": true,
@@ -6516,7 +6516,7 @@
         "x-speakeasy-name-override": "deleteMessage"
       }
     },
-    "/sms/v1/{smsInstance}/message-threads": {
+    "/sms/v1/{smsInstanceId}/message-threads": {
       "get": {
         "x-hidden": true,
         "tags": [
@@ -6542,7 +6542,7 @@
             "description": "Threads per page. Default 50, maximum 50."
           },
           {
-            "name": "smsInstance",
+            "name": "smsInstanceId",
             "in": "path",
             "description": "Instance ID from the Hypersender dashboard.",
             "required": true,
@@ -6837,14 +6837,14 @@
         "x-speakeasy-name-override": "listMessageThreads"
       }
     },
-    "/sms/v1/{smsInstance}/edit-message-thread": {
+    "/sms/v1/{smsInstanceId}/edit-message-thread": {
       "put": {
         "x-hidden": true,
         "summary": "Edit Message Thread",
         "operationId": "sms-edit-message-thread",
         "parameters": [
           {
-            "name": "smsInstance",
+            "name": "smsInstanceId",
             "in": "path",
             "description": "Instance UUID copied from hypersender dashboard",
             "required": true,
@@ -7045,7 +7045,7 @@
         "x-speakeasy-name-override": "editMessageThread"
       }
     },
-    "/sms/v1/{smsInstance}/delete-message-thread": {
+    "/sms/v1/{smsInstanceId}/delete-message-thread": {
       "delete": {
         "x-hidden": true,
         "tags": [
@@ -7072,7 +7072,7 @@
             "example": "9f8b7c6d-4444-4a2b-8c3d-4e5f6a7b8c9d"
           },
           {
-            "name": "smsInstance",
+            "name": "smsInstanceId",
             "in": "path",
             "description": "Instance ID from the Hypersender dashboard.",
             "required": true,
@@ -7192,13 +7192,13 @@
           "schema": {
             "type": "string"
           },
-          "name": "smsInstance",
+          "name": "smsInstanceId",
           "in": "path",
           "required": true
         }
       ]
     },
-    "/otp/v2/{otpInstance}/request-code": {
+    "/otp/v2/{otpInstanceId}/request-code": {
       "post": {
         "summary": "Request OTP code",
         "description": "Generate an OTP code and queue the message to the provided chatId.",
@@ -7206,7 +7206,7 @@
         "x-hidden": true,
         "parameters": [
           {
-            "name": "otpInstance",
+            "name": "otpInstanceId",
             "in": "path",
             "description": "Hypersender instance UUID",
             "required": true,
@@ -7277,7 +7277,7 @@
         "x-speakeasy-name-override": "requestCode"
       }
     },
-    "/otp/v2/{otpInstance}/validate-code": {
+    "/otp/v2/{otpInstanceId}/validate-code": {
       "post": {
         "summary": "Validate OTP code",
         "description": "Validate an OTP code previously generated for a chat.",
@@ -7285,7 +7285,7 @@
         "x-hidden": true,
         "parameters": [
           {
-            "name": "otpInstance",
+            "name": "otpInstanceId",
             "in": "path",
             "description": "Hypersender instance UUID",
             "required": true,
@@ -7348,7 +7348,7 @@
         "x-speakeasy-name-override": "validateCode"
       }
     },
-    "/otp/v2/{otpInstance}/generate-link": {
+    "/otp/v2/{otpInstanceId}/generate-link": {
       "post": {
         "summary": "Generate OTP link",
         "description": "Generate an OTP link for the chat; returns a short code and a whatsapp link template.",
@@ -7356,7 +7356,7 @@
         "x-hidden": true,
         "parameters": [
           {
-            "name": "otpInstance",
+            "name": "otpInstanceId",
             "in": "path",
             "description": "Hypersender instance UUID",
             "required": true,

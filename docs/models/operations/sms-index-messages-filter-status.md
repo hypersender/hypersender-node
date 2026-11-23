@@ -5,7 +5,7 @@ Message status.
 ## Example Usage
 
 ```typescript
-import { SmsIndexMessagesFilterStatus } from "hypersender/models/operations";
+import { SmsIndexMessagesFilterStatus } from "hypersender-node/models/operations";
 
 let value: SmsIndexMessagesFilterStatus = "pending";
 ```

@@ -5,7 +5,7 @@ Contact retrieved successfully
 ## Example Usage
 
 ```typescript
-import { WhatsappGetContactResponse } from "hypersender/models/operations";
+import { WhatsappGetContactResponse } from "hypersender-node/models/operations";
 
 let value: WhatsappGetContactResponse = {
   message: "Contact retrieved successfully.",

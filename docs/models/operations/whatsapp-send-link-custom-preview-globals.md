@@ -3,15 +3,15 @@
 ## Example Usage
 
 ```typescript
-import { WhatsappSendLinkCustomPreviewGlobals } from "hypersender/models/operations";
+import { WhatsappSendLinkCustomPreviewGlobals } from "hypersender-node/models/operations";
 
 let value: WhatsappSendLinkCustomPreviewGlobals = {
-  whatsappInstance: "<value>",
+  whatsappInstanceId: "<id>",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `whatsappInstance` | *string*           | :heavy_minus_sign: | N/A                |
+| Field                | Type                 | Required             | Description          |
+| -------------------- | -------------------- | -------------------- | -------------------- |
+| `whatsappInstanceId` | *string*             | :heavy_minus_sign:   | N/A                  |

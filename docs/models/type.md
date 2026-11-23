@@ -5,7 +5,7 @@
 ## Example Usage
 
 ```typescript
-import { Type } from "hypersender/models";
+import { Type } from "hypersender-node/models";
 
 let value: Type = "sent_to_mobile";
 

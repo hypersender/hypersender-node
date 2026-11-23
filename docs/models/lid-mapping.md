@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { LidMapping } from "hypersender/models";
+import { LidMapping } from "hypersender-node/models";
 
 let value: LidMapping = {
   lid: "1111111@lid",

@@ -17,9 +17,9 @@ SERVER = "https://app.hypersender.com/api"
 
 # product: (sdk group, instance param name or None for per-call)
 PRODUCTS = {
-    "whatsapp": ("whatsapp", "whatsappInstance"),
-    "sms": ("sms", "smsInstance"),
-    "otp": ("otp", "otpInstance"),
+    "whatsapp": ("whatsapp", "whatsappInstanceId"),
+    "sms": ("sms", "smsInstanceId"),
+    "otp": ("otp", "otpInstanceId"),
     "enterprise": ("enterprise", None),
 }
 SUBGROUPS = {("whatsapp", "Contacts"): "whatsapp.contacts"}

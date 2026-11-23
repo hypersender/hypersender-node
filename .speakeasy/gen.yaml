@@ -3,7 +3,7 @@ generation:
   devContainers:
     enabled: true
     schemaPath: .speakeasy/out.openapi.yaml
-  sdkClassName: Hypersender
+  sdkClassName: HypersenderClient
   maintainOpenAPIOrder: true
   usageSnippets:
     optionalPropertyRendering: withExample
@@ -29,13 +29,14 @@ generation:
     allOfMergeStrategy: shallowMerge
   requestBodyFieldName: body
   versioningStrategy: automatic
-  persistentEdits: {}
+  persistentEdits:
+    enabled: "true"
   tests:
     generateTests: false
     generateNewTests: true
     skipResponseBodyAssertions: false
 typescript:
-  version: 0.3.0
+  version: 0.3.6
   acceptHeaderEnum: false
   additionalDependencies:
     dependencies: {}
@@ -45,7 +46,7 @@ typescript:
   additionalScripts: {}
   alwaysIncludeInboundAndOutbound: false
   apiPromiseHelpers: false
-  author: Speakeasy
+  author: Hypersender
   baseErrorName: HypersenderError
   clientServerStatusCodesAsErrors: true
   constFieldsAlwaysOptional: false
@@ -85,7 +86,7 @@ typescript:
   multipartArrayFormat: standard
   numericEnumMemberNames: words
   outputModelSuffix: output
-  packageName: hypersender
+  packageName: hypersender-node
   preApplyUnionDiscriminators: true
   preserveModelFieldNames: false
   privateIdentifierPrefix: '#'

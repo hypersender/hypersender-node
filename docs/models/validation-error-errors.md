@@ -5,7 +5,7 @@ Invalid or missing feilds will be shown here
 ## Example Usage
 
 ```typescript
-import { ValidationErrorErrors } from "hypersender/models";
+import { ValidationErrorErrors } from "hypersender-node/models";
 
 let value: ValidationErrorErrors = {};
 ```

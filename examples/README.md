@@ -1,6 +1,6 @@
-# hypersender Examples
+# hypersender-node Examples
 
-This directory contains example scripts demonstrating how to use the hypersender SDK.
+This directory contains example scripts demonstrating how to use the hypersender-node SDK.
 
 ## Prerequisites
 
