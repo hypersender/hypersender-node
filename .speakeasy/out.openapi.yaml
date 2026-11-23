@@ -4871,8 +4871,6 @@ components:
         - "preview_title"
         - "preview_description"
         - "preview_url"
-        - "preview_image_url"
-        - "preview_image_file"
     SendFileRequest:
       type: "object"
       properties:

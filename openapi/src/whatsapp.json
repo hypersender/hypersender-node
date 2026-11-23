@@ -5003,7 +5003,7 @@
 						"description": "file of the image to be used in the link preview - (only if preview_image_url is not provided)"
 					}
 				},
-				"required": ["chatId", "text", "preview_title", "preview_description", "preview_url", "preview_image_url", "preview_image_file"]
+				"required": ["chatId", "text", "preview_title", "preview_description", "preview_url"]
 			},
 			"SendFileRequest": {
 				"type": "object",

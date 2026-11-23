@@ -1,16 +1,16 @@
 lockVersion: 2.0.0
 id: 85484c9c-2bde-4fca-b1bf-2bfcacf1f91b
 management:
-  docChecksum: 7810976ac4bf1c50eba29e3d80681f74
+  docChecksum: 17f4e6bd86eb359a27d3513d1a7f6254
   docVersion: 2.0.0
   speakeasyVersion: 1.811.0
   generationVersion: 2.968.1
-  releaseVersion: 0.3.6
-  configChecksum: 0e8a29d92fb7494127464978f8cddf06
+  releaseVersion: 0.3.7
+  configChecksum: 59023c4db96b8a110734e1c327cb955d
 persistentEdits:
-  generation_id: 924aec47-a21d-4e66-8ba2-2c74b6c3184b
-  pristine_commit_hash: b0065b6ce8b3ad52e8c0d9e0616d85869d644337
-  pristine_tree_hash: c8ace52a0b79c0defcb47f33931c2ddcb9892e83
+  generation_id: 061c4c19-e710-4b41-a797-252428afc7cd
+  pristine_commit_hash: 23e2f7ddf97b23a4e9243a62dce4ee5191d3a8a4
+  pristine_tree_hash: fdcd30b479ae0f60005878281db07045ef6afaf1
 features:
   typescript:
     additionalDependencies: 0.1.0
@@ -852,8 +852,8 @@ trackedFiles:
     pristine_git_object: 96ae8453cc973d815d71249123c70d39932c96b2
   docs/models/send-link-custom-preview.md:
     id: 0ea13cb8a2d7
-    last_write_checksum: sha1:eaefac267937e2565f8a97bfcf9b52d422f46121
-    pristine_git_object: b620ee4659f29d90bb04dd1cb3e6e750c34bedca
+    last_write_checksum: sha1:4fe1147c82b1810713ec75250e91e541fd5a301c
+    pristine_git_object: c668a0c01db5e9b12ca3956ccb61d5a07faf5393
   docs/models/send-location-request.md:
     id: 359eec9bf96e
     last_write_checksum: sha1:50d51dd74b1efdcbee816e263d097add503e088f
@@ -932,12 +932,12 @@ trackedFiles:
     pristine_git_object: f77adb450e4234ae950d22eee28f2e31eac3c0a5
   jsr.json:
     id: 7f6ab7767282
-    last_write_checksum: sha1:706853c423dbc029d47e4fc97905cc597da59c75
-    pristine_git_object: 4c033a7cdc4d2108e02066b7b2878f2d99d77226
+    last_write_checksum: sha1:60e9f4e5b433fb3cf1bd4fcab323084e80d52b1b
+    pristine_git_object: af029fb2ac290d673d5fc2a7da1f3509a7865378
   package.json:
     id: 7030d0b2f71b
-    last_write_checksum: sha1:b0a0ace83d5abdc88d5d86b4d1b22f1f23b724d3
-    pristine_git_object: 57346b215169417770a379f5992592cfd4bfd583
+    last_write_checksum: sha1:51d97213b297c20ecb758505f23ce8d339867cd4
+    pristine_git_object: f4771e954b24802d018180da2f853bdbd2f2225f
   src/core.ts:
     id: f431fdbcd144
     last_write_checksum: sha1:37d7c366e014366eba8c4cab4831f17954cc6ccb
@@ -1136,8 +1136,8 @@ trackedFiles:
     pristine_git_object: 0b2543a00780f8844dcd1fbdcbc51a91262d91bc
   src/lib/config.ts:
     id: 320761608fb3
-    last_write_checksum: sha1:c3bead480959feed6780618465767b7166de60f9
-    pristine_git_object: b522bc7f99f8ba111bb5887e6f2b5f8607c378bf
+    last_write_checksum: sha1:91ad1ed469239138ec237b50557a36a7eeb789f5
+    pristine_git_object: eaf21eceb62963c4562f04fa5d09c7dd8e39bf50
   src/lib/encodings.ts:
     id: 3bd8ead98afd
     last_write_checksum: sha1:6cd6208869d929a1b5fc91e4953fc4d48f5813ed
@@ -1544,8 +1544,8 @@ trackedFiles:
     pristine_git_object: a6b14a564f3b0e903e401b898c22e97d78783aad
   src/models/send-link-custom-preview.ts:
     id: b6879604b464
-    last_write_checksum: sha1:e1fd85c7da5570ded5df76e895dfbdcc9fdd5106
-    pristine_git_object: fdb8edacc4cc0c240a60519d9e882ed3ee8aef94
+    last_write_checksum: sha1:37e0193505524a0c6d67edf4ae34cdd4d0905eb5
+    pristine_git_object: 7782e56ec0b3c07dc604ae6aa84089f3d3d850aa
   src/models/send-location-request.ts:
     id: fd43ce8b0529
     last_write_checksum: sha1:b53c6768bb501bd2c68b63eeb40901e30d6b9d75
@@ -2768,7 +2768,7 @@ examples:
           whatsappInstance: "{{ instance_id }}"
           whatsappInstanceId: "{{ instance_id }}"
       requestBody:
-        application/json: {"chatId": "1111111111@c.us", "text": "Check this out! https://hypersender.com/", "reply_to": "string", "high_quality": true, "preview_title": "Hypersender is awesome", "preview_description": "Check this out, this is a custom link preview!", "preview_url": "https://hypersender.com/", "preview_image_url": "https://m.media-amazon.com/images/M/MV5BMjRhYjdkOGMtZDY5Zi00OWEwLTlkOWEtYz.jpg", "preview_image_file": "<value>"}
+        application/json: {"chatId": "1111111111@c.us", "text": "Check this out! https://hypersender.com/", "reply_to": "string", "high_quality": true, "preview_title": "Hypersender is awesome", "preview_description": "Check this out, this is a custom link preview!", "preview_url": "https://hypersender.com/", "preview_image_url": "https://m.media-amazon.com/images/M/MV5BMjRhYjdkOGMtZDY5Zi00OWEwLTlkOWEtYz.jpg"}
       responses:
         "201":
           application/json: {"key": {"remoteJid": "1111111111@s.whatsapp.net", "fromMe": true, "id": "3EB091A456D98511123FEA"}, "message": {"extendedTextMessage": {"text": "Check this out! https://hypersender.com/", "matchedText": "https://hypersender.com/", "description": "Check this out, this is a custom link preview!", "title": "Hypersender is awesome", "previewType": "NONE", "jpegThumbnail": "/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wAARCAARACADASIAAhEBAxEB/8QAGgAAAgIDAAAAAAAAAAAAAAAAAAUDBAECBv/EACwQAAECBQIEBAcAAAAAAAAAAAECAwAEBREhBjESEzVBYYGDsTI0UXJ0srP/xAAWAQEBAQAAAAAAAAAAAAAAAAABAAL/xAAXEQEBAQEAAAAAAAAAAAAAAAAAARIC/9oADAMBAAIRAxEAPwBi2HEqaUEXTY54hEEjVF1MOrTLqa5V0pJVnfe0Y1CX6fLS77E206gLIIbTw2NsE2ORviI9OzQmWVNKfQ282LhAbCisdzDehI3VU3kVBEutlTbjgt8YORkeREQ1GvKp86gusp5YBTw8YVfxt4WitW5GWS4h+cfcUt10qBKSjt9ADsIpT7NOm5d0tVdgu9kKSc22AO/naDRzDjUHRXPuT7wr0v8ANzH459xBBGSdDqFK9b+cclpjrvpPfoYIIoa//9k=", "thumbnailDirectPath": "/o1/v/t24/f2/m232/AQMNFP0XcTmGZckNL1WI6_-o4AAzaPTlTtqRat-YC7SlRrlpV8e_0fmUj7xBK5kS_9m4B-3wgG8wJ-aitI6TQqAXSTHEUhH5u4m1QCxRmw?ccb=9-4&oh=01_Q5Aa2gFW4du4I6OfD9Y_djyP1KIukQnFQRfu8YEfQJ6ydbY8JQ&oe=68F20A99&_nc_sid=e6ed6c", "thumbnailSha256": "KccP5I7AxrmcoUeD868qd0ISDFf6TYUTtw6dJS/Sdjk=", "thumbnailEncSha256": "Vveij+Avc8amAa2u6AtPSZG/07FzjJfDtMJqmYt/g4A=", "mediaKey": "Tp1eSebY/WJr+mZmzWmbRAj4WXyEmGsvSKZySAw9Kj8=", "mediaKeyTimestamp": "1758105918", "thumbnailHeight": 649, "thumbnailWidth": 1200}}, "messageTimestamp": "1758105918,", "status": "PENDING"}
@@ -2778,7 +2778,7 @@ examples:
           whatsappInstance: "{{ instance_id }}"
           whatsappInstanceId: "{{ instance_id }}"
       requestBody:
-        application/json: {"chatId": "111111111111@c.us", "text": "<value>", "preview_title": "<value>", "preview_description": "<value>", "preview_url": "https://curly-digit.com/", "preview_image_url": "https://basic-swanling.name/", "preview_image_file": "<value>"}
+        application/json: {"chatId": "111111111111@c.us", "text": "<value>", "preview_title": "<value>", "preview_description": "<value>", "preview_url": "https://curly-digit.com/"}
       responses:
         "201":
           application/json: {}
