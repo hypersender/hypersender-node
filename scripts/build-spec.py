@@ -107,6 +107,10 @@ def main():
                         del op["requestBody"]
                     else:
                         body["required"] = True
+                        # Upload endpoints accept JSON (url) or multipart (url or file). Keep only multipart so
+                        # the SDK has one method, e.g. sendImage({ url }) or sendImage({ file }).
+                        if "multipart/form-data" in body["content"]:
+                            body["content"] = {"multipart/form-data": body["content"]["multipart/form-data"]}
 
             if instance_name:
                 for op in [item] + [item[m] for m in item if m in METHODS]:

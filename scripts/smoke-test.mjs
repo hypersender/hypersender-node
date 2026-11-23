@@ -42,7 +42,9 @@ if (env.HYPERSENDER_WHATSAPP_API_KEY && env.SMOKE_WHATSAPP_TO) {
       for (let i = 0; i < 15; i++) {
         const q = await wa.getQueuedRequest(queuedUuid);
         if (q.responseStatus != null) {
-          messageId = q.responseBody?.id ?? q.responseBody?.messageId ?? q.responseBody?.key?.id;
+          const b = q.responseBody ?? {};
+          const id = b.id ?? b.messageId ?? b.key?.id;
+          messageId = typeof id === "object" && id ? id._serialized ?? id.id : id;
           return `responseStatus=${q.responseStatus} messageId=${messageId ?? "(not found in responseBody)"} responseBodyKeys=${Object.keys(q.responseBody ?? {}).join(",")}`;
         }
         await sleep(2000);
@@ -74,6 +76,50 @@ if (env.HYPERSENDER_WHATSAPP_API_KEY && env.SMOKE_WHATSAPP_TO) {
       if (!res.ok) throw new Error(`HTTP ${res.status}: ${body}`);
       return `HTTP ${res.status} (chatId NOT required): ${body}`;
     });
+  }
+
+  // Raw probes: record the real status code and response shape of each WhatsApp endpoint, so the
+  // OpenAPI spec (and the SDK generated from it) can be checked against what the API really returns.
+  const base = `https://app.hypersender.com/api/whatsapp/v2/${env.HYPERSENDER_WHATSAPP_INSTANCE_ID}`;
+  const auth = { Authorization: `Bearer ${env.HYPERSENDER_WHATSAPP_API_KEY}`, Accept: "application/json" };
+  const to = env.SMOKE_WHATSAPP_TO;
+  const imageUrl = "https://placehold.co/64x64.png";
+  // 1x1 transparent PNG
+  const png = Uint8Array.from(atob("iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg=="), (c) => c.charCodeAt(0));
+  const form = (fields) => {
+    const fd = new FormData();
+    for (const [k, v] of Object.entries(fields)) fd.append(k, v);
+    return fd;
+  };
+  const probe = async (name, method, path, body) => {
+    await check(`probe ${name}`, async () => {
+      const isForm = body instanceof FormData;
+      const res = await fetch(base + path, {
+        method,
+        headers: isForm || !body ? auth : { ...auth, "Content-Type": "application/json" },
+        body: isForm ? body : body ? JSON.stringify(body) : undefined,
+      });
+      const text = await res.text();
+      let shape = text.slice(0, 120);
+      try {
+        const json = JSON.parse(text);
+        shape = Array.isArray(json) ? `array(${json.length})` : `keys=${Object.keys(json).join(",")}`;
+      } catch {}
+      if (!res.ok) throw new Error(`HTTP ${res.status} ${shape}`);
+      return `HTTP ${res.status} ${shape}`;
+    });
+  };
+
+  await probe("send-image JSON url", "POST", "/send-image", { chatId: to, url: imageUrl, caption: "smoke: image by url (json)" });
+  await probe("send-image MULTIPART url", "POST", "/send-image", form({ chatId: to, url: imageUrl, caption: "smoke: image by url (multipart)" }));
+  await probe("send-image MULTIPART file", "POST", "/send-image", form({ chatId: to, file: new Blob([png], { type: "image/png" }), filename: "smoke.png", caption: "smoke: image upload" }));
+  await probe("send-location", "POST", "/send-location", { chatId: to, latitude: 30.0444, longitude: 31.2357, title: "smoke: Cairo" });
+  await probe("start-typing", "POST", "/start-typing", { chatId: to });
+  await probe("stop-typing", "POST", "/stop-typing", { chatId: to });
+  await probe("read-chat", "POST", "/read-chat", { chatId: to });
+  if (messageId) {
+    await probe("star-message", "PUT", "/star-message", { chatId: to, messageId, star: true });
+    await probe("delete-message (the smoke-test text)", "DELETE", `/delete-message?chatId=${encodeURIComponent(to)}&messageId=${encodeURIComponent(messageId)}`);
   }
 }
 
