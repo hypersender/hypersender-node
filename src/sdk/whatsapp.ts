@@ -68,7 +68,7 @@ export class Whatsapp extends ClientSDK {
   }
 
   async sendLinkCustomPreview(
-    request: models.SendLinkCustomPreviewMultipart,
+    request: models.SendLinkCustomPreview,
     options?: RequestOptions,
   ): Promise<operations.WhatsappSendLinkCustomPreviewResponse> {
     return unwrapAsync(whatsappSendLinkCustomPreview(
@@ -79,7 +79,7 @@ export class Whatsapp extends ClientSDK {
   }
 
   async sendFile(
-    request: models.SendFileRequestMultipart,
+    request: models.SendFileRequest,
     options?: RequestOptions,
   ): Promise<operations.WhatsappSendFileResponse> {
     return unwrapAsync(whatsappSendFile(
@@ -90,7 +90,7 @@ export class Whatsapp extends ClientSDK {
   }
 
   async sendImage(
-    request: models.SendImageRequestMultipart,
+    request: models.SendImageRequest,
     options?: RequestOptions,
   ): Promise<operations.WhatsappSendImageResponse> {
     return unwrapAsync(whatsappSendImage(
@@ -101,7 +101,7 @@ export class Whatsapp extends ClientSDK {
   }
 
   async sendVideo(
-    request: models.SendVideoRequestMultipart,
+    request: models.SendVideoRequest,
     options?: RequestOptions,
   ): Promise<operations.WhatsappSendVideoResponse> {
     return unwrapAsync(whatsappSendVideo(
@@ -112,7 +112,7 @@ export class Whatsapp extends ClientSDK {
   }
 
   async sendVoice(
-    request: models.SendVoiceRequestMultipart,
+    request: models.SendVoiceRequest,
     options?: RequestOptions,
   ): Promise<operations.WhatsappSendVoiceResponse> {
     return unwrapAsync(whatsappSendVoice(

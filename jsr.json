@@ -2,7 +2,7 @@
 
 {
   "name": "hypersender-node",
-  "version": "0.4.1",
+  "version": "0.5.0",
   "exports": {
     ".": "./src/index.ts",
     "./node": "./src/node.ts",
