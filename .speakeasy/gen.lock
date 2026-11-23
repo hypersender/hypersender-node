@@ -1,16 +1,14 @@
 lockVersion: 2.0.0
 id: 85484c9c-2bde-4fca-b1bf-2bfcacf1f91b
 management:
-  docChecksum: 17f4e6bd86eb359a27d3513d1a7f6254
   docVersion: 2.0.0
   speakeasyVersion: 1.811.0
   generationVersion: 2.968.1
-  releaseVersion: 1.0.0
-  configChecksum: 221784e8c680dd60267cecbb42e0523e
+  releaseVersion: 1.0.1
 persistentEdits:
-  generation_id: 2da487ea-f613-4c1d-9b06-95d0efe83920
-  pristine_commit_hash: 872eee1134c1aaa2ee73633fedac109bcf54ab18
-  pristine_tree_hash: 99129397c1074d31c7c7311f0be3a46ea2d77a2d
+  generation_id: 0342d0ad-24a1-4e68-9574-10af5e84e699
+  pristine_commit_hash: ca6187ded930b7976792c49246d72532f29f9204
+  pristine_tree_hash: b8a608a6cff5ac5261af0c63e34b9df69b83e401
 features:
   typescript:
     additionalDependencies: 0.1.0
@@ -48,7 +46,7 @@ trackedFiles:
     pristine_git_object: 113eead5093c17d43a46159132885318f281a68a
   .npmignore:
     id: aa70c1f807c3
-    last_write_checksum: sha1:6572da81f2e7a978ec29c22c2210bf461c5897b2
+    last_write_checksum: sha1:b31af0fc9a3a9fe93c900fdefb2bead0abd83a38
     pristine_git_object: 670ac0a62d7e568c9d44a14f5deafb8442a255d8
   .oxlintrc.json:
     id: 8b9b571b1983
@@ -932,12 +930,12 @@ trackedFiles:
     pristine_git_object: f77adb450e4234ae950d22eee28f2e31eac3c0a5
   jsr.json:
     id: 7f6ab7767282
-    last_write_checksum: sha1:efd3663f51d8b4396f8fd8aaba547c357337c7a7
-    pristine_git_object: 257aaecbe2bf55542180d1f6b5cd4654be88f090
+    last_write_checksum: sha1:25e56f8683b3474f4d3acf791beee4a86832203b
+    pristine_git_object: 77fd134cd08302bb2e20f4e8634833dd9370e3f9
   package.json:
     id: 7030d0b2f71b
-    last_write_checksum: sha1:5c8ade9e13cb8a8b7e6de3f7563341f5f7c467cd
-    pristine_git_object: 372569eaff869236bb907f6b10e46fe95481b769
+    last_write_checksum: sha1:7c46b3853ddff157ceac1f820d00b5e3e01b9e77
+    pristine_git_object: 19fd5ad475b53e8e78a5556344d3d6ae27b86a69
   src/core.ts:
     id: f431fdbcd144
     last_write_checksum: sha1:37d7c366e014366eba8c4cab4831f17954cc6ccb
@@ -1136,8 +1134,8 @@ trackedFiles:
     pristine_git_object: 0b2543a00780f8844dcd1fbdcbc51a91262d91bc
   src/lib/config.ts:
     id: 320761608fb3
-    last_write_checksum: sha1:420c354db063d5828d978a451bd5c5a0cf2402d4
-    pristine_git_object: 0b3674f0c3309f4f86132352b1bfb00b12f81ec2
+    last_write_checksum: sha1:a2db1c1b76c9d130a8614c192adfb10b16ad7a91
+    pristine_git_object: 2a3b4176c3c3c758d9f3349e16441d6de9550099
   src/lib/encodings.ts:
     id: 3bd8ead98afd
     last_write_checksum: sha1:6cd6208869d929a1b5fc91e4953fc4d48f5813ed
@@ -1719,6 +1717,249 @@ trackedFiles:
     last_write_checksum: sha1:4f9c4daf3281a9be06591b2814e5bbcf98b5c803
     pristine_git_object: e6cd950ad724815ee1ed48ef2e52389cbd3a9143
 examples:
+  checkContactExists:
+    Existing Contact:
+      parameters:
+        path:
+          instance: "<value>"
+      requestBody:
+        application/json: {"phone": "20123456789"}
+      responses:
+        "200":
+          application/json: {"numberExists": true, "chatId": "20123456789@c.us"}
+    Non-existing Contact:
+      parameters:
+        path:
+          instance: "<value>"
+      requestBody:
+        application/json: {"phone": "20123456789"}
+      responses:
+        "200":
+          application/json: {"numberExists": false, "chatId": null}
+  deleteMessage:
+    default:
+      parameters:
+        path:
+          instance: "{{ instance_id }}"
+        query:
+          chatId: "111111111111@c.us"
+          messageId: "true_111111111111@c.us_3EB05B8C1E4"
+      responses:
+        "500":
+          application/json: {"message": "Server Error"}
+    Example 1:
+      parameters:
+        path:
+          instance: "<value>"
+        query:
+          chatId: "111111111111@c.us"
+          messageId: "<id>"
+      responses:
+        "201":
+          application/json: {"key": {"remoteJid": "111111111111@s.whatsapp.net", "fromMe": true, "id": "3EB0E474C76F33528463B1"}, "message": {"protocolMessage": {"key": {"remoteJid": "111111111111@s.whatsapp.net", "fromMe": true, "id": "3EB05B8C1E491431AEAA9A"}, "type": "REVOKE"}}, "messageTimestamp": "1749413855", "status": "PENDING"}
+        "500":
+          application/json: {"message": "Server Error"}
+    Multiple fields Error:
+      parameters:
+        path:
+          instance: "<value>"
+        query:
+          chatId: "111111111111@c.us"
+          messageId: "<id>"
+      responses:
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+    'Single Field error ':
+      parameters:
+        path:
+          instance: "<value>"
+        query:
+          chatId: "111111111111@c.us"
+          messageId: "<id>"
+      responses:
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+  enterprise-createInstance:
+    speakeasy-default-enterprise-create-instance:
+      requestBody:
+        application/json: {"phone": "+201234567890", "name": "MyInstanceName", "webhook_url": "https://yourdomain.com/webhooks/whatsapp"}
+      responses:
+        "201":
+          application/json: {"id": "fa3d01c4-1234-4c0d-a12f-df319b612f8c", "name": "MyInstanceName", "phone": "+201234567890", "service_type": "whatsapp", "status": "WORKING", "access_token": "234|3uB2pBST2H6If8twXIeUaeNu23VJ8XassYoOVJuva48388e1", "created_at": "2025-05-26T10:12:45", "qr_code": "iVBORw0KGgoAAAANSUhEUgAAA..."}
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+        "429":
+          application/json: {"message": "Too many requests. Please try again later."}
+  enterprise-getInstanceHealth:
+    speakeasy-default-enterprise-get-instance-health:
+      parameters:
+        path:
+          instance: "{{ instance_id }}"
+      responses:
+        "200":
+          application/json: {"instance_id": "fa3d01c4-1234-4c0d-a12f-df319b612f8c", "connected_at": "2025-05-26T10:12:45", "status": "WORKING"}
+        "404":
+          application/json: {"message": "Resource not found."}
+        "429":
+          application/json: {"message": "Too many requests. Please try again later."}
+  enterprise-listInstances:
+    speakeasy-default-enterprise-list-instances:
+      responses:
+        "200":
+          application/json: [{"id": "fa3d01c4-1234-4c0d-a12f-df319b612f8c", "name": "MyInstanceName", "phone": "+201234567890", "service_type": "whatsapp", "status": "WORKING", "access_token": "234|3uB2pBST2H6If8twXIeUaeNu23VJ8XassYoOVJuva48388e1", "created_at": "2025-05-26T10:12:45"}]
+  enterprise-requestNewQrCode:
+    speakeasy-default-enterprise-request-new-qr-code:
+      parameters:
+        path:
+          instance: "{{ instance_id }}"
+      responses:
+        "200":
+          application/json: {"id": "fa3d01c4-1234-4c0d-a12f-df319b612f8c", "name": "MyInstanceName", "phone": "+201234567890", "service_type": "whatsapp", "status": "WORKING", "access_token": "234|3uB2pBST2H6If8twXIeUaeNu23VJ8XassYoOVJuva48388e1", "created_at": "2025-05-26T10:12:45", "qr_code": "iVBORw0KGgoAAAANSUhEUgAAA..."}
+        "404":
+          application/json: {"message": "Resource not found."}
+        "429":
+          application/json: {"message": "Too many requests. Please try again later."}
+  enterprise-restartInstance:
+    speakeasy-default-enterprise-restart-instance:
+      parameters:
+        path:
+          instance: "{{ instance_id }}"
+      responses:
+        "200":
+          application/json: {"message": "WhatsApp instance restarted successfully."}
+        "404":
+          application/json: {"message": "Resource not found."}
+        "429":
+          application/json: {"message": "Too many requests. Please try again later."}
+        "500":
+          application/json: {"message": "Failed to restart WhatsApp instance. Please try restarting the instance from hypersender dashboard."}
+  forwardMessage:
+    Example 1:
+      parameters:
+        path:
+          instance: "<value>"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us", "messageId": "false_111111111111@c.us_3EB08F6AD2A432386EFA0E"}
+      responses:
+        "201":
+          application/json: {"id": "true_111111111111@c.us_3EB0579E140521570D238F,", "timestamp": 1741395597, "from": "111111111111@c.us,", "fromMe": false, "body": "Hi there!,", "hasMedia": false, "media": {}, "ack": 0, "ackName": "PENDING,", "replyTo": "null,", "_data": {"key": {"remoteJid": "111111111111@s.whatsapp.net,", "fromMe": false, "id": "3EB0579E140521570D238F"}, "message": {"extendedTextMessage": {"text": "Hi there!,", "contextInfo": {"forwardingScore": 1, "isForwarded": true}}}, "messageTimestamp": "1741395597,", "status": "PENDING"}}
+        "500":
+          application/json: {"message": "Server Error"}
+    default:
+      parameters:
+        path:
+          instance: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us", "messageId": "<id>"}
+      responses:
+        "500":
+          application/json: {"message": "Server Error"}
+    Multiple fields Error:
+      parameters:
+        path:
+          instance: "<value>"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us", "messageId": "<id>"}
+      responses:
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+    'Single Field error ':
+      parameters:
+        path:
+          instance: "<value>"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us", "messageId": "<id>"}
+      responses:
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+  getAllContacts:
+    speakeasy-default-get-all-contacts:
+      parameters:
+        path:
+          instance: "<value>"
+        query:
+          limit: 100
+          offset: 0
+          sort_by: "name"
+          sort_order: "asc"
+      responses:
+        "200":
+          application/json: {"message": "Contacts retrieved successfully.", "data": [{"id": "100875997589545@lid", "name": "Maria", "pushname": "Maria Doe"}]}
+        "404":
+          application/json: {"message": "Resource not found."}
+        "500":
+          application/json: {"message": "Internal Server Error"}
+  getAllKnownLids:
+    Default:
+      parameters:
+        path:
+          instance: "<value>"
+        query:
+          limit: 100
+          offset: 0
+      responses:
+        "200":
+          application/json: [{"lid": "1111111@lid", "pn": "3333333@c.us"}, {"lid": "2222222@lid", "pn": "4444444@c.us"}]
+  getContact:
+    speakeasy-default-get-contact:
+      parameters:
+        path:
+          instance: "<value>"
+        query:
+          chat_id: "100875997589545@lid"
+      responses:
+        "200":
+          application/json: {"message": "Contact retrieved successfully.", "data": {"id": "100875997589545@lid", "name": "Maria", "pushname": "Maria Doe"}}
+        "404":
+          application/json: {"message": "Resource not found."}
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+        "500":
+          application/json: {"message": "Internal Server Error"}
+  getLidByPhoneNumber:
+    Default:
+      parameters:
+        path:
+          instance: "<value>"
+        query:
+          phoneNumber: "3333333@c.us"
+      responses:
+        "200":
+          application/json: {"lid": "1111111@lid", "pn": "3333333@c.us"}
+  getLidsCount:
+    Default:
+      parameters:
+        path:
+          instance: "<value>"
+      responses:
+        "200":
+          application/json: {"count": 123}
+  getPhoneNumberByLid:
+    Default:
+      parameters:
+        path:
+          instance: "<value>"
+        query:
+          lid: "1111111@lid"
+      responses:
+        "200":
+          application/json: {"lid": "1111111@lid", "pn": "3333333@c.us"}
+  getProfilePicture:
+    speakeasy-default-get-profile-picture:
+      parameters:
+        path:
+          instance: "<value>"
+        query:
+          chat_id: "100875997589545@lid"
+      responses:
+        "200":
+          application/json: {"message": "Profile picture retrieved successfully.", "data": {"profilePictureURL": "https://pps.whatsapp.net/v/t61.24694-24/374498176_337577482181161_7091117586184162691_n.jpg?ccb=11-4&oh=01_Q5Aa3gEERUGD4fegyplSv2MnHmt_UIA9JnpjREhSJMNVWZC-RA&oe=6970FAAA&_nc_sid=5e03e0&_nc_cat=104"}}
+        "404":
+          application/json: {"message": "Resource not found."}
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+        "500":
+          application/json: {"message": "Internal Server Error"}
   getQueuedRequest:
     Successful Message:
       parameters:
@@ -1736,119 +1977,235 @@ examples:
       responses:
         "200":
           application/json: {"uuid": "a08358c2-b4d6-4cd6-a882-70e606e4b95f", "request": {"chatId": "invalid@c.us", "text": "Hello!"}, "response_status": 422, "response_body": {}, "response_header": {}}
-  sendTextSafe:
+  otp-generateLink:
+    request:
+      parameters:
+        path:
+          otpInstance: "{{ instance_id }}"
+          otpInstanceId: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "20123456789@c.us", "expires": 1800, "name": "Hypersender", "message": {"prompt": "Send me my Hypersender link", "success": "Here is your link: {link}", "failed": "Login failed, please try again later.", "expired": "The link has been expired, please try another one."}, "callback": {"success": "https://yourdomain.com/callback/success", "failed": "https://yourdomain.com/callback/failed"}}
+      responses:
+        "200":
+          application/json: {}
+    speakeasy-default-otp-generate-link:
+      parameters:
+        path:
+          otpInstance: "{{ instance_id }}"
+          otpInstanceId: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "<id>"}
+      responses:
+        "200":
+          application/json: {}
+    response:
+      parameters:
+        path:
+          otpInstance: "{{ instance_id }}"
+          otpInstanceId: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "<id>"}
+      responses:
+        "200":
+          application/json: {"success": true, "message": "OTP link request created successfully", "data": {"uuid": "a0b5e14e-95da-4bd4-9e2a-071661244bef", "code": "RDYFQUBX", "chat_id": "20123456789@c.us", "status": "pending", "otp_type": "link", "expires_at": "2025-12-29T18:14:55+00:00", "created_at": "2025-12-29T17:44:55+00:00", "whatsapp_link": "https://wa.me/201553730661?text=Give+me+link+to+login+at+7enkesh+%5BRDYFQUBX%5D+-+DO+NOT+CHANGE+THIS+MESSAGE"}}
+  otp-requestCode:
+    request:
+      parameters:
+        path:
+          otpInstance: "{{ instance_id }}"
+          otpInstanceId: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "20123456789@c.us", "length": 6, "useLetter": false, "useNumber": true, "allCapital": false, "name": "hypersender", "expires": 1800}
+      responses:
+        "200":
+          application/json: {}
+    speakeasy-default-otp-request-code:
+      parameters:
+        path:
+          otpInstance: "{{ instance_id }}"
+          otpInstanceId: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "<id>"}
+      responses:
+        "200":
+          application/json: {}
+    response:
+      parameters:
+        path:
+          otpInstance: "{{ instance_id }}"
+          otpInstanceId: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "<id>"}
+      responses:
+        "200":
+          application/json: {"success": true, "message": "OTP code generated and message queued successfully", "data": {"uuid": "a0b5df6a-b491-4190-80a5-38d85a2a4836", "chat_id": "20123456789@c.us", "code": "439713", "status": "pending", "otp_type": "code", "expires_at": "2025-12-29T18:09:38+00:00", "created_at": "2025-12-29T17:39:38+00:00"}}
+  otp-validateCode:
+    request:
+      parameters:
+        path:
+          otpInstance: "{{ instance_id }}"
+          otpInstanceId: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "20123456789@c.us", "code": "439713"}
+      responses:
+        "200":
+          application/json: {}
+    speakeasy-default-otp-validate-code:
+      parameters:
+        path:
+          otpInstance: "{{ instance_id }}"
+          otpInstanceId: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "<id>", "code": "<value>"}
+      responses:
+        "200":
+          application/json: {}
+    response:
+      parameters:
+        path:
+          otpInstance: "{{ instance_id }}"
+          otpInstanceId: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "<id>", "code": "<value>"}
+      responses:
+        "200":
+          application/json: {"success": true, "message": "OTP code validated successfully", "data": {"uuid": "a0b5df6a-b491-4190-80a5-38d85a2a4836", "chat_id": "20123456789@c.us", "status": "validated", "validated_at": "2025-12-29T17:43:36+00:00"}}
+  reactToMessage:
     Example 1:
       parameters:
         path:
           instance: "<value>"
       requestBody:
-        application/json: {"chatId": "111111111111@c.us", "text": "Hi there!", "reply_to": "string", "link_preview": false, "link_preview_high_quality": false}
-      responses:
-        "500":
-          application/json: {"message": "Server Error"}
-    default:
-      parameters:
-        path:
-          instance: "{{ instance_id }}"
-      requestBody:
-        application/json: {"chatId": "111111111111@c.us", "text": "<value>"}
-      responses:
-        "500":
-          application/json: {"message": "Server Error"}
-    queued:
-      parameters:
-        path:
-          instance: "<value>"
-      requestBody:
-        application/json: {"chatId": "111111111111@c.us", "text": "<value>"}
+        application/json: {"chatId": "111111111111@c.us", "messageId": "false_111111111111@c.us_3EB08F6AD2A432386EFA0E", "reaction": "\U0001F44D"}
       responses:
         "201":
-          application/json: {"queued": true, "message": "Processing your request...", "queued_request_uuid": "a0816120-7e37-4e8b-8cf3-92deb2cdc133", "queued_request_link": "https://app.hypersender.com/api/whatsapp/v2/{instance}/queued-requests/a0816120-7e37-4e8b-8cf3-92deb2cdc133"}
-    Multiple fields Error:
+          application/json: {"key": {"remoteJid": "1111111111@s.whatsapp.net", "fromMe": true, "id": "3EB089F063C03E43EECE9D"}, "message": {"reactionMessage": {"key": {"remoteJid": "1111111111@s.whatsapp.net", "fromMe": false, "id": "3EB08F6AD2A432386EFA0E"}, "text": "\U0001F44D", "senderTimestampMs": "1741410470848"}}, "messageTimestamp": "1741390160", "status": "PENDING"}
+    Example 2:
       parameters:
         path:
           instance: "<value>"
       requestBody:
-        application/json: {"chatId": "111111111111@c.us", "text": "<value>"}
-      responses:
-        "422":
-          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
-    'Single Field error ':
-      parameters:
-        path:
-          instance: "<value>"
-      requestBody:
-        application/json: {"chatId": "111111111111@c.us", "text": "<value>"}
-      responses:
-        "422":
-          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
-  sendText:
-    Example 1:
-      parameters:
-        path:
-          instance: "<value>"
-      requestBody:
-        application/json: {"chatId": "111111111111@c.us", "text": "Hi there!", "reply_to": "string", "link_preview": false, "link_preview_high_quality": false}
-      responses:
-        "500":
-          application/json: {"message": "Server Error"}
-    default:
-      parameters:
-        path:
-          instance: "{{ instance_id }}"
-      requestBody:
-        application/json: {"chatId": "111111111111@c.us", "text": "<value>"}
-      responses:
-        "500":
-          application/json: {"message": "Server Error"}
-    queued:
-      parameters:
-        path:
-          instance: "<value>"
-      requestBody:
-        application/json: {"chatId": "111111111111@c.us", "text": "<value>"}
-      responses:
-        "201":
-          application/json: {"queued": true, "message": "Processing your request...", "queued_request_uuid": "a0816120-7e37-4e8b-8cf3-92deb2cdc133", "queued_request_link": "https://app.hypersender.com/api/whatsapp/v2/{instance}/queued-requests/a0816120-7e37-4e8b-8cf3-92deb2cdc133"}
-    Multiple fields Error:
-      parameters:
-        path:
-          instance: "<value>"
-      requestBody:
-        application/json: {"chatId": "111111111111@c.us", "text": "<value>"}
-      responses:
-        "422":
-          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
-    'Single Field error ':
-      parameters:
-        path:
-          instance: "<value>"
-      requestBody:
-        application/json: {"chatId": "111111111111@c.us", "text": "<value>"}
-      responses:
-        "422":
-          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
-  sendLinkCustomPreview:
-    Example 1:
-      parameters:
-        path:
-          instance: "<value>"
-      requestBody:
-        application/json: {"chatId": "1111111111@c.us", "text": "Check this out! https://hypersender.com/", "reply_to": "string", "high_quality": true, "preview_title": "Hypersender is awesome", "preview_description": "Check this out, this is a custom link preview!", "preview_url": "https://hypersender.com/", "preview_image_url": "https://m.media-amazon.com/images/M/MV5BMjRhYjdkOGMtZDY5Zi00OWEwLTlkOWEtYz.jpg", "preview_image_file": "<value>"}
-      responses:
-        "201":
-          application/json: {"key": {"remoteJid": "1111111111@s.whatsapp.net", "fromMe": true, "id": "3EB091A456D98511123FEA"}, "message": {"extendedTextMessage": {"text": "Check this out! https://hypersender.com/", "matchedText": "https://hypersender.com/", "description": "Check this out, this is a custom link preview!", "title": "Hypersender is awesome", "previewType": "NONE", "jpegThumbnail": "/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wAARCAARACADASIAAhEBAxEB/8QAGgAAAgIDAAAAAAAAAAAAAAAAAAUDBAECBv/EACwQAAECBQIEBAcAAAAAAAAAAAECAwAEBREhBjESEzVBYYGDsTI0UXJ0srP/xAAWAQEBAQAAAAAAAAAAAAAAAAABAAL/xAAXEQEBAQEAAAAAAAAAAAAAAAAAARIC/9oADAMBAAIRAxEAPwBi2HEqaUEXTY54hEEjVF1MOrTLqa5V0pJVnfe0Y1CX6fLS77E206gLIIbTw2NsE2ORviI9OzQmWVNKfQ282LhAbCisdzDehI3VU3kVBEutlTbjgt8YORkeREQ1GvKp86gusp5YBTw8YVfxt4WitW5GWS4h+cfcUt10qBKSjt9ADsIpT7NOm5d0tVdgu9kKSc22AO/naDRzDjUHRXPuT7wr0v8ANzH459xBBGSdDqFK9b+cclpjrvpPfoYIIoa//9k=", "thumbnailDirectPath": "/o1/v/t24/f2/m232/AQMNFP0XcTmGZckNL1WI6_-o4AAzaPTlTtqRat-YC7SlRrlpV8e_0fmUj7xBK5kS_9m4B-3wgG8wJ-aitI6TQqAXSTHEUhH5u4m1QCxRmw?ccb=9-4&oh=01_Q5Aa2gFW4du4I6OfD9Y_djyP1KIukQnFQRfu8YEfQJ6ydbY8JQ&oe=68F20A99&_nc_sid=e6ed6c", "thumbnailSha256": "KccP5I7AxrmcoUeD868qd0ISDFf6TYUTtw6dJS/Sdjk=", "thumbnailEncSha256": "Vveij+Avc8amAa2u6AtPSZG/07FzjJfDtMJqmYt/g4A=", "mediaKey": "Tp1eSebY/WJr+mZmzWmbRAj4WXyEmGsvSKZySAw9Kj8=", "mediaKeyTimestamp": "1758105918", "thumbnailHeight": 649, "thumbnailWidth": 1200}}, "messageTimestamp": "1758105918,", "status": "PENDING"}
-    default:
-      parameters:
-        path:
-          instance: "{{ instance_id }}"
-      requestBody:
-        application/json: {"chatId": "111111111111@c.us", "text": "<value>", "preview_title": "<value>", "preview_description": "<value>", "preview_url": "https://purple-bell.net/", "preview_image_url": "https://spanish-goat.org/", "preview_image_file": "<value>"}
+        application/json: {"chatId": "111111111111@c.us", "messageId": "false_111111111111@c.us_3EB08F6AD2A432386EFA0E", "reaction": ""}
       responses:
         "201":
           application/json: {}
-        "404":
-          application/json: {"message": "Resource not found."}
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+        "500":
+          application/json: {"message": "Internal Server Error"}
+    default:
+      parameters:
+        path:
+          instance: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us"}
+      responses:
+        "201":
+          application/json: {}
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+        "500":
+          application/json: {"message": "Internal Server Error"}
+  readChat:
+    Example 1:
+      parameters:
+        path:
+          instance: "<value>"
+        query:
+          messages: "30"
+          days: "7"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us"}
+      responses:
+        "201":
+          application/json: {"ids": ["false_11111111111@c.us_AAAAAAAAAAAAAAAAAAAA", "true_99999999999@c.us_AAAAAAAAAAAAAAAAAAAA"]}
+        "500":
+          application/json: {"message": "Server Error"}
+    default:
+      parameters:
+        path:
+          instance: "{{ instance_id }}"
+        query:
+          messages: "30"
+          days: "7"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us"}
+      responses:
+        "500":
+          application/json: {"message": "Server Error"}
+    Multiple fields Error:
+      parameters:
+        path:
+          instance: "<value>"
+        query:
+          messages: "30"
+          days: "7"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us"}
+      responses:
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+    'Single Field error ':
+      parameters:
+        path:
+          instance: "<value>"
+        query:
+          messages: "30"
+          days: "7"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us"}
+      responses:
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+  sendContactCard:
+    Example 1:
+      parameters:
+        path:
+          instance: "<value>"
+      requestBody:
+        application/json: {"chatId": "1111111111111@c.us", "contacts": [{"vcard": "BEGIN:VCARD\\nVERSION:3.0\\nFN:Jane Doe\\nORG:Company Name;\\nTEL;type=CELL;type=VOICE;waid=911111111111:+11111111111111\\nEND:VCARD", "organization": "Hypersender", "whatsappId": "911111111111"}]}
+      responses:
+        "201":
+          application/json: {}
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+        "500":
+          application/json: {"message": "Internal Server Error"}
+    Example 2:
+      parameters:
+        path:
+          instance: "<value>"
+      requestBody:
+        application/json: {"chatId": "1111111111111@c.us", "contacts": [{"vcard": "<value>", "fullName": "John Doe", "organization": "Hypersender", "phoneNumber": "111111111111", "whatsappId": "911111111111"}]}
+      responses:
+        "201":
+          application/json: {}
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+        "500":
+          application/json: {"message": "Internal Server Error"}
+    default:
+      parameters:
+        path:
+          instance: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "1111111111111@c.us", "contacts": []}
+      responses:
+        "201":
+          application/json: {}
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+        "500":
+          application/json: {"message": "Internal Server Error"}
+    speakeasy-default-send-contact-card:
+      parameters:
+        path:
+          instance: "<value>"
+      requestBody:
+        application/json: {"chatId": "1111111111111@c.us", "contacts": []}
+      responses:
+        "201":
+          application/json: {}
         "422":
           application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
         "500":
@@ -1925,6 +2282,250 @@ examples:
           application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
         "500":
           application/json: {"message": "Internal Server Error"}
+  sendLinkCustomPreview:
+    Example 1:
+      parameters:
+        path:
+          instance: "<value>"
+      requestBody:
+        application/json: {"chatId": "1111111111@c.us", "text": "Check this out! https://hypersender.com/", "reply_to": "string", "high_quality": true, "preview_title": "Hypersender is awesome", "preview_description": "Check this out, this is a custom link preview!", "preview_url": "https://hypersender.com/", "preview_image_url": "https://m.media-amazon.com/images/M/MV5BMjRhYjdkOGMtZDY5Zi00OWEwLTlkOWEtYz.jpg", "preview_image_file": "<value>"}
+      responses:
+        "201":
+          application/json: {"key": {"remoteJid": "1111111111@s.whatsapp.net", "fromMe": true, "id": "3EB091A456D98511123FEA"}, "message": {"extendedTextMessage": {"text": "Check this out! https://hypersender.com/", "matchedText": "https://hypersender.com/", "description": "Check this out, this is a custom link preview!", "title": "Hypersender is awesome", "previewType": "NONE", "jpegThumbnail": "/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wAARCAARACADASIAAhEBAxEB/8QAGgAAAgIDAAAAAAAAAAAAAAAAAAUDBAECBv/EACwQAAECBQIEBAcAAAAAAAAAAAECAwAEBREhBjESEzVBYYGDsTI0UXJ0srP/xAAWAQEBAQAAAAAAAAAAAAAAAAABAAL/xAAXEQEBAQEAAAAAAAAAAAAAAAAAARIC/9oADAMBAAIRAxEAPwBi2HEqaUEXTY54hEEjVF1MOrTLqa5V0pJVnfe0Y1CX6fLS77E206gLIIbTw2NsE2ORviI9OzQmWVNKfQ282LhAbCisdzDehI3VU3kVBEutlTbjgt8YORkeREQ1GvKp86gusp5YBTw8YVfxt4WitW5GWS4h+cfcUt10qBKSjt9ADsIpT7NOm5d0tVdgu9kKSc22AO/naDRzDjUHRXPuT7wr0v8ANzH459xBBGSdDqFK9b+cclpjrvpPfoYIIoa//9k=", "thumbnailDirectPath": "/o1/v/t24/f2/m232/AQMNFP0XcTmGZckNL1WI6_-o4AAzaPTlTtqRat-YC7SlRrlpV8e_0fmUj7xBK5kS_9m4B-3wgG8wJ-aitI6TQqAXSTHEUhH5u4m1QCxRmw?ccb=9-4&oh=01_Q5Aa2gFW4du4I6OfD9Y_djyP1KIukQnFQRfu8YEfQJ6ydbY8JQ&oe=68F20A99&_nc_sid=e6ed6c", "thumbnailSha256": "KccP5I7AxrmcoUeD868qd0ISDFf6TYUTtw6dJS/Sdjk=", "thumbnailEncSha256": "Vveij+Avc8amAa2u6AtPSZG/07FzjJfDtMJqmYt/g4A=", "mediaKey": "Tp1eSebY/WJr+mZmzWmbRAj4WXyEmGsvSKZySAw9Kj8=", "mediaKeyTimestamp": "1758105918", "thumbnailHeight": 649, "thumbnailWidth": 1200}}, "messageTimestamp": "1758105918,", "status": "PENDING"}
+    default:
+      parameters:
+        path:
+          instance: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us", "text": "<value>", "preview_title": "<value>", "preview_description": "<value>", "preview_url": "https://purple-bell.net/", "preview_image_url": "https://spanish-goat.org/", "preview_image_file": "<value>"}
+      responses:
+        "201":
+          application/json: {}
+        "404":
+          application/json: {"message": "Resource not found."}
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+        "500":
+          application/json: {"message": "Internal Server Error"}
+  sendLocation:
+    Example 1:
+      parameters:
+        path:
+          instance: "<value>"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us", "latitude": 38.8937255, "longitude": -77.0969763, "title": "Our office", "reply_to": "string"}
+      responses:
+        "201":
+          application/json: {"key": {"remoteJid": "111111111@s.whatsapp.net,", "fromMe": true, "id": "3EB0CD3810439716606547"}, "message": {"locationMessage": {"degreesLatitude": 38.8937255, "degreesLongitude": -77.0969763}}, "messageTimestamp": "1741359489", "status": "PENDING"}
+        "500":
+          application/json: {"message": "Server Error"}
+    default:
+      parameters:
+        path:
+          instance: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us", "latitude": 8961.2, "longitude": 1872.19}
+      responses:
+        "500":
+          application/json: {"message": "Server Error"}
+    Multiple fields Error:
+      parameters:
+        path:
+          instance: "<value>"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us", "latitude": 8961.2, "longitude": 1872.19}
+      responses:
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+    'Single Field error ':
+      parameters:
+        path:
+          instance: "<value>"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us", "latitude": 8961.2, "longitude": 1872.19}
+      responses:
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+  sendPoll:
+    Example 1:
+      parameters:
+        path:
+          instance: "<value>"
+      requestBody:
+        application/json: {"chatId": "1111111111111@c.us", "reply_to": "string", "poll": {"name": "How are you?", "options": ["Awesome!", "Good!", "Not bad!"], "multipleAnswers": true}}
+      responses:
+        "201":
+          application/json: {"id": "true_11111111111@c.us_3EB0A4F993D38D3BBD04F3", "timestamp": 1741448369, "from": "11111111111@c.us", "fromMe": true, "body": "<value>", "hasMedia": false, "media": {}, "ack": 0, "ackName": "PENDING", "replyTo": "<value>", "_data": {"key": {"remoteJid": "11111111111@s.whatsapp.net", "fromMe": true, "id": "3EB0A4F993D38D3BBD04F3"}, "message": {"messageContextInfo": {"messageSecret": "VrTaj/wh+/lyIUdBi8TV4JCpbNK1Dd54SNZHH8vR2x0="}, "pollCreationMessageV3": {"name": "Sample Poll", "options": [{"optionName": "Option 1"}, {"optionName": "Option 2"}, {"optionName": "Option 3"}], "selectableOptionsCount": 1}}, "messageTimestamp": "1741448369", "status": "PENDING"}}
+    Example 2:
+      parameters:
+        path:
+          instance: "<value>"
+      requestBody:
+        application/json: {"chatId": "1111111111111@c.us", "reply_to": "string", "poll": {"name": "How are you?", "options": ["Awesome!", "Good!", "Not bad!"], "multipleAnswers": false}}
+      responses:
+        "201":
+          application/json: {}
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+        "500":
+          application/json: {"message": "Internal Server Error"}
+    default:
+      parameters:
+        path:
+          instance: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "1111111111111@c.us", "poll": {}}
+      responses:
+        "201":
+          application/json: {}
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+        "500":
+          application/json: {"message": "Internal Server Error"}
+  sendSeen:
+    Example 1:
+      parameters:
+        path:
+          instance: "<value>"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us", "messageId": "false_111111111111@c.us_3EB08F6AD2A432386EFA0E", "participant": "111111111111@c.us"}
+      responses:
+        "500":
+          application/json: {"message": "Server Error"}
+    default:
+      parameters:
+        path:
+          instance: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us", "messageId": "<id>"}
+      responses:
+        "500":
+          application/json: {"message": "Server Error"}
+    Multiple fields Error:
+      parameters:
+        path:
+          instance: "<value>"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us", "messageId": "<id>"}
+      responses:
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+    'Single Field error ':
+      parameters:
+        path:
+          instance: "<value>"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us", "messageId": "<id>"}
+      responses:
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+    speakeasy-default-send-seen:
+      parameters:
+        path:
+          instance: "<value>"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us", "messageId": "<id>"}
+      responses:
+        "201":
+          application/json: {}
+        "404":
+          application/json: {"message": "Resource not found."}
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+        "500":
+          application/json: {"message": "Internal Server Error"}
+  sendText:
+    Example 1:
+      parameters:
+        path:
+          instance: "<value>"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us", "text": "Hi there!", "reply_to": "string", "link_preview": false, "link_preview_high_quality": false}
+      responses:
+        "500":
+          application/json: {"message": "Server Error"}
+    default:
+      parameters:
+        path:
+          instance: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us", "text": "<value>"}
+      responses:
+        "500":
+          application/json: {"message": "Server Error"}
+    queued:
+      parameters:
+        path:
+          instance: "<value>"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us", "text": "<value>"}
+      responses:
+        "201":
+          application/json: {"queued": true, "message": "Processing your request...", "queued_request_uuid": "a0816120-7e37-4e8b-8cf3-92deb2cdc133", "queued_request_link": "https://app.hypersender.com/api/whatsapp/v2/{instance}/queued-requests/a0816120-7e37-4e8b-8cf3-92deb2cdc133"}
+    Multiple fields Error:
+      parameters:
+        path:
+          instance: "<value>"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us", "text": "<value>"}
+      responses:
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+    'Single Field error ':
+      parameters:
+        path:
+          instance: "<value>"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us", "text": "<value>"}
+      responses:
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+  sendTextSafe:
+    Example 1:
+      parameters:
+        path:
+          instance: "<value>"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us", "text": "Hi there!", "reply_to": "string", "link_preview": false, "link_preview_high_quality": false}
+      responses:
+        "500":
+          application/json: {"message": "Server Error"}
+    default:
+      parameters:
+        path:
+          instance: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us", "text": "<value>"}
+      responses:
+        "500":
+          application/json: {"message": "Server Error"}
+    queued:
+      parameters:
+        path:
+          instance: "<value>"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us", "text": "<value>"}
+      responses:
+        "201":
+          application/json: {"queued": true, "message": "Processing your request...", "queued_request_uuid": "a0816120-7e37-4e8b-8cf3-92deb2cdc133", "queued_request_link": "https://app.hypersender.com/api/whatsapp/v2/{instance}/queued-requests/a0816120-7e37-4e8b-8cf3-92deb2cdc133"}
+    Multiple fields Error:
+      parameters:
+        path:
+          instance: "<value>"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us", "text": "<value>"}
+      responses:
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+    'Single Field error ':
+      parameters:
+        path:
+          instance: "<value>"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us", "text": "<value>"}
+      responses:
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
   sendVideo:
     Example 1:
       parameters:
@@ -1997,90 +2598,373 @@ examples:
           application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
         "500":
           application/json: {"message": "Internal Server Error"}
-  forwardMessage:
+  sms-delete-message:
+    default:
+      parameters:
+        path:
+          smsInstance: "{{ instance_id }}"
+          smsInstanceId: "{{ instance_id }}"
+        query:
+          messageId: "9f8b7c6d-3333-4a2b-8c3d-4e5f6a7b8c9d"
+      responses:
+        "401":
+          application/json: {"message": "<value>"}
+        "500":
+          application/json: {"message": "<value>"}
+    speakeasy-default-sms-delete-message:
+      parameters:
+        path:
+          smsInstance: "{{ instance_id }}"
+          smsInstanceId: "{{ instance_id }}"
+        query:
+          messageId: "9f8b7c6d-3333-4a2b-8c3d-4e5f6a7b8c9d"
+      responses:
+        "401":
+          application/json: {"message": "<value>"}
+        "500":
+          application/json: {"message": "<value>"}
+    Invalid token:
+      parameters:
+        path:
+          smsInstance: "{{ instance_id }}"
+          smsInstanceId: "{{ instance_id }}"
+        query:
+          messageId: "9f8b7c6d-3333-4a2b-8c3d-4e5f6a7b8c9d"
+      responses:
+        "401":
+          application/json: {"message": "The Bearer token is not valid please check the token and try again."}
+        "500":
+          application/json: {"message": "The Bearer token is not valid please check the token and try again."}
+    Expired token:
+      parameters:
+        path:
+          smsInstance: "{{ instance_id }}"
+          smsInstanceId: "{{ instance_id }}"
+        query:
+          messageId: "9f8b7c6d-3333-4a2b-8c3d-4e5f6a7b8c9d"
+      responses:
+        "401":
+          application/json: {"message": "Expired token, please refresh the token."}
+        "500":
+          application/json: {"message": "Expired token, please refresh the token."}
+  sms-delete-message-thread:
+    default:
+      parameters:
+        path:
+          smsInstance: "{{ instance_id }}"
+          smsInstanceId: "{{ instance_id }}"
+        query:
+          messageThreadId: "9f8b7c6d-4444-4a2b-8c3d-4e5f6a7b8c9d"
+      responses:
+        "401":
+          application/json: {"message": "<value>"}
+        "500":
+          application/json: {"message": "<value>"}
+    speakeasy-default-sms-delete-message-thread:
+      parameters:
+        path:
+          smsInstance: "{{ instance_id }}"
+          smsInstanceId: "{{ instance_id }}"
+        query:
+          messageThreadId: "9f8b7c6d-4444-4a2b-8c3d-4e5f6a7b8c9d"
+      responses:
+        "401":
+          application/json: {"message": "<value>"}
+        "500":
+          application/json: {"message": "<value>"}
+    Invalid token:
+      parameters:
+        path:
+          smsInstance: "{{ instance_id }}"
+          smsInstanceId: "{{ instance_id }}"
+        query:
+          messageThreadId: "9f8b7c6d-4444-4a2b-8c3d-4e5f6a7b8c9d"
+      responses:
+        "401":
+          application/json: {"message": "The Bearer token is not valid please check the token and try again."}
+        "500":
+          application/json: {"message": "The Bearer token is not valid please check the token and try again."}
+    Expired token:
+      parameters:
+        path:
+          smsInstance: "{{ instance_id }}"
+          smsInstanceId: "{{ instance_id }}"
+        query:
+          messageThreadId: "9f8b7c6d-4444-4a2b-8c3d-4e5f6a7b8c9d"
+      responses:
+        "401":
+          application/json: {"message": "Expired token, please refresh the token."}
+        "500":
+          application/json: {"message": "Expired token, please refresh the token."}
+  sms-edit-message-thread:
+    Archive:
+      parameters:
+        path:
+          smsInstance: "{{ instance_id }}"
+          smsInstanceId: "{{ instance_id }}"
+      requestBody:
+        application/json: {"messageThreadId": "9f8b7c6d-4444-4a2b-8c3d-4e5f6a7b8c9d", "is_archived": true}
+      responses:
+        "200":
+          application/json: {}
+        "401":
+          application/json: {"message": "<value>"}
+        "500":
+          application/json: {"message": "<value>"}
+    default:
+      parameters:
+        path:
+          smsInstance: "{{ instance_id }}"
+          smsInstanceId: "{{ instance_id }}"
+      requestBody:
+        application/json: {"messageThreadId": "9f8b7c6d-4444-4a2b-8c3d-4e5f6a7b8c9d", "is_archived": true}
+      responses:
+        "200":
+          application/json: {}
+        "401":
+          application/json: {"message": "<value>"}
+        "500":
+          application/json: {"message": "<value>"}
+    Archived:
+      parameters:
+        path:
+          smsInstance: "{{ instance_id }}"
+          smsInstanceId: "{{ instance_id }}"
+      requestBody:
+        application/json: {"messageThreadId": "9f8b7c6d-4444-4a2b-8c3d-4e5f6a7b8c9d", "is_archived": true}
+      responses:
+        "200":
+          application/json: {"message": "Message thread updated successfully", "data": {"id": "9f8b7c6d-4444-4a2b-8c3d-4e5f6a7b8c9d", "phone_id": "9f8b7c6d-1111-4a2b-8c3d-4e5f6a7b8c9d", "last_message_id": "9f8b7c6d-3333-4a2b-8c3d-4e5f6a7b8c9d", "from_phone_number": "+12025550101", "to_phone_number": "+12025550147", "is_archived": true, "last_message_content": "Acme code: 482913", "last_message_at": "2026-11-19 10:00:01", "created_at": "2026-11-02 14:20:00", "updated_at": "2026-11-19 10:30:00"}}
+    Invalid token:
+      parameters:
+        path:
+          smsInstance: "{{ instance_id }}"
+          smsInstanceId: "{{ instance_id }}"
+      requestBody:
+        application/json: {"messageThreadId": "9f8b7c6d-4444-4a2b-8c3d-4e5f6a7b8c9d", "is_archived": true}
+      responses:
+        "401":
+          application/json: {"message": "The Bearer token is not valid please check the token and try again."}
+        "500":
+          application/json: {"message": "The Bearer token is not valid please check the token and try again."}
+    Expired token:
+      parameters:
+        path:
+          smsInstance: "{{ instance_id }}"
+          smsInstanceId: "{{ instance_id }}"
+      requestBody:
+        application/json: {"messageThreadId": "9f8b7c6d-4444-4a2b-8c3d-4e5f6a7b8c9d", "is_archived": true}
+      responses:
+        "401":
+          application/json: {"message": "Expired token, please refresh the token."}
+        "500":
+          application/json: {"message": "Expired token, please refresh the token."}
+  sms-heartbeats:
+    default:
+      parameters:
+        path:
+          smsInstance: "{{ instance_id }}"
+          smsInstanceId: "{{ instance_id }}"
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {"message": "<value>"}
+        "500":
+          application/json: {"message": "<value>"}
+    Heartbeats:
+      parameters:
+        path:
+          smsInstance: "{{ instance_id }}"
+          smsInstanceId: "{{ instance_id }}"
+      responses:
+        "200":
+          application/json: {"data": [{"id": "9f8b7c6d-5555-4a2b-8c3d-4e5f6a7b8c9d", "phone_id": "9f8b7c6d-1111-4a2b-8c3d-4e5f6a7b8c9d", "battery_level": 87, "is_charging": true, "local_timestamp": "2026-11-19 09:55:00", "app_version": "1.50.0", "created_at": "2026-11-19 09:55:01", "updated_at": "2026-11-19 09:55:01"}], "links": {"first": "https://app.hypersender.com/api/sms/v1/9f8b7c6d-1111-4a2b-8c3d-4e5f6a7b8c9d/heartbeats?page=1", "last": "https://app.hypersender.com/api/sms/v1/9f8b7c6d-1111-4a2b-8c3d-4e5f6a7b8c9d/heartbeats?page=1", "prev": null, "next": null}, "meta": {"current_page": 1, "from": 1, "last_page": 1, "links": [{"url": null, "label": "&laquo; Previous", "page": null, "active": false}, {"url": "https://app.hypersender.com/api/sms/v1/9f8b7c6d-1111-4a2b-8c3d-4e5f6a7b8c9d/heartbeats?page=1", "label": "1", "page": 1, "active": true}, {"url": null, "label": "Next &raquo;", "page": null, "active": false}], "path": "https://app.hypersender.com/api/sms/v1/9f8b7c6d-1111-4a2b-8c3d-4e5f6a7b8c9d/heartbeats", "per_page": 50, "to": 1, "total": 1}}
+    Unknown filter:
+      parameters:
+        path:
+          smsInstance: "{{ instance_id }}"
+          smsInstanceId: "{{ instance_id }}"
+      responses:
+        "400":
+          application/json: {"message": "Requested filter(s) `battery` are not allowed. Allowed filter(s) are `app_version, battery_level, is_charging, local_timestamp, created_at, updated_at`.", "errors": null, "statusCode": 400}
+        "500":
+          application/json: {"message": "Requested filter(s) `battery` are not allowed. Allowed filter(s) are `app_version, battery_level, is_charging, local_timestamp, created_at, updated_at`.", "errors": null, "statusCode": 400}
+    SMS service unreachable:
+      parameters:
+        path:
+          smsInstance: "{{ instance_id }}"
+          smsInstanceId: "{{ instance_id }}"
+      responses:
+        "400":
+          application/json: {"message": "Something went wrong, try again later"}
+        "500":
+          application/json: {"message": "Something went wrong, try again later"}
+  sms-index-messages:
+    default:
+      parameters:
+        path:
+          smsInstance: "{{ instance_id }}"
+          smsInstanceId: "{{ instance_id }}"
+      responses:
+        "200":
+          application/json: {"data": [{"tags": ["otp"]}]}
+        "400":
+          application/json: {"message": "<value>"}
+        "500":
+          application/json: {"message": "<value>"}
+    Messages:
+      parameters:
+        path:
+          smsInstance: "{{ instance_id }}"
+          smsInstanceId: "{{ instance_id }}"
+      responses:
+        "200":
+          application/json: {"data": [{"id": "9f8b7c6d-6666-4a2b-8c3d-4e5f6a7b8c9d", "request_id": "5b0e6c1a-2f4d-4e8b-9a7c-3d2e1f0a9b8c", "message_thread_id": "9f8b7c6d-8888-4a2b-8c3d-4e5f6a7b8c9d", "phone_id": "9f8b7c6d-1111-4a2b-8c3d-4e5f6a7b8c9d", "from_phone_number": "+12025550188", "to_phone_number": "+12025550101", "content": "Your bank code is 731205. Do not share it.", "tags": ["otp", "bank"], "send_duration": null, "schedule_on_phone_at": null, "sent_at": null, "last_attempted_at": null, "delivered_at": null, "received_at": "2026-11-19 10:05:12", "expired_at": null, "schedule_send_at": null, "failed_at": null, "send_attempt_count": null, "max_send_attempts": 3, "failure_reason": null, "ussd_message": null, "message_expiration_seconds": 0, "timezone": "UTC", "sim": "SIM1", "status": "received", "type": "received_from_mobile", "created_at": "2026-11-19 10:05:13", "updated_at": "2026-11-19 10:05:13"}, {"id": "9f8b7c6d-3333-4a2b-8c3d-4e5f6a7b8c9d", "request_id": "order-1042-otp", "message_thread_id": "9f8b7c6d-4444-4a2b-8c3d-4e5f6a7b8c9d", "phone_id": "9f8b7c6d-1111-4a2b-8c3d-4e5f6a7b8c9d", "from_phone_number": "+12025550101", "to_phone_number": "+12025550147", "content": "Acme code: 482913", "tags": [], "send_duration": null, "schedule_on_phone_at": "2026-11-19 10:00:01", "sent_at": "2026-11-19 10:00:04", "last_attempted_at": "2026-11-19 10:00:01", "delivered_at": "2026-11-19 10:00:09", "received_at": null, "expired_at": null, "schedule_send_at": null, "failed_at": null, "send_attempt_count": 1, "max_send_attempts": 3, "failure_reason": null, "ussd_message": null, "message_expiration_seconds": 600, "timezone": "UTC", "sim": "SIM1", "status": "delivered", "type": "sent_to_mobile", "created_at": "2026-11-19 10:00:00", "updated_at": "2026-11-19 10:00:09"}], "links": {"first": "https://app.hypersender.com/api/sms/v1/9f8b7c6d-1111-4a2b-8c3d-4e5f6a7b8c9d/messages?page=1", "last": "https://app.hypersender.com/api/sms/v1/9f8b7c6d-1111-4a2b-8c3d-4e5f6a7b8c9d/messages?page=1", "prev": null, "next": null}, "meta": {"current_page": 1, "from": 1, "last_page": 1, "links": [{"url": null, "label": "&laquo; Previous", "page": null, "active": false}, {"url": "https://app.hypersender.com/api/sms/v1/9f8b7c6d-1111-4a2b-8c3d-4e5f6a7b8c9d/messages?page=1", "label": "1", "page": 1, "active": true}, {"url": null, "label": "Next &raquo;", "page": null, "active": false}], "path": "https://app.hypersender.com/api/sms/v1/9f8b7c6d-1111-4a2b-8c3d-4e5f6a7b8c9d/messages", "per_page": 50, "to": 2, "total": 2}}
+    Unknown filter:
+      parameters:
+        path:
+          smsInstance: "{{ instance_id }}"
+          smsInstanceId: "{{ instance_id }}"
+      responses:
+        "400":
+          application/json: {"message": "Requested filter(s) `phone` are not allowed. Allowed filter(s) are `request_id, message_thread_id, from_phone_number, to_phone_number, content, status, type, delivered_at, received_at, expired_at, failed_at, schedule_send_at, created_at, updated_at`.", "errors": null, "statusCode": 400}
+        "500":
+          application/json: {"message": "Requested filter(s) `phone` are not allowed. Allowed filter(s) are `request_id, message_thread_id, from_phone_number, to_phone_number, content, status, type, delivered_at, received_at, expired_at, failed_at, schedule_send_at, created_at, updated_at`.", "errors": null, "statusCode": 400}
+    SMS service unreachable:
+      parameters:
+        path:
+          smsInstance: "{{ instance_id }}"
+          smsInstanceId: "{{ instance_id }}"
+      responses:
+        "400":
+          application/json: {"message": "Something went wrong, try again later"}
+        "500":
+          application/json: {"message": "Something went wrong, try again later"}
+  sms-message-threads:
+    default:
+      parameters:
+        path:
+          smsInstance: "{{ instance_id }}"
+          smsInstanceId: "{{ instance_id }}"
+      responses:
+        "200":
+          application/json: {}
+        "400":
+          application/json: {"message": "<value>"}
+        "500":
+          application/json: {"message": "<value>"}
+    Threads:
+      parameters:
+        path:
+          smsInstance: "{{ instance_id }}"
+          smsInstanceId: "{{ instance_id }}"
+      responses:
+        "200":
+          application/json: {"data": [{"id": "9f8b7c6d-4444-4a2b-8c3d-4e5f6a7b8c9d", "phone_id": "9f8b7c6d-1111-4a2b-8c3d-4e5f6a7b8c9d", "last_message_id": "9f8b7c6d-3333-4a2b-8c3d-4e5f6a7b8c9d", "from_phone_number": "+12025550101", "to_phone_number": "+12025550147", "is_archived": false, "last_message_content": "Acme code: 482913", "last_message_at": "2026-11-19 10:00:01", "created_at": "2026-11-02 14:20:00", "updated_at": "2026-11-19 10:00:01"}], "links": {"first": "https://app.hypersender.com/api/sms/v1/9f8b7c6d-1111-4a2b-8c3d-4e5f6a7b8c9d/message-threads?page=1", "last": "https://app.hypersender.com/api/sms/v1/9f8b7c6d-1111-4a2b-8c3d-4e5f6a7b8c9d/message-threads?page=1", "prev": null, "next": null}, "meta": {"current_page": 1, "from": 1, "last_page": 1, "links": [{"url": null, "label": "&laquo; Previous", "page": null, "active": false}, {"url": "https://app.hypersender.com/api/sms/v1/9f8b7c6d-1111-4a2b-8c3d-4e5f6a7b8c9d/message-threads?page=1", "label": "1", "page": 1, "active": true}, {"url": null, "label": "Next &raquo;", "page": null, "active": false}], "path": "https://app.hypersender.com/api/sms/v1/9f8b7c6d-1111-4a2b-8c3d-4e5f6a7b8c9d/message-threads", "per_page": 50, "to": 1, "total": 1}}
+    Unknown filter:
+      parameters:
+        path:
+          smsInstance: "{{ instance_id }}"
+          smsInstanceId: "{{ instance_id }}"
+      responses:
+        "400":
+          application/json: {"message": "Requested filter(s) `status` are not allowed. Allowed filter(s) are `last_message_content, is_archived, last_message_id, from_or_to_number`.", "errors": null, "statusCode": 400}
+        "500":
+          application/json: {"message": "Requested filter(s) `status` are not allowed. Allowed filter(s) are `last_message_content, is_archived, last_message_id, from_or_to_number`.", "errors": null, "statusCode": 400}
+    SMS service unreachable:
+      parameters:
+        path:
+          smsInstance: "{{ instance_id }}"
+          smsInstanceId: "{{ instance_id }}"
+      responses:
+        "400":
+          application/json: {"message": "Something went wrong, try again later"}
+        "500":
+          application/json: {"message": "Something went wrong, try again later"}
+  sms-send-message:
+    Send now:
+      parameters:
+        path:
+          smsInstance: "{{ instance_id }}"
+          smsInstanceId: "{{ instance_id }}"
+      requestBody:
+        application/json: {"to": "+12025550147", "content": "Acme code: 482913", "request_id": "order-1042-otp", "message_expiration_seconds": 600}
+      responses:
+        "200":
+          application/json: {"data": {"tags": ["otp"]}}
+        "400":
+          application/json: {"message": "<value>"}
+        "500":
+          application/json: {"message": "<value>"}
+    Schedule:
+      parameters:
+        path:
+          smsInstance: "{{ instance_id }}"
+          smsInstanceId: "{{ instance_id }}"
+      requestBody:
+        application/json: {"to": "+12025550147", "content": "Your appointment is tomorrow at 10:00.", "request_id": "appointment-reminder-2231", "schedule_send_at": "2026-11-20 09:30:00"}
+      responses:
+        "200":
+          application/json: {"data": {"tags": ["otp"]}}
+        "400":
+          application/json: {"message": "<value>"}
+        "500":
+          application/json: {"message": "<value>"}
+    default:
+      parameters:
+        path:
+          smsInstance: "{{ instance_id }}"
+          smsInstanceId: "{{ instance_id }}"
+      requestBody:
+        application/json: {"to": "+12025550147", "content": "Acme code: 482913", "request_id": "order-1042-otp", "schedule_send_at": "2026-11-20 09:30:00", "max_send_attempts": 3, "message_expiration_seconds": 600}
+      responses:
+        "200":
+          application/json: {"data": {"tags": ["otp"]}}
+        "400":
+          application/json: {"message": "<value>"}
+        "500":
+          application/json: {"message": "<value>"}
+    Retry of an existing message:
+      parameters:
+        path:
+          smsInstance: "{{ instance_id }}"
+          smsInstanceId: "{{ instance_id }}"
+      requestBody:
+        application/json: {"to": "+12025550147", "content": "Acme code: 482913", "request_id": "order-1042-otp", "schedule_send_at": "2026-11-20 09:30:00", "max_send_attempts": 3, "message_expiration_seconds": 600}
+      responses:
+        "200":
+          application/json: {"message": "A message with this request_id already exists.", "data": {"id": "9f8b7c6d-3333-4a2b-8c3d-4e5f6a7b8c9d", "request_id": "order-1042-otp", "message_thread_id": "9f8b7c6d-4444-4a2b-8c3d-4e5f6a7b8c9d", "phone_id": "9f8b7c6d-1111-4a2b-8c3d-4e5f6a7b8c9d", "from_phone_number": "+12025550101", "to_phone_number": "+12025550147", "content": "Acme code: 482913", "tags": [], "send_duration": null, "schedule_on_phone_at": "2026-11-19 10:00:01", "sent_at": "2026-11-19 10:00:04", "last_attempted_at": "2026-11-19 10:00:01", "delivered_at": null, "received_at": null, "expired_at": null, "schedule_send_at": null, "failed_at": null, "send_attempt_count": 1, "max_send_attempts": 3, "failure_reason": null, "ussd_message": null, "message_expiration_seconds": 600, "timezone": "UTC", "sim": "SIM1", "status": "sent", "type": "sent_to_mobile", "created_at": "2026-11-19 10:00:00", "updated_at": "2026-11-19 10:00:04"}}
+    SMS service unreachable:
+      parameters:
+        path:
+          smsInstance: "{{ instance_id }}"
+          smsInstanceId: "{{ instance_id }}"
+      requestBody:
+        application/json: {"to": "+12025550147", "content": "Acme code: 482913", "request_id": "order-1042-otp", "schedule_send_at": "2026-11-20 09:30:00", "max_send_attempts": 3, "message_expiration_seconds": 600}
+      responses:
+        "400":
+          application/json: {"message": "Something went wrong, try again later"}
+        "500":
+          application/json: {"message": "Something went wrong, try again later"}
+  starMessage:
     Example 1:
       parameters:
         path:
           instance: "<value>"
       requestBody:
-        application/json: {"chatId": "111111111111@c.us", "messageId": "false_111111111111@c.us_3EB08F6AD2A432386EFA0E"}
-      responses:
-        "201":
-          application/json: {"id": "true_111111111111@c.us_3EB0579E140521570D238F,", "timestamp": 1741395597, "from": "111111111111@c.us,", "fromMe": false, "body": "Hi there!,", "hasMedia": false, "media": {}, "ack": 0, "ackName": "PENDING,", "replyTo": "null,", "_data": {"key": {"remoteJid": "111111111111@s.whatsapp.net,", "fromMe": false, "id": "3EB0579E140521570D238F"}, "message": {"extendedTextMessage": {"text": "Hi there!,", "contextInfo": {"forwardingScore": 1, "isForwarded": true}}}, "messageTimestamp": "1741395597,", "status": "PENDING"}}
-        "500":
-          application/json: {"message": "Server Error"}
-    default:
-      parameters:
-        path:
-          instance: "{{ instance_id }}"
-      requestBody:
-        application/json: {"chatId": "111111111111@c.us", "messageId": "<id>"}
+        application/json: {"chatId": "111111111111@c.us", "messageId": "true_111111111111@c.us_3EB08F6AD2A432386EFA0E", "star": true}
       responses:
         "500":
           application/json: {"message": "Server Error"}
-    Multiple fields Error:
+    Example 2:
       parameters:
         path:
           instance: "<value>"
       requestBody:
-        application/json: {"chatId": "111111111111@c.us", "messageId": "<id>"}
+        application/json: {"chatId": "111111111111@c.us", "messageId": "true_111111111111@c.us_3EB08F6AD2A432386EFA0E", "star": false}
       responses:
-        "422":
-          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
-    'Single Field error ':
-      parameters:
-        path:
-          instance: "<value>"
-      requestBody:
-        application/json: {"chatId": "111111111111@c.us", "messageId": "<id>"}
-      responses:
-        "422":
-          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
-  sendSeen:
-    Example 1:
-      parameters:
-        path:
-          instance: "<value>"
-      requestBody:
-        application/json: {"chatId": "111111111111@c.us", "messageId": "false_111111111111@c.us_3EB08F6AD2A432386EFA0E", "participant": "111111111111@c.us"}
-      responses:
-        "500":
-          application/json: {"message": "Server Error"}
-    default:
-      parameters:
-        path:
-          instance: "{{ instance_id }}"
-      requestBody:
-        application/json: {"chatId": "111111111111@c.us", "messageId": "<id>"}
-      responses:
-        "500":
-          application/json: {"message": "Server Error"}
-    Multiple fields Error:
-      parameters:
-        path:
-          instance: "<value>"
-      requestBody:
-        application/json: {"chatId": "111111111111@c.us", "messageId": "<id>"}
-      responses:
-        "422":
-          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
-    'Single Field error ':
-      parameters:
-        path:
-          instance: "<value>"
-      requestBody:
-        application/json: {"chatId": "111111111111@c.us", "messageId": "<id>"}
-      responses:
-        "422":
-          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
-    speakeasy-default-send-seen:
-      parameters:
-        path:
-          instance: "<value>"
-      requestBody:
-        application/json: {"chatId": "111111111111@c.us", "messageId": "<id>"}
-      responses:
-        "201":
+        "200":
           application/json: {}
         "404":
           application/json: {"message": "Resource not found."}
@@ -2088,30 +2972,12 @@ examples:
           application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
         "500":
           application/json: {"message": "Internal Server Error"}
-  readChat:
-    Example 1:
-      parameters:
-        path:
-          instance: "<value>"
-        query:
-          messages: "30"
-          days: "7"
-      requestBody:
-        application/json: {"chatId": "111111111111@c.us"}
-      responses:
-        "201":
-          application/json: {"ids": ["false_11111111111@c.us_AAAAAAAAAAAAAAAAAAAA", "true_99999999999@c.us_AAAAAAAAAAAAAAAAAAAA"]}
-        "500":
-          application/json: {"message": "Server Error"}
     default:
       parameters:
         path:
           instance: "{{ instance_id }}"
-        query:
-          messages: "30"
-          days: "7"
       requestBody:
-        application/json: {"chatId": "111111111111@c.us"}
+        application/json: {"chatId": "111111111111@c.us", "messageId": "<id>", "star": true}
       responses:
         "500":
           application/json: {"message": "Server Error"}
@@ -2119,11 +2985,8 @@ examples:
       parameters:
         path:
           instance: "<value>"
-        query:
-          messages: "30"
-          days: "7"
       requestBody:
-        application/json: {"chatId": "111111111111@c.us"}
+        application/json: {"chatId": "111111111111@c.us", "messageId": "<id>", "star": true}
       responses:
         "422":
           application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
@@ -2131,14 +2994,26 @@ examples:
       parameters:
         path:
           instance: "<value>"
-        query:
-          messages: "30"
-          days: "7"
       requestBody:
-        application/json: {"chatId": "111111111111@c.us"}
+        application/json: {"chatId": "111111111111@c.us", "messageId": "<id>", "star": true}
       responses:
         "422":
           application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+    speakeasy-default-star-message:
+      parameters:
+        path:
+          instance: "<value>"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us", "messageId": "<id>", "star": true}
+      responses:
+        "200":
+          application/json: {}
+        "404":
+          application/json: {"message": "Resource not found."}
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+        "500":
+          application/json: {"message": "Internal Server Error"}
   startTyping:
     Example 1:
       parameters:
@@ -2243,242 +3118,49 @@ examples:
           application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
         "500":
           application/json: {"message": "Internal Server Error"}
-  sendPoll:
-    Example 1:
+  upsertContact:
+    speakeasy-default-upsert-contact:
       parameters:
         path:
           instance: "<value>"
       requestBody:
-        application/json: {"chatId": "1111111111111@c.us", "reply_to": "string", "poll": {"name": "How are you?", "options": ["Awesome!", "Good!", "Not bad!"], "multipleAnswers": true}}
-      responses:
-        "201":
-          application/json: {"id": "true_11111111111@c.us_3EB0A4F993D38D3BBD04F3", "timestamp": 1741448369, "from": "11111111111@c.us", "fromMe": true, "body": "<value>", "hasMedia": false, "media": {}, "ack": 0, "ackName": "PENDING", "replyTo": "<value>", "_data": {"key": {"remoteJid": "11111111111@s.whatsapp.net", "fromMe": true, "id": "3EB0A4F993D38D3BBD04F3"}, "message": {"messageContextInfo": {"messageSecret": "VrTaj/wh+/lyIUdBi8TV4JCpbNK1Dd54SNZHH8vR2x0="}, "pollCreationMessageV3": {"name": "Sample Poll", "options": [{"optionName": "Option 1"}, {"optionName": "Option 2"}, {"optionName": "Option 3"}], "selectableOptionsCount": 1}}, "messageTimestamp": "1741448369", "status": "PENDING"}}
-    Example 2:
-      parameters:
-        path:
-          instance: "<value>"
-      requestBody:
-        application/json: {"chatId": "1111111111111@c.us", "reply_to": "string", "poll": {"name": "How are you?", "options": ["Awesome!", "Good!", "Not bad!"], "multipleAnswers": false}}
-      responses:
-        "201":
-          application/json: {}
-        "422":
-          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
-        "500":
-          application/json: {"message": "Internal Server Error"}
-    default:
-      parameters:
-        path:
-          instance: "{{ instance_id }}"
-      requestBody:
-        application/json: {"chatId": "1111111111111@c.us", "poll": {}}
-      responses:
-        "201":
-          application/json: {}
-        "422":
-          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
-        "500":
-          application/json: {"message": "Internal Server Error"}
-  sendContactCard:
-    Example 1:
-      parameters:
-        path:
-          instance: "<value>"
-      requestBody:
-        application/json: {"chatId": "1111111111111@c.us", "contacts": [{"vcard": "BEGIN:VCARD\\nVERSION:3.0\\nFN:Jane Doe\\nORG:Company Name;\\nTEL;type=CELL;type=VOICE;waid=911111111111:+11111111111111\\nEND:VCARD", "organization": "Hypersender", "whatsappId": "911111111111"}]}
-      responses:
-        "201":
-          application/json: {}
-        "422":
-          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
-        "500":
-          application/json: {"message": "Internal Server Error"}
-    Example 2:
-      parameters:
-        path:
-          instance: "<value>"
-      requestBody:
-        application/json: {"chatId": "1111111111111@c.us", "contacts": [{"vcard": "<value>", "fullName": "John Doe", "organization": "Hypersender", "phoneNumber": "111111111111", "whatsappId": "911111111111"}]}
-      responses:
-        "201":
-          application/json: {}
-        "422":
-          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
-        "500":
-          application/json: {"message": "Internal Server Error"}
-    default:
-      parameters:
-        path:
-          instance: "{{ instance_id }}"
-      requestBody:
-        application/json: {"chatId": "1111111111111@c.us", "contacts": []}
-      responses:
-        "201":
-          application/json: {}
-        "422":
-          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
-        "500":
-          application/json: {"message": "Internal Server Error"}
-    speakeasy-default-send-contact-card:
-      parameters:
-        path:
-          instance: "<value>"
-      requestBody:
-        application/json: {"chatId": "1111111111111@c.us", "contacts": []}
-      responses:
-        "201":
-          application/json: {}
-        "422":
-          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
-        "500":
-          application/json: {"message": "Internal Server Error"}
-  sendLocation:
-    Example 1:
-      parameters:
-        path:
-          instance: "<value>"
-      requestBody:
-        application/json: {"chatId": "111111111111@c.us", "latitude": 38.8937255, "longitude": -77.0969763, "title": "Our office", "reply_to": "string"}
-      responses:
-        "201":
-          application/json: {"key": {"remoteJid": "111111111@s.whatsapp.net,", "fromMe": true, "id": "3EB0CD3810439716606547"}, "message": {"locationMessage": {"degreesLatitude": 38.8937255, "degreesLongitude": -77.0969763}}, "messageTimestamp": "1741359489", "status": "PENDING"}
-        "500":
-          application/json: {"message": "Server Error"}
-    default:
-      parameters:
-        path:
-          instance: "{{ instance_id }}"
-      requestBody:
-        application/json: {"chatId": "111111111111@c.us", "latitude": 8961.2, "longitude": 1872.19}
-      responses:
-        "500":
-          application/json: {"message": "Server Error"}
-    Multiple fields Error:
-      parameters:
-        path:
-          instance: "<value>"
-      requestBody:
-        application/json: {"chatId": "111111111111@c.us", "latitude": 8961.2, "longitude": 1872.19}
-      responses:
-        "422":
-          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
-    'Single Field error ':
-      parameters:
-        path:
-          instance: "<value>"
-      requestBody:
-        application/json: {"chatId": "111111111111@c.us", "latitude": 8961.2, "longitude": 1872.19}
-      responses:
-        "422":
-          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
-  reactToMessage:
-    Example 1:
-      parameters:
-        path:
-          instance: "<value>"
-      requestBody:
-        application/json: {"chatId": "111111111111@c.us", "messageId": "false_111111111111@c.us_3EB08F6AD2A432386EFA0E", "reaction": "\U0001F44D"}
-      responses:
-        "201":
-          application/json: {"key": {"remoteJid": "1111111111@s.whatsapp.net", "fromMe": true, "id": "3EB089F063C03E43EECE9D"}, "message": {"reactionMessage": {"key": {"remoteJid": "1111111111@s.whatsapp.net", "fromMe": false, "id": "3EB08F6AD2A432386EFA0E"}, "text": "\U0001F44D", "senderTimestampMs": "1741410470848"}}, "messageTimestamp": "1741390160", "status": "PENDING"}
-    Example 2:
-      parameters:
-        path:
-          instance: "<value>"
-      requestBody:
-        application/json: {"chatId": "111111111111@c.us", "messageId": "false_111111111111@c.us_3EB08F6AD2A432386EFA0E", "reaction": ""}
-      responses:
-        "201":
-          application/json: {}
-        "422":
-          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
-        "500":
-          application/json: {"message": "Internal Server Error"}
-    default:
-      parameters:
-        path:
-          instance: "{{ instance_id }}"
-      requestBody:
-        application/json: {"chatId": "111111111111@c.us"}
-      responses:
-        "201":
-          application/json: {}
-        "422":
-          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
-        "500":
-          application/json: {"message": "Internal Server Error"}
-  starMessage:
-    Example 1:
-      parameters:
-        path:
-          instance: "<value>"
-      requestBody:
-        application/json: {"chatId": "111111111111@c.us", "messageId": "true_111111111111@c.us_3EB08F6AD2A432386EFA0E", "star": true}
-      responses:
-        "500":
-          application/json: {"message": "Server Error"}
-    Example 2:
-      parameters:
-        path:
-          instance: "<value>"
-      requestBody:
-        application/json: {"chatId": "111111111111@c.us", "messageId": "true_111111111111@c.us_3EB08F6AD2A432386EFA0E", "star": false}
+        application/json: {"chat_id": "1234567890@c.us", "first_name": "John", "last_name": "Doe"}
       responses:
         "200":
-          application/json: {}
+          application/json: {"message": "Contact upserted successfully.", "data": {"success": true}}
         "404":
           application/json: {"message": "Resource not found."}
         "422":
           application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
         "500":
           application/json: {"message": "Internal Server Error"}
-    default:
+  whatsapp-checkContactExists:
+    Existing Contact:
       parameters:
         path:
-          instance: "{{ instance_id }}"
+          whatsappInstance: "{{ instance_id }}"
+          whatsappInstanceId: "{{ instance_id }}"
       requestBody:
-        application/json: {"chatId": "111111111111@c.us", "messageId": "<id>", "star": true}
-      responses:
-        "500":
-          application/json: {"message": "Server Error"}
-    Multiple fields Error:
-      parameters:
-        path:
-          instance: "<value>"
-      requestBody:
-        application/json: {"chatId": "111111111111@c.us", "messageId": "<id>", "star": true}
-      responses:
-        "422":
-          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
-    'Single Field error ':
-      parameters:
-        path:
-          instance: "<value>"
-      requestBody:
-        application/json: {"chatId": "111111111111@c.us", "messageId": "<id>", "star": true}
-      responses:
-        "422":
-          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
-    speakeasy-default-star-message:
-      parameters:
-        path:
-          instance: "<value>"
-      requestBody:
-        application/json: {"chatId": "111111111111@c.us", "messageId": "<id>", "star": true}
+        application/json: {"phone": "20123456789"}
       responses:
         "200":
-          application/json: {}
-        "404":
-          application/json: {"message": "Resource not found."}
-        "422":
-          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
-        "500":
-          application/json: {"message": "Internal Server Error"}
-  deleteMessage:
+          application/json: {"numberExists": true, "chatId": "20123456789@c.us"}
+    Non-existing Contact:
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+          whatsappInstanceId: "{{ instance_id }}"
+      requestBody:
+        application/json: {"phone": "20123456789"}
+      responses:
+        "200":
+          application/json: {"numberExists": false, "chatId": null}
+  whatsapp-deleteMessage:
     default:
       parameters:
         path:
-          instance: "{{ instance_id }}"
+          whatsappInstance: "{{ instance_id }}"
+          whatsappInstanceId: "{{ instance_id }}"
         query:
           chatId: "111111111111@c.us"
           messageId: "true_111111111111@c.us_3EB05B8C1E4"
@@ -2488,7 +3170,8 @@ examples:
     Example 1:
       parameters:
         path:
-          instance: "<value>"
+          whatsappInstance: "{{ instance_id }}"
+          whatsappInstanceId: "{{ instance_id }}"
         query:
           chatId: "111111111111@c.us"
           messageId: "<id>"
@@ -2500,7 +3183,8 @@ examples:
     Multiple fields Error:
       parameters:
         path:
-          instance: "<value>"
+          whatsappInstance: "{{ instance_id }}"
+          whatsappInstanceId: "{{ instance_id }}"
         query:
           chatId: "111111111111@c.us"
           messageId: "<id>"
@@ -2510,48 +3194,63 @@ examples:
     'Single Field error ':
       parameters:
         path:
-          instance: "<value>"
+          whatsappInstance: "{{ instance_id }}"
+          whatsappInstanceId: "{{ instance_id }}"
         query:
           chatId: "111111111111@c.us"
           messageId: "<id>"
       responses:
         "422":
           application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
-  checkContactExists:
-    Existing Contact:
+  whatsapp-forwardMessage:
+    Example 1:
       parameters:
         path:
-          instance: "<value>"
+          whatsappInstance: "{{ instance_id }}"
+          whatsappInstanceId: "{{ instance_id }}"
       requestBody:
-        application/json: {"phone": "20123456789"}
+        application/json: {"chatId": "111111111111@c.us", "messageId": "false_111111111111@c.us_3EB08F6AD2A432386EFA0E"}
       responses:
-        "200":
-          application/json: {"numberExists": true, "chatId": "20123456789@c.us"}
-    Non-existing Contact:
+        "201":
+          application/json: {"id": "true_111111111111@c.us_3EB0579E140521570D238F,", "timestamp": 1741395597, "from": "111111111111@c.us,", "fromMe": false, "body": "Hi there!,", "hasMedia": true, "media": {}, "ack": 0, "ackName": "PENDING,", "replyTo": "null,", "_data": {"key": {"remoteJid": "111111111111@s.whatsapp.net,", "fromMe": false, "id": "3EB0579E140521570D238F"}, "message": {"extendedTextMessage": {"text": "Hi there!,", "contextInfo": {"forwardingScore": 1, "isForwarded": true}}}, "messageTimestamp": "1741395597,", "status": "PENDING"}}
+        "500":
+          application/json: {"message": "Server Error"}
+    default:
       parameters:
         path:
-          instance: "<value>"
+          whatsappInstance: "{{ instance_id }}"
+          whatsappInstanceId: "{{ instance_id }}"
       requestBody:
-        application/json: {"phone": "20123456789"}
+        application/json: {"chatId": "111111111111@c.us", "messageId": "<id>"}
       responses:
-        "200":
-          application/json: {"numberExists": false, "chatId": null}
-  getAllKnownLids:
-    Default:
+        "500":
+          application/json: {"message": "Server Error"}
+    Multiple fields Error:
       parameters:
         path:
-          instance: "<value>"
-        query:
-          limit: 100
-          offset: 0
+          whatsappInstance: "{{ instance_id }}"
+          whatsappInstanceId: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us", "messageId": "<id>"}
       responses:
-        "200":
-          application/json: [{"lid": "1111111@lid", "pn": "3333333@c.us"}, {"lid": "2222222@lid", "pn": "4444444@c.us"}]
-  getAllContacts:
-    speakeasy-default-get-all-contacts:
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+    'Single Field error ':
       parameters:
         path:
-          instance: "<value>"
+          whatsappInstance: "{{ instance_id }}"
+          whatsappInstanceId: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us", "messageId": "<id>"}
+      responses:
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+  whatsapp-getAllContacts:
+    speakeasy-default-whatsapp-get-all-contacts:
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+          whatsappInstanceId: "{{ instance_id }}"
         query:
           limit: 100
           offset: 0
@@ -2564,29 +3263,24 @@ examples:
           application/json: {"message": "Resource not found."}
         "500":
           application/json: {"message": "Internal Server Error"}
-  getLidsCount:
+  whatsapp-getAllKnownLids:
     Default:
       parameters:
         path:
-          instance: "<value>"
-      responses:
-        "200":
-          application/json: {"count": 123}
-  getPhoneNumberByLid:
-    Default:
-      parameters:
-        path:
-          instance: "<value>"
+          whatsappInstance: "{{ instance_id }}"
+          whatsappInstanceId: "{{ instance_id }}"
         query:
-          lid: "1111111@lid"
+          limit: 100
+          offset: 0
       responses:
         "200":
-          application/json: {"lid": "1111111@lid", "pn": "3333333@c.us"}
-  getContact:
-    speakeasy-default-get-contact:
+          application/json: [{"lid": "1111111@lid", "pn": "3333333@c.us"}, {"lid": "2222222@lid", "pn": "4444444@c.us"}]
+  whatsapp-getContact:
+    speakeasy-default-whatsapp-get-contact:
       parameters:
         path:
-          instance: "<value>"
+          whatsappInstance: "{{ instance_id }}"
+          whatsappInstanceId: "{{ instance_id }}"
         query:
           chat_id: "100875997589545@lid"
       responses:
@@ -2598,42 +3292,48 @@ examples:
           application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
         "500":
           application/json: {"message": "Internal Server Error"}
-  getLidByPhoneNumber:
+  whatsapp-getLidByPhoneNumber:
     Default:
       parameters:
         path:
-          instance: "<value>"
+          whatsappInstance: "{{ instance_id }}"
+          whatsappInstanceId: "{{ instance_id }}"
         query:
           phoneNumber: "3333333@c.us"
       responses:
         "200":
           application/json: {"lid": "1111111@lid", "pn": "3333333@c.us"}
-  getProfilePicture:
-    speakeasy-default-get-profile-picture:
+  whatsapp-getLidsCount:
+    Default:
       parameters:
         path:
-          instance: "<value>"
+          whatsappInstance: "{{ instance_id }}"
+          whatsappInstanceId: "{{ instance_id }}"
+      responses:
+        "200":
+          application/json: {"count": 123}
+  whatsapp-getPhoneNumberByLid:
+    Default:
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+          whatsappInstanceId: "{{ instance_id }}"
+        query:
+          lid: "1111111@lid"
+      responses:
+        "200":
+          application/json: {"lid": "1111111@lid", "pn": "3333333@c.us"}
+  whatsapp-getProfilePicture:
+    speakeasy-default-whatsapp-get-profile-picture:
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+          whatsappInstanceId: "{{ instance_id }}"
         query:
           chat_id: "100875997589545@lid"
       responses:
         "200":
           application/json: {"message": "Profile picture retrieved successfully.", "data": {"profilePictureURL": "https://pps.whatsapp.net/v/t61.24694-24/374498176_337577482181161_7091117586184162691_n.jpg?ccb=11-4&oh=01_Q5Aa3gEERUGD4fegyplSv2MnHmt_UIA9JnpjREhSJMNVWZC-RA&oe=6970FAAA&_nc_sid=5e03e0&_nc_cat=104"}}
-        "404":
-          application/json: {"message": "Resource not found."}
-        "422":
-          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
-        "500":
-          application/json: {"message": "Internal Server Error"}
-  upsertContact:
-    speakeasy-default-upsert-contact:
-      parameters:
-        path:
-          instance: "<value>"
-      requestBody:
-        application/json: {"chat_id": "1234567890@c.us", "first_name": "John", "last_name": "Doe"}
-      responses:
-        "200":
-          application/json: {"message": "Contact upserted successfully.", "data": {"success": true}}
         "404":
           application/json: {"message": "Resource not found."}
         "422":
@@ -2659,133 +3359,153 @@ examples:
       responses:
         "200":
           application/json: {"uuid": "a08358c2-b4d6-4cd6-a882-70e606e4b95f", "request": {"chatId": "invalid@c.us", "text": "Hello!"}, "response_status": 422, "response_body": {}, "response_header": {}}
-  whatsapp-sendTextSafe:
+  whatsapp-reactToMessage:
     Example 1:
       parameters:
         path:
           whatsappInstance: "{{ instance_id }}"
           whatsappInstanceId: "{{ instance_id }}"
       requestBody:
-        application/json: {"chatId": "111111111111@c.us", "text": "Hi there!", "reply_to": "string", "link_preview": false, "link_preview_high_quality": false}
-      responses:
-        "500":
-          application/json: {"message": "Server Error"}
-    default:
-      parameters:
-        path:
-          whatsappInstance: "{{ instance_id }}"
-          whatsappInstanceId: "{{ instance_id }}"
-      requestBody:
-        application/json: {"chatId": "111111111111@c.us", "text": "<value>"}
-      responses:
-        "500":
-          application/json: {"message": "Server Error"}
-    queued:
-      parameters:
-        path:
-          whatsappInstance: "{{ instance_id }}"
-          whatsappInstanceId: "{{ instance_id }}"
-      requestBody:
-        application/json: {"chatId": "111111111111@c.us", "text": "<value>"}
+        application/json: {"chatId": "111111111111@c.us", "messageId": "false_111111111111@c.us_3EB08F6AD2A432386EFA0E", "reaction": "\U0001F44D"}
       responses:
         "201":
-          application/json: {"queued": true, "message": "Processing your request...", "queued_request_uuid": "a0816120-7e37-4e8b-8cf3-92deb2cdc133", "queued_request_link": "https://app.hypersender.com/api/whatsapp/v2/{instance}/queued-requests/a0816120-7e37-4e8b-8cf3-92deb2cdc133"}
-    Multiple fields Error:
+          application/json: {"key": {"remoteJid": "1111111111@s.whatsapp.net", "fromMe": true, "id": "3EB089F063C03E43EECE9D"}, "message": {"reactionMessage": {"key": {"remoteJid": "1111111111@s.whatsapp.net", "fromMe": false, "id": "3EB08F6AD2A432386EFA0E"}, "text": "\U0001F44D", "senderTimestampMs": "1741410470848"}}, "messageTimestamp": "1741390160", "status": "PENDING"}
+    Example 2:
       parameters:
         path:
           whatsappInstance: "{{ instance_id }}"
           whatsappInstanceId: "{{ instance_id }}"
       requestBody:
-        application/json: {"chatId": "111111111111@c.us", "text": "<value>"}
-      responses:
-        "422":
-          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
-    'Single Field error ':
-      parameters:
-        path:
-          whatsappInstance: "{{ instance_id }}"
-          whatsappInstanceId: "{{ instance_id }}"
-      requestBody:
-        application/json: {"chatId": "111111111111@c.us", "text": "<value>"}
-      responses:
-        "422":
-          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
-  whatsapp-sendText:
-    Example 1:
-      parameters:
-        path:
-          whatsappInstance: "{{ instance_id }}"
-          whatsappInstanceId: "{{ instance_id }}"
-      requestBody:
-        application/json: {"chatId": "111111111111@c.us", "text": "Hi there!", "reply_to": "string", "link_preview": false, "link_preview_high_quality": false}
-      responses:
-        "500":
-          application/json: {"message": "Server Error"}
-    default:
-      parameters:
-        path:
-          whatsappInstance: "{{ instance_id }}"
-          whatsappInstanceId: "{{ instance_id }}"
-      requestBody:
-        application/json: {"chatId": "111111111111@c.us", "text": "<value>"}
-      responses:
-        "500":
-          application/json: {"message": "Server Error"}
-    queued:
-      parameters:
-        path:
-          whatsappInstance: "{{ instance_id }}"
-          whatsappInstanceId: "{{ instance_id }}"
-      requestBody:
-        application/json: {"chatId": "111111111111@c.us", "text": "<value>"}
-      responses:
-        "201":
-          application/json: {"queued": true, "message": "Processing your request...", "queued_request_uuid": "a0816120-7e37-4e8b-8cf3-92deb2cdc133", "queued_request_link": "https://app.hypersender.com/api/whatsapp/v2/{instance}/queued-requests/a0816120-7e37-4e8b-8cf3-92deb2cdc133"}
-    Multiple fields Error:
-      parameters:
-        path:
-          whatsappInstance: "{{ instance_id }}"
-          whatsappInstanceId: "{{ instance_id }}"
-      requestBody:
-        application/json: {"chatId": "111111111111@c.us", "text": "<value>"}
-      responses:
-        "422":
-          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
-    'Single Field error ':
-      parameters:
-        path:
-          whatsappInstance: "{{ instance_id }}"
-          whatsappInstanceId: "{{ instance_id }}"
-      requestBody:
-        application/json: {"chatId": "111111111111@c.us", "text": "<value>"}
-      responses:
-        "422":
-          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
-  whatsapp-sendLinkCustomPreview:
-    Example 1:
-      parameters:
-        path:
-          whatsappInstance: "{{ instance_id }}"
-          whatsappInstanceId: "{{ instance_id }}"
-      requestBody:
-        application/json: {"chatId": "1111111111@c.us", "text": "Check this out! https://hypersender.com/", "reply_to": "string", "high_quality": true, "preview_title": "Hypersender is awesome", "preview_description": "Check this out, this is a custom link preview!", "preview_url": "https://hypersender.com/", "preview_image_url": "https://m.media-amazon.com/images/M/MV5BMjRhYjdkOGMtZDY5Zi00OWEwLTlkOWEtYz.jpg"}
-        multipart/form-data: {"chatId": "111111111111@c.us", "text": "<value>", "preview_title": "<value>", "preview_description": "<value>", "preview_url": "https://curly-digit.com/"}
-      responses:
-        "201":
-          application/json: {"key": {"remoteJid": "1111111111@s.whatsapp.net", "fromMe": true, "id": "3EB091A456D98511123FEA"}, "message": {"extendedTextMessage": {"text": "Check this out! https://hypersender.com/", "matchedText": "https://hypersender.com/", "description": "Check this out, this is a custom link preview!", "title": "Hypersender is awesome", "previewType": "NONE", "jpegThumbnail": "/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wAARCAARACADASIAAhEBAxEB/8QAGgAAAgIDAAAAAAAAAAAAAAAAAAUDBAECBv/EACwQAAECBQIEBAcAAAAAAAAAAAECAwAEBREhBjESEzVBYYGDsTI0UXJ0srP/xAAWAQEBAQAAAAAAAAAAAAAAAAABAAL/xAAXEQEBAQEAAAAAAAAAAAAAAAAAARIC/9oADAMBAAIRAxEAPwBi2HEqaUEXTY54hEEjVF1MOrTLqa5V0pJVnfe0Y1CX6fLS77E206gLIIbTw2NsE2ORviI9OzQmWVNKfQ282LhAbCisdzDehI3VU3kVBEutlTbjgt8YORkeREQ1GvKp86gusp5YBTw8YVfxt4WitW5GWS4h+cfcUt10qBKSjt9ADsIpT7NOm5d0tVdgu9kKSc22AO/naDRzDjUHRXPuT7wr0v8ANzH459xBBGSdDqFK9b+cclpjrvpPfoYIIoa//9k=", "thumbnailDirectPath": "/o1/v/t24/f2/m232/AQMNFP0XcTmGZckNL1WI6_-o4AAzaPTlTtqRat-YC7SlRrlpV8e_0fmUj7xBK5kS_9m4B-3wgG8wJ-aitI6TQqAXSTHEUhH5u4m1QCxRmw?ccb=9-4&oh=01_Q5Aa2gFW4du4I6OfD9Y_djyP1KIukQnFQRfu8YEfQJ6ydbY8JQ&oe=68F20A99&_nc_sid=e6ed6c", "thumbnailSha256": "KccP5I7AxrmcoUeD868qd0ISDFf6TYUTtw6dJS/Sdjk=", "thumbnailEncSha256": "Vveij+Avc8amAa2u6AtPSZG/07FzjJfDtMJqmYt/g4A=", "mediaKey": "Tp1eSebY/WJr+mZmzWmbRAj4WXyEmGsvSKZySAw9Kj8=", "mediaKeyTimestamp": "1758105918", "thumbnailHeight": 649, "thumbnailWidth": 1200}}, "messageTimestamp": "1758105918,", "status": "PENDING"}
-    default:
-      parameters:
-        path:
-          whatsappInstance: "{{ instance_id }}"
-          whatsappInstanceId: "{{ instance_id }}"
-      requestBody:
-        application/json: {"chatId": "111111111111@c.us", "text": "<value>", "preview_title": "<value>", "preview_description": "<value>", "preview_url": "https://curly-digit.com/"}
-        multipart/form-data: {"chatId": "111111111111@c.us", "text": "<value>", "preview_title": "<value>", "preview_description": "<value>", "preview_url": "https://curly-digit.com/"}
+        application/json: {"chatId": "111111111111@c.us", "messageId": "false_111111111111@c.us_3EB08F6AD2A432386EFA0E", "reaction": ""}
       responses:
         "201":
           application/json: {}
-        "404":
-          application/json: {"message": "Resource not found."}
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+        "500":
+          application/json: {"message": "Internal Server Error"}
+    default:
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+          whatsappInstanceId: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us"}
+      responses:
+        "201":
+          application/json: {}
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+        "500":
+          application/json: {"message": "Internal Server Error"}
+  whatsapp-readChat:
+    Example 1:
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+          whatsappInstanceId: "{{ instance_id }}"
+        query:
+          messages: "30"
+          days: "7"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us"}
+      responses:
+        "201":
+          application/json: {"ids": ["false_11111111111@c.us_AAAAAAAAAAAAAAAAAAAA", "true_99999999999@c.us_AAAAAAAAAAAAAAAAAAAA"]}
+        "500":
+          application/json: {"message": "Server Error"}
+    default:
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+          whatsappInstanceId: "{{ instance_id }}"
+        query:
+          messages: "30"
+          days: "7"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us"}
+      responses:
+        "500":
+          application/json: {"message": "Server Error"}
+    Multiple fields Error:
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+          whatsappInstanceId: "{{ instance_id }}"
+        query:
+          messages: "30"
+          days: "7"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us"}
+      responses:
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+    'Single Field error ':
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+          whatsappInstanceId: "{{ instance_id }}"
+        query:
+          messages: "30"
+          days: "7"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us"}
+      responses:
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+  whatsapp-sendContactCard:
+    Example 1:
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+          whatsappInstanceId: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "1111111111111@c.us", "contacts": [{"vcard": "BEGIN:VCARD\\nVERSION:3.0\\nFN:Jane Doe\\nORG:Company Name;\\nTEL;type=CELL;type=VOICE;waid=911111111111:+11111111111111\\nEND:VCARD", "organization": "Hypersender", "whatsappId": "911111111111"}]}
+      responses:
+        "201":
+          application/json: {}
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+        "500":
+          application/json: {"message": "Internal Server Error"}
+    Example 2:
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+          whatsappInstanceId: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "1111111111111@c.us", "contacts": [{"vcard": "<value>", "fullName": "John Doe", "organization": "Hypersender", "phoneNumber": "111111111111", "whatsappId": "911111111111"}]}
+      responses:
+        "201":
+          application/json: {}
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+        "500":
+          application/json: {"message": "Internal Server Error"}
+    default:
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+          whatsappInstanceId: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "1111111111111@c.us", "contacts": []}
+      responses:
+        "201":
+          application/json: {}
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+        "500":
+          application/json: {"message": "Internal Server Error"}
+    speakeasy-default-whatsapp-send-contact-card:
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+          whatsappInstanceId: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "1111111111111@c.us", "contacts": []}
+      responses:
+        "201":
+          application/json: {}
         "422":
           application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
         "500":
@@ -2872,6 +3592,276 @@ examples:
           application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
         "500":
           application/json: {"message": "Internal Server Error"}
+  whatsapp-sendLinkCustomPreview:
+    Example 1:
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+          whatsappInstanceId: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "1111111111@c.us", "text": "Check this out! https://hypersender.com/", "reply_to": "string", "high_quality": true, "preview_title": "Hypersender is awesome", "preview_description": "Check this out, this is a custom link preview!", "preview_url": "https://hypersender.com/", "preview_image_url": "https://m.media-amazon.com/images/M/MV5BMjRhYjdkOGMtZDY5Zi00OWEwLTlkOWEtYz.jpg"}
+        multipart/form-data: {"chatId": "111111111111@c.us", "text": "<value>", "preview_title": "<value>", "preview_description": "<value>", "preview_url": "https://curly-digit.com/"}
+      responses:
+        "201":
+          application/json: {"key": {"remoteJid": "1111111111@s.whatsapp.net", "fromMe": true, "id": "3EB091A456D98511123FEA"}, "message": {"extendedTextMessage": {"text": "Check this out! https://hypersender.com/", "matchedText": "https://hypersender.com/", "description": "Check this out, this is a custom link preview!", "title": "Hypersender is awesome", "previewType": "NONE", "jpegThumbnail": "/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wAARCAARACADASIAAhEBAxEB/8QAGgAAAgIDAAAAAAAAAAAAAAAAAAUDBAECBv/EACwQAAECBQIEBAcAAAAAAAAAAAECAwAEBREhBjESEzVBYYGDsTI0UXJ0srP/xAAWAQEBAQAAAAAAAAAAAAAAAAABAAL/xAAXEQEBAQEAAAAAAAAAAAAAAAAAARIC/9oADAMBAAIRAxEAPwBi2HEqaUEXTY54hEEjVF1MOrTLqa5V0pJVnfe0Y1CX6fLS77E206gLIIbTw2NsE2ORviI9OzQmWVNKfQ282LhAbCisdzDehI3VU3kVBEutlTbjgt8YORkeREQ1GvKp86gusp5YBTw8YVfxt4WitW5GWS4h+cfcUt10qBKSjt9ADsIpT7NOm5d0tVdgu9kKSc22AO/naDRzDjUHRXPuT7wr0v8ANzH459xBBGSdDqFK9b+cclpjrvpPfoYIIoa//9k=", "thumbnailDirectPath": "/o1/v/t24/f2/m232/AQMNFP0XcTmGZckNL1WI6_-o4AAzaPTlTtqRat-YC7SlRrlpV8e_0fmUj7xBK5kS_9m4B-3wgG8wJ-aitI6TQqAXSTHEUhH5u4m1QCxRmw?ccb=9-4&oh=01_Q5Aa2gFW4du4I6OfD9Y_djyP1KIukQnFQRfu8YEfQJ6ydbY8JQ&oe=68F20A99&_nc_sid=e6ed6c", "thumbnailSha256": "KccP5I7AxrmcoUeD868qd0ISDFf6TYUTtw6dJS/Sdjk=", "thumbnailEncSha256": "Vveij+Avc8amAa2u6AtPSZG/07FzjJfDtMJqmYt/g4A=", "mediaKey": "Tp1eSebY/WJr+mZmzWmbRAj4WXyEmGsvSKZySAw9Kj8=", "mediaKeyTimestamp": "1758105918", "thumbnailHeight": 649, "thumbnailWidth": 1200}}, "messageTimestamp": "1758105918,", "status": "PENDING"}
+    default:
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+          whatsappInstanceId: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us", "text": "<value>", "preview_title": "<value>", "preview_description": "<value>", "preview_url": "https://curly-digit.com/"}
+        multipart/form-data: {"chatId": "111111111111@c.us", "text": "<value>", "preview_title": "<value>", "preview_description": "<value>", "preview_url": "https://curly-digit.com/"}
+      responses:
+        "201":
+          application/json: {}
+        "404":
+          application/json: {"message": "Resource not found."}
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+        "500":
+          application/json: {"message": "Internal Server Error"}
+  whatsapp-sendLocation:
+    Example 1:
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+          whatsappInstanceId: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us", "latitude": 38.8937255, "longitude": -77.0969763, "title": "Our office", "reply_to": "string"}
+      responses:
+        "201":
+          application/json: {"key": {"remoteJid": "111111111@s.whatsapp.net,", "fromMe": true, "id": "3EB0CD3810439716606547"}, "message": {"locationMessage": {"degreesLatitude": 38.8937255, "degreesLongitude": -77.0969763}}, "messageTimestamp": "1741359489", "status": "PENDING"}
+        "500":
+          application/json: {"message": "Server Error"}
+    default:
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+          whatsappInstanceId: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us", "latitude": 1236.2, "longitude": 4385.3}
+      responses:
+        "500":
+          application/json: {"message": "Server Error"}
+    Multiple fields Error:
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+          whatsappInstanceId: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us", "latitude": 1236.2, "longitude": 4385.3}
+      responses:
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+    'Single Field error ':
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+          whatsappInstanceId: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us", "latitude": 1236.2, "longitude": 4385.3}
+      responses:
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+  whatsapp-sendPoll:
+    Example 1:
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+          whatsappInstanceId: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "1111111111111@c.us", "reply_to": "string", "poll": {"name": "How are you?", "options": ["Awesome!", "Good!", "Not bad!"], "multipleAnswers": true}}
+      responses:
+        "201":
+          application/json: {"id": "true_11111111111@c.us_3EB0A4F993D38D3BBD04F3", "timestamp": 1741448369, "from": "11111111111@c.us", "fromMe": true, "body": "<value>", "hasMedia": false, "media": {}, "ack": 0, "ackName": "PENDING", "replyTo": "<value>", "_data": {"key": {"remoteJid": "11111111111@s.whatsapp.net", "fromMe": true, "id": "3EB0A4F993D38D3BBD04F3"}, "message": {"messageContextInfo": {"messageSecret": "VrTaj/wh+/lyIUdBi8TV4JCpbNK1Dd54SNZHH8vR2x0="}, "pollCreationMessageV3": {"name": "Sample Poll", "options": [{"optionName": "Option 1"}, {"optionName": "Option 2"}, {"optionName": "Option 3"}], "selectableOptionsCount": 1}}, "messageTimestamp": "1741448369", "status": "PENDING"}}
+    Example 2:
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+          whatsappInstanceId: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "1111111111111@c.us", "reply_to": "string", "poll": {"name": "How are you?", "options": ["Awesome!", "Good!", "Not bad!"], "multipleAnswers": false}}
+      responses:
+        "201":
+          application/json: {}
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+        "500":
+          application/json: {"message": "Internal Server Error"}
+    default:
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+          whatsappInstanceId: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "1111111111111@c.us", "poll": {}}
+      responses:
+        "201":
+          application/json: {}
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+        "500":
+          application/json: {"message": "Internal Server Error"}
+  whatsapp-sendSeen:
+    Example 1:
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+          whatsappInstanceId: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us", "messageId": "false_111111111111@c.us_3EB08F6AD2A432386EFA0E", "participant": "111111111111@c.us"}
+      responses:
+        "500":
+          application/json: {"message": "Server Error"}
+    default:
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+          whatsappInstanceId: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us", "messageId": "<id>"}
+      responses:
+        "500":
+          application/json: {"message": "Server Error"}
+    Multiple fields Error:
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+          whatsappInstanceId: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us", "messageId": "<id>"}
+      responses:
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+    'Single Field error ':
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+          whatsappInstanceId: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us", "messageId": "<id>"}
+      responses:
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+    speakeasy-default-whatsapp-send-seen:
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+          whatsappInstanceId: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us", "messageId": "<id>"}
+      responses:
+        "201":
+          application/json: {}
+        "404":
+          application/json: {"message": "Resource not found."}
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+        "500":
+          application/json: {"message": "Internal Server Error"}
+  whatsapp-sendText:
+    Example 1:
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+          whatsappInstanceId: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us", "text": "Hi there!", "reply_to": "string", "link_preview": false, "link_preview_high_quality": false}
+      responses:
+        "500":
+          application/json: {"message": "Server Error"}
+    default:
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+          whatsappInstanceId: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us", "text": "<value>"}
+      responses:
+        "500":
+          application/json: {"message": "Server Error"}
+    queued:
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+          whatsappInstanceId: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us", "text": "<value>"}
+      responses:
+        "201":
+          application/json: {"queued": true, "message": "Processing your request...", "queued_request_uuid": "a0816120-7e37-4e8b-8cf3-92deb2cdc133", "queued_request_link": "https://app.hypersender.com/api/whatsapp/v2/{instance}/queued-requests/a0816120-7e37-4e8b-8cf3-92deb2cdc133"}
+    Multiple fields Error:
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+          whatsappInstanceId: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us", "text": "<value>"}
+      responses:
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+    'Single Field error ':
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+          whatsappInstanceId: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us", "text": "<value>"}
+      responses:
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+  whatsapp-sendTextSafe:
+    Example 1:
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+          whatsappInstanceId: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us", "text": "Hi there!", "reply_to": "string", "link_preview": false, "link_preview_high_quality": false}
+      responses:
+        "500":
+          application/json: {"message": "Server Error"}
+    default:
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+          whatsappInstanceId: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us", "text": "<value>"}
+      responses:
+        "500":
+          application/json: {"message": "Server Error"}
+    queued:
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+          whatsappInstanceId: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us", "text": "<value>"}
+      responses:
+        "201":
+          application/json: {"queued": true, "message": "Processing your request...", "queued_request_uuid": "a0816120-7e37-4e8b-8cf3-92deb2cdc133", "queued_request_link": "https://app.hypersender.com/api/whatsapp/v2/{instance}/queued-requests/a0816120-7e37-4e8b-8cf3-92deb2cdc133"}
+    Multiple fields Error:
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+          whatsappInstanceId: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us", "text": "<value>"}
+      responses:
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+    'Single Field error ':
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+          whatsappInstanceId: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us", "text": "<value>"}
+      responses:
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
   whatsapp-sendVideo:
     Example 1:
       parameters:
@@ -2954,99 +3944,26 @@ examples:
           application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
         "500":
           application/json: {"message": "Internal Server Error"}
-  whatsapp-forwardMessage:
+  whatsapp-starMessage:
     Example 1:
       parameters:
         path:
           whatsappInstance: "{{ instance_id }}"
           whatsappInstanceId: "{{ instance_id }}"
       requestBody:
-        application/json: {"chatId": "111111111111@c.us", "messageId": "false_111111111111@c.us_3EB08F6AD2A432386EFA0E"}
-      responses:
-        "201":
-          application/json: {"id": "true_111111111111@c.us_3EB0579E140521570D238F,", "timestamp": 1741395597, "from": "111111111111@c.us,", "fromMe": false, "body": "Hi there!,", "hasMedia": true, "media": {}, "ack": 0, "ackName": "PENDING,", "replyTo": "null,", "_data": {"key": {"remoteJid": "111111111111@s.whatsapp.net,", "fromMe": false, "id": "3EB0579E140521570D238F"}, "message": {"extendedTextMessage": {"text": "Hi there!,", "contextInfo": {"forwardingScore": 1, "isForwarded": true}}}, "messageTimestamp": "1741395597,", "status": "PENDING"}}
-        "500":
-          application/json: {"message": "Server Error"}
-    default:
-      parameters:
-        path:
-          whatsappInstance: "{{ instance_id }}"
-          whatsappInstanceId: "{{ instance_id }}"
-      requestBody:
-        application/json: {"chatId": "111111111111@c.us", "messageId": "<id>"}
+        application/json: {"chatId": "111111111111@c.us", "messageId": "true_111111111111@c.us_3EB08F6AD2A432386EFA0E", "star": true}
       responses:
         "500":
           application/json: {"message": "Server Error"}
-    Multiple fields Error:
+    Example 2:
       parameters:
         path:
           whatsappInstance: "{{ instance_id }}"
           whatsappInstanceId: "{{ instance_id }}"
       requestBody:
-        application/json: {"chatId": "111111111111@c.us", "messageId": "<id>"}
+        application/json: {"chatId": "111111111111@c.us", "messageId": "true_111111111111@c.us_3EB08F6AD2A432386EFA0E", "star": false}
       responses:
-        "422":
-          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
-    'Single Field error ':
-      parameters:
-        path:
-          whatsappInstance: "{{ instance_id }}"
-          whatsappInstanceId: "{{ instance_id }}"
-      requestBody:
-        application/json: {"chatId": "111111111111@c.us", "messageId": "<id>"}
-      responses:
-        "422":
-          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
-  whatsapp-sendSeen:
-    Example 1:
-      parameters:
-        path:
-          whatsappInstance: "{{ instance_id }}"
-          whatsappInstanceId: "{{ instance_id }}"
-      requestBody:
-        application/json: {"chatId": "111111111111@c.us", "messageId": "false_111111111111@c.us_3EB08F6AD2A432386EFA0E", "participant": "111111111111@c.us"}
-      responses:
-        "500":
-          application/json: {"message": "Server Error"}
-    default:
-      parameters:
-        path:
-          whatsappInstance: "{{ instance_id }}"
-          whatsappInstanceId: "{{ instance_id }}"
-      requestBody:
-        application/json: {"chatId": "111111111111@c.us", "messageId": "<id>"}
-      responses:
-        "500":
-          application/json: {"message": "Server Error"}
-    Multiple fields Error:
-      parameters:
-        path:
-          whatsappInstance: "{{ instance_id }}"
-          whatsappInstanceId: "{{ instance_id }}"
-      requestBody:
-        application/json: {"chatId": "111111111111@c.us", "messageId": "<id>"}
-      responses:
-        "422":
-          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
-    'Single Field error ':
-      parameters:
-        path:
-          whatsappInstance: "{{ instance_id }}"
-          whatsappInstanceId: "{{ instance_id }}"
-      requestBody:
-        application/json: {"chatId": "111111111111@c.us", "messageId": "<id>"}
-      responses:
-        "422":
-          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
-    speakeasy-default-whatsapp-send-seen:
-      parameters:
-        path:
-          whatsappInstance: "{{ instance_id }}"
-          whatsappInstanceId: "{{ instance_id }}"
-      requestBody:
-        application/json: {"chatId": "111111111111@c.us", "messageId": "<id>"}
-      responses:
-        "201":
+        "200":
           application/json: {}
         "404":
           application/json: {"message": "Resource not found."}
@@ -3054,32 +3971,13 @@ examples:
           application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
         "500":
           application/json: {"message": "Internal Server Error"}
-  whatsapp-readChat:
-    Example 1:
-      parameters:
-        path:
-          whatsappInstance: "{{ instance_id }}"
-          whatsappInstanceId: "{{ instance_id }}"
-        query:
-          messages: "30"
-          days: "7"
-      requestBody:
-        application/json: {"chatId": "111111111111@c.us"}
-      responses:
-        "201":
-          application/json: {"ids": ["false_11111111111@c.us_AAAAAAAAAAAAAAAAAAAA", "true_99999999999@c.us_AAAAAAAAAAAAAAAAAAAA"]}
-        "500":
-          application/json: {"message": "Server Error"}
     default:
       parameters:
         path:
           whatsappInstance: "{{ instance_id }}"
           whatsappInstanceId: "{{ instance_id }}"
-        query:
-          messages: "30"
-          days: "7"
       requestBody:
-        application/json: {"chatId": "111111111111@c.us"}
+        application/json: {"chatId": "111111111111@c.us", "messageId": "<id>", "star": true}
       responses:
         "500":
           application/json: {"message": "Server Error"}
@@ -3088,11 +3986,8 @@ examples:
         path:
           whatsappInstance: "{{ instance_id }}"
           whatsappInstanceId: "{{ instance_id }}"
-        query:
-          messages: "30"
-          days: "7"
       requestBody:
-        application/json: {"chatId": "111111111111@c.us"}
+        application/json: {"chatId": "111111111111@c.us", "messageId": "<id>", "star": true}
       responses:
         "422":
           application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
@@ -3101,14 +3996,27 @@ examples:
         path:
           whatsappInstance: "{{ instance_id }}"
           whatsappInstanceId: "{{ instance_id }}"
-        query:
-          messages: "30"
-          days: "7"
       requestBody:
-        application/json: {"chatId": "111111111111@c.us"}
+        application/json: {"chatId": "111111111111@c.us", "messageId": "<id>", "star": true}
       responses:
         "422":
           application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+    speakeasy-default-whatsapp-star-message:
+      parameters:
+        path:
+          whatsappInstance: "{{ instance_id }}"
+          whatsappInstanceId: "{{ instance_id }}"
+      requestBody:
+        application/json: {"chatId": "111111111111@c.us", "messageId": "<id>", "star": true}
+      responses:
+        "200":
+          application/json: {}
+        "404":
+          application/json: {"message": "Resource not found."}
+        "422":
+          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
+        "500":
+          application/json: {"message": "Internal Server Error"}
   whatsapp-startTyping:
     Example 1:
       parameters:
@@ -3223,420 +4131,6 @@ examples:
           application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
         "500":
           application/json: {"message": "Internal Server Error"}
-  whatsapp-sendPoll:
-    Example 1:
-      parameters:
-        path:
-          whatsappInstance: "{{ instance_id }}"
-          whatsappInstanceId: "{{ instance_id }}"
-      requestBody:
-        application/json: {"chatId": "1111111111111@c.us", "reply_to": "string", "poll": {"name": "How are you?", "options": ["Awesome!", "Good!", "Not bad!"], "multipleAnswers": true}}
-      responses:
-        "201":
-          application/json: {"id": "true_11111111111@c.us_3EB0A4F993D38D3BBD04F3", "timestamp": 1741448369, "from": "11111111111@c.us", "fromMe": true, "body": "<value>", "hasMedia": false, "media": {}, "ack": 0, "ackName": "PENDING", "replyTo": "<value>", "_data": {"key": {"remoteJid": "11111111111@s.whatsapp.net", "fromMe": true, "id": "3EB0A4F993D38D3BBD04F3"}, "message": {"messageContextInfo": {"messageSecret": "VrTaj/wh+/lyIUdBi8TV4JCpbNK1Dd54SNZHH8vR2x0="}, "pollCreationMessageV3": {"name": "Sample Poll", "options": [{"optionName": "Option 1"}, {"optionName": "Option 2"}, {"optionName": "Option 3"}], "selectableOptionsCount": 1}}, "messageTimestamp": "1741448369", "status": "PENDING"}}
-    Example 2:
-      parameters:
-        path:
-          whatsappInstance: "{{ instance_id }}"
-          whatsappInstanceId: "{{ instance_id }}"
-      requestBody:
-        application/json: {"chatId": "1111111111111@c.us", "reply_to": "string", "poll": {"name": "How are you?", "options": ["Awesome!", "Good!", "Not bad!"], "multipleAnswers": false}}
-      responses:
-        "201":
-          application/json: {}
-        "422":
-          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
-        "500":
-          application/json: {"message": "Internal Server Error"}
-    default:
-      parameters:
-        path:
-          whatsappInstance: "{{ instance_id }}"
-          whatsappInstanceId: "{{ instance_id }}"
-      requestBody:
-        application/json: {"chatId": "1111111111111@c.us", "poll": {}}
-      responses:
-        "201":
-          application/json: {}
-        "422":
-          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
-        "500":
-          application/json: {"message": "Internal Server Error"}
-  whatsapp-sendContactCard:
-    Example 1:
-      parameters:
-        path:
-          whatsappInstance: "{{ instance_id }}"
-          whatsappInstanceId: "{{ instance_id }}"
-      requestBody:
-        application/json: {"chatId": "1111111111111@c.us", "contacts": [{"vcard": "BEGIN:VCARD\\nVERSION:3.0\\nFN:Jane Doe\\nORG:Company Name;\\nTEL;type=CELL;type=VOICE;waid=911111111111:+11111111111111\\nEND:VCARD", "organization": "Hypersender", "whatsappId": "911111111111"}]}
-      responses:
-        "201":
-          application/json: {}
-        "422":
-          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
-        "500":
-          application/json: {"message": "Internal Server Error"}
-    Example 2:
-      parameters:
-        path:
-          whatsappInstance: "{{ instance_id }}"
-          whatsappInstanceId: "{{ instance_id }}"
-      requestBody:
-        application/json: {"chatId": "1111111111111@c.us", "contacts": [{"vcard": "<value>", "fullName": "John Doe", "organization": "Hypersender", "phoneNumber": "111111111111", "whatsappId": "911111111111"}]}
-      responses:
-        "201":
-          application/json: {}
-        "422":
-          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
-        "500":
-          application/json: {"message": "Internal Server Error"}
-    default:
-      parameters:
-        path:
-          whatsappInstance: "{{ instance_id }}"
-          whatsappInstanceId: "{{ instance_id }}"
-      requestBody:
-        application/json: {"chatId": "1111111111111@c.us", "contacts": []}
-      responses:
-        "201":
-          application/json: {}
-        "422":
-          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
-        "500":
-          application/json: {"message": "Internal Server Error"}
-    speakeasy-default-whatsapp-send-contact-card:
-      parameters:
-        path:
-          whatsappInstance: "{{ instance_id }}"
-          whatsappInstanceId: "{{ instance_id }}"
-      requestBody:
-        application/json: {"chatId": "1111111111111@c.us", "contacts": []}
-      responses:
-        "201":
-          application/json: {}
-        "422":
-          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
-        "500":
-          application/json: {"message": "Internal Server Error"}
-  whatsapp-sendLocation:
-    Example 1:
-      parameters:
-        path:
-          whatsappInstance: "{{ instance_id }}"
-          whatsappInstanceId: "{{ instance_id }}"
-      requestBody:
-        application/json: {"chatId": "111111111111@c.us", "latitude": 38.8937255, "longitude": -77.0969763, "title": "Our office", "reply_to": "string"}
-      responses:
-        "201":
-          application/json: {"key": {"remoteJid": "111111111@s.whatsapp.net,", "fromMe": true, "id": "3EB0CD3810439716606547"}, "message": {"locationMessage": {"degreesLatitude": 38.8937255, "degreesLongitude": -77.0969763}}, "messageTimestamp": "1741359489", "status": "PENDING"}
-        "500":
-          application/json: {"message": "Server Error"}
-    default:
-      parameters:
-        path:
-          whatsappInstance: "{{ instance_id }}"
-          whatsappInstanceId: "{{ instance_id }}"
-      requestBody:
-        application/json: {"chatId": "111111111111@c.us", "latitude": 1236.2, "longitude": 4385.3}
-      responses:
-        "500":
-          application/json: {"message": "Server Error"}
-    Multiple fields Error:
-      parameters:
-        path:
-          whatsappInstance: "{{ instance_id }}"
-          whatsappInstanceId: "{{ instance_id }}"
-      requestBody:
-        application/json: {"chatId": "111111111111@c.us", "latitude": 1236.2, "longitude": 4385.3}
-      responses:
-        "422":
-          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
-    'Single Field error ':
-      parameters:
-        path:
-          whatsappInstance: "{{ instance_id }}"
-          whatsappInstanceId: "{{ instance_id }}"
-      requestBody:
-        application/json: {"chatId": "111111111111@c.us", "latitude": 1236.2, "longitude": 4385.3}
-      responses:
-        "422":
-          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
-  whatsapp-reactToMessage:
-    Example 1:
-      parameters:
-        path:
-          whatsappInstance: "{{ instance_id }}"
-          whatsappInstanceId: "{{ instance_id }}"
-      requestBody:
-        application/json: {"chatId": "111111111111@c.us", "messageId": "false_111111111111@c.us_3EB08F6AD2A432386EFA0E", "reaction": "\U0001F44D"}
-      responses:
-        "201":
-          application/json: {"key": {"remoteJid": "1111111111@s.whatsapp.net", "fromMe": true, "id": "3EB089F063C03E43EECE9D"}, "message": {"reactionMessage": {"key": {"remoteJid": "1111111111@s.whatsapp.net", "fromMe": false, "id": "3EB08F6AD2A432386EFA0E"}, "text": "\U0001F44D", "senderTimestampMs": "1741410470848"}}, "messageTimestamp": "1741390160", "status": "PENDING"}
-    Example 2:
-      parameters:
-        path:
-          whatsappInstance: "{{ instance_id }}"
-          whatsappInstanceId: "{{ instance_id }}"
-      requestBody:
-        application/json: {"chatId": "111111111111@c.us", "messageId": "false_111111111111@c.us_3EB08F6AD2A432386EFA0E", "reaction": ""}
-      responses:
-        "201":
-          application/json: {}
-        "422":
-          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
-        "500":
-          application/json: {"message": "Internal Server Error"}
-    default:
-      parameters:
-        path:
-          whatsappInstance: "{{ instance_id }}"
-          whatsappInstanceId: "{{ instance_id }}"
-      requestBody:
-        application/json: {"chatId": "111111111111@c.us"}
-      responses:
-        "201":
-          application/json: {}
-        "422":
-          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
-        "500":
-          application/json: {"message": "Internal Server Error"}
-  whatsapp-starMessage:
-    Example 1:
-      parameters:
-        path:
-          whatsappInstance: "{{ instance_id }}"
-          whatsappInstanceId: "{{ instance_id }}"
-      requestBody:
-        application/json: {"chatId": "111111111111@c.us", "messageId": "true_111111111111@c.us_3EB08F6AD2A432386EFA0E", "star": true}
-      responses:
-        "500":
-          application/json: {"message": "Server Error"}
-    Example 2:
-      parameters:
-        path:
-          whatsappInstance: "{{ instance_id }}"
-          whatsappInstanceId: "{{ instance_id }}"
-      requestBody:
-        application/json: {"chatId": "111111111111@c.us", "messageId": "true_111111111111@c.us_3EB08F6AD2A432386EFA0E", "star": false}
-      responses:
-        "200":
-          application/json: {}
-        "404":
-          application/json: {"message": "Resource not found."}
-        "422":
-          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
-        "500":
-          application/json: {"message": "Internal Server Error"}
-    default:
-      parameters:
-        path:
-          whatsappInstance: "{{ instance_id }}"
-          whatsappInstanceId: "{{ instance_id }}"
-      requestBody:
-        application/json: {"chatId": "111111111111@c.us", "messageId": "<id>", "star": true}
-      responses:
-        "500":
-          application/json: {"message": "Server Error"}
-    Multiple fields Error:
-      parameters:
-        path:
-          whatsappInstance: "{{ instance_id }}"
-          whatsappInstanceId: "{{ instance_id }}"
-      requestBody:
-        application/json: {"chatId": "111111111111@c.us", "messageId": "<id>", "star": true}
-      responses:
-        "422":
-          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
-    'Single Field error ':
-      parameters:
-        path:
-          whatsappInstance: "{{ instance_id }}"
-          whatsappInstanceId: "{{ instance_id }}"
-      requestBody:
-        application/json: {"chatId": "111111111111@c.us", "messageId": "<id>", "star": true}
-      responses:
-        "422":
-          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
-    speakeasy-default-whatsapp-star-message:
-      parameters:
-        path:
-          whatsappInstance: "{{ instance_id }}"
-          whatsappInstanceId: "{{ instance_id }}"
-      requestBody:
-        application/json: {"chatId": "111111111111@c.us", "messageId": "<id>", "star": true}
-      responses:
-        "200":
-          application/json: {}
-        "404":
-          application/json: {"message": "Resource not found."}
-        "422":
-          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
-        "500":
-          application/json: {"message": "Internal Server Error"}
-  whatsapp-deleteMessage:
-    default:
-      parameters:
-        path:
-          whatsappInstance: "{{ instance_id }}"
-          whatsappInstanceId: "{{ instance_id }}"
-        query:
-          chatId: "111111111111@c.us"
-          messageId: "true_111111111111@c.us_3EB05B8C1E4"
-      responses:
-        "500":
-          application/json: {"message": "Server Error"}
-    Example 1:
-      parameters:
-        path:
-          whatsappInstance: "{{ instance_id }}"
-          whatsappInstanceId: "{{ instance_id }}"
-        query:
-          chatId: "111111111111@c.us"
-          messageId: "<id>"
-      responses:
-        "201":
-          application/json: {"key": {"remoteJid": "111111111111@s.whatsapp.net", "fromMe": true, "id": "3EB0E474C76F33528463B1"}, "message": {"protocolMessage": {"key": {"remoteJid": "111111111111@s.whatsapp.net", "fromMe": true, "id": "3EB05B8C1E491431AEAA9A"}, "type": "REVOKE"}}, "messageTimestamp": "1749413855", "status": "PENDING"}
-        "500":
-          application/json: {"message": "Server Error"}
-    Multiple fields Error:
-      parameters:
-        path:
-          whatsappInstance: "{{ instance_id }}"
-          whatsappInstanceId: "{{ instance_id }}"
-        query:
-          chatId: "111111111111@c.us"
-          messageId: "<id>"
-      responses:
-        "422":
-          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
-    'Single Field error ':
-      parameters:
-        path:
-          whatsappInstance: "{{ instance_id }}"
-          whatsappInstanceId: "{{ instance_id }}"
-        query:
-          chatId: "111111111111@c.us"
-          messageId: "<id>"
-      responses:
-        "422":
-          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
-  whatsapp-checkContactExists:
-    Existing Contact:
-      parameters:
-        path:
-          whatsappInstance: "{{ instance_id }}"
-          whatsappInstanceId: "{{ instance_id }}"
-      requestBody:
-        application/json: {"phone": "20123456789"}
-      responses:
-        "200":
-          application/json: {"numberExists": true, "chatId": "20123456789@c.us"}
-    Non-existing Contact:
-      parameters:
-        path:
-          whatsappInstance: "{{ instance_id }}"
-          whatsappInstanceId: "{{ instance_id }}"
-      requestBody:
-        application/json: {"phone": "20123456789"}
-      responses:
-        "200":
-          application/json: {"numberExists": false, "chatId": null}
-  whatsapp-getAllKnownLids:
-    Default:
-      parameters:
-        path:
-          whatsappInstance: "{{ instance_id }}"
-          whatsappInstanceId: "{{ instance_id }}"
-        query:
-          limit: 100
-          offset: 0
-      responses:
-        "200":
-          application/json: [{"lid": "1111111@lid", "pn": "3333333@c.us"}, {"lid": "2222222@lid", "pn": "4444444@c.us"}]
-  whatsapp-getAllContacts:
-    speakeasy-default-whatsapp-get-all-contacts:
-      parameters:
-        path:
-          whatsappInstance: "{{ instance_id }}"
-          whatsappInstanceId: "{{ instance_id }}"
-        query:
-          limit: 100
-          offset: 0
-          sort_by: "name"
-          sort_order: "asc"
-      responses:
-        "200":
-          application/json: {"message": "Contacts retrieved successfully.", "data": [{"id": "100875997589545@lid", "name": "Maria", "pushname": "Maria Doe"}]}
-        "404":
-          application/json: {"message": "Resource not found."}
-        "500":
-          application/json: {"message": "Internal Server Error"}
-  whatsapp-getLidsCount:
-    Default:
-      parameters:
-        path:
-          whatsappInstance: "{{ instance_id }}"
-          whatsappInstanceId: "{{ instance_id }}"
-      responses:
-        "200":
-          application/json: {"count": 123}
-  whatsapp-getPhoneNumberByLid:
-    Default:
-      parameters:
-        path:
-          whatsappInstance: "{{ instance_id }}"
-          whatsappInstanceId: "{{ instance_id }}"
-        query:
-          lid: "1111111@lid"
-      responses:
-        "200":
-          application/json: {"lid": "1111111@lid", "pn": "3333333@c.us"}
-  whatsapp-getContact:
-    speakeasy-default-whatsapp-get-contact:
-      parameters:
-        path:
-          whatsappInstance: "{{ instance_id }}"
-          whatsappInstanceId: "{{ instance_id }}"
-        query:
-          chat_id: "100875997589545@lid"
-      responses:
-        "200":
-          application/json: {"message": "Contact retrieved successfully.", "data": {"id": "100875997589545@lid", "name": "Maria", "pushname": "Maria Doe"}}
-        "404":
-          application/json: {"message": "Resource not found."}
-        "422":
-          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
-        "500":
-          application/json: {"message": "Internal Server Error"}
-  whatsapp-getLidByPhoneNumber:
-    Default:
-      parameters:
-        path:
-          whatsappInstance: "{{ instance_id }}"
-          whatsappInstanceId: "{{ instance_id }}"
-        query:
-          phoneNumber: "3333333@c.us"
-      responses:
-        "200":
-          application/json: {"lid": "1111111@lid", "pn": "3333333@c.us"}
-  whatsapp-getProfilePicture:
-    speakeasy-default-whatsapp-get-profile-picture:
-      parameters:
-        path:
-          whatsappInstance: "{{ instance_id }}"
-          whatsappInstanceId: "{{ instance_id }}"
-        query:
-          chat_id: "100875997589545@lid"
-      responses:
-        "200":
-          application/json: {"message": "Profile picture retrieved successfully.", "data": {"profilePictureURL": "https://pps.whatsapp.net/v/t61.24694-24/374498176_337577482181161_7091117586184162691_n.jpg?ccb=11-4&oh=01_Q5Aa3gEERUGD4fegyplSv2MnHmt_UIA9JnpjREhSJMNVWZC-RA&oe=6970FAAA&_nc_sid=5e03e0&_nc_cat=104"}}
-        "404":
-          application/json: {"message": "Resource not found."}
-        "422":
-          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
-        "500":
-          application/json: {"message": "Internal Server Error"}
   whatsapp-upsertContact:
     speakeasy-default-whatsapp-upsert-contact:
       parameters:
@@ -3654,500 +4148,4 @@ examples:
           application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
         "500":
           application/json: {"message": "Internal Server Error"}
-  sms-send-message:
-    Send now:
-      parameters:
-        path:
-          smsInstance: "{{ instance_id }}"
-          smsInstanceId: "{{ instance_id }}"
-      requestBody:
-        application/json: {"to": "+12025550147", "content": "Acme code: 482913", "request_id": "order-1042-otp", "message_expiration_seconds": 600}
-      responses:
-        "200":
-          application/json: {"data": {"tags": ["otp"]}}
-        "400":
-          application/json: {"message": "<value>"}
-        "500":
-          application/json: {"message": "<value>"}
-    Schedule:
-      parameters:
-        path:
-          smsInstance: "{{ instance_id }}"
-          smsInstanceId: "{{ instance_id }}"
-      requestBody:
-        application/json: {"to": "+12025550147", "content": "Your appointment is tomorrow at 10:00.", "request_id": "appointment-reminder-2231", "schedule_send_at": "2026-11-20 09:30:00"}
-      responses:
-        "200":
-          application/json: {"data": {"tags": ["otp"]}}
-        "400":
-          application/json: {"message": "<value>"}
-        "500":
-          application/json: {"message": "<value>"}
-    default:
-      parameters:
-        path:
-          smsInstance: "{{ instance_id }}"
-          smsInstanceId: "{{ instance_id }}"
-      requestBody:
-        application/json: {"to": "+12025550147", "content": "Acme code: 482913", "request_id": "order-1042-otp", "schedule_send_at": "2026-11-20 09:30:00", "max_send_attempts": 3, "message_expiration_seconds": 600}
-      responses:
-        "200":
-          application/json: {"data": {"tags": ["otp"]}}
-        "400":
-          application/json: {"message": "<value>"}
-        "500":
-          application/json: {"message": "<value>"}
-    Retry of an existing message:
-      parameters:
-        path:
-          smsInstance: "{{ instance_id }}"
-          smsInstanceId: "{{ instance_id }}"
-      requestBody:
-        application/json: {"to": "+12025550147", "content": "Acme code: 482913", "request_id": "order-1042-otp", "schedule_send_at": "2026-11-20 09:30:00", "max_send_attempts": 3, "message_expiration_seconds": 600}
-      responses:
-        "200":
-          application/json: {"message": "A message with this request_id already exists.", "data": {"id": "9f8b7c6d-3333-4a2b-8c3d-4e5f6a7b8c9d", "request_id": "order-1042-otp", "message_thread_id": "9f8b7c6d-4444-4a2b-8c3d-4e5f6a7b8c9d", "phone_id": "9f8b7c6d-1111-4a2b-8c3d-4e5f6a7b8c9d", "from_phone_number": "+12025550101", "to_phone_number": "+12025550147", "content": "Acme code: 482913", "tags": [], "send_duration": null, "schedule_on_phone_at": "2026-11-19 10:00:01", "sent_at": "2026-11-19 10:00:04", "last_attempted_at": "2026-11-19 10:00:01", "delivered_at": null, "received_at": null, "expired_at": null, "schedule_send_at": null, "failed_at": null, "send_attempt_count": 1, "max_send_attempts": 3, "failure_reason": null, "ussd_message": null, "message_expiration_seconds": 600, "timezone": "UTC", "sim": "SIM1", "status": "sent", "type": "sent_to_mobile", "created_at": "2026-11-19 10:00:00", "updated_at": "2026-11-19 10:00:04"}}
-    SMS service unreachable:
-      parameters:
-        path:
-          smsInstance: "{{ instance_id }}"
-          smsInstanceId: "{{ instance_id }}"
-      requestBody:
-        application/json: {"to": "+12025550147", "content": "Acme code: 482913", "request_id": "order-1042-otp", "schedule_send_at": "2026-11-20 09:30:00", "max_send_attempts": 3, "message_expiration_seconds": 600}
-      responses:
-        "400":
-          application/json: {"message": "Something went wrong, try again later"}
-        "500":
-          application/json: {"message": "Something went wrong, try again later"}
-  sms-heartbeats:
-    default:
-      parameters:
-        path:
-          smsInstance: "{{ instance_id }}"
-          smsInstanceId: "{{ instance_id }}"
-      responses:
-        "200":
-          application/json: {}
-        "400":
-          application/json: {"message": "<value>"}
-        "500":
-          application/json: {"message": "<value>"}
-    Heartbeats:
-      parameters:
-        path:
-          smsInstance: "{{ instance_id }}"
-          smsInstanceId: "{{ instance_id }}"
-      responses:
-        "200":
-          application/json: {"data": [{"id": "9f8b7c6d-5555-4a2b-8c3d-4e5f6a7b8c9d", "phone_id": "9f8b7c6d-1111-4a2b-8c3d-4e5f6a7b8c9d", "battery_level": 87, "is_charging": true, "local_timestamp": "2026-11-19 09:55:00", "app_version": "1.50.0", "created_at": "2026-11-19 09:55:01", "updated_at": "2026-11-19 09:55:01"}], "links": {"first": "https://app.hypersender.com/api/sms/v1/9f8b7c6d-1111-4a2b-8c3d-4e5f6a7b8c9d/heartbeats?page=1", "last": "https://app.hypersender.com/api/sms/v1/9f8b7c6d-1111-4a2b-8c3d-4e5f6a7b8c9d/heartbeats?page=1", "prev": null, "next": null}, "meta": {"current_page": 1, "from": 1, "last_page": 1, "links": [{"url": null, "label": "&laquo; Previous", "page": null, "active": false}, {"url": "https://app.hypersender.com/api/sms/v1/9f8b7c6d-1111-4a2b-8c3d-4e5f6a7b8c9d/heartbeats?page=1", "label": "1", "page": 1, "active": true}, {"url": null, "label": "Next &raquo;", "page": null, "active": false}], "path": "https://app.hypersender.com/api/sms/v1/9f8b7c6d-1111-4a2b-8c3d-4e5f6a7b8c9d/heartbeats", "per_page": 50, "to": 1, "total": 1}}
-    Unknown filter:
-      parameters:
-        path:
-          smsInstance: "{{ instance_id }}"
-          smsInstanceId: "{{ instance_id }}"
-      responses:
-        "400":
-          application/json: {"message": "Requested filter(s) `battery` are not allowed. Allowed filter(s) are `app_version, battery_level, is_charging, local_timestamp, created_at, updated_at`.", "errors": null, "statusCode": 400}
-        "500":
-          application/json: {"message": "Requested filter(s) `battery` are not allowed. Allowed filter(s) are `app_version, battery_level, is_charging, local_timestamp, created_at, updated_at`.", "errors": null, "statusCode": 400}
-    SMS service unreachable:
-      parameters:
-        path:
-          smsInstance: "{{ instance_id }}"
-          smsInstanceId: "{{ instance_id }}"
-      responses:
-        "400":
-          application/json: {"message": "Something went wrong, try again later"}
-        "500":
-          application/json: {"message": "Something went wrong, try again later"}
-  sms-index-messages:
-    default:
-      parameters:
-        path:
-          smsInstance: "{{ instance_id }}"
-          smsInstanceId: "{{ instance_id }}"
-      responses:
-        "200":
-          application/json: {"data": [{"tags": ["otp"]}]}
-        "400":
-          application/json: {"message": "<value>"}
-        "500":
-          application/json: {"message": "<value>"}
-    Messages:
-      parameters:
-        path:
-          smsInstance: "{{ instance_id }}"
-          smsInstanceId: "{{ instance_id }}"
-      responses:
-        "200":
-          application/json: {"data": [{"id": "9f8b7c6d-6666-4a2b-8c3d-4e5f6a7b8c9d", "request_id": "5b0e6c1a-2f4d-4e8b-9a7c-3d2e1f0a9b8c", "message_thread_id": "9f8b7c6d-8888-4a2b-8c3d-4e5f6a7b8c9d", "phone_id": "9f8b7c6d-1111-4a2b-8c3d-4e5f6a7b8c9d", "from_phone_number": "+12025550188", "to_phone_number": "+12025550101", "content": "Your bank code is 731205. Do not share it.", "tags": ["otp", "bank"], "send_duration": null, "schedule_on_phone_at": null, "sent_at": null, "last_attempted_at": null, "delivered_at": null, "received_at": "2026-11-19 10:05:12", "expired_at": null, "schedule_send_at": null, "failed_at": null, "send_attempt_count": null, "max_send_attempts": 3, "failure_reason": null, "ussd_message": null, "message_expiration_seconds": 0, "timezone": "UTC", "sim": "SIM1", "status": "received", "type": "received_from_mobile", "created_at": "2026-11-19 10:05:13", "updated_at": "2026-11-19 10:05:13"}, {"id": "9f8b7c6d-3333-4a2b-8c3d-4e5f6a7b8c9d", "request_id": "order-1042-otp", "message_thread_id": "9f8b7c6d-4444-4a2b-8c3d-4e5f6a7b8c9d", "phone_id": "9f8b7c6d-1111-4a2b-8c3d-4e5f6a7b8c9d", "from_phone_number": "+12025550101", "to_phone_number": "+12025550147", "content": "Acme code: 482913", "tags": [], "send_duration": null, "schedule_on_phone_at": "2026-11-19 10:00:01", "sent_at": "2026-11-19 10:00:04", "last_attempted_at": "2026-11-19 10:00:01", "delivered_at": "2026-11-19 10:00:09", "received_at": null, "expired_at": null, "schedule_send_at": null, "failed_at": null, "send_attempt_count": 1, "max_send_attempts": 3, "failure_reason": null, "ussd_message": null, "message_expiration_seconds": 600, "timezone": "UTC", "sim": "SIM1", "status": "delivered", "type": "sent_to_mobile", "created_at": "2026-11-19 10:00:00", "updated_at": "2026-11-19 10:00:09"}], "links": {"first": "https://app.hypersender.com/api/sms/v1/9f8b7c6d-1111-4a2b-8c3d-4e5f6a7b8c9d/messages?page=1", "last": "https://app.hypersender.com/api/sms/v1/9f8b7c6d-1111-4a2b-8c3d-4e5f6a7b8c9d/messages?page=1", "prev": null, "next": null}, "meta": {"current_page": 1, "from": 1, "last_page": 1, "links": [{"url": null, "label": "&laquo; Previous", "page": null, "active": false}, {"url": "https://app.hypersender.com/api/sms/v1/9f8b7c6d-1111-4a2b-8c3d-4e5f6a7b8c9d/messages?page=1", "label": "1", "page": 1, "active": true}, {"url": null, "label": "Next &raquo;", "page": null, "active": false}], "path": "https://app.hypersender.com/api/sms/v1/9f8b7c6d-1111-4a2b-8c3d-4e5f6a7b8c9d/messages", "per_page": 50, "to": 2, "total": 2}}
-    Unknown filter:
-      parameters:
-        path:
-          smsInstance: "{{ instance_id }}"
-          smsInstanceId: "{{ instance_id }}"
-      responses:
-        "400":
-          application/json: {"message": "Requested filter(s) `phone` are not allowed. Allowed filter(s) are `request_id, message_thread_id, from_phone_number, to_phone_number, content, status, type, delivered_at, received_at, expired_at, failed_at, schedule_send_at, created_at, updated_at`.", "errors": null, "statusCode": 400}
-        "500":
-          application/json: {"message": "Requested filter(s) `phone` are not allowed. Allowed filter(s) are `request_id, message_thread_id, from_phone_number, to_phone_number, content, status, type, delivered_at, received_at, expired_at, failed_at, schedule_send_at, created_at, updated_at`.", "errors": null, "statusCode": 400}
-    SMS service unreachable:
-      parameters:
-        path:
-          smsInstance: "{{ instance_id }}"
-          smsInstanceId: "{{ instance_id }}"
-      responses:
-        "400":
-          application/json: {"message": "Something went wrong, try again later"}
-        "500":
-          application/json: {"message": "Something went wrong, try again later"}
-  sms-delete-message:
-    default:
-      parameters:
-        path:
-          smsInstance: "{{ instance_id }}"
-          smsInstanceId: "{{ instance_id }}"
-        query:
-          messageId: "9f8b7c6d-3333-4a2b-8c3d-4e5f6a7b8c9d"
-      responses:
-        "401":
-          application/json: {"message": "<value>"}
-        "500":
-          application/json: {"message": "<value>"}
-    speakeasy-default-sms-delete-message:
-      parameters:
-        path:
-          smsInstance: "{{ instance_id }}"
-          smsInstanceId: "{{ instance_id }}"
-        query:
-          messageId: "9f8b7c6d-3333-4a2b-8c3d-4e5f6a7b8c9d"
-      responses:
-        "401":
-          application/json: {"message": "<value>"}
-        "500":
-          application/json: {"message": "<value>"}
-    Invalid token:
-      parameters:
-        path:
-          smsInstance: "{{ instance_id }}"
-          smsInstanceId: "{{ instance_id }}"
-        query:
-          messageId: "9f8b7c6d-3333-4a2b-8c3d-4e5f6a7b8c9d"
-      responses:
-        "401":
-          application/json: {"message": "The Bearer token is not valid please check the token and try again."}
-        "500":
-          application/json: {"message": "The Bearer token is not valid please check the token and try again."}
-    Expired token:
-      parameters:
-        path:
-          smsInstance: "{{ instance_id }}"
-          smsInstanceId: "{{ instance_id }}"
-        query:
-          messageId: "9f8b7c6d-3333-4a2b-8c3d-4e5f6a7b8c9d"
-      responses:
-        "401":
-          application/json: {"message": "Expired token, please refresh the token."}
-        "500":
-          application/json: {"message": "Expired token, please refresh the token."}
-  sms-message-threads:
-    default:
-      parameters:
-        path:
-          smsInstance: "{{ instance_id }}"
-          smsInstanceId: "{{ instance_id }}"
-      responses:
-        "200":
-          application/json: {}
-        "400":
-          application/json: {"message": "<value>"}
-        "500":
-          application/json: {"message": "<value>"}
-    Threads:
-      parameters:
-        path:
-          smsInstance: "{{ instance_id }}"
-          smsInstanceId: "{{ instance_id }}"
-      responses:
-        "200":
-          application/json: {"data": [{"id": "9f8b7c6d-4444-4a2b-8c3d-4e5f6a7b8c9d", "phone_id": "9f8b7c6d-1111-4a2b-8c3d-4e5f6a7b8c9d", "last_message_id": "9f8b7c6d-3333-4a2b-8c3d-4e5f6a7b8c9d", "from_phone_number": "+12025550101", "to_phone_number": "+12025550147", "is_archived": false, "last_message_content": "Acme code: 482913", "last_message_at": "2026-11-19 10:00:01", "created_at": "2026-11-02 14:20:00", "updated_at": "2026-11-19 10:00:01"}], "links": {"first": "https://app.hypersender.com/api/sms/v1/9f8b7c6d-1111-4a2b-8c3d-4e5f6a7b8c9d/message-threads?page=1", "last": "https://app.hypersender.com/api/sms/v1/9f8b7c6d-1111-4a2b-8c3d-4e5f6a7b8c9d/message-threads?page=1", "prev": null, "next": null}, "meta": {"current_page": 1, "from": 1, "last_page": 1, "links": [{"url": null, "label": "&laquo; Previous", "page": null, "active": false}, {"url": "https://app.hypersender.com/api/sms/v1/9f8b7c6d-1111-4a2b-8c3d-4e5f6a7b8c9d/message-threads?page=1", "label": "1", "page": 1, "active": true}, {"url": null, "label": "Next &raquo;", "page": null, "active": false}], "path": "https://app.hypersender.com/api/sms/v1/9f8b7c6d-1111-4a2b-8c3d-4e5f6a7b8c9d/message-threads", "per_page": 50, "to": 1, "total": 1}}
-    Unknown filter:
-      parameters:
-        path:
-          smsInstance: "{{ instance_id }}"
-          smsInstanceId: "{{ instance_id }}"
-      responses:
-        "400":
-          application/json: {"message": "Requested filter(s) `status` are not allowed. Allowed filter(s) are `last_message_content, is_archived, last_message_id, from_or_to_number`.", "errors": null, "statusCode": 400}
-        "500":
-          application/json: {"message": "Requested filter(s) `status` are not allowed. Allowed filter(s) are `last_message_content, is_archived, last_message_id, from_or_to_number`.", "errors": null, "statusCode": 400}
-    SMS service unreachable:
-      parameters:
-        path:
-          smsInstance: "{{ instance_id }}"
-          smsInstanceId: "{{ instance_id }}"
-      responses:
-        "400":
-          application/json: {"message": "Something went wrong, try again later"}
-        "500":
-          application/json: {"message": "Something went wrong, try again later"}
-  sms-edit-message-thread:
-    Archive:
-      parameters:
-        path:
-          smsInstance: "{{ instance_id }}"
-          smsInstanceId: "{{ instance_id }}"
-      requestBody:
-        application/json: {"messageThreadId": "9f8b7c6d-4444-4a2b-8c3d-4e5f6a7b8c9d", "is_archived": true}
-      responses:
-        "200":
-          application/json: {}
-        "401":
-          application/json: {"message": "<value>"}
-        "500":
-          application/json: {"message": "<value>"}
-    default:
-      parameters:
-        path:
-          smsInstance: "{{ instance_id }}"
-          smsInstanceId: "{{ instance_id }}"
-      requestBody:
-        application/json: {"messageThreadId": "9f8b7c6d-4444-4a2b-8c3d-4e5f6a7b8c9d", "is_archived": true}
-      responses:
-        "200":
-          application/json: {}
-        "401":
-          application/json: {"message": "<value>"}
-        "500":
-          application/json: {"message": "<value>"}
-    Archived:
-      parameters:
-        path:
-          smsInstance: "{{ instance_id }}"
-          smsInstanceId: "{{ instance_id }}"
-      requestBody:
-        application/json: {"messageThreadId": "9f8b7c6d-4444-4a2b-8c3d-4e5f6a7b8c9d", "is_archived": true}
-      responses:
-        "200":
-          application/json: {"message": "Message thread updated successfully", "data": {"id": "9f8b7c6d-4444-4a2b-8c3d-4e5f6a7b8c9d", "phone_id": "9f8b7c6d-1111-4a2b-8c3d-4e5f6a7b8c9d", "last_message_id": "9f8b7c6d-3333-4a2b-8c3d-4e5f6a7b8c9d", "from_phone_number": "+12025550101", "to_phone_number": "+12025550147", "is_archived": true, "last_message_content": "Acme code: 482913", "last_message_at": "2026-11-19 10:00:01", "created_at": "2026-11-02 14:20:00", "updated_at": "2026-11-19 10:30:00"}}
-    Invalid token:
-      parameters:
-        path:
-          smsInstance: "{{ instance_id }}"
-          smsInstanceId: "{{ instance_id }}"
-      requestBody:
-        application/json: {"messageThreadId": "9f8b7c6d-4444-4a2b-8c3d-4e5f6a7b8c9d", "is_archived": true}
-      responses:
-        "401":
-          application/json: {"message": "The Bearer token is not valid please check the token and try again."}
-        "500":
-          application/json: {"message": "The Bearer token is not valid please check the token and try again."}
-    Expired token:
-      parameters:
-        path:
-          smsInstance: "{{ instance_id }}"
-          smsInstanceId: "{{ instance_id }}"
-      requestBody:
-        application/json: {"messageThreadId": "9f8b7c6d-4444-4a2b-8c3d-4e5f6a7b8c9d", "is_archived": true}
-      responses:
-        "401":
-          application/json: {"message": "Expired token, please refresh the token."}
-        "500":
-          application/json: {"message": "Expired token, please refresh the token."}
-  sms-delete-message-thread:
-    default:
-      parameters:
-        path:
-          smsInstance: "{{ instance_id }}"
-          smsInstanceId: "{{ instance_id }}"
-        query:
-          messageThreadId: "9f8b7c6d-4444-4a2b-8c3d-4e5f6a7b8c9d"
-      responses:
-        "401":
-          application/json: {"message": "<value>"}
-        "500":
-          application/json: {"message": "<value>"}
-    speakeasy-default-sms-delete-message-thread:
-      parameters:
-        path:
-          smsInstance: "{{ instance_id }}"
-          smsInstanceId: "{{ instance_id }}"
-        query:
-          messageThreadId: "9f8b7c6d-4444-4a2b-8c3d-4e5f6a7b8c9d"
-      responses:
-        "401":
-          application/json: {"message": "<value>"}
-        "500":
-          application/json: {"message": "<value>"}
-    Invalid token:
-      parameters:
-        path:
-          smsInstance: "{{ instance_id }}"
-          smsInstanceId: "{{ instance_id }}"
-        query:
-          messageThreadId: "9f8b7c6d-4444-4a2b-8c3d-4e5f6a7b8c9d"
-      responses:
-        "401":
-          application/json: {"message": "The Bearer token is not valid please check the token and try again."}
-        "500":
-          application/json: {"message": "The Bearer token is not valid please check the token and try again."}
-    Expired token:
-      parameters:
-        path:
-          smsInstance: "{{ instance_id }}"
-          smsInstanceId: "{{ instance_id }}"
-        query:
-          messageThreadId: "9f8b7c6d-4444-4a2b-8c3d-4e5f6a7b8c9d"
-      responses:
-        "401":
-          application/json: {"message": "Expired token, please refresh the token."}
-        "500":
-          application/json: {"message": "Expired token, please refresh the token."}
-  otp-requestCode:
-    request:
-      parameters:
-        path:
-          otpInstance: "{{ instance_id }}"
-          otpInstanceId: "{{ instance_id }}"
-      requestBody:
-        application/json: {"chatId": "20123456789@c.us", "length": 6, "useLetter": false, "useNumber": true, "allCapital": false, "name": "hypersender", "expires": 1800}
-      responses:
-        "200":
-          application/json: {}
-    speakeasy-default-otp-request-code:
-      parameters:
-        path:
-          otpInstance: "{{ instance_id }}"
-          otpInstanceId: "{{ instance_id }}"
-      requestBody:
-        application/json: {"chatId": "<id>"}
-      responses:
-        "200":
-          application/json: {}
-    response:
-      parameters:
-        path:
-          otpInstance: "{{ instance_id }}"
-          otpInstanceId: "{{ instance_id }}"
-      requestBody:
-        application/json: {"chatId": "<id>"}
-      responses:
-        "200":
-          application/json: {"success": true, "message": "OTP code generated and message queued successfully", "data": {"uuid": "a0b5df6a-b491-4190-80a5-38d85a2a4836", "chat_id": "20123456789@c.us", "code": "439713", "status": "pending", "otp_type": "code", "expires_at": "2025-12-29T18:09:38+00:00", "created_at": "2025-12-29T17:39:38+00:00"}}
-  otp-validateCode:
-    request:
-      parameters:
-        path:
-          otpInstance: "{{ instance_id }}"
-          otpInstanceId: "{{ instance_id }}"
-      requestBody:
-        application/json: {"chatId": "20123456789@c.us", "code": "439713"}
-      responses:
-        "200":
-          application/json: {}
-    speakeasy-default-otp-validate-code:
-      parameters:
-        path:
-          otpInstance: "{{ instance_id }}"
-          otpInstanceId: "{{ instance_id }}"
-      requestBody:
-        application/json: {"chatId": "<id>", "code": "<value>"}
-      responses:
-        "200":
-          application/json: {}
-    response:
-      parameters:
-        path:
-          otpInstance: "{{ instance_id }}"
-          otpInstanceId: "{{ instance_id }}"
-      requestBody:
-        application/json: {"chatId": "<id>", "code": "<value>"}
-      responses:
-        "200":
-          application/json: {"success": true, "message": "OTP code validated successfully", "data": {"uuid": "a0b5df6a-b491-4190-80a5-38d85a2a4836", "chat_id": "20123456789@c.us", "status": "validated", "validated_at": "2025-12-29T17:43:36+00:00"}}
-  otp-generateLink:
-    request:
-      parameters:
-        path:
-          otpInstance: "{{ instance_id }}"
-          otpInstanceId: "{{ instance_id }}"
-      requestBody:
-        application/json: {"chatId": "20123456789@c.us", "expires": 1800, "name": "Hypersender", "message": {"prompt": "Send me my Hypersender link", "success": "Here is your link: {link}", "failed": "Login failed, please try again later.", "expired": "The link has been expired, please try another one."}, "callback": {"success": "https://yourdomain.com/callback/success", "failed": "https://yourdomain.com/callback/failed"}}
-      responses:
-        "200":
-          application/json: {}
-    speakeasy-default-otp-generate-link:
-      parameters:
-        path:
-          otpInstance: "{{ instance_id }}"
-          otpInstanceId: "{{ instance_id }}"
-      requestBody:
-        application/json: {"chatId": "<id>"}
-      responses:
-        "200":
-          application/json: {}
-    response:
-      parameters:
-        path:
-          otpInstance: "{{ instance_id }}"
-          otpInstanceId: "{{ instance_id }}"
-      requestBody:
-        application/json: {"chatId": "<id>"}
-      responses:
-        "200":
-          application/json: {"success": true, "message": "OTP link request created successfully", "data": {"uuid": "a0b5e14e-95da-4bd4-9e2a-071661244bef", "code": "RDYFQUBX", "chat_id": "20123456789@c.us", "status": "pending", "otp_type": "link", "expires_at": "2025-12-29T18:14:55+00:00", "created_at": "2025-12-29T17:44:55+00:00", "whatsapp_link": "https://wa.me/201553730661?text=Give+me+link+to+login+at+7enkesh+%5BRDYFQUBX%5D+-+DO+NOT+CHANGE+THIS+MESSAGE"}}
-  enterprise-getInstanceHealth:
-    speakeasy-default-enterprise-get-instance-health:
-      parameters:
-        path:
-          instance: "{{ instance_id }}"
-      responses:
-        "200":
-          application/json: {"instance_id": "fa3d01c4-1234-4c0d-a12f-df319b612f8c", "connected_at": "2025-05-26T10:12:45", "status": "WORKING"}
-        "404":
-          application/json: {"message": "Resource not found."}
-        "429":
-          application/json: {"message": "Too many requests. Please try again later."}
-  enterprise-listInstances:
-    speakeasy-default-enterprise-list-instances:
-      responses:
-        "200":
-          application/json: [{"id": "fa3d01c4-1234-4c0d-a12f-df319b612f8c", "name": "MyInstanceName", "phone": "+201234567890", "service_type": "whatsapp", "status": "WORKING", "access_token": "234|3uB2pBST2H6If8twXIeUaeNu23VJ8XassYoOVJuva48388e1", "created_at": "2025-05-26T10:12:45"}]
-  enterprise-createInstance:
-    speakeasy-default-enterprise-create-instance:
-      requestBody:
-        application/json: {"phone": "+201234567890", "name": "MyInstanceName", "webhook_url": "https://yourdomain.com/webhooks/whatsapp"}
-      responses:
-        "201":
-          application/json: {"id": "fa3d01c4-1234-4c0d-a12f-df319b612f8c", "name": "MyInstanceName", "phone": "+201234567890", "service_type": "whatsapp", "status": "WORKING", "access_token": "234|3uB2pBST2H6If8twXIeUaeNu23VJ8XassYoOVJuva48388e1", "created_at": "2025-05-26T10:12:45", "qr_code": "iVBORw0KGgoAAAANSUhEUgAAA..."}
-        "422":
-          application/json: {"message": "The given data was invalid.", "errors": {}, "statusCode": 422}
-        "429":
-          application/json: {"message": "Too many requests. Please try again later."}
-  enterprise-requestNewQrCode:
-    speakeasy-default-enterprise-request-new-qr-code:
-      parameters:
-        path:
-          instance: "{{ instance_id }}"
-      responses:
-        "200":
-          application/json: {"id": "fa3d01c4-1234-4c0d-a12f-df319b612f8c", "name": "MyInstanceName", "phone": "+201234567890", "service_type": "whatsapp", "status": "WORKING", "access_token": "234|3uB2pBST2H6If8twXIeUaeNu23VJ8XassYoOVJuva48388e1", "created_at": "2025-05-26T10:12:45", "qr_code": "iVBORw0KGgoAAAANSUhEUgAAA..."}
-        "404":
-          application/json: {"message": "Resource not found."}
-        "429":
-          application/json: {"message": "Too many requests. Please try again later."}
-  enterprise-restartInstance:
-    speakeasy-default-enterprise-restart-instance:
-      parameters:
-        path:
-          instance: "{{ instance_id }}"
-      responses:
-        "200":
-          application/json: {"message": "WhatsApp instance restarted successfully."}
-        "404":
-          application/json: {"message": "Resource not found."}
-        "429":
-          application/json: {"message": "Too many requests. Please try again later."}
-        "500":
-          application/json: {"message": "Failed to restart WhatsApp instance. Please try restarting the instance from hypersender dashboard."}
 examplesVersion: 1.0.2
